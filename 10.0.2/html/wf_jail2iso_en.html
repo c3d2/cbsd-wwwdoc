@@ -1,0 +1,95 @@
+<b>Command</b>:<br>
+<pre>
+% cbsd jail2iso
+</pre>
+<b>Description</b>:
+<br><br>
+The <b>jail2iso</b> script allows to create a bootable image for CD/DVD/Memstick from the specified jail.
+Despite the fact that functional <b>jail2iso</b> is not used in <b>cbsd</b> operation or jails, this script 
+can be very useful for easy and comfortable build customized LiveCD, content which you can install, 
+configure and test in jail. For example, this functionality is useful for:
+<br><br>
+<li> Creating rescue-system with necessary tools
+<li> Building your own FreeBSD distribution
+<li> Creating images for diskless servers/stations (eg booted from PXE, MicroSD, Flash, CD/DVD, etc.) and have mounted home directories or jails/data files 
+from NFS/FibreChannel/iSCSI/InfiniBand.
+<br><br>
+Script job:
+<br><br>
+<li> Creation of file hierarchy of next image consisting of mounted base and data of a jail
+<li> Creation of MFS/UZIP of an image which will remain in memory. It is used generally for work acceleration in the LiveCD mode, allowing for "cache" often caused utilities and libraries, for example
+from / to / usr.
+<li> Mount over MFS of hierarchy of data from file system of the media through nullfs/RO
+<li> Mount through tmpfs over RO file system for modification in LiveCD mode.
+<br>
+<br>
+If you need a number of directories reload when loading image in RW via tmpfs, before executing <b>jail2iso</b> you needs to be written to a file 
+<i>$systemdir/jail/tmpfsdir</i> all the path
+<br>For example <b>rescuebsd</b> jail is a file: <i>/usr/jails/jails-system/rescuebsd/tmpfsdir</i> with content:
+<br>
+<pre>
+/root
+/var/run
+/var/cache
+/var/db
+/var/spool
+/var/log
+/usr/home
+/usr/local/etc
+</pre>
+<br>
+These entries are processed <i>/etc/rc.d/tmpfsdir</i>, which will save to the image by <b>jail2iso</b>. 
+All contents of these files, which is on the jail, will be moved to tmpfs filesystem.
+<br>As RW areas are mounted through TMPFS, the quantity of memory available to record will depend on quantity of RAM of servers on which LiveCD is started.
+<br><br>
+You may prefer to write your own /boot/loader.conf to created image. 
+To do this, save the file <b>loader.conf</b> in the directory <i>$systemdir/$jname/</i>. 
+Everything you write in this file will be added to loader.conf, generated <b>jail2iso</b>, which has the following mandatory entries:
+<pre>
+kern.ipc.shmmni=4096
+kern.ipc.shmseg=4096
+radeonkms_load="YES"
+i915kms_load="YES"
+linux_load="YES"
+</pre>
+<br>
+You can specify what type of image <b>jail2iso</b> is to create, ISO image with cd9960 for CD/DVD/VMs or Memstick, an image that you can burn to a USB Flash drive.
+<br><b>cbsd jail2iso</b> is not controlled and does not limit the volume of the final result - they are limited only by your destination media:
+<br><br>
+For create ISO image use:
+<pre>
+%  cbsd jail2iso media=iso ..
+</pre>
+For create memstick image use:
+<pre>
+% cbsd jail2iso media=memstick ..
+</pre>
+<br>
+Directory where to save the image specified as an argument <b>destdir</b>.
+<br>
+By default, the image will be have GENERIC kernel from $workdir/basejail/ directory. 
+You can get this kernel via
+<br>
+<pre>% cbsd repo action=get sources=kernel</pre>
+for your version of FreeBSD, or build it yourself through <b>cbsd buildkernel</b>.
+ If the GENERIC kernel is not suitable as an argument <b>name</b> for <b>jail2iso</b> 
+you can specify a different kernel if you have it.
+<br><br>
+In addition, to reduce the size of the final image, jail2iso a series of actions:<br>
+<br>
+<li> removal .a-archive files in lib directories
+<li> removing unnecessary data by file list
+<br>
+<br> By default, this list is located in the $workdir/share/jail2iso-prunelist.
+You can correct them if you needed, or create your own, specifying the path to it as an argument <b>prunelist</b>
+<br><br>
+Example of creating memstick from jail1:
+<br><pre>
+% cbsd jail2iso media=memstic jname=jail destdir=/tmp
+</pre>
+If the file /tmp/jail1.img created, it can be writte to a USB device via the command:
+<pre>
+dd if=/tmp/mc.img of=/dev/da0 bs="10240" conv="sync"
+</pre>
+, where <b>/dev/da0</b> - is USB Flash storage.
+<br><br><center>

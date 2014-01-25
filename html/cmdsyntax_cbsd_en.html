@@ -24,33 +24,39 @@
 % cbsd node mode=list
 ...
 </pre></b>
-<p>The cbsd command can accept the arguments which are written in a "param=value" form <br />cbsd commands can have both obligatory arguments, and arguments which can be lowered.
-To receive the list of arguments it is possible on command:</p>
-<b>
+<p>Commands of <b>cbsd</b> can accept arguments that are written in the form "param=value".
+<br>
+<b>cbsd</b> commands can have as required arguments, and the arguments are optional. Order of the arguments does not matter.
+<br>
+In order to get brief information about a particular script, and get a list of required and optional arguments 
+use the --help argument for the corresponding command
 <pre>
 % cbsd &lt;cmd&gt; --help
 </pre>
-</b>
-- with a conclusion and the short description, what args are obligatory, and what are optional.
-<p>or</p>
-<b>
+For example, to get help on jls:
+<br>
 <pre>
-% cbsd &lt;cmd&gt; --args
+% cbsd jls --help
 </pre>
-</b>
-for a conclusion of all expected arguments at the cmd command.
+<pre>
+[jail] List jail and status
+require: 
+opt: alljails shownode display node header
+alljails=1 - get jaillist from remote node
+shownode=1 - show nodename for jails
+node= only for current node
+header=0 don't print header
+display= list by comma for column. Default: jid,jname,ip4_addr,host_hostname,path,status
+External help: http://www.bsdstore.ru/10.0.2/html/wf_jls_en.html
+</pre>
+<br> The first line in square brackets the name of the module to which the command (jail in this case), as well as a summary of the functions.
+<br> In line with <b>require:</b> lists the required arguments, without specifying which command work impossible.
+<br> In line with <b>opt: </b> lists the optional arguments (though, depending on the mode of the utility, in various cases, they may be required)
+<br> In the following lines is a brief description of the arguments, if it exist
+<br><br> Also, it may be a reference to the documentation (External help). It can point to a site and a local file, if installed documentation. This 
+reference in future releases will be automatically used by WEB/GUI front-end to load reference, however, it may be useful for users as a direct pointer to the 
+extended description of the command.
 <br><br>
-<b>Example</b>:
-<br><br>
-Command
-<pre>
-% cbsd --help
-</pre>
-shows list of all cbsd command 
-<br><br>Command
-<pre>
-% cbsd jsnapshot --help
-</pre>
-show all possible parameters for <b>jsnapshot</b>
+<img src="/html/img/cbsd_syntax1.png"></img>
 </body>
 </html>
