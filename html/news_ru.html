@@ -13,21 +13,26 @@
 <FONT face="verdana,arial,helvetica" size="+1">Версии</font>
 <FONT face="verdana,arial,helvetica" size="-1">
 <br><br>
-<b>10.0.2</b> - Unknown
+<b>10.0.3</b> - Unknown
 <br><br>
-<li> Поддержка ненативных архитектур для клеток через Qemu UserMode (<a href="/html/cbsd_qemu_usermode.html">cbsd и Qemu User mode</a>)
 <li> Ansible модуль для клеток cbsd
-<li> Улучшение <b>jls</b> для поддержки вывода кастимизированных данных (<a href="/10.0.2/html/wf_jls_ssi.html">список jail</a>)
-<li> Поддержка <b>nice(1)</b> для приоритезации клеток (<a href="/10.0.2/html/wf_jrctl_ssi.html">Управление лимитами jail</a>)
-<li> Именование баз изменилось с base_<b>arch</b>_<i>ver</i> на base_<b>arch</b>_<b>platform</b>_<i>ver</i> в связи с возрастающей популярностью ARM архитектуры
-<li> Поддержка создания имиджей для <b>bhyve</b> из jail (<a href="/10.0.2/html/wf_jail2iso_ssi.html">jail2iso</a>)
 <li> Модулизация, LUA для скриптов, улучшение вывода <b>--help</b> (<a href="/html/cmdsyntax_cbsd.html">cbsd syntax</a>)
-<li> Удален скрипт cbsdsar, данный функционал был включен по ошибке
-<li> Учетная запись по причинам безопасности теперь создается портами, не установочным скриптом cbsd и по-умолчанию в состоянии LOCKED, что потребует ручной активации при работе с командой node
 <br><br><i>Если вы хотите поэксперементировать со следующей версией cbsd, используйте <b>git clone https://github.com/olevole/cbsd.git</b> для <b>/usr/local/cbsd</b></i>
 <br><br>
 <b>Релизы</b>
 <hr>
+<b>10.0.2</b> - 2013-01-03
+<br><br>
+<li> Поддержка ненативных архитектур для клеток через Qemu UserMode (<a href="/html/cbsd_qemu_usermode.html">cbsd и Qemu User mode</a>)
+<li> Улучшение <b>jls</b> для поддержки вывода кастимизированных данных (<a href="/10.0.2/html/wf_jls_ssi.html">список jail</a>)
+<li> Поддержка <b>nice(1)</b> для приоритезации клеток (<a href="/10.0.2/html/wf_jrctl_ssi.html">Управление лимитами jail</a>)
+<li> Именование баз изменилось с base_<b>arch</b>_<i>ver</i> на base_<b>arch</b>_<b>platform</b>_<i>ver</i> в связи с возрастающей популярностью ARM архитектуры
+<li> Поддержка создания имиджей для <b>bhyve</b> из jail (<a href="/10.0.2/html/wf_jail2iso_ssi.html">jail2iso</a>)
+<li> Очиста кода от старых develop-скриптов, в тч. cbsdsar; данный функционал был включен по ошибке
+<li> Учетная запись по причинам безопасности теперь создается портами, не установочным скриптом cbsd и по-умолчанию в состоянии LOCKED, что потребует ручной активации при работе с командой node
+<li> поддержка <b>allow.kmem</b>, что позволяет запускать Xorg сервер в Jail (FreeBSD 11 aka HEAD only)
+<li> тестовые Xorg имиджы - клетки с LXDE WM и FluxBox (FreeBSD 11 aka HEAD only)
+<br><br>
 <b>10.0.1</b> - 2013-12-28
 <br><br>
 <li> uzip в jail2iso

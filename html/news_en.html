@@ -13,21 +13,26 @@
 <FONT face="verdana,arial,helvetica" size="+1">Version</font>
 <font face="verdana, arial, helvetica" size="-1">
 <br><br>
-<b>10.0.2</b> - Unknown
+<b>10.0.3</b> - Unknown
 <br><br>
-<li> Support for non-native architecture via Qemu UserMode (<a href="/html/cbsd_qemu_usermode_en.html">cbsd and Qemu User mode</a>)
 <li> Ansible module for cbsd jail
-<li> Improvement <b>jls</b> to support custom data output (<a href="/10.0.2/html/wf_jls_ssi_en.html">jail list</a>)
-<li> <b>nice(1)</b> support for jail priority (<a href="/10.0.2/html/wf_jrctl_ssi_en.html">jail limits control</a>)
-<li> Nameing of base changed from base_<b>arch</b>_<i>ver</i> to base_<b>arch</b>_<b>platform</b>_<i>ver</i> due to the increasing popularity of ARM architecture
-<li> Support the creation of images for <b>bhyve</b> from jail (<a href="/10.0.2/html/wf_jail2iso_ssi_en.html">jail2iso</a>)
 <li> Modulization, LUA scripts, improving output for <b>--help</b> (<a href="/html/cmdsyntax_cbsd_en.html">cbsd syntax</a>)
-<li> cbsdsar script has been removed, this functionality was included/enabled by mistake from development version
-<li> For security reasons cbsd account now created by ports framework (or manually), not the installation script and cbsd account by default in LOCKED status, that require manual activation when working with a node commands
 <br><br><i>If you want to experiment with the next version of cbsd, use <b>git clone https://github.com/olevole/cbsd.git</b> for <b>/usr/local/cbsd</b></i>
 <br><br>
 <b>Releases</b>
 <hr>
+<b>10.0.2</b> - 2013-01-03
+<br><br>
+<li> Support for non-native architecture via Qemu UserMode (<a href="/html/cbsd_qemu_usermode_en.html">cbsd and Qemu User mode</a>)
+<li> Improvement <b>jls</b> to support custom data output (<a href="/10.0.2/html/wf_jls_ssi_en.html">jail list</a>)
+<li> <b>nice(1)</b> support for jail priority (<a href="/10.0.2/html/wf_jrctl_ssi_en.html">jail limits control</a>)
+<li> Nameing of base changed from base_<b>arch</b>_<i>ver</i> to base_<b>arch</b>_<b>platform</b>_<i>ver</i> due to the increasing popularity of ARM architecture
+<li> Support the creation of images for <b>bhyve</b> from jail (<a href="/10.0.2/html/wf_jail2iso_ssi_en.html">jail2iso</a>)
+<li> cbsdsar script has been removed, this functionality was included/enabled by mistake from development version
+<li> For security reasons cbsd account now created by ports framework (or manually), not the installation script and cbsd account by default in LOCKED status, that require manual activation when working with a node commands
+<li> support for <b>allow.kmem</b>, which is allows you to run Xorg server in the jail (FreeBSD 11 aka HEAD only)
+<li> testing Xorg images - jail with LXDE WM and FluxBox (FreeBSD 11 aka HEAD only)
+<br><br>
 <b>10.0.1</b> - 2013-12-28
 <br><br>
 <li> uzip in jail2iso
