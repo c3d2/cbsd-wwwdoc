@@ -46,7 +46,7 @@ in absence of a <i>/etc/rc.conf</i> parameter <b>sshd_flags</b>,
 on port 22222 by running it through this setup:
 
 <pre>
-  sshd_flags="-p22222"
+  sshd_flags="-oPort=22222"
 </pre>
 Be extremely careful about this change. 
 If you want to keep the standard flags sshd daemon, duplicate entry for sshd_flags from file /etc/defaults/rc.conf in 
@@ -54,9 +54,13 @@ If you want to keep the standard flags sshd daemon, duplicate entry for sshd_fla
 <br>
 Also, you may want to disable host name resolv via DNS, which can significantly speed up connections between nodes, extending the entry in /etc/rc.conf to
 <pre>
-  sshd_flags="-oUseDNS=no -p22222"
+  sshd_flags="-oUseDNS=no -oPort=22222"
 </pre>
 <br>
+If you want sshd listening port 22222 as well as the standard 22, this record will be correct:
+<pre>
+  sshd_flags="-oPort=22 -oPort=22222 -oUseDNS=no"
+</pre>
 22222 instead of the default port 22 is proposed to change some the following reasons:
 <br><br>
 <li> to this port comes less scanners for sshd bruteforce. Of course, this argument is not serious ;-) and if you want protection from brute force, just look at utilities <b>security/{bruteblock,denyhosts}</b>;
