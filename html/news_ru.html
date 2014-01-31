@@ -17,11 +17,13 @@
 <br><br>
 <li> Ansible модуль для клеток cbsd
 <li> Модулизация, LUA для скриптов.
+<li> поддержка <b>allow.kmem</b>, что позволяет запускать Xorg сервер в Jail (FreeBSD 11 aka HEAD only)
+<li> тестовые Xorg имиджы - клетки с LXDE WM и FluxBox (FreeBSD 11 aka HEAD only)
 <br><br><i>Если вы хотите поэксперементировать со следующей версией cbsd, используйте <b>git clone https://github.com/olevole/cbsd.git</b> для <b>/usr/local/cbsd</b></i>
 <br><br>
 <b>Релизы</b>
 <hr>
-<b>10.0.2</b> - 2013-02-03
+<b>10.0.2</b> - 2013-02-01
 <br><br>
 <li> Улучшение вывода <b>--help</b> - внешняя ссылка на документацию (<a href="/html/cmdsyntax_cbsd.html">cbsd syntax</a>)
 <li> Поддержка ненативных архитектур для клеток через Qemu UserMode (<a href="/html/cbsd_qemu_usermode.html">cbsd и Qemu User mode</a>)
@@ -30,9 +32,7 @@
 <li> Именование баз изменилось с base_<b>arch</b>_<i>ver</i> на base_<b>arch</b>_<b>platform</b>_<i>ver</i> в связи с возрастающей популярностью ARM архитектуры
 <li> Поддержка создания имиджей для <b>bhyve</b> из jail (<a href="/10.0.2/html/wf_jail2iso_ssi.html">jail2iso</a>)
 <li> Очиста кода от старых develop-скриптов, в тч. cbsdsar; данный функционал был включен по ошибке
-<li> Учетная запись по причинам безопасности теперь создается портами, не установочным скриптом cbsd и по-умолчанию в состоянии LOCKED, что потребует ручной активации при работе с командой node
-<li> поддержка <b>allow.kmem</b>, что позволяет запускать Xorg сервер в Jail (FreeBSD 11 aka HEAD only)
-<li> тестовые Xorg имиджы - клетки с LXDE WM и FluxBox (FreeBSD 11 aka HEAD only)
+<li> Системная учетная запись теперь создается портами, не установочным скриптом cbsd.
 <br><br>
 <b>10.0.1</b> - 2013-12-28
 <br><br>
