@@ -122,6 +122,16 @@ At this point,  for counting jail traffic used <b>count</b> ruleset of <b>ipfw</
 <b>cbsd</b> sets number of counters in <b>99 - 2000</b> range (you can change this in cbsd.conf).
 <br>So be careful and make sure to follow your rules IPFW after a specified range.
 <br>
+<h3><ins>ANSII Color</ins></h3>
+<br>
+By default, <b>cbsd</b> displayed text in color (using escape sequences ANSII). 
+If for some reason the color is unpleasant, or you can use output from utilities cbsd in your scripts, 
+which prevents ANSII sequence, you can disable the color through the environment variable NOCOLOR=1. For example, the command
+<pre>
+% env NOCOLOR=1 cbsd jls
+</pre>
+prohibit the use of color in the derivation of the title.
+<br>
 <h3><ins>If something went wrong</ins></h3>
 <li> In the case when with <b>cbsd</b> tools errors, it is recommended to make the problem a bug-tracker of the project: <a href="https://github.com/olevole/cbsd/issues">cbsd issues</a> 
 or report via e-mail: <b>cbsd</b> <i>at</i> <b>bsdstore.ru</b>

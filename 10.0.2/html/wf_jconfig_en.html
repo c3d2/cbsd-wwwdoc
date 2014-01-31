@@ -1,0 +1,108 @@
+<b>Commands</b>:<br>
+<pre>
+% cbsd jconfig
+% cbsd jset 
+</pre>
+
+<b>Descriptions</b>: configuration parameters jail
+<br>
+<p>
+Each cbsd jail stores the settings in SQLite3 database.
+In addition, <i>$workdir/jails-fstab/</i> may have fstab files (see below). 
+To change the settings of jail can serve <b>cbsd jconfig</b> command, which is runs the TUI menu to change basic settings:
+</p>
+<h3>Jails IP address</h3>
+IP addresses that are bound to the jail sets in <b>ip4_addr</b> parameter.
+As an IP may serve as IPv4, and the IPv6 address. When starting and stopping jail, working with IP may take place in two modes -
+automatic on-the-fly creation of IP addresses for the jail at the time of launch + automatic removal from the interface IP when stopping or
+the use of previously initialized IP addresses.
+<p>
+When for jails assigned to more than one address, they should be listed separated by commas without spaces. IP can include network prefix specified
+through IP/<b>prefix</b>. By default, aliases created with the prefix /32, that may not be appropriate if the jail uses a separate subnet from the network server - in
+this case, the correct <b>/prefix </b> is needed.
+<p>
+The parameter that controls this behavior pointed by <b>interface</b> parameter. When <b>interface=0</b>, jstart and jstop will not be called
+ifconfig alias and ifconfig -alias, respectively. If its value is <b>auto</b> or name of network nics, this command will be executed:
+<pre>
+ifconfig <i>alias</i> <b>interface</b> <b>ips</b>,
+</pre>
+and when jail stop:
+<pre>
+ifconfig <b>inteface</b> <b>ips</b> <i>-alias</i>
+</pre>
+Be careful with this option, if you have only one IP for server that is used and this IP is assigned to the same jail,
+when stopping jail, ip address of the server will be removed automatically that will make the server unavailable. In this case, you need to use:
+<pre>
+interface=0
+</pre>
+For example, to run the configuration tool for the <b>jail1</b>, run:
+<pre>
+cbsd jconfig jname=jail1
+</pre>
+
+<h3>Mounting File Systems in jail</h3>
+
+Each jail can have your fstab file, which lists the file systems that are mounted jail is startup.
+System records (they are managed by cbsd and edit this file inappropriately) are located in the file <i><b>$workdir/jails-fstab/</b>fstab.name</i> and the same syntax to format the file system <b>/etc/fstab</b> with the exception
+that as a mount point is the path relative to the root jail, not the master system.
+<br>
+For user entries, you can use the file in the same directory with the extension <i>.local</i>. For example, if you want to make between <b>jail1</b> and <b>jail2</b> a shared directory (via nullfs), which
+physically located in the master node (e.g.: <i>/usr/home/sharefs</i>), the files <i><b>$workdir/jails-fstab/</b>fstab.jail1.local</i> and <i><b>$workdir/jails-fstab/</b> fstab.jail2.local</i> should have:
+<pre>
+/usr/home/sharefs /usr/home/sharefs nullfs rw 0 0
+</pre>
+If you want to mount tmpfs to /tmp dir in jail1 (those actually in /usr/jails/jails/jail1/tmp), then the entry in the
+<i><b>$workdir/jails-fstab/</b>fstab.jail1.local</i> should have:
+<pre>
+tmpfs /tmp tmpfs rw 0 0
+</pre>
+If you want to mount into <b>jail2</b> a directory from <b>jail1</b>, jail1 path should point to the directory containing the data jail1 (and their mount points ${workdir}/jails/jail1). For example entry
+<i><b>$workdir/jails-fstab/</b>fstab.jail2.local</i>:
+<pre>
+/usr/jails/jails-data/jail1-data/usr/local/www /usr/local/www nullfs ro 0 0
+</pre>
+Make the shared directory /usr/local/www between jail1 and jail2, but it will jail2 in read-only mode
+<br>
+<h3>Presentation of ZFS file systems in jail</h3>
+<br>
+If you want to attach separate ZFS filesystems in jail (ie, want to be able to perform in jail zfs mount),
+ZFS dataset must list in <i><b>$workdir/jails-fstab/</b>fstab.$jname.local</i> file with specifying the keyword zfs in FStype field.
+<br>
+For example, if you want to present the file system ZFS: <b>zroot/jail1_webfs</b> for jail jail1 <i><b>$workdir/jails-fstab/</b>fstab.jail1.local</i> must have:
+<pre>
+zroot/jail1_webfs /usr/home/web zfs rw 0 0
+</pre>
+<i>Note:</i> mount point (/usr/home/web in this example) is not important
+<i>Note2:</i> jail must have <i>allow_zfs</i> paramaters set to 1, what can be done via <b>cbsd jconfig jname=$jname</b>
+In fact, it makes cbsd execute commands:
+<pre>
+% zfs set jailed=on $FS
+% zfs jail $jname $FS
+</pre>
+when jail started and
+<pre>
+% zfs set jailed=off $FS
+% zfs unjail $jname $FS
+</pre>
+when stoped.
+
+<h3>Change settings via the jset</h3>
+Another possibility is to change certain parameters of the jail - use the command <b>cbsd jset</b>
+Full list of possible arguments can be accessed through <i>--help</i>:
+<pre>
+     % cbsd jget --help
+</pre>
+For example, to change ip of jail1:
+<pre>
+    % cbsd jset jname=jail1 ip4_addr="10.0.0.20/24,192.168.0.20/24" 
+</pre>
+<br><br><center>
+<i>cbsd jconfig jname=jail2</i>
+<br>
+<img src="/html/img/jconfig1.png"></img>
+<br><br>
+<i>cbsd jset</i>
+<br>
+<img src="/html/img/jconfig2.png"></img>
+<br><br>
+</center>
