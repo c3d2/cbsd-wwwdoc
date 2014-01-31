@@ -18,42 +18,45 @@
 <br><br>
 <body>
 Due to the fact that the course taken by CBSD is focused on a large number of functional relationship for the provision 
-of an integrated solution, the system for their work makes or proposes to make a number of specific settings, 
-and what is described on this page.
+of an integrated solution, the system for their work makes or proposes to make a number of specific settings. 
+This page describes where and why these changes are necessary. It is also important to fully uninstall cbsd ;-)
 
 <br><br>
-<center><h3><b>/etc/rc.conf</b> file and <b>rcshutdown_timeout</b> parameter</h3></center>
-
+<center><h3><b>/etc/rc.conf</b> file</h3></center>
+The following settings in /etc/rc.conf affects by <b>cbsd</b> to work correctly.
+<br><br>
+1) <i>rcshutdown_timeout</i><br>
+<br>
 This parameter adjusts the time of processing the sequence of shutdown rc.shutdown files - 
 if after this timestop the process does not transfer control system would kill him. 
 For servers having a large number of jails, which in turnmay work to stop the long and sensitive to 
 killing services (eg database), the default value (120) is extremely small. In this regard, 
 <b>cbsd</b> change it at the first initialization.
-
+<br><br>
 If you want to keep the default value and stop the redefine parameter when <b>cbsd initenv</b>, 
-simply duplicate the parameter value from /etc/defaults/rc.conf: <b>cbsd</b> will not change the setting if /etc/rc.conf, he already has.
-
-<br>
-<center><h3><b>/etc/rc.conf</b> file, default sshd port and sshd_flags paramete</b></h3></center>
-
+simply duplicate the parameter value from /etc/defaults/rc.conf: <b>cbsd</b> will not change the setting if in /etc/rc.conf its already sets:
+<pre>
+% grep rcshutdown_timeout /etc/defaults/rc.conf >> /etc/rc.conf
+</pre>
+2) <i>sshd_flags and default SSHd port in master node</i>
+<br><br>
 As in the case with <b>rcshutdown_timeout</b> in <i>/etc/rc.conf</i>, 
 in absence of a <i>/etc/rc.conf</i> parameter <b>sshd_flags</b>, 
 <i>cbsd initenv</i> prompts you to change the port (22) default daemon <b>sshd</b> 
 on port 22222 by running it through this setup:
 
 <pre>
-  sshd_flags="-oPermitRootLogin=without-password -oPasswordAuthentication=yes -oUseDNS=no -p22222"
+  sshd_flags="-p22222"
 </pre>
-
 Be extremely careful about this change. 
 If you want to keep the standard flags sshd daemon, duplicate entry for sshd_flags from file /etc/defaults/rc.conf in 
 /etc/rc.conf and cbsd will not offer change.
 <br>
-Options "PermitRootLogin=without-password -oPasswordAuthentication=yes" will allow cbsd 
-execute a script on remote node with root authority authorizing through the RSA/DSA/ECDSA. 
-Currently, work <ins>base</ins> functional cbsd not required, but may be required in conjunction <b>cbsd</b> and mass control configurations system, 
-such as <a href="http://www.ansibleworks.com/"><b>Ansible</b></a> as will be described in a separate article.
-<br><br>
+Also, you may want to disable host name resolv via DNS, which can significantly speed up connections between nodes, extending the entry in /etc/rc.conf to
+<pre>
+  sshd_flags="-oUseDNS=no -p22222"
+</pre>
+<br>
 22222 instead of the default port 22 is proposed to change some the following reasons:
 <br><br>
 <li> to this port comes less scanners for sshd bruteforce. Of course, this argument is not serious ;-) and if you want protection from brute force, just look at utilities <b>security/{bruteblock,denyhosts}</b>;
@@ -61,26 +64,98 @@ such as <a href="http://www.ansibleworks.com/"><b>Ansible</b></a> as will be des
 In practice, different ports sshd on the master node and jail is useful because if you suddenly forget what kind of node on running your jail <b>jail1024.my.domain</b>, 
 you can always be sure that when connecting to the host <b>jail1024.my.domain</b> on the 22222 port you will certainly get to the physical node serving this jail. 
 The second point - that the jail with the parameter <i>oninterface=0</i> and have the same basic system with IP.
+<br>
+<br> In addition, this setting will prevent port conflicts between a nodes sshd and sshd service in the jail.
 <br><br>
 Also note that, while parameter <b>applytpl=1</b> and the creation of new jail, <b>cbsd</b> in the same way configures port in jail to port 2222 (however, sshd_enable default remains in NO).
 This change is also driven by a desire to identify jail unique port number. That, in turn, are useful for configuration management systems, such as
 <a href="http://www.ansibleworks.com/"><b>Ansible</b></a>, introducing the names of jail in a single domain (eg jail1024.<b>j</b>.my.domain) and use the mask of <b>.j.</b> in the zone 
 system will apply certain filters to know the correct port for establishing a connection. A similar example of <b>cbsd</b> and <b>Ansible</b> will be described in a separate article.
 <br>
-<center><h3><b>/var/cron/tabs/root</b> file and cbsd periodic</h3></center>
+In order not to edit scripts on servers which is make ssh connection to node or cells, it is recommended to use the possibility of ~/.ssh/config, where you can specify the ports for a particular host or hosts mask, for example:
+<pre>
+  # this server on 22 default ssh port
+  Host otherserver.my.domain
+  Port 22
+  User root
+
+  # mask for jails which have records in blabla.j.my.domain zones:
+  Host *.j.*
+  Port 2222
+
+  # Default records - all host on 22222 port
+  Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h:%p
+  Port 22222
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
 <br>
-<b>cbsd</b> may have "internal" tasks requiring periodic execution (eg: traffic stats, <b>RACCT</b> stats or execute <b>sar</b> script). To do this, it leaves a record of the form:
+
+<center><h3><b>/var/cron/tabs/root</b> file, /etc/periodic.conf and cbsd periodic</h3></center>
+<br>
+<b>cbsd</b> may have "internal" tasks requiring periodic execution (eg: traffic stats, <b>RACCT</b> stats). To do this, it can configure its own periodic via records:
 <pre>
 * * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&1
 0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&1
-*/5 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/cbsdsar /usr/local/bin/cbsd cbsdsar > /dev/null 2>&1
 </pre>
-in user-cron tab for user <b>root</b>. Users cron tab, instead of the system used for the reasons described 
-in <a href="html/articles/upgrade_for_fun.html"> Do not be afraid mergemaster</a>. If you do not want to disturb these calls in your system, just open the editor via cron tab command:
+in user-cron tab for user <b>root</b> (/var/cron/tabs/root). Users cron tab, instead of the system used for the reasons described 
+in <a href="html/articles/upgrade_for_fun.html"> Do not be afraid mergemaster</a> (rus version only). If you do not want to disturb these calls in your system, just open the editor via cron tab command:
 <pre>
 % crontab -e
 </pre>
-and put before these lines the '#' comment character. In this case, <b>cbsd initenv</b> will not make changes.
+and put this lines with starting comment character '#':
+<pre>
+#* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&1
+#0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&1
+</pre>
+In this case, <b>cbsd initenv</b> will not make changes.
 <br>
-<center><h3><b>/boot/loader.conf</b> file, pf/ipfw modules and net.inet.ip.fw.default_to_accept</h3></center>
+<center><h3><b>/boot/loader.conf</b>, kernel modules, net.inet.ip.fw.default_to_accept</h3></center>
 <br>
+In that case, if you use <b>cbsd natcfg, cbsd naton </b> or answer <b>yes</b> to the question of using NAT during <b>cbsd initenv</b>, 
+the system may leave (with your consent) in your <b>/boot/loader.conf </b> the following entries:
+<pre>
+pf_load=YES
+ipfw_load=YES
+ipfw_nat_load=YES
+libalias_load=YES
+net.inet.ip.fw.default_to_accept=1
+</pre>
+depending on whether NAT is used. NAT rules themselves are written in the directory structure <b>cbsd</b>.
+Params
+<pre>
+net.inet.ip.fw.default_to_accept=1
+</pre>
+role in the cbsd not play, but it is included for reasons that IPFW module by default disables all, 
+and at the time of setting <b>cbsd </b> some users can not configure ipfw rules (or configure with error), 
+which would entail the loss of access to the system. Keep in mind that this option causes the last rule <b>65535</b> as follows:
+<pre>
+allow ip from any to any
+</pre>
+More: <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/firewalls-ipfw.html">FreeBSD handbook::Firewalls-ipfw</a>
+<br><br>
+In addition, at the start of NAT (<b>cbsd naton</b>), this call is made in system:
+<pre>
+% sysctl -qn net.inet.ip.forwarding=1
+% sysctl -qn net.inet6.ip6.forwarding=1
+</pre>
+for the correct functioning of NAT, and at start of <b>vnet</b>-jails (VIMAGE), <b>if_bridge</b> module will be automatically loaded.
+<br><br>
+Note that <b>cbsd</b> does not remove a record from a /boot/loader.conf on deinstall, or for example, 
+if you switch from one NAT framework to another (for example, first-configured PF, then switched to IPFW), then module in loader.conf for pf is remain.
+<br>
+<center><h3><b>/usr/local/etc/sudoers.d/cbsd_sudoers</b> file and root privileges</h3></center>
+Most of the <b>cbsd</b> commands requires superuser role, and therefore the use utility <b>sudo</b> and the follow configuration file /usr/local/etc/sudoers.d/cbsd_sudoers:
+<pre>
+Defaults     env_keep += "workdir DIALOG NOCOLOR"
+Cmnd_Alias   CBSD_CMD = /usr/jails/sudoexec/*,/usr/local/cbsd/sudoexec/*
+cbsd   ALL=(ALL) NOPASSWD: CBSD_CMD
+</pre>
+These records can run scripts with root authority in the following directories:
+<pre>
+/usr/jails/sudoexec/
+/usr/local/cbsd/sudoexec/
+</pre>
+and without the need to enter a password <b>root</b>
+
