@@ -91,7 +91,26 @@ In order not to edit scripts on servers which is make ssh connection to node or 
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
 <br>
-
+3) <i>devfs_load_rulesets</i><br>
+This parameter is needed to initialize the devfs rule. 
+By default, new jail will use <b>4</b> ruleset (see /etc/defaults/devfs.rules). 
+However, the default setting devfs_load_rulesets in /etc/defaults/rc.conf is set to NO, which in turn will open up in jails all devices in <b>/dev</b>, 
+that in the general case - is undesirable. to change the number of rule sets for a specific jail you can via <b>cbsd jconfig</b>
+<br>
+4) <i>cbsdd_enable, cbsdrsyncd_enable, cbsdrsyncd_flags, cbsd_workdir</i>
+<br>
+The following entries are required in /etc/rc.conf for correct operation <b>cbsd</b>, which proposes to make the installation script initenv:
+<pre>
+cbsdrsyncd_enable="YES"
+cbsdrsyncd_flags="--config=/usr/jails/etc/rsyncd.conf"
+cbsdd_enable="YES"
+cbsd_workdir="/usr/jails"
+</pre>
+cbsddrsyncd is a script which is run rsyncd with an alternative configuration file on port 1873. 
+If you do not plan to transfer jails through <b>cbsd jcoldmigrate</b>, you can prefer to turn it off via:
+<pre>
+cbsdrsyncd_enable="NO"
+</pre>
 <center><h3><b>/var/cron/tabs/root</b> file, /etc/periodic.conf and cbsd periodic</h3></center>
 <br>
 <b>cbsd</b> may have "internal" tasks requiring periodic execution (eg: traffic stats, <b>RACCT</b> stats). To do this, it can configure its own periodic via records:
