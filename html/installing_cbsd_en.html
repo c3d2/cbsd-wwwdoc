@@ -17,8 +17,6 @@
 <br><br>
 <body>
 <br>
-<p style="color:RED">UPD: Attention! After initenv procedure and answering on the questions, there remain a number of modifications in the system (/etc/rc.conf, /boot/loader.conf, /var/run/cron/root, cbsd account) 
-which port that does not remove for a while deinstall. Please keep this in mind when you install cbsd, this problem will be fixed with the nearest upgrade.</p>
 <p style="color:RED">Attention! I apologize, but it is automatic machine translation of the text. You can improve it if will send to me more correct version of the text or fix html pages via <a href="https://github.com/olevole/cbsd-wwwdoc">GITHUB repository</a>.</p>
 
 <h3><ins>Requirements</ins><a href="#Requirements"></a></h3>
@@ -26,7 +24,7 @@ Since <b>cbsd</b> - it's only a number of simplifying the work with the jails sc
 It is assumed that cbsd is installed on a clean, freshly installed FreeBSD, because the setting is a number of configuration
 files <a href="custom_freecbsd_en.html">was changed</a>.
 For full work is desirable:<br><br>
-<li> FreeBSD version greater r equal of 9.1-RELEASE.
+<li> FreeBSD version greater or equal of 9.1-RELEASE.
 <li> <b>amd64</b> architecture, because the development is carried out under it.
 <li> ZFS file system, because the use of a number of possibilities offered by ZFS.
 <li> kernel with RACCT/RCTL and VIMAGE support (<b>cbsd</b> can fetch out a kernel from own repository with your consent)
@@ -65,7 +63,12 @@ get the latest version of <b>cbsd</b> from <a href="https://github.com/">github<
 <pre>
 % git clone https://github.com/olevole/cbsd.git /usr/local/cbsd
 </pre>
-2) First run<br>
+2) First run
+<br><br>
+If you are installing <b>cbsd</b> not from ports, you must first create a cbsd user's with home directory selected as the directory that will contain your jails (in this example - <b>/usr/jails</b>)
+<pre>
+%  pw useradd cbsd -s /bin/sh -d /usr/jails -c "cbsd user"
+</pre>
 <p>In classical installation, cbsd contains in two copies. One of them (<i>/usr/local/cbsd</i>), contains a distribution kit, an initial code and configuration files by default. 
 Also, this copy can be used for management of jails in case the main copy is damaged (for example was incorrectly updated). 
 The index of with what catalog of scripts to work is the environment variable <i>workdir</i>.</p>
@@ -99,20 +102,17 @@ to
 <pre>
 listen-on       { any; };
 </pre>
-This setting cbsd done automatically when the corresponding response to the question about configuring named.
+
 <br>Accordingly, when using a caching DNS, if the IP address of the node such as 192.168.1.2, use this address in jnameserver at the first.
 <li><strong>Please fill nodeippool</strong> - The list of subnets in which it is permitted to be started the jails. If networks more then one - use spacel as delimer. For example: 10.0.0.0/24 192.168.1.128/29
 <li><strong>Please fill natip</strong> - Here it is necessary to enter the IP address which will represent itself as NAT for private addresses. Usually it is IP of your node. For example: 192.168.1.2
 <li><strong>Please fill fbsdrepo</strong> - Whether to use an official repository of FreeBSD for base/templates. The answer 1 or 2 is expected. If on officidal FreeBSD servers  base it is not revealed - cbsd repository is used. 
 For example: 1.
 <li><strong>Please fill zfsfeat</strong> - Whether to use possibilities of file system ZFS (clones, snapshots). The answer 1 or 2 is expected. The question won't be, if the system is started not on ZFS.
-<li><strong>Please fill mdtmp</strong> - Whether to create memory-disk through which the system will perform temporary operations over files (lock-files, temporary copy of config files). By default, the disk equals 8MB.
 <li><strong>Configure NAT for RFC1918 Network?</strong> - Whether to use network address translation (NAT) for private addresses? When jails are created in RFC1918 networks, it is necessary to enable for internet access. For example: 1.
 <li><strong>Which one NAT framework should be use: [pf or ipfw]</strong>- What tool for NAT to prefer. Recommended - pf. For example: 1
 <br><br>
 <b>Warning:</b> Later on, these settings can be changed via the command <b>cbsd initenv-tui</b>, or in a file <i>${workdir}/var/db/local.sqlite</i>, which is a SQLite3 database.
 <br>
-<p style="color:RED">Attention! During the first installation, the system create user named <b>cbsd</b> with access to the shell through which cbsd's remote nodes will communicate via ssh. 
-Please take the choice of complex password with the maximum attention. After first <b>cbsd initenv</b> the password can be changed via the standard command <b>passwd cbsd</b></p>
 </body>
 </html>
