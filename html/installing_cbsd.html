@@ -65,10 +65,11 @@
 <pre>
 %  pw useradd cbsd -s /bin/sh -d /usr/jails -c "cbsd user"
 </pre>
-и кроме этого, скопировать rc.d скрипты для запуска системы:
+кроме этого, создайте ссылки rc.d скриптов для запуска cbsd при старте системы (при установке из портов этого делать ненужно):
 <pre>
-% cp /usr/local/cbsd/rc.d/cbsdd /usr/local/etc/rc.d/
-% cp /usr/local/cbsd/rc.d/cbsdrsyncd /usr/local/etc/rc.d/
+% cd /usr/local/etc/rc.d
+% ln -s /usr/local/cbsd/rc.d/cbsdd
+% ln -s /usr/local/cbsd/rc.d/cbsdrsyncd
 </pre>
 
 <p>В классической инсталляции, cbsd содержится в двух копиях. Одна из них (<i>/usr/local/cbsd</i>), содержит дистрибутив, исходный код и конфигурационные файлы по-умолчанию.
