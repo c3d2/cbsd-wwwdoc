@@ -69,6 +69,11 @@ If you are installing <b>cbsd</b> not from ports, you must first create a cbsd u
 <pre>
 %  pw useradd cbsd -s /bin/sh -d /usr/jails -c "cbsd user"
 </pre>
+and besides, copy rc.d scripts for system startup:
+<pre>
+% cp /usr/local/cbsd/rc.d/cbsdd /usr/local/etc/rc.d/
+% cp /usr/local/cbsd/rc.d/cbsdrsyncd /usr/local/etc/rc.d/
+</pre>
 <p>In classical installation, cbsd contains in two copies. One of them (<i>/usr/local/cbsd</i>), contains a distribution kit, an initial code and configuration files by default. 
 Also, this copy can be used for management of jails in case the main copy is damaged (for example was incorrectly updated). 
 The index of with what catalog of scripts to work is the environment variable <i>workdir</i>.</p>
