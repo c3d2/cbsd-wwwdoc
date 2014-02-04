@@ -67,7 +67,7 @@ get the latest version of <b>cbsd</b> from <a href="https://github.com/">github<
 <br><br>
 If you are installing <b>cbsd</b> not from ports, you must first create a cbsd user's with home directory selected as the directory that will contain your jails (in this example - <b>/usr/jails</b>)
 <pre>
-%  pw useradd cbsd -s /bin/sh -d /usr/jails -c "cbsd user"
+%  pw useradd cbsd -s /bin/sh -d /nonexistent -c "cbsd user"
 </pre>
 besides, create links of rc.d scripts to start cbsd at system startup (when installing from ports it is unnecessary)
 <pre>
@@ -79,7 +79,13 @@ besides, create links of rc.d scripts to start cbsd at system startup (when inst
 Also, this copy can be used for management of jails in case the main copy is damaged (for example was incorrectly updated). 
 The index of with what catalog of scripts to work is the environment variable <i>workdir</i>.</p>
 <p>For initialization of a working (main) copy of cbsd, use <strong>initenv</strong> command, with which start in the first call it is necessary to specify through an environment variable
-<i>workdir</i> the location of the working directory, and answer a series of questions. The file system for <b>cbsd</b> (or rather, the directory <b>jails-data</b>in it) should be sufficient to accommodate the jail data
+<i>workdir</i> the location of the working directory, and answer a series of questions. The file system for <b>cbsd</b> (or rather, the directory <b>jails-data</b>in it) should be sufficient to accommodate the jail data.
+After finalizing the place where the put working directory, first set it as home directory for cbsd user (in this case the working directory in /usr/jails):
+<pre>
+ %  pw usermod cbsd -d /usr/jails
+</pre>
+</p>
+
 3) Initialization with the working catalog into <i>/usr/jails</i>:
 <b>
 <pre>
