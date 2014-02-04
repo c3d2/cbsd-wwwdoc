@@ -16,13 +16,9 @@ or dialog(1)-based interface: <b>cbsd jconstruct-tui</b>, or via WEB interface.
 When <a href="https://wiki.freebsd.org/pkgng"><b>pkg.conf</b></a> and repository configured properly, you can preset to new jail 
 some packages. For safety reason recommendet to use the official FreeBSD <b>pkg</b> repo or 
 <a href="html/doc_en.html">build you own</a> package repository.
-If you wish to use <b>pkg</b> repo, from which the jail of cbsd created, place into your <i>/usr/local/etc/pkg.conf</i> strings:
-<pre>
-      PACKAGESITE:	http://dl.bsdstore.ru/freebsd/amd64/9.2/nox
-</pre>
-(where 9.2 is your base version) and run: <b>pkg update -f </b> in shell<br><br>
+<br><br>
 Please note: when repo unavailable, item <b>pkglist</b> in <i>cbsd jconstruct-tui</i> did not show anything.
-<br>
+<br><br>
 Please note: multi-repo and and the ability to choose a specific repository from the list at the moment is missing, 
 and will be used repository prescribed in pkg.conf of master host.
 <br><p>
