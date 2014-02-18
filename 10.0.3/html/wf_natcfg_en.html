@@ -1,0 +1,49 @@
+<b>Commands</b>:<br>
+<pre>
+% cbsd natcfg
+% cbsd naton
+% cbsd natoff
+</pre>
+
+<b>Description</b>:
+<p> jails do not always require external IP, or, for security reasons, a number of services need to deploy on private IPs, so they were not available from the Internet. 
+Thus, the jails may be needed for Internet access.
+</p>
+<p> In this case the NAT translating the private IP address of the jails to external IP of the server.
+cbsd functional has a configuration template NAT rules for translating of private networks RFC1918.
+</p>
+To do this, this command as the first step is required:
+<br>
+<pre>
+    % cbsd natcfg
+</pre>
+for selecting the appropriate framework for which the configuration will be loaded NAT: pf, ipfw and ipnat.
+<br>
+<p>
+<b>Attention!</b> When you configure this, system file <b>/boot/loader.conf</b> nodes will be modified to load the appropriate modules.
+<br>
+<br>
+Selection framework and IP for NAT alias executed when you first start <b>cbsd initenv</b>, can later be reconfigured 
+through <b>cbsd initenv-tui</b> To natip changed in force, you must run <b>cbsd natcfg</b> and <b>cbsd naton</b> again.
+<br><br>
+Currently, the cbsd configuration NAT limited to the creation of rules for translating private networks. 
+If you need to get something more from simple NAT rule, you can edit the rules file created manually in the directory
+<i><b>$workdir/etc/</b></i>
+in files:<br>
+<br>
+<b>pfnat.conf</b>, when PF is used
+<br>
+<b>ipfw.conf</b>, when IPFW is used, or
+<br>
+<b>ipnat.conf</b>, wnen using IPNAT from IPFilter
+<br>
+</p>
+<p>Note:
+<br>
+If <b>nodeip</b> (IP of nodes), he is within RFC1918 networks for the subnet broadcast NAT rule will not be created.
+</p>
+<p>To disable nat control by <b>cbsd</b>, use the follow command:
+<pre>
+    % cbsd natoff
+</pre>
+</p>
