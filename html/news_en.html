@@ -1,86 +1,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
-  <META http-equiv="content-type" content="text/html; charset=UTF-8">
-  <META name="Description" content="CBSD Store">
-  <META name="Keywords" content="CBSD, BSDStore">
-  <LINK rel="shortcut icon" href="favicon.ico">
+<META http-equiv="content-type" content="text/html; charset=UTF-8">
+<META name="Description" content="CBSD Store">
+<META name="Keywords" content="CBSD, BSDStore">
+<LINK rel="shortcut icon" href="favicon.ico">
 
-  <title>CBSD - FreeBSD jails management tools</title>
+<title>CBSD&nbsp;&mdash; FreeBSD jails management tools</title>
 </HEAD>
 <!--# include file="/html/cbsdmenu_en.html" -->
 <!--# include file="/html/translate_en.html" -->
 <FONT face="verdana,arial,helvetica" size="+1">Version</font>
 <font face="verdana, arial, helvetica" size="-1">
 <br><br>
-<b>10.0.3</b> - Unknown
+<b>10.0.4</b>&nbsp;&mdash; Unknown
 <br><br>
 <li> Ansible module for cbsd jail
 <li> Modulization, LUA scripts.
-<li> support for <b>allow.kmem</b>, which is allows you to run Xorg server in the jail (FreeBSD 11 aka HEAD only)
-<li> testing Xorg images - jail with LXDE WM and FluxBox (FreeBSD 11 aka HEAD only)
-<li> <b>jsnapshot</b> now only works with snapshots created by <i>cbsd</i>, improving output for snapshot list (<a href="/10.0.3/html/wf_jsnapshot_ssi_en.html">jail snapshot (zfs-only)</a>)
-<li> <b>history</b> for output last cbsd commands (<a href="/10.0.3/html/wf_history_ssi_en.html">cbsd history</a>)
+<li> support for <b>allow.kmem</b>, which is&nbsp;allows you to&nbsp;run Xorg server in&nbsp;the jail (FreeBSD 11&nbsp;aka HEAD only)
+<li> testing Xorg images&nbsp;&mdash; jail with LXDE WM&nbsp;and FluxBox (FreeBSD 11&nbsp;aka HEAD only)
 <li> <b>geli</b>: support for geli crypto layers (<a href="/10.0.3/html/wf_geli_ssi_en.html">cbsd geli</a>)
-<br><br><i>If you want to experiment with the next version of cbsd, use <b>git clone https://github.com/olevole/cbsd.git</b> for <b>/usr/local/cbsd</b></i>
+<br><br><i>If&nbsp;you want to&nbsp;experiment with the next version of&nbsp;cbsd, use <b>git clone https://github.com/olevole/cbsd.git</b> for <b>/usr/local/cbsd</b></i>
 <br><br>
 <b>Releases</b>
 <hr>
-<b>10.0.2</b> - 2013-02-01
+<b>10.0.3</b>&nbsp;&mdash; 2013-02-18
 <br><br>
-<li> Improving output for <b>--help</b> - external link to documentation(<a href="/html/cmdsyntax_cbsd_en.html">cbsd syntax</a>)
+<li> <i>(bugfix)</i> Fixed path to&nbsp;pkg(8) in&nbsp;<b>pkgbrowser</b>, thanks to&nbsp;Anton Iutin.
+<li> <b>jsnapshot</b> now only works with snapshots created by&nbsp;<i>cbsd</i>, improving output for snapshot list (<a href="/10.0.3/html/wf_jsnapshot_ssi_en.html">jail snapshot (zfs-only)</a>)
+<li> <b>history</b> for output last cbsd commands (<a href="/10.0.3/html/wf_history_ssi_en.html">cbsd history</a>)
+<b>10.0.2</b>&nbsp;&mdash; 2013-02-01
+<br><br>
+<li> Improving output for <b>&mdash;help</b>&nbsp;&mdash; external link to&nbsp;documentation(<a href="/html/cmdsyntax_cbsd_en.html">cbsd syntax</a>)
 <li> Support for non-native architecture via Qemu UserMode (<a href="/html/cbsd_qemu_usermode_en.html">cbsd and Qemu User mode</a>)
-<li> Improvement <b>jls</b> to support custom data output (<a href="/10.0.2/html/wf_jls_ssi_en.html">jail list</a>)
+<li> Improvement <b>jls</b> to&nbsp;support custom data output (<a href="/10.0.2/html/wf_jls_ssi_en.html">jail list</a>)
 <li> <b>nice(1)</b> support for jail priority (<a href="/10.0.2/html/wf_jrctl_ssi_en.html">jail limits control</a>)
-<li> Nameing of base changed from base_<b>arch</b>_<i>ver</i> to base_<b>arch</b>_<b>platform</b>_<i>ver</i> due to the increasing popularity of non-x86 architecture.
-After the upgrade, you will need to re-fetch the base dir or rename the old (with stopped jails) - directory with base_<b>arch</b>_ver name now inactive in $workdir/basejail and must be deleted manually.
-<li> Support the creation of images for <b>bhyve</b> from jail (<a href="/10.0.2/html/wf_jail2iso_ssi_en.html">jail2iso</a>)
-<li> cbsdsar script has been removed, this functionality was included/enabled by mistake from development version
-<li> system cbsd account now created by ports framework (or manually).
+<li> Nameing of&nbsp;base changed from base_<b>arch</b>_<i>ver</i> to&nbsp;base_<b>arch</b>_<b>platform</b>_<i>ver</i> due to&nbsp;the increasing popularity of&nbsp;non-x86&nbsp;architecture.
+After the upgrade, you will need to&nbsp;re-fetch the base dir or&nbsp;rename the old (with stopped jails)&nbsp;&mdash; directory with base_<b>arch</b>_ver name now inactive in&nbsp;$workdir/basejail and must be&nbsp;deleted manually.
+<li> Support the creation of&nbsp;images for <b>bhyve</b> from jail (<a href="/10.0.2/html/wf_jail2iso_ssi_en.html">jail2iso</a>)
+<li> cbsdsar script has been removed, this functionality was included/enabled by&nbsp;mistake from development version
+<li> system cbsd account now created by&nbsp;ports framework (or&nbsp;manually).
 <br><br>
-<b>10.0.1</b> - 2013-12-28
+<b>10.0.1</b>&nbsp;&mdash; 2013-12-28
 <br><br>
-<li> uzip in jail2iso
-<li> Remove auto pkg repository to <b>http://dl.bsdstore.ru</b> due to official FreeBSD repository is back.
-To use an alternate repository create a file $workdir/etc/pkg.conf with relevant content.
+<li> uzip in&nbsp;jail2iso
+<li> Remove auto pkg repository to&nbsp;<b>http://dl.bsdstore.ru</b> due to&nbsp;official FreeBSD repository is&nbsp;back.
+To&nbsp;use an&nbsp;alternate repository create a&nbsp;file $workdir/etc/pkg.conf with relevant content.
 <br><br>
-<b>10.0.0</b> - 2013-12-15
+<b>10.0.0</b>&nbsp;&mdash; 2013-12-15
 <br><br>
 <li> Support for VIMAGE/vnet
-<li> Support zfs jail, delegating ZFS file systems in a jail via jail's fstab
+<li> Support zfs jail, delegating ZFS file systems in&nbsp;a&nbsp;jail via jail&rsquo;s fstab
 <li> Support for cpuset
 <br><br>
-<b>9.2.5</b> - 2013-11-7
+<b>9.2.5</b>&nbsp;&mdash; 2013-11-7
 <br><br>
-<li> bugfixes: jclone check for zfs unmount, fixes for warning in jrename on zfs, jconfig allow edit devfs ruleset
-<li> jupgrade for upgrading jail in baserw=1
-<li> jconfig/jset can change ip address of the jail on-the-fly.
+<li> bugfixes: jclone check for zfs unmount, fixes for warning in&nbsp;jrename on&nbsp;zfs, jconfig allow edit devfs ruleset
+<li> jupgrade for upgrading jail in&nbsp;baserw=1
+<li> jconfig/jset can change ip&nbsp;address of&nbsp;the jail on-the-fly.
 <br><br>
-<b>9.2.4</b> - 2013-10-31
+<b>9.2.4</b>&nbsp;&mdash; 2013-10-31
 <br><br>
-<li> Partial migration of settings data to SQLite (inventory, jail rc.conf)
-<li> move users file mounts to fstab.local
-<li> switch between rw and ro bases in jail with the appropriate disposal or filling bases
+<li> Partial migration of&nbsp;settings data to&nbsp;SQLite (inventory, jail rc.conf)
+<li> move users file mounts to&nbsp;fstab.local
+<li> switch between rw&nbsp;and ro&nbsp;bases in&nbsp;jail with the appropriate disposal or&nbsp;filling bases
 <br><br>
 <i>For users who upgrading from 9.2.{0,1}:</i>
-<br>a) If you edited the fstab for the jail, these records should be transferred to fstab.local file manually
-<br>b) Files rc.conf for the jails in the jails-rcconf is obsolete and all setings in SQLite3 database now (the old copy of the file is saved in the jails-system/jailname)
-<br>Please refer to <a href="/html/wf_jconfig_ssi_en.html">jail config</a> pages for details.
+<br>a) If&nbsp;you edited the fstab for the jail, these records should be&nbsp;transferred to&nbsp;fstab.local file manually
+<br>b) Files rc.conf for the jails in&nbsp;the jails-rcconf is&nbsp;obsolete and all setings in&nbsp;SQLite3 database now (the old copy of&nbsp;the file is&nbsp;saved in&nbsp;the jails-system/jailname)
+<br>Please refer to&nbsp;<a href="/html/wf_jconfig_ssi_en.html">jail config</a> pages for details.
 <br>
 <br>
 <hr>
-<b><font style="color:RED">Warning</font></b> - 2013-09-04
-<br>In connection with <a href="http://lists.freebsd.org/pipermail/freebsd-doc/2013-September/022544.html">this issue</a> and nullfs-based jails, be careful when deploying public hosting.
-<br><i>Update:</i>: Or just follow this <a href="http://www.freebsd.org/security/advisories/FreeBSD-SA-13:13.nullfs.asc">Security Advisories</a> instructions.
+<b><font style="color:RED">Warning</font></b>&nbsp;&mdash; 2013-09-04
+<br>In&nbsp;connection with <a href="http://lists.freebsd.org/pipermail/freebsd-doc/2013-September/022544.html">this issue</a> and nullfs-based jails, be&nbsp;careful when deploying public hosting.
+<br><i>Update:</i>: Or&nbsp;just follow this <a href="http://www.freebsd.org/security/advisories/FreeBSD-SA-13:13.nullfs.asc">Security Advisories</a> instructions.
 <hr><br><br>
-<b>9.2.1</b> - 2013-08-02
+<b>9.2.1</b>&nbsp;&mdash; 2013-08-02
 <br><br>
-<li> Partial migration of settings data to SQLite
-<li> cpr script to build the repository
-<li> to choose and install software from the repository during the creation of jail (<b>pkgbrowser</b>)
+<li> Partial migration of&nbsp;settings data to&nbsp;SQLite
+<li> cpr script to&nbsp;build the repository
+<li> to&nbsp;choose and install software from the repository during the creation of&nbsp;jail (<b>pkgbrowser</b>)
 <br><br>
-<b>9.2.0</b> - 2013-02-25
+<b>9.2.0</b>&nbsp;&mdash; 2013-02-25
 <br><br>
-<li> Testing an experimental version, not for production. Implementing basic commands for working with jails and nodes.
+<li> Testing an&nbsp;experimental version, not for production. Implementing basic commands for working with jails and nodes.
 </BODY>
 </HTML>

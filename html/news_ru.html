@@ -1,86 +1,90 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
-  <META http-equiv="content-type" content="text/html; charset=UTF-8">
-  <META name="Description" content="CBSD Store">
-  <META name="Keywords" content="CBSD, BSDStore">
+<META http-equiv="content-type" content="text/html; charset=UTF-8">
+<META name="Description" content="CBSD Store">
+<META name="Keywords" content="CBSD, BSDStore">
 
-  <LINK rel="shortcut icon" href="favicon.ico">
+<LINK rel="shortcut icon" href="favicon.ico">
 
-  <title>CBSD - FreeBSD jails management tools</title>
+<title>CBSD&nbsp;&mdash; FreeBSD jails management tools</title>
 </HEAD>
 <!--# include file="/html/cbsdmenu_ru.html" -->
 <FONT face="verdana,arial,helvetica" size="+1">Версии</font>
 <FONT face="verdana,arial,helvetica" size="-1">
 <br><br>
-<b>10.0.3</b> - Unknown
+<b>10.0.4</b>&nbsp;&mdash; Unknown
 <br><br>
 <li> Ansible модуль для клеток cbsd
 <li> Модулизация, LUA для скриптов.
-<li> поддержка <b>allow.kmem</b>, что позволяет запускать Xorg сервер в Jail (FreeBSD 11 aka HEAD only)
-<li> тестовые Xorg имиджы - клетки с LXDE WM и FluxBox (FreeBSD 11 aka HEAD only)
-<li> <b>jsnapshot</b> теперь работает только со снапшотами, созданными <i>cbsd</i>, улучшение вывода списка снапшотов (<a href="/10.0.3/html/wf_jsnapshot_ssi.html">снапшоты (zfs-only)</a>)
-<li> <b>history</b> для вывода последних cbsd комманд (<a href="/10.0.3/html/wf_history_ssi.html">история команд cbsd</a>)
+<li> поддержка <b>allow.kmem</b>, что позволяет запускать Xorg сервер в&nbsp;Jail (FreeBSD 11&nbsp;aka HEAD only)
+<li> тестовые Xorg имиджы&nbsp;&mdash; клетки с&nbsp;LXDE WM&nbsp;и&nbsp;FluxBox (FreeBSD 11&nbsp;aka HEAD only)
 <li> <b>geli</b>: поддержка geli слоя для шифрованных разделов (<a href="/10.0.3/html/wf_geli_ssi.html">cbsd geli</a>)
-<br><br><i>Если вы хотите поэксперементировать со следующей версией cbsd, используйте <b>git clone https://github.com/olevole/cbsd.git</b> для <b>/usr/local/cbsd</b></i>
+<br><br><i>Если вы&nbsp;хотите поэксперементировать со&nbsp;следующей версией cbsd, используйте <b>git clone https://github.com/olevole/cbsd.git</b> для <b>/usr/local/cbsd</b></i>
 <br><br>
 <b>Релизы</b>
 <hr>
-<b>10.0.2</b> - 2013-02-01
+<b>10.0.3</b>&nbsp;&mdash; 2013-02-18
 <br><br>
-<li> Улучшение вывода <b>--help</b> - внешняя ссылка на документацию (<a href="/html/cmdsyntax_cbsd.html">cbsd syntax</a>)
-<li> Поддержка ненативных архитектур для клеток через Qemu UserMode (<a href="/html/cbsd_qemu_usermode.html">cbsd и Qemu User mode</a>)
+<li> <i>(bugfix)</i> Исправлен путь к&nbsp;pkg(8) в&nbsp;<b>pkgbrowser</b>, спасибо Антону Иутину.
+<li> <b>jsnapshot</b> теперь работает только со&nbsp;снапшотами, созданными <i>cbsd</i>, улучшение вывода списка снапшотов (<a href="/10.0.3/html/wf_jsnapshot_ssi.html">снапшоты (zfs-only)</a>)
+<li> <b>history</b> для вывода последних cbsd комманд (<a href="/10.0.3/html/wf_history_ssi.html">история команд cbsd</a>)
+<br><br>
+<b>10.0.2</b>&nbsp;&mdash; 2013-02-01
+<br><br>
+<li> Улучшение вывода <b>&mdash;help</b>&nbsp;&mdash; внешняя ссылка на&nbsp;документацию (<a href="/html/cmdsyntax_cbsd.html">cbsd syntax</a>)
+<li> Поддержка ненативных архитектур для клеток через Qemu UserMode (<a href="/html/cbsd_qemu_usermode.html">cbsd и&nbsp;Qemu User mode</a>)
 <li> Улучшение <b>jls</b> для поддержки вывода кастимизированных данных (<a href="/10.0.2/html/wf_jls_ssi.html">список jail</a>)
 <li> Поддержка <b>nice(1)</b> для приоритезации клеток (<a href="/10.0.2/html/wf_jrctl_ssi.html">Управление лимитами jail</a>)
-<li> Именование баз изменилось с base_<b>arch</b>_<i>ver</i> на base_<b>arch</b>_<b>platform</b>_<i>ver</i> в связи с возрастающей популярностью не-x86 архитектур. 
-После обновления, вам необходимо заново скачать базы или переименовать старые (при остановленных клетках) - каталоги вида base_<b>arch</b>_ver теперь неактивны в $workdir/basejail и их необходимо удалить вручную.
-<li> Поддержка создания имиджей для <b>bhyve</b> из jail (<a href="/10.0.2/html/wf_jail2iso_ssi.html">jail2iso</a>)
-<li> Очиста кода от старых develop-скриптов, в тч. cbsdsar; данный функционал был включен по ошибке
-<li> Системная учетная запись теперь создается портами, не установочным скриптом cbsd.
+<li> Именование баз изменилось с&nbsp;base_<b>arch</b>_<i>ver</i> на&nbsp;base_<b>arch</b>_<b>platform</b>_<i>ver</i> в&nbsp;связи с&nbsp;возрастающей популярностью не-x86&nbsp;архитектур. 
+После обновления, вам необходимо заново скачать базы или переименовать старые (при остановленных клетках)&nbsp;&mdash; каталоги вида base_<b>arch</b>_ver теперь неактивны в&nbsp;$workdir/basejail и&nbsp;их&nbsp;необходимо удалить вручную.
+<li> Поддержка создания имиджей для <b>bhyve</b> из&nbsp;jail (<a href="/10.0.2/html/wf_jail2iso_ssi.html">jail2iso</a>)
+<li> Очиста кода от&nbsp;старых develop-скриптов, в&nbsp;тч. cbsdsar; данный функционал был включен по&nbsp;ошибке
+<li> Системная учетная запись теперь создается портами, не&nbsp;установочным скриптом cbsd.
 <br><br>
-<b>10.0.1</b> - 2013-12-28
+<b>10.0.1</b>&nbsp;&mdash; 2013-12-28
 <br><br>
-<li> uzip в jail2iso
-<li> Автоматическая конфигурация репозитория на <b>http://dl.bsdstore.ru</b> удалена в связи с возвращением к жизни официального репозитория FreeBSD.
-<br>Для использования альтернативного <b>pkg</b>-репозитория, создайте файл $workdir/etc/pkg.conf с соответствующим содержимым.
+<li> uzip в&nbsp;jail2iso
+<li> Автоматическая конфигурация репозитория на&nbsp;<b>http://dl.bsdstore.ru</b> удалена в&nbsp;связи с&nbsp;возвращением к&nbsp;жизни официального репозитория FreeBSD.
+<br>Для использования альтернативного <b>pkg</b>-репозитория, создайте файл $workdir/etc/pkg.conf с&nbsp;соответствующим содержимым.
 <br><br>
-<b>10.0.0</b> - 2013-12-15
+<b>10.0.0</b>&nbsp;&mdash; 2013-12-15
 <br><br>
 <li> Поддержка VIMAGE/vnet
-<li> Поддержка zfs jail, делегирование ZFS файловых систем в jail через jail fstab
+<li> Поддержка zfs jail, делегирование ZFS файловых систем в&nbsp;jail через jail fstab
 <li> Поддержка cpuset
 <br><br>
-<b>9.2.5</b> - 2013-11-7
+<b>9.2.5</b>&nbsp;&mdash; 2013-11-7
 <br><br>
-<li> bugfixes: jclone проверяет смонтированность zfs, исправлены warning в jrename на zfs, jconfig позволяет изменить devfs ruleset
-<li> jupgrade для обновления клеток в режиме baserw.
-<li> ip адрес клетки теперь можно изменить не останавливая клетку.
+<li> bugfixes: jclone проверяет смонтированность zfs, исправлены warning в&nbsp;jrename на&nbsp;zfs, jconfig позволяет изменить devfs ruleset
+<li> jupgrade для обновления клеток в&nbsp;режиме baserw.
+<li> ip&nbsp;адрес клетки теперь можно изменить не&nbsp;останавливая клетку.
 <br><br>
-<b>9.2.4</b> - 2013-10-31
+<b>9.2.4</b>&nbsp;&mdash; 2013-10-31
 <br><br>
-<li> частичный переход на хранение данных в SQLite (инвентаризация, jail rc.conf)
-<li> вынос пользовательских монтирований файловых систем в fstab.local
-<li> переключние между базой rw и ro с соответствующим удалением или наполнением базы
+<li> частичный переход на&nbsp;хранение данных в&nbsp;SQLite (инвентаризация, jail rc.conf)
+<li> вынос пользовательских монтирований файловых систем в&nbsp;fstab.local
+<li> переключние между базой rw&nbsp;и&nbsp;ro&nbsp;с&nbsp;соответствующим удалением или наполнением базы
 <br><br>
-<i>Если вы обновляетесь с 9.2.{0,1}:</i>
-<br>  a) Если вы правили fstab для клетки, эти записи необходимо перенести локальный fstab вручную
-<br>b) Файлов rc.conf для клеток в каталоге jails-rcconf больше нет, записи находятся в SQLite3 базе (старая копия файла сохраняется в каталоге jails-system/jailname)
-<br>За подробностями обратитесь к разделу <a href="/html/wf_jconfig_ssi.html">конфигурации jail</a>
+<i>Если вы&nbsp;обновляетесь с&nbsp;9.2.{0,1}:</i>
+<br> a) Если вы&nbsp;правили fstab для клетки, эти записи необходимо перенести локальный fstab вручную
+<br>b) Файлов rc.conf для клеток в&nbsp;каталоге jails-rcconf больше нет, записи находятся в&nbsp;SQLite3 базе (старая копия файла сохраняется в&nbsp;каталоге jails-system/jailname)
+<br>За&nbsp;подробностями обратитесь к&nbsp;разделу <a href="/html/wf_jconfig_ssi.html">конфигурации jail</a>
 <br>
 <br>
 <hr>
-<b><font style="color:RED">Внимание!</font></b> - 2013-09-04
-<br>В связи с <a href="http://lists.freebsd.org/pipermail/freebsd-doc/2013-September/022544.html">найденной особенностью</a> в случае с nullfs-базами клеток, будьте осторожны при развертывании публичного хостинга.
+<b><font style="color:RED">Внимание!</font></b> &mdash;&nbsp;2013-09-04
+<br>В&nbsp;связи с&nbsp;<a href="http://lists.freebsd.org/pipermail/freebsd-doc/2013-September/022544.html">найденной особенностью</a> в&nbsp;случае с&nbsp;nullfs-базами клеток, будьте осторожны при развертывании публичного хостинга.
 <br><i>Update:</i>: Или просто следуйте инструкции данной <a href="http://www.freebsd.org/security/advisories/FreeBSD-SA-13:13.nullfs.asc">бюллетени безопасности</a>.
 <hr><br><br>
-<b>9.2.1</b> - 2013-08-02
+<b>9.2.1</b>&nbsp;&mdash; 2013-08-02
 <br><br>
-<li> частичный переход на хранение данных в SQLite
+<li> частичный переход на&nbsp;хранение данных в&nbsp;SQLite
 <li> скрипт cpr для построения репозироия ПО
-<li> возможность выбора и установки ПО из репозитория на этапе создания клетки (<b>pkgbrowser</b>)
+<li> возможность выбора и&nbsp;установки&nbsp;ПО из&nbsp;репозитория на&nbsp;этапе создания клетки (<b>pkgbrowser</b>)
 <br><br>
-<b>9.2.0</b> - 2013-02-25
+<b>9.2.0</b>&nbsp;&mdash; 2013-02-25
 <br><br>
-<li> Тестовая эксперементальная реализация. Реализация элементарных команд для работы с клетками и нодами.
+<li> Тестовая эксперементальная реализация. Реализация элементарных команд для работы с&nbsp;клетками и&nbsp;нодами.
 </BODY>
 </HTML>
