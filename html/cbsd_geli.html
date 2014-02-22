@@ -2,15 +2,20 @@
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=UTF-8">
+<META name="Description" content="freebsd arm jailm freebsd mips jail, arm packages, mips packages">
+<META name="Keywords" content="freebsd arm jailm freebsd mips jail, arm packages, mips packages">
 <LINK rel="shortcut icon" href="favicon.ico">
 
 <title>CBSD&nbsp;&mdash; FreeBSD jails management tools</title>
-<meta name="keywords" content="jail ip alias, jail zfs, jail interface, jail baserw, jail mount ports, jail auto start, jail vnet, jail vimage, jail resolv.conf, jail cpuset, jail setfib"/>
-<meta name="description" content="jail ip alias, jail zfs, jail interface, jail baserw, jail mount ports, jail auto start, jail vnet, jail vimage, jail resolv.conf, jail cpuset, jail setfib" />
 </HEAD>
-<!--# include file="/html/cbsdmenu_ru.html" -->
+<!--# include file="/html/cbsdmenu_en.html" -->
+<body>
+<center><FONT face="verdana,arial,helvetica" size="+1">Encrypting images and cbsd</font></center>
+<FONT face="verdana,arial,helvetica" size="-1">
+<br><br>
 <body>
 <center><p style="color:RED">Attention! Current pages describe cbsd version <b>10.0.4</b></p></center>
+<br>
 <center><FONT face="verdana,arial,helvetica" size="+1">шифрованные образы с&nbsp;cbsd geli</font></center>
 <FONT face="verdana,arial,helvetica" size="-1">
 <br><br>
@@ -24,11 +29,13 @@
 В&nbsp;подобных случаях прибегают к&nbsp;шифрованию тех данных, утечка которых нежелательна. В&nbsp;данный момент, CBSD имеет скрипт-враппер <b>geli</b> для работы с
 криптованными образами через GELI&nbsp;фреймворк.
 <br><br>
-Как и&nbsp;в&nbsp;случае крайне желательного ознакомления с&nbsp;оригинальным описанием <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8">jail</a> перед использованием <b>cbsd</b>, 
-так и&nbsp;настоятельно рекомендутся ознакомиться со&nbsp;следующей информацией
+Также, как перед использованием <b>cbsd</b> крайне желательно ознакомится с&nbsp;оригинальным man на&nbsp;<a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8">jail</a>, так и&nbsp;в&nbsp;данном контексте
+настоятельно рекомендуется ознакомиться со&nbsp;следующей информацией:
+<br><br>
+&mdash;&nbsp;<a href="http://www.freebsd.org/cgi/man.cgi?query=geli&sektion=8">man geli</a>
 <br>
-<a href="http://www.freebsd.org/cgi/man.cgi?query=geli&sektion=8">man geli</a> и
-пунктом 18.14.2&nbsp;в <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-encrypting.html">Encrypting Disk Partitions</a> перед использованием <b>cbsd geli</b>.
+&mdash;&nbsp;пункт 18.14.2&nbsp;в <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-encrypting.html">Encrypting Disk Partitions</a>
+<br><br> перед использованием <b>cbsd geli</b>.
 <br><br>
 Работа с&nbsp;GELI предполагается по&nbsp;следующему сценарию:
 <br><br>
@@ -129,7 +136,7 @@ GELI образ должен быть приинициализирован до&
 Как и&nbsp;в&nbsp;случае с&nbsp;initmaster, если запускается init на&nbsp;файл вторично&nbsp;&mdash; система без вопросов его презентует, если ключ уже имеется.
 <br>
 <br>
-<center><h2>Использование fstab клеток для составления списка криптованных имиджей и точек монтирования</h2></center>
+<center><h2>Использование fstab клеток для составления списка криптованных имиджей и&nbsp;точек монтирования</h2></center>
 <br>
 <br><br>
 
