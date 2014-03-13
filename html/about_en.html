@@ -1,75 +1,93 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
-<META http-equiv="content-type" content="text/html; charset=UTF-8">
-<META name="Description" content="jail management">
-<META name="Keywords" content="jail management">
-<LINK rel="shortcut icon" href="favicon.ico">
-
-  <title>CBSD - FreeBSD Jail Management Tools</title>
+	<META http-equiv="content-type" content="text/html; charset=UTF-8">
+	<META name="Description" content="jail management">
+	<META name="Keywords" content="jail management">
+	<LINK rel="shortcut icon" href="favicon.ico">
+	<style type="text/css">
+		*{margin:0;padding:0;border:0;font:normal normal 13px/16px arial;}
+		html,body{min-height:100%;height:100%;}
+		body{background:#fff repeat-x 0 126px url(/html/img/line.gif);}
+		a{color:#33c;text-decoration:none;border-bottom:1px solid #66f;}
+		a.email{color:#933;}
+		a:hover{border-bottom-color:#f66;}
+		#wrp{width:800px;margin:0 auto;}
+		#lng{height:130px;}
+		#cnt{padding-bottom:40px;}
+		h2{margin-bottom:10px;font-size:18px;line-height:20px;font-weight:normal;color:#400;}
+		p{margin-bottom:10px;text-indent:40px;}
+		li{margin:0 0 10px 40px;}
+		.block{margin-bottom:20px;}
+	</style>
+	<title>CBSD&nbsp;&mdash; FreeBSD Jail Management Tools</title>
 </HEAD>
-<!--# include file="/html/cbsdmenu_en.html" -->
-<font face="verdana, arial, helvetica" size="+1">About the project</font>
-<font face="verdana, arial, helvetica" size="-1">
-<br><br>
-<b>CBSD</b> is a management layer written for the <a href="www.freebsd.org">FreeBSD</a> <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&apropos=0&sektion=0&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html">jail(8)</a> subsystem, aimed at unifying racct(8), vnet, zfs(8), carp(4), hastd(8) in one tool and providing a more comprehensive solution for building and deploying applications quickly with pre-defined software sets with minimal configuration.
-<br><br>
-No extra OS functionality has been exposed yet, and everything that <b>cbsd</b> can do, you could also run manually with tens or hundreds of commands in the CLI using the underlying utilities (Not that you would want to!)
-
-<br><br>
-Features:
-<br><br>
-<li> Fast deployment of jails from scratch
-<li> Import and export to and from images
-<li> Cloning and migration (including to remote nodes)
-<li> Snapshots using ZFS
-<li> Traffic Accounting and Resource Utilisation Information (per-jail)
-<li> Resource Management: Priorities (re-nice), RACCT/RCTL, File Quoatas
-<li> Remote Replication
-<li> Jail Distributions (jail with a certain set of software and services)
-<li> Web Interface and Centralized Management
-</font>
-<font face="verdana, arial, helvetica" size="-1">
-<br><br>Why FreeBSD, why jail, why sh, why...?":
-<br>
-<br>FreeBSD Jails were chosen for several reasons:
-<br><li>Zero Virtualization Overhead: Without VIMAGE, the jail code is a very simple design.
-<br><li>Security: "divide and conquer". It is desirable for each service or group of services to be isolated.
-<br><li>Efficient Environment Replication: Systems engineers often have to deploy lots of similar environments - AMP, MTA, KDE4. At some point you want environments created and configured in advance. Jails allow you to deploy new environments into operation instantly. It also allows the creation of environments that differ from their master template only in configuration, such as different package sets.
-<br><li>Speed of deployment and convenient backups.
-<br><li>Building your own jail library with customizable options via <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html">FreeBSD ports</a>
-<br><br>
-Most of the code has been written in <b>sh</b>, since there are no demands for complex logic, it is primarily used to automate what was otherwise manual repetition of commands on the console and is designed to work with external utilities such as: zfs, zpool, sudo, pkg, rsync, etc. Areas that require optimization and specific components such as logtail, replication, node watching daemon are written in C for performance.
-<br><br>
-cbsd depends on the following  software: <b>rsync</b>,<b>sudo</b>,<b>libssh2</b>,<b>sqlite3</b>
-<br><br>
-<font size="+1">Feature Detail</font>
-<font face="verdana, arial, helvetica" size="-1">
-<br><br>
-<li> A ready repository for kernels and world that does not require buildworld/installworld.
-<li> src.conf support for buildworld/installworld customization
-<li> Catalog can stored on memory disks, in ram or on tpmfs with a RO mounted base
-<li> ZFS: Filesystem, Quotas and Snapshot support
-<li> GUI Configuration of jails (Dialog or Web UI)
-<li> VIMAGE support
-<li> Per-jail Traffic Accounting
-<li> Jail Import/Export
-<li> Jail Descriptions
-<li> Cold migration between nodes
-<li> Custom jail startup sequences and priorities
-<li> RACCT/RCTL support
-<li> A repository of ready jail templates
-<li> Jail Replication
-<li> Jail Conversion to PXE/ISO/Memstick-image
-<li> Support for non-native architectures via Qemu User mode (eg: arm or mips64 jail on x86-64 host system)
-<br><br>
-<font size="+1">Goals</font>
-<font face="verdana, arial, helvetica" size="-1">
-<br><br>
-<li> Environment deployment automation
-<li> Convenient management, monitoring and control
-<li> Creation of application platform with services on demand. 
-<li> Environment (Image) library for rapid provisioning
-</font>
+<body>
+	<!--# include file="/html/cbsdmenu_en.html" -->
+	<div id="cnt">
+		<div class="block">
+			<h2>About the project</h2>
+			<p><strong>CBSD</strong> is&nbsp;a&nbsp;management layer written for the <a href="www.freebsd.org">FreeBSD</a> <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&apropos=0&sektion=0&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html">jail(8)</a> subsystem, aimed at&nbsp;unifying racct(8), vnet, zfs(8), carp(4), hastd(8) in&nbsp;one tool and providing a&nbsp;more comprehensive solution for building and deploying applications quickly with pre-defined software sets with minimal configuration.</p>
+			<p>No&nbsp;extra&nbsp;OS functionality has been exposed yet, and everything that <strong>cbsd</strong> can&nbsp;do, you could also run manually with tens or&nbsp;hundreds of&nbsp;commands in&nbsp;the CLI using the underlying utilities (Not that you would want&nbsp;to!)</p>
+			<p>Features:</p>
+			<ul>
+				<li>Fast deployment of&nbsp;jails from scratch</li>
+				<li>Import and export to&nbsp;and from images</li>
+				<li>Cloning and migration (including to&nbsp;remote nodes)</li>
+				<li>Snapshots using ZFS</li>
+				<li>Traffic Accounting and Resource Utilisation Information (per-jail)</li>
+				<li>Resource Management: Priorities (re-nice), RACCT/RCTL, File Quoatas</li>
+				<li>Remote Replication</li>
+				<li>Jail Distributions (jail with a&nbsp;certain set of&nbsp;software and services)</li>
+				<li>Web Interface and Centralized Management</li>
+			</ul>
+		</div>
+		<div class="block">
+			<h2>Why ...</h2>
+			<p>Why FreeBSD, why jail, why&nbsp;sh, why...?&laquo;:</p>
+			<ul>
+				<li>FreeBSD Jails were chosen for several reasons:</li>
+				<li>Zero Virtualization Overhead: Without VIMAGE, the jail code is&nbsp;a&nbsp;very simple design.</li>
+				<li>Security: &laquo;divide and conquer&raquo;. It&nbsp;is&nbsp;desirable for each service or&nbsp;group of&nbsp;services to&nbsp;be&nbsp;isolated.</li>
+				<li>Efficient Environment Replication: Systems engineers often have to&nbsp;deploy lots of&nbsp;similar environments&nbsp;&mdash; AMP, MTA, KDE4. At&nbsp;some point you want environments created and configured in&nbsp;advance. Jails allow you to&nbsp;deploy new environments into operation instantly. It&nbsp;also allows the creation of&nbsp;environments that differ from their master template only in&nbsp;configuration, such as&nbsp;different package sets.</li>
+				<li>Speed of&nbsp;deployment and convenient backups.</li>
+				<li>Building your own jail library with customizable options via <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html">FreeBSD ports</a></li>
+				<li>It&nbsp;isn&rsquo;t really pleasant to&nbsp;me&nbsp;to&nbsp;live in&nbsp;the world in&nbsp;which there is&nbsp;only one Linux ;-)</li>
+				<li>...</li>
+			</ul>
+			<p>Most of&nbsp;the code has been written in&nbsp;<strong>sh</strong>, since there are no&nbsp;demands for complex logic, it&nbsp;is&nbsp;primarily used to&nbsp;automate what was otherwise manual repetition of&nbsp;commands on&nbsp;the console and is&nbsp;designed to&nbsp;work with external utilities such&nbsp;as: zfs, zpool, sudo, pkg, rsync, etc. Areas that require optimization and specific components such as&nbsp;logtail, replication, node watching daemon are written in&nbsp;C for performance.</p>
+			<p>cbsd depends on&nbsp;the following software: <strong>rsync</strong>,<strong>sudo</strong>,<strong>libssh2</strong>,<strong>sqlite3</strong>
+		</div>
+		<div class="block">
+			<h2>Feature Detail</h2>
+			<ul>
+				<li>A&nbsp;ready repository for kernels and world that does not require buildworld/installworld.
+				<li>src.conf support for buildworld/installworld customization
+				<li>Catalog can stored on&nbsp;memory disks, in&nbsp;ram or&nbsp;on&nbsp;tpmfs with a&nbsp;RO mounted base
+				<li>ZFS: Filesystem, Quotas and Snapshot support
+				<li>GUI Configuration of&nbsp;jails (Dialog or&nbsp;Web UI)
+				<li>VIMAGE support
+				<li>Per-jail Traffic Accounting
+				<li>Jail Import/Export
+				<li>Jail Descriptions
+				<li>Cold migration between nodes
+				<li>Custom jail startup sequences and priorities
+				<li>RACCT/RCTL support
+				<li>A&nbsp;repository of&nbsp;ready jail templates
+				<li>Jail Replication
+				<li>Jail Conversion to&nbsp;PXE/ISO/Memstick-image
+				<li>Support for non-native architectures via Qemu User mode (eg: arm or&nbsp;mips64 jail on&nbsp;x86-64 host system)
+				<li>...</li>
+			</ul>
+		</div>
+		<div class="block">
+		<h2>Goals</h2>
+		<ul>
+			<li>Environment deployment automation
+			<li>Convenient management, monitoring and control
+			<li>Creation of&nbsp;application platform with services on&nbsp;demand. 
+			<li>Environment (Image) library for rapid provisioning
+		</ul>
+	</div>
 </BODY>
 </HTML>
