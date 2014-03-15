@@ -1,67 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<HTML>
-<HEAD>
-  <META http-equiv="content-type" content="text/html; charset=UTF-8">
-  <META name="Description" content="CBSD Store">
-  <META name="Keywords" content="CBSD, BSDStore">
-  <LINK rel="shortcut icon" href="favicon.ico">
-  <title>CBSD - FreeBSD jails management tools</title>
-</HEAD>
-<!--# include file="/html/cbsdmenu_en.html" -->
-<!--# include file="/html/translate_en.html" -->
-<FONT face="verdana,arial,helvetica" size="+1">Download</font>
-<FONT face="verdana,arial,helvetica" size="-1">
-<hr><br>
-<br>All .img (USB Memstick images) can be written to an USB memory stick via command:
-<pre>
-dd if=_path_to_img.img_ of=/dev/da0 bs="10240" conv="sync"
-</pre>
-Be careful to make sure you get the target (of=) correct.
-<br>
-<br>
-At the moment, the generation of <b>cbsd</b> images is disabled. To install from source, use <a href="installing_cbsd_en.html">these instructions</a>.
-<br>If you still want to download something certainly ;-), download FreeBSD LiveCD of rescue jail:  <a href="rescuebsd_en.html">Rescuecbsd LiveCD</a>.
-<br><br>
-If you want use <b>pkg</b> repository from which jails was collected, create file <b>/usr/local/etc/pkg/repos/freecbsd.conf</b> with such content,  substituting as <b>url</b>
-one of the following links:
-<pre>
-  freecbsd: {
-    url: "URL_HERE",
-    mirror_type: "srv",
-    enabled: yes
-  }
-</pre>
-
-where <b>URL_HERE</b>:
-<br><br>
-<table>
-<tr><td colspan="3" bgcolor="#00FF00"><b>FreeBSD CURRENT aka 10.0</b></td></tr>
-<tr><td>pkg+http://dl.bsdstore.ru/freebsd/amd64/10.0/xorg</td><td><i> # (default version, NVIDIA GL)</i></td></tr>
-<tr><td>pkg+http://dl.bsdstore.ru/freebsd/amd64/10.0/xorgkms</td><td><i> # (Xorg with KMS)</i></td></tr>
-<tr><td>pkg+http://dl.bsdstore.ru/freebsd/amd64/10.0/nox</td><td><i> # (WITHOUT_X11=yes, php55, MariaDB)</i></br></tr>
-</table>
-<br>
-Note: at present building for images is made only for architecture x86-64 to the absence reason in my farm of others.
-<br>
-Note2: image and data repository raised and supported more to demonstrate and functional checks of cbsd, 
-rather than for ensure one's work. For safety, train yourself not to trust any software repository on the Internet,
-Use only official and well-tested repository or build your own.
-<br><br>
-<hr>
-Below is a list of pre-configured images, available for download via the command <b>cbsd repo action=get sources=img name=<i>name</i></b>.
-These images may be of a "blocks" of which you can collect the necessary infrastructure. You are limited only by physical
-server resources, on the exhaustion which can always be another node of the jails and migrate to it.
-<br>
-Each image represents archive of jail with the necessary software and minimum templates of configuration files that fulfills
-helper applying the initial input of user data (eg application administrator's password ) for the application to launch
-as quickly as possible. Subsequently to work with the jail, accompanied by configuration and software can be a standard way - it is independent from <b>cbsd</b>.
-All helpers can work on non-interactively (all possible arguments available command <b>-help</b>), being an example of mass construction and
-Application Server deployment of jails automatically.
-<br>
-<br><br>
-<!--# include file="/html/images.html" -->
-<br>
-</font><blockquote>
-</BODY>
-</HTML>
-
+<!--# include file="_start.html" -->
+<!--# include file="translate.html" -->
+<h1><span>Downloads</span></h1>
+<div class="block">
+	<p>All .img (USB Memstick images) can be written to an USB memory stick via command:</p>
+	<pre class="brush:bash;ruler:true;">
+		% dd if=_path_to_img.img_ of=/dev/da0 bs="10240" conv="sync"
+	</pre>
+	<p>Be careful to make sure you get the target (of=) correct.</p>
+	<p>At the moment, the generation of <strong>CBSD</strong> images is disabled. To install from source, use <a href="installing_cbsd.html">these instructions</a></p>
+	<p>If you still want to download something certainly ;-), download FreeBSD LiveCD of rescue jail:  <a href="rescuebsd.html">Rescuecbsd LiveCD</a></p>
+</div>
+<h2><a name="images">Pre-configured images</a></h2>
+<div class="block">
+	 <p>Below is a list of pre-configured images, available for download via the command <strong>cbsd repo action=get sources=img name=<em>name</em></strong>. These images may be of a "blocks" of which you can collect the necessary infrastructure. You are limited only by physical server resources, on the exhaustion which can always be another node of the jails and migrate to it. Each image represents archive of jail with the necessary software and minimum templates of configuration files that fulfills helper applying the initial input of user data (eg application administrator's password ) for the application to launch as quickly as possible. Subsequently to work with the jail, accompanied by configuration and software can be a standard way - it is independent from <strong>CBSD</strong>. All helpers can work on non-interactively (all possible arguments available command <strong>--help</strong>), being an example of mass construction and Application Server deployment of jails automatically.
+	 <!--# include file="/images.html" -->
+</div>
+<!--# include file="_end.html" -->
