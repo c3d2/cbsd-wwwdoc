@@ -1,19 +1,19 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd node
 </pre>
 
-Под "добавленнием" ноды подразуменвается обмен RSA ключами для системного пользователя <b>cbsd</b> между
-двумя и более хостами. Имея у себя RSA ключ индивидуального сервера, часть команд получает возможность 
-работать с ним через OpenSSH соединение, выполняя такие действия как:
+"Node addition" is meant RSA key exchange for system user <b>cbsd</b> between two and more hosts. 
+Having at itself RSA a key of the individual server, the some command has an opportunity 
+to work with it through OpenSSH connection, carrying out such actions as:
 <br><br>
-<li> - выполнение удаленных cbsd (получение списка, login в клетку) или непривилегированных команд ОС 
-(некоторые команды, тем не менее, требуют наличия прав суперпользователя. Такие команды запускаются 
-через скрипты, находящиеся в каталогах <b>$workdir/sudoexec</b> и <b>$prefix/cbsd/*ver*/sudoexec/</b> 
-(каталог дистрибутива) - см. <b>/usr/local/etc/sudoers.d/cbsd_sudoers</b>.
+<li> - executable remote cbsd (get jail list, login into jail) or unprivileged OS command 
+(some commands, nevertheless, demand existence of the rights of the superuser. Such command are started 
+through the scripts being in catalogs <b>$workdir/sudoexec</b> and <b>$prefix/cbsd/*ver*/sudoexec/</b> 
+(distrib directory) - look at <b>/usr/local/etc/sudoers.d/cbsd_sudoers</b>.
 <br>
-<li> - копирование/создание конфигурационных файлов для клеток, реплик и синхронизациея данных.
+<li> - copying/creation of configuration files for jails, replication and synchronization of data.
 <br><br>
-Ноды могут быть объеденены в какую-то именованную логическую группу, над которой можно
-выполнять массовые действия
+Nodes can be united in any called logic group over which it is possible
+to carry out mass actions
 

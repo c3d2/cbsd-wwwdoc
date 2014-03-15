@@ -1,29 +1,30 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd node mode=add
 </pre>
-Команда <b>cbsd node mode=add ..</b>, при доступности удаленной машины по ssh и правильном пароле пользователя
-cbsd, забирает с удаленной машины приватный ключ, сохраняя его в каталоге <b>$workdir/.rssh</b>
+
+Commands <b>cbsd node mode=add ..</b>, at availability of the remote node via ssh and the correct password of the user
+cbsd, takes away a private key from the remote server and save it in the catalog <b>$workdir/.rssh</b>
 <br><br>
-Обязательные параметры для mode=add:
+Obligatory parameters for mode=add:
 <br><br>
-<b>node</b> = IP адрес или FQDN сервера (в списке нод, однако, этот сервер будет называться именно так, как указано в
-<i>nodename</i> на удаленной машине. Это то имя, которое спрашивается при первом
-запуске <b>cbsd initenv</b>, в дальнейшем его можно изменить через <b>cbsd inienv-tui</b>
+<b>node</b> = IP address or FQDN of server (in the list of notes, however, this server will be called how is specified in
+<i>nodename</i> on the remote node in <b>$workdir/nc.inventory</b>. This that name which is asked at the first
+start <b>cbsd initenv</b>
 <br><br>
-<b>pw</b> = пароль для пользователя cbsd
+<b>pw</b> = password for cbsd user
 <br>
 <br>
-Необязательный аргумент:
+Unessential argument:
 <br><br>
-<b>port</b> = альтернативный номер порта sshd. По-умолчанию, ноды cbsd используют порт 22222 для соединения по SSH.
+<b>port</b> = alternative number of sshd port. By default, nodes of cbsd use port 22222 for connection on SSH.
 <br>
-<p style="color:RED">Внимание: пароль пользвоателя cbsd используется только в момент получения приватного ключа. Соответственно,
-доступ на сервер будет до тех пор, пока ключ не будет удален или перегенерирован. Смена пароля пользователя
-роли в этом случае играть не будет.
+<p style="color:RED">Attention: the password of a user cbsd is used only at the moment of receiving a private key. Respectively,
+access on the server will be until the key won't be removed or re-generated. Change of the password of the user
+account in this case won't work.
 </p>
 <br>
-<b>Пример:</b>
+<b>Example:</b>
 <pre>
 % cbsd node mode=add node=192.168.1.2 pw=superpw port=22
 </pre>

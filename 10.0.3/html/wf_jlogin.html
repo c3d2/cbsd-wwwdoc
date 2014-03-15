@@ -1,17 +1,18 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jlogin
 </pre>
-<b>Описание</b>:
+
+<b>Description</b>:
 <br><br>
-Выполняет вход в jail от пользователя root. 
-В случае, если выполняется попытка входа в клетку, которой нет на локальной ноде, но она присутствует на одной из добавленных к машине нодах,
-команда <b>jlogin</b> задаст вопрос на попытку входа в удаленный jail через ssh.
+Execute login into jail from root user.
+In case when attempt in a jail which isn't present on a local node, but it is present on one of remote nodes, <b>jlogin</b>
+will ask a question on attempt to login in remote jail through ssh.
 <br><br>
-<b>Пример</b>:
+<b>Example</b>:
 <br>
 <pre>
-    % cbsd jlogin kde4
+% cbsd jlogin kde4
 </pre>
 <br><center>
 <img src="/html/img/jlogin1.png"></img>

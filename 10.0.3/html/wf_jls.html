@@ -1,53 +1,55 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jls
 </pre>
-<b>Описание</b>:
+
+<b>Description</b>:
 <br><br>
-Выводит список клеток на локальной ноде или всех добавленных нодах.
-Через аргумент <b>display</b> можно указать конкретные поля для выборки данных. Если <b>display</b> не указан, его значение по-умолчанию является:
+Show the list of jails on a local node or for all added nodes.
+Through argument <b>display</b> you can specify the fields for output data. If <b>display</b> is not specified, the default value is:
 <pre>
 display=jid,jname,ip4_addr,host_hostname,path,status
 </pre>
-Все возможные параметры для выборк описаны в файле <i>$workdir/share/jail-arg</i>
+All possible options for the sample described in the <i>$workdir/share/jail-arg</i> file
 <br><br>
 <b>JID</b> - Jail ID
 <br>
-<b>JNAME</b> - имя jail
+<b>JNAME</b> - jail name
 <br>
-<b>IP4_ADDR</b> - список привязанных к Jail IP адресов (IPv4,IPv6)
+<b>IP4_ADDR</b> - list of assigned IP addresses (IPv4,IPv6)
 <br>
 <b>HOST_HOSTNAME</b> - FQDN jail
 <br>
-<b>PATH</b> - корень клетки
-<br>
-<b>STATUS</b> - On (запущена), Off (остановлена), Unregister (клетка имеет свой rc.conf (старый формат) но отсутствует в SQL базе)
+<b>PATH</b> - root filesystem for jail
 <br><br>
-Прим: клетки в статусе Unregister могут быть внесены в SQL через команду <b>cbsd jregister</b>.
-<br>
-Также, они автоматически конвертируются при отработке <i>Upgrading</i> стадии команды <b>cbsd initenv</b>
+<b>STATUS</b> - On (running), Off (stoped), Unregister (jail has its rc.conf (old format) but not in the SQL database)
 <br><br>
-В случае, если к локальному серверу добавлены RSA/DSA ключи удаленных нод, можно вывести все клетки в ферме
-через 
-<pre>
-    % cbsd jls alljails=1
-</pre>
-или
-<pre>
-    % cbsd jls alljails=1 shownode=1
-</pre>
-для вывода имени ноды, где размещается данная клетка.
+Note: Jail in the unregister status may be insert to SQL database via command: <b>cbsd jregister</b>.
 <br>
+Also, they are automatically converted on <i>Upgrading</i> stage of <b>cbsd initenv</b> command
+<br><br>
+In a case when to the local server are added a key of remote of nodes, it is possible to receive 
+the list of all jails in a farm via
+<pre>
+cbsd jls alljails=1
+</pre>
+or
+<pre>
+cbsd jls alljails=1 shownode=1
+</pre>
+for output with node name where jail are hosted.
 <br>
-<b>Пример</b>:
+In the output from cbsd jls alljails, it is possible to see only active jails (in status On)
+<br><br>
+<b>Example</b>:
 <br>
 <pre>
 % cbsd jls
 </pre>
 <br><center>
 <img src="/html/img/jls1.png"></img>
-<br><br>Вывод кастомизированных данных (Внимание, прочерки в полях может означать, что версия <b>cbsd</b> на удаленной ноде более старая,
-соответственно, SQL запрос в ее базу не находит актуальных записей)<br><br>
+<br><br>Conclusion customized data (Attention, dashes fields may mean that version of <b>cbsd</b> 
+on the remote node is older. Respectively, SQL query in its database does not find relevant records)<br><br>
 <img src="/html/img/jls2.png"></img>
 <br><br>
 </center>

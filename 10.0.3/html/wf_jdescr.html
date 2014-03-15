@@ -1,34 +1,34 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jdescr
 </pre>
-<b>Описание</b>:
+<b>Descriptions</b>:
 <br><br>
-Для каждой клетки можно ввести какое-то описание/аннотацию, что может быть использовано различными админками для построения динамической документации.
+Each jail can have the description/summary, that can be used to construct various dynamic documentation on admin pages.
 <br><br>
-<b>cbsd jdescr</b> без параметров выводит описание для всех клеток на ноде.
+<b>cbsd jdescr</b> without arguments just out description for all jails on the local node.
 <br><br>
-Команда<br>
+Command<br>
 <pre>
 % cbsd jdescr mode=update jname=jname
 </pre>
-запустит редактор <b>nvi</b> в режиме редактирования описания.
-<br><br>Через параметр <b>editor</b> можно указать альтернативный редактор, например <b>vim</b>, <b>mcedit</b> и тп.
+run <b>nvi</b> in edit mode for description. By argument <b>editor</b> you can start alternative favorite editor for example - <b>vim</b>, <b>mcedit</b> and other.
 <br><br>
-Описание хранится в ASCII-файле, сохраняемый в каталоге $workdir/jails-system/<b>jname</b>/descr, где <b>jname</b> - имя редактируемой клетки.
-Соответственно, файл можно просто скопировать. 
-<br><br>Поскольку каталог jails-system учавствует в <b>jcoldmigrate, jclone, jimport/export</b> и тп операциях, 
-описание будет сохраняться.
+Descriptions stored in ASCII-file, placed to <b>$workdir/jails-system/$jname/descr</b> file, where <b>jname</b> - name of jail.
+This file you can just copy.
 <br><br>
-<b>Пример</b> (запустить редактор mcedit для редактирования описания клетки kde4 на русском языке в UTF8):
+As directory jails-system participates in jcoldmigrate, jclone, jimport/export operations, description 
+will be will remain.
+<br><br>
+<b>Example</b> (run mcedit editor for description edit for kde4 jail on russian in UTF8):
 <pre>
 % setenv LANG ru_RU.UTF-8
 % cbsd jdescr jname=kde4 editor=mcedit mode=update
 <br>
-Подобные описания рекомендуется взять за правило при заведении клеток, если их количество большое. Впоследствии, удобно агрегировать данную
-информацию в каких-то своих dashboard и построения карты jail-ов. К примеру, таким простым скриптиком: <a href="/misc/jmap2html.sh">jmap2html.sh</a>
-получается HTML страница вида <a href="dashboard/index.html">dashboard sample</a>, где по наведению на название клетки выводится описание, а ссылка
-на имя клетки ведет на список ПО клетки.
+Similar descriptions are advised to rule when jail is created, if the quantity is large. Subsequently, it is convenient to aggregate this
+information in some of their dashboard and building jail maps. For example, follow simple script: <a href="/misc/jmap2html.sh">jmap2html.sh</a>
+generate HTML page as <a href="dashboard/index.html">dashboard sample</a>, where tooltip on the jail name is displayed a description and link
+the name of the jail leads to a list of software.
 <br><br><center>
 <img src="/html/img/jdescr1.png"></img>
 <br><br>

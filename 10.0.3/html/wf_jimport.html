@@ -1,21 +1,25 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jimport
 </pre>
-<b>Описание</b>:
+
+<b>Description</b>:
 <br><br>
-Импортировать из имиджа (*.img) клетку. В качестве аргумента <b>jname</b> указывается полный путь к файлу или имя имиджа (без расширения .<b>img</b>), который должен находится в соответствующем каталоге (<b><i>$workdir/import</i></b>). <b>img</b>-файл после импорта остается на месте.
+Import jail from (*.img) file. 
+In <b>jname</b> argument you can set full path to file or just filename (without <b>.img</b> extension) if file placed in <i><b>$workdir/import</b></i> directory. 
+<b>img</b>-file after import is not modified.
 <br>
-Дополнительно, вы можете импортировать клетку из образа в альтернативное имя (например, вы хотите развернуть клетку jail1 из образа jail1.img, однако в вашей системе уже имеется клетка с таким именем). В этом случае, используйте аргумент <b>newjname</b>
-<br><br>
-<b>Пример:</b> Импортировать имидж из файла <i>/tmp/mysqljail.img</i>:
+In addition, you can import an image of a jail in an alternate name (for example, you want to deploy the image of the jail1 from <b>jail1.img</b>,
+however, your system already has a jail of the same name). In this case, an argument newjname can be used.
+<br>
+<b>Example:</b> import jail from <i>/tmp/mysqljail.img</i> file:
 <br>
 <pre>
     % cbsd jimport jname=/tmp/mysqljail.img
 </pre>
-<b>Пример:</b> Импортировать образ jail2.img находящийся в <i>$workdir/import</i> под новым именем <b>jail5</b>:
+<b>Example</b>: import the image jail2.img placed in $workdir/import with a new name <b>jail5</b>:
 <pre>
-   % cbsd jimport jname=jail2 newjname=jail5 
+    % cbsd jimport jname=jail2 newjname=jail5 
 </pre>
 <br><center>
 <img src="/html/img/jimport1.png"></img>

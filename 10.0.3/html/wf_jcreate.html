@@ -1,37 +1,40 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jconstruct-tui
+</pre>
+<pre>
+% cbsd jconstruct
 </pre>
 <pre>
 % cbsd jcreate jconf=/path/to/conf.jconf
 </pre>
-
-<b>Описание</b>:
+<b>Description</b>:
 <br><br>
-Клетка создается по заранее сформированному конфигурационному файлу через <b>cbsd jcreate jconf=path_to_cfg</b>.
-Для формирования конфигурации, можно воспользоваться <b>cbsd jconstruct</b> (в режиме диалога вопрос-ответ),
-либо через dialog(1) интерфейс <b>cbsd jconstruct-tui</b>, либо через WEB интерфейс.
-При корректно настроеном <a href="https://wiki.freebsd.org/pkgng"><b>pkg.conf</b></a> и рабочем репозитории, есть возможность 
-предустановить в клетку готовые пекеджи. В целях безопасности, рекомендуется использовать официальный <b>pkg</b> репозиторий FreeBSD или 
-<a href="html/doc_ru.html">создавать свои собственные</a> версии сборок ПО.
+The jail is created according to configuration file created by <b>cbsd jcreate jconf=path_to_cfg</b>.
+For create configuration, use a command <b>cbsd jconstruct</b> (question-answer dialog mode),
+or dialog(1)-based interface: <b>cbsd jconstruct-tui</b>, or via WEB interface.
+When <a href="https://wiki.freebsd.org/pkgng"><b>pkg.conf</b></a> and repository configured properly, you can preset to new jail 
+some packages. For safety reason recommendet to use the official FreeBSD <b>pkg</b> repo or 
+<a href="html/doc_en.html">build you own</a> package repository.
 <br><br>
-Примечание: если репозиторий недоступен, пункт <b>pkglist</b> при <i>cbsd jconstruct-tui</i> диалога выбора пекеджей не выведет.
+Please note: when repo unavailable, item <b>pkglist</b> in <i>cbsd jconstruct-tui</i> did not show anything.
 <br><br>
-Примечание: мульти-репозитории и возможность их выбора при создании клетки пока не реализовано, используется репозиторий из основного pkg.conf.
+Please note: multi-repo and and the ability to choose a specific repository from the list at the moment is missing, 
+and will be used repository prescribed in pkg.conf of master host.
 <br><p>
-<p style="color:RED">Внимание! Поскольку список и выбор пекеджей формируется по pkg.conf мастер машины, имейте ввиду, что наполнение выбранных пекеджей по списку сработает лишь в том случае, если архитектура и версия клетки совпадает с нодой.</p>
-Для создания через DIALOG:
+<p style="color:RED">Attention! Because the list and choose of packages formed by pkg.conf of master machine, keep in mind that the content of the selected packages on the list will only work if the architecture and version of the jail equal with master node</p>
+for create config via DIALOG:
 <pre>
 % cbsd jconstruct-tui
 </pre>
 
-<p>Если <i>jconstruct-tui</i> отработала корректно, по окончанию будет задан вопрос о создании клетки. В случае
-положительно ответа, <b>jcreate</b> будет выполнен на новую конфигурацию автоматически. В противном случае,
-скрипт выведет путь к конфигурационному файлу (в $workdir/tmp), по которой можно создать клетку.
+<p>If <i>jconstruct-tui</i> work correctly, on the exit the question for jail create will be asked. In a case
+positively answer, <b>jcreate</b> it will be executed on a new configuration automatically. Otherwise,
+the script will save configuration file (in $workdir/ftmp), on which it is possible to create a jail by hand.
 <br><br>
-<!--# include file="/html/changeroot.html" -->
+<!--# include file="/html/changeroot_en.html" -->
 <br><br>
-<b>Пример</b> (заполнение jname, fqdn, ips полей + GO):
+<b>Example</b> (fill for jname, fqdn, ips fields + GO):
 <br>
 <pre>
 % cbsd jconstruct-tui
@@ -39,26 +42,24 @@
 <br><br><center>
 <img src="/html/img/jcreate1.png"></img>
 <br><br>
-Если репозиторий сконфигурирован корректно, можно выбрать пекеджи на установку. Используйте первый символ названия порта для
-более быстрого поиска и пробел для маркировки:
+When repository configured properly, you can preset to new jail some packages.
+Use first character of name port for faster searching and hit space for mark it.
 <br><br><br>
 <img src="/html/img/jcreate2.png"></img>
 <br><br>
-Обязательное поле для заполнения: короткое (одним словом) имя клетки. Это имя будет использоваться для идентификации jail:
-<br><br>
+Required fields: a short (one word) the name of the jail. This name is used to identify the jail:
+<br>
 <img src="/html/img/jcreate3.png"></img>
 <br><br>
-Обязательное поле для заполнения: полное (с доменом) имя клетки. Это имя будет использовано как hostname клетки:
+Required fields full (the domain) name of the cell. This name will be used as jail hostname:
 <br><br>
 <img src="/html/img/jcreate4.png"></img>
 <br><br>
-Обязательное поле для заполнения: IP адрес клетки. Может иметь сетевой префикс через запись вида IP/prefix.
-Для установки более одного IP адреса, воспользуйтесь редактированием файла <b>rc.conf</b> клетки, описанным в <a href="/html/wf_jconfig_ssi.html">конфигурации клетки</a>
+Required fields: IP address of jail. May have a network prefix with a record like IP/prefix. To assign more than one IP address, use the editing of the file <b>rc.conf</b> jails described in <a href="/html/wf_jconfig_ssi_en.html">Jail config</a>
 <br><br>
 <img src="/html/img/jcreate5.png"></img>
 <br><br>
-При вызове пункта <b>GO</b>, система предложит создать клетку немедленно, автоматически запустив <b>cbsd jcreate jconf=..</b>. В противном случае, будет выведен путь к сохраненной конфигурации для запуска
-команды <b>cbsd jcreate</b> вручную:
+When you choose item <b>GO</b>, you are prompted to create the jail immediately by automatically running <b>cbsd jcreate jconf=..</b>. Otherwise, you will be the path to the saved configuration to run <b>cbsd jcreate</b> by hand:
 <br><br>
 <img src="/html/img/jcreate6.png"></img>
 </center>

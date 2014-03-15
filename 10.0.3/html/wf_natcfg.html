@@ -1,50 +1,49 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd natcfg
 % cbsd naton
 % cbsd natoff
 </pre>
 
-<b>Описание</b>:
-<p>Не всегда клеткам требуются внешние IP, либо, по причинам безопасности, ряд сервисов разворачивают на приватных IP, чтобы они были недоступны
-со стороны Internet. При этом, самим клетками доступ в Internet может быть необходим.
+<b>Description</b>:
+<p> jails do not always require external IP, or, for security reasons, a number of services need to deploy on private IPs, so they were not available from the Internet. 
+Thus, the jails may be needed for Internet access.
 </p>
-<p>В этом случае используется NAT, транслирующий приватные IP адреса клетки на внешний IP сервера.
-Функционал cbsd имеет шаблон конфигурации NAT правил для трансляции приватных сетей RFC1918.
+<p> In this case the NAT translating the private IP address of the jails to external IP of the server.
+cbsd functional has a configuration template NAT rules for translating of private networks RFC1918.
 </p>
-Для этого, первым делом необходимо через команду
+To do this, this command as the first step is required:
 <br>
 <pre>
     % cbsd natcfg
 </pre>
-выбрать соответствующий фунционал, для которого будут сгенерирована конфигурация NAT: pf, ipfw или ipnat.
+for selecting the appropriate framework for which the configuration will be loaded NAT: pf, ipfw and ipnat.
 <br>
 <p>
-<b>Внимание!</b> При конфигурировании, системных /boot/loader.conf ноды будет изменен для загрузки соответствующих модулей.
+<b>Attention!</b> When you configure this, system file <b>/boot/loader.conf</b> nodes will be modified to load the appropriate modules.
 <br>
 <br>
-Выбор фреймворка и IP в качестве NAT alias выполняется при первом запуске <b>cbsd initenv</b>, в последствии может быть переконфигурирован через <b>cbsd initenv-tui</b>
-Для того, чтобы измененный <b>natip</b> вступил в силу, необходимо запустить <b>cbsd natcfg</b> и <b>cbsd naton</b> еще раз.
-</p>
-<op>
-В данный момент, средства cbsd по конфигурации nat ограничиваются только созданием правил для трансляции приватных сетей и
-если вам необходимо получить от NAT чего-то большее, вы можете отредактировать созданный файл правил вручную в каталоге
+Selection framework and IP for NAT alias executed when you first start <b>cbsd initenv</b>, can later be reconfigured 
+through <b>cbsd initenv-tui</b> To natip changed in force, you must run <b>cbsd natcfg</b> and <b>cbsd naton</b> again.
+<br><br>
+Currently, the cbsd configuration NAT limited to the creation of rules for translating private networks. 
+If you need to get something more from simple NAT rule, you can edit the rules file created manually in the directory
 <i><b>$workdir/etc/</b></i>
-в файлах:<br>
+in files:<br>
 <br>
-<b>pfnat.conf</b>, если используется PF
+<b>pfnat.conf</b>, when PF is used
 <br>
-<b>ipfw.conf</b>, если используется IPFW и
+<b>ipfw.conf</b>, when IPFW is used, or
 <br>
-<b>ipnat.conf</b>, если используется IPNAT из пакета IPFilter
+<b>ipnat.conf</b>, wnen using IPNAT from IPFilter
 <br>
 </p>
-<p>Примечание:
+<p>Note:
 <br>
-Если <b>nodeip</b> (IP ноды) сам находится в пределах RFC1918 сетей, для этой подсети правило трансляции NAT создано не будет.
+If <b>nodeip</b> (IP of nodes), he is within RFC1918 networks for the subnet broadcast NAT rule will not be created.
 </p>
-<p>Для отключения управлением nat средствами <b>cbsd</b>, воспользуйтесь запуском команды:
+<p>To disable nat control by <b>cbsd</b>, use the follow command:
 <pre>
-     % cbsd natoff
+    % cbsd natoff
 </pre>
 </p>

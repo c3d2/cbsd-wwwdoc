@@ -1,0 +1,261 @@
+/* Eric Meyer's CSS Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* End of Eric Meyer's CSS Reset */
+
+html {
+	background-image:url(/img/ornate1.png);
+	height:100%;
+}
+body {
+	height:100%;
+	width:1000px;
+	margin:0 auto;
+	font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', arial, helvetica, sans-serif;
+	font-size:100%;
+}
+
+.main {
+	background-color:white;
+	margin:0 0;
+	min-height:100%;
+	position:relative;
+	box-shadow:0px 10px 10px 10px rgba(0,0,0,.5);
+}
+
+.logo {
+	text-align:center;
+	background: url(/img/head.png);
+	box-shadow: inset 0 0 10px 3px rgba(0,0,0,0.3);
+}
+.logo a {
+	text-decoration:none;
+	display:inline-block;
+	width:275px;
+	height:130px;
+	background:url(/img/cbsd-logo-clean.png) no-repeat 50% 50%	;
+}
+
+.intro {
+	background:black;
+	color:white;
+	padding:6px;
+	font-size:70%;
+	text-align:center;
+}
+.footer {
+	top:100%;
+	position:absolute;
+	margin-top:-20px;
+	font-size:70%;
+	text-align:center;
+	background:black;
+	color:white;
+	height:20px;
+	width:100%;
+	line-height:20px;
+}
+
+.menu {
+	background:url(/img/liner.gif) repeat-x;
+	height:30px;
+	font:normal normal bold 11px/30px arial;
+	text-align:center;
+	border-top:1px solid silver;
+	border-bottom:1px solid silver;
+}
+#referat {
+	text-align:center;
+	margin-bottom:30px;
+	padding:6px;
+}
+#referat a {
+	display:inline-block;
+	margin:2px;
+	padding:4px 6px;
+	border-radius:4px;
+	background:#f0f0f0 url(http://www.iconsearch.ru/uploads/icons/silk2/16x16/anchor.png) no-repeat 4px 2px;
+	text-decoration:none;
+	font-size:small;
+	color:black;
+	text-indent:16px;
+}
+.menu a {
+	text-decoration:none;
+	color:black;
+	padding:0 7px;
+	border-left:1px solid #f0f0f0;
+	border-right:1px solid #d0d0d0;
+	display:inline-block;
+	height:30px;
+}
+.menu-main {
+	display:inline-block;
+	margin:0 auto;
+	border-left:1px solid #d0d0d0;
+	border-right:1px solid #f0f0f0;
+}
+.menu-main>li {
+	display:inline-block;
+	white-space:nowrap;
+}
+.menu ul.submenu {
+	position:absolute;
+	border:1px solid gray;
+	box-shadow:4px 4px 8px rgba(0,0,0,0.2);
+	background-color:white;
+	border-radius:0 0 3px 3px;
+	z-index:1000;
+	text-align:left;
+	padding:4px 0;
+}
+.menu-main .submenu {
+	display:none;
+}
+
+.menu-main li:hover>.submenu,
+.menu-main .submenu:hover>.submenu {
+	display:block;
+}
+
+.menu-main .submenu li {
+	padding:0 4px;
+}
+.menu-main .submenu a {
+	border:none;
+	width:100%;
+	margin:0 -4px;
+	padding:0 4px;
+	line-height:20px;
+	height:20px;
+	display:block;
+}
+.menu-main .submenu a:hover {
+	background:#e0e0e0;
+}
+
+.menu-main ul.submenu .submenu {
+	margin-left:60px;
+	border-radius:3px;
+	margin-top:-20px;
+}
+
+.content {
+	font-size:90%;
+	z-index:1;
+	padding-bottom:20px;
+}
+.block {
+	padding:10px 20px 20px 20px;
+	line-height: 140%;
+	text-align:justify;
+}
+h2 {
+	margin:12px 0;
+}
+h2 a {
+	background:gray;
+	color:white;
+	padding:4px 20px 4px 40px;
+	border-radius:0 8px 8px 0;
+	font-size:larger;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	text-decoration:none;
+}
+h1 {
+	text-align:right;
+	margin:12px 0;
+}
+h1 span {
+	background:gray;
+	color:white;
+	padding:4px 20px;
+	border-radius:8px 0 0 8px;
+	font-size:larger;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+p {
+	margin:12px 0;
+	text-indent:20px;
+}
+.block li {
+	list-style-type:disc;
+	margin-left:40px;
+}
+strong {
+	font-weight:bold;
+}
+em, i {
+	font-style:italic;
+}
+
+ul.screenshots {
+	width:100%;
+	text-align:center;
+	margin:20px 0;
+}
+ul.screenshots li {
+	display:inline-block;
+	margin:10px 0;
+}
+
+table.images {
+	border:1px solid gray;
+	border-radius:6px;
+	width:100%;
+}
+table.images th {
+	background:#f0f0f0;
+	padding:6px;
+	font-weight:bold;
+	border-bottom:3px solid gray;
+}
+table.images td {
+	padding:4px;
+	border-bottom:1px solid silver;
+}
+table.images tr:last-child td {
+	border-bottom-width:0;
+}

@@ -1,4 +1,4 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jclone
 </pre>
@@ -6,12 +6,12 @@
 % cbsd jrclone
 </pre>
 
-<b>Описание</b>:
+<b>Description</b>:
 <br><br>
-Выполняет клонирование jail в новый. В качестве обязательных аргументов, указывается источник/оригинал клетки через <b>old</b>,новое имя через аргумент <b>new</b> и FQDN (hostname) через <b>host_hostname</b>.
-В качестве необязательного - новые ip адреса через <b>ip4_addr</b> (если IP несколько, адреса указываются через запятую без пробелов)
+Carries out jail cloning in the new. As obligatory arguments, the jail source/original is specified through <b>old</b>, new name via <b>new</b> arguments and FQDN (hostname) via <b>host_hostname</b>.
+As the unessential - new ip of the address via <b>ip4_addr</b> (if several IPs, addresses separated by commas with no spaces)
 <br><br>
-<b>Пример:</b> клонирование клетки jail2 в jail3 со сменой имени хоста <b>host_hostname</b> и ip адреса <b>ip4_addr</b>:
+<b>Example:</b> cloning jail jail2 to jail3 with changes ip address <b>ip4_addr</b> and name of hosts <b>host_hostname</b>:
 <br>
 <pre>
     % cbsd jclone old=jail2 new=jail3 host_hostname=jail3.my.domain ip4_addr=10.0.0.22/24

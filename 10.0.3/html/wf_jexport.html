@@ -1,17 +1,18 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jexport
 </pre>
 
-<b>Описание</b>:
+<b>Description</b>:
 <br>
-<p style="color:RED">Внимание: выполнение команды допускает клетку в статусе On. Однако следует помнить (особенно 
-если используются базы данных), что при импортировании такой клетки, с большой вероятностью можно получить проблемы в виде 
-неконсистентных файлов, остаточных .pid файлов и тп, что может нарушить работу импортированной клетки.
+<p style="color:RED">Attention: command execution allows on jail in status <b>On</b>. However it is necessary to remember (especially 
+for jail with databases) when you import such jails, with a high probability it is possible to got problems with inconsistency filesystem in jails,
+old .pid files that can break work of the imported jails
 </p>
-Экспортировать jail в файл (*.img). В качестве аргумента <b>jname</b> указывается имя клетки. img-файл сохраняется в каталоге <i><b>$workdir/export</b></i>. Оригинальная клетка после экспорта остается без изменений.
+Export jail into file (*.img). In  <b>jname</b> arguments you can set jail for export. img-file stored in <i><b>$workdir/export</b></i> directory. Original jail 
+after exports is not modified
 <br><br>
-<b>Пример</b> (экспортировать клетку mysqljail в mysqljail.img):
+<b>Example</b> (export mysqljail jail to  mysqljail.img):
 <br>
 <pre>
 % cbsd jexport jname=mysqljail

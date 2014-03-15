@@ -1,31 +1,32 @@
-<b>Команды</b>:<br>
+<b>Command</b>:<br>
 <pre>
 % cbsd jail2iso
 </pre>
-<b>Описание</b>:
+<b>Description</b>:
 <br><br>
-Скрипт <b>jail2iso</b> позволяет создать загрузочный образ для CD/DVD/Memstick или гипервизора <b>bhyve</b> из указанной клетки.
-Несмотря на то, что функционал <b>jail2iso</b> не используется в работы <b>cbsd</b> или клеток, этот
-скрипт может быть очень полезен для легкого и комфортного построения кастомизированных LiveCD, содержимое
-которых вы можете устанавливать, настраивать и проверять в клетке. Например, этот функционал удобен для:
+The <b>jail2iso</b> script allows to create a bootable image for CD/DVD/Memstick or <b>bhyve</b> hypervisor from the specified jail.
+Despite the fact that functional <b>jail2iso</b> is not used in <b>cbsd</b> operation or jails, this script 
+can be very useful for easy and comfortable build customized LiveCD, content which you can install, 
+configure and test in jail. For example, this functionality is useful for:
 <br><br>
-<li> Создание Rescue-систем с необходимыми инструментами на борту
-<li> Построение собственного дистрибутива FreeBSD
-<li> Создание образов для бездисковых серверов/станций (например загружаемые с PXE, MicroSD, Flash, CD/DVD, и тд) и монтирующие домашние
-каталоги или клетки/файлы с данными по NFS/FibreChannel/iSCSI/InfiniBand.
-<li> Переноса jail в образ bhyve для использования особенностей функционала <b>bhyve</b> (и потери особенностей функционала jail)
+<li> Creating rescue-system with necessary tools
+<li> Building your own FreeBSD distribution
+<li> Creating images for diskless servers/stations (eg booted from PXE, MicroSD, Flash, CD/DVD, etc.) and have mounted home directories or jails/data files 
+from NFS/FibreChannel/iSCSI/InfiniBand.
+<li> Transfer environment from jail to bhyve image for using features of <b>bhyve</b> (and loss features of jail)
 <br><br>
-<h3>Схема работы скрипта для iso/memstick</h3>
+<h3>Script job for iso/memstick</h3>
 <br>
-<li> Создание файловой иерархии будущего образа, состоящей из подмонтированной базы и данных клетки
-<li> Создание MFS/UZIP образа, который будет оставаться в памяти. Используется в основном для ускорения работы в режиме LiveCD, позволяя "закешировать" часто вызывающиеся утилиты и библиотеки, например
-от / до /usr.
-<li> Монтирование поверх MFS иерархии данных с файловой системы носителя через nullfs/RO
-<li> Монтирование tmpfs поверх RO файловой системы для возможности производить модификации.
+<li> Creation of file hierarchy of next image consisting of mounted base and data of a jail
+<li> Creation of MFS/UZIP of an image which will remain in memory. It is used generally for work acceleration in the LiveCD mode, allowing for "cache" often caused utilities and libraries, for example
+from / to / usr.
+<li> Mount over MFS of hierarchy of data from file system of the media through nullfs/RO
+<li> Mount through tmpfs over RO file system for modification in LiveCD mode.
 <br>
 <br>
-Если вам необходимо ряд директорий при загрузке образа перезагрузить в RW через tmpfs, до вызова утилиты <b>jail2iso</b> необходимо прописать в файл <i>$systemdir/jail/tmpfsdir</i> все пути.
-<br>Например для <b>rescuebsd</b> клетки это файл: <i>/usr/jails/jails-system/rescuebsd/tmpfsdir</i> содержащий:
+If you need a number of directories reload when loading image in RW via tmpfs, before executing <b>jail2iso</b> you needs to be written to a file 
+<i>$systemdir/jail/tmpfsdir</i> all the path
+<br>For example <b>rescuebsd</b> jail is a file: <i>/usr/jails/jails-system/rescuebsd/tmpfsdir</i> with content:
 <br>
 <pre>
 /root
@@ -38,24 +39,13 @@
 /usr/local/etc
 </pre>
 <br>
-Данные записи будут обработаны <i>/etc/rc.d/tmpfsdir</i>, который сохранит на образ <b>jail2iso</b>. Все содержимое в этих файлах, которое находится на jail, будет перемещено на tmpfs файловую систему.
-<br>Поскольку RW области монтируются через TMPFS, количество доступной для записи памяти будет зависеть от количества оперативной памяти, на котором запускается LiveCD.
+These entries are processed <i>/etc/rc.d/tmpfsdir</i>, which will save to the image by <b>jail2iso</b>. 
+All contents of these files, which is on the jail, will be moved to tmpfs filesystem.
+<br>As RW areas are mounted through TMPFS, the quantity of memory available to record will depend on quantity of RAM of servers on which LiveCD is started.
 <br><br>
-Вы можете предпочесть написать собственный /boot/loader.conf на создаваемом образе. Для этого, сохранив файл <b>loader.conf</b> в каталог <i>$systemdir/$jname/</i>. Все, что вы напишете в этом файле, добавиться к файлу loader.conf,
-генерируемого <b>jail2iso</b>, которая имеет следующие обязательные записи:
-<pre>
-geom_uzip_load="YES"
-tmpfs_load="YES"
-nullfs_load="YES"
-
-mfs_load="YES"
-mfs_type="mfs_root"
-mfs_name="/mfsroot"
-vfs.root.mountfrom="ufs:/dev/md0"
-
-net.inet.ip.fw.default_to_accept=1
-</pre>
-Например, для клетки <b>xrescuebsd</b>, которая загружается в режиме KMS на ядре с newcons, имеется файл  <i>/usr/jails/jails-system/xrescuebsd/loader.conf</i> со следующим содержимым:
+You may prefer to write your own /boot/loader.conf to created image. 
+To do this, save the file <b>loader.conf</b> in the directory <i>$systemdir/$jname/</i>. 
+Everything you write in this file will be added to loader.conf, generated <b>jail2iso</b>, which has the following mandatory entries:
 <pre>
 kern.ipc.shmmni=4096
 kern.ipc.shmseg=4096
@@ -64,64 +54,65 @@ i915kms_load="YES"
 linux_load="YES"
 </pre>
 <br>
-Вы можете указать, какой тип образа <b>jail2iso</b> должна создать, ISO образ с cd9960 для CD/DVD/Виртуальных машин или Memstick, образ, который вы сможете записать на USB Flash носитель.
+You can specify what type of image <b>jail2iso</b> is to create, ISO image with cd9960 for CD/DVD/VMs or Memstick, an image that you can burn to a USB Flash drive.
 <br>
-<h3>Схема работы скрипта для образа bhyve</h3>
+<h3>Script job for bhyve image</h3>
 <br>
-Поскольку образ bhyve изначально будет в режиме RW, для него не требуется создание RO образа c UZIP и сопровождение tmpfsdir, поэтому данная стадия при формировании образа отсутствует.
-Скрипт автоматически создаст fstab-запись для монтирования соответствующего устройства в bhyve машине и откорректирует /etc/ttys как этого требует <a href="http://people.freebsd.org/~neel/bhyve/bhyve_instructions.txt">инструкция</a>.
+Since the image will be initially bhyve mode RW, it does not require the creation of RO image with UZIP and support tmpfsdir, so at this stage there is no formation of an image.
+The script will automatically create a fstab-entry to mount an appropriate device in bhyve machine and updates /etc/ttys as required <a href="http://people.freebsd.org/~neel/bhyve/bhyve_instructions.txt">instructions</a>.
 <br>
-При создании образа bhyve, пользуйтесь параметром
+When creating an image bhyve, use the parameter:
 <pre>
 % cbsd jail2iso ... imgsize=
 </pre>
-Поскольку без этого параметра, создается диск объемом, равным объему фактических данных, без запаса. Это сделает систему нерабочей, поэтому, через <b>imgsize=</b> указывайте всегда размер заведомо
-больше чем текущий объем данных в jail
+Because without this option, create disk volume equal to the volume of evidence, without reserve. This will make the system broken, so through <b>imgsize=</b> specify the size always known 
+greater than the current data volume in jail
 <br>
-<h3>Дополнительные сведения</h3>
-<br>
-<b>cbsd jail2iso</b> не контроллирует и не лимитирует объемы конечного результата - они ограничены лишь вашим носителем, для которого создается образ.
-Для создания ISO образа:
+<h3>For more information</h3>
+<br><b>cbsd jail2iso</b> is not controlled and does not limit the volume of the final result - they are limited only by your destination media:
+<br><br>
+For create ISO image use:
 <pre>
-cbsd jail2iso media=iso ..
+%  cbsd jail2iso media=iso ..
 </pre>
-Для создания memstick:
+For create memstick image use:
 <pre>
 % cbsd jail2iso media=memstick ..
 </pre>
-Для создания bhyve образа:
+For create bhyve image use:
 <pre>
 % cbsd jail2iso media=bhyve imgsize=XXg ..
 </pre>
 <br>
-Каталог, куда будет сохранен образ указывается через аргумент <b>dstdir</b>.
+Directory where to save the image specified as an argument <b>dstdir</b>.
+<br>
+By default, the image will be have GENERIC kernel from $workdir/basejail/ directory. 
+You can get this kernel via
+<br>
+<pre>% cbsd repo action=get sources=kernel</pre>
+for your version of FreeBSD, or build it yourself through <b>cbsd buildkernel</b>.
+ If the GENERIC kernel is not suitable as an argument <b>name</b> for <b>jail2iso</b> 
+you can specify a different kernel if you have it.
 <br><br>
-По-умолчанию, на образ будет сохранено GENERIC ядро из каталога $workdir/basejail/. Его можно получить по команде:
-<pre>
-cbsd repo action=get sources=kernel
-</pre>
-для вашей версии FreeBSD, или собрать самостоятельно через <b>cbsd buildkernel</b>.
-Если ядро GENERIC не подходит, через аргумент <b>name</b> для <b>jail2iso</b> вы можете указать другое ядро, если оно у вас есть.
+In addition, to reduce the size of the final image, jail2iso a series of actions:<br>
+<br>
+<li> removal .a-archive files in lib directories
+<li> removing unnecessary data by file list
+<br>
+<br> By default, this list is located in the $workdir/share/jail2iso-prunelist.
+You can correct them if you needed, or create your own, specifying the path to it as an argument <b>prunelist</b>
 <br><br>
-Кроме этого, для уменьшения размера финального образа, jail2iso выполняет ряд действий:
-<br><br>
-<li> удаление .a-архивных файлов в каталогах библиотек
-<li> удаление необязательных данных по файлу-списку.
-<br><br>По-умолчанию, данный список расположен в $workdir/share/jail2iso-prunelist.
-Вы можете его откорректировать по собственному усмотрению или создать свой, указав путь к нему через аргумент <b>prunelist</b>
-
-<br><br>
-Пример создания memstick из клетки jail1:
+Example of creating memstick from jail1:
 <br><pre>
-% cbsd jail2iso media=memstick jname=jail1 dstdir=/tmp
+% cbsd jail2iso media=memstic jname=jail dstdir=/tmp
 </pre>
-Если файл /tmp/jail1.img создался, его можно записать на USB носитель через команду:
+If the file /tmp/jail1.img created, it can be writte to a USB device via the command:
 <pre>
 dd if=/tmp/mc.img of=/dev/da0 bs="10240" conv="sync"
 </pre>
-, если <b>/dev/da0</b> - это USB flash носитель.
+, where <b>/dev/da0</b> - is USB Flash storage.
 <br><br>
-Пример создания и запуск bhyve образа из jail1 с сетью через интерфейс <b>em0</b>:
+Example of creating and launching bhyve image from jail1 with networks via interface <b>em0</b>:
 <pre>
 % cbsd jail2iso media=bhyve jname=jail1 dstdir=/tmp imgsize=5g
 % kldload vmm
@@ -133,5 +124,5 @@ dd if=/tmp/mc.img of=/dev/da0 bs="10240" conv="sync"
 % ifconfig bridge0 up
 % sh /usr/share/examples/bhyve/vmrun.sh -d /tmp/jail1-10.0_amd64.img vm1 
 </pre>
-где <b>/tmp/jail1-10.0_amd64.img</b> - результат работы jail2iso.
+where <b>/tmp/jail1-10.0_amd64.img</b> - result from jail2iso.
 <br><br><center>

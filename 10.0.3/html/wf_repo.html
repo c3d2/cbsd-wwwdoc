@@ -1,4 +1,4 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd repo
 </pre>
@@ -6,54 +6,53 @@
 % cbsd repo-tui
 </pre>
 
-<b>Описание</b>:
+<b>Ddescription</b>:
 <br><br>
-Работа с репозиторием баз, ядер и клеток. Количество репозиторий может быть больше одного и они указываются через пробел 
-в переменной repo файла <b>$workdir/nc.inventory</b>. Скачивание будет происходить с первого репозитория, где объект найдет. Соотв.,
-если используется свой локальный репозиторий - он должен быть первым.
+Work with a repository of bases, kernels and images. The quantity a repository can be more than one and they are specified through a gap 
+in the file repo variable <b>$workdir/nc.inventory</b>. Downloading will occur from the first repository where the object will find. Respectively,
+if the local repository is used - it should be the first.
 <br><br>
-Обязательные аргументы:
+obligatory parameters:
 <br><br>
-<b>action</b> - может принимать значение <i>list</i> (получить список), <i>get</i> (скачать), <i>put</i> (закачать)
+<b>action</b> - can accept value <i>list</i> (get list), <i>get</i> (download), <i>put</i> (upload)
 <br><br>
-Аргументы, которые в некоторых случаях не являются обязательными:
+Arguments which in certain cases aren't obligatory:
 <br><br>
-<b>sources</b> - источник для <b>action</b> - с какими данными хотим работать. Может принимать значения:<br>
-<br><i>src</i> - исходный код ОС (${workdir}/src)
-<br><i>obj</i> - обьектные файлы ($workdir}/obj)
-<br><i>base</i> - базы ($workdir/base)
-<br><i>kernel</i> - ядра ОС (${workdir}/base)
-<br><i>img</i> - клетки
+<b>sources</b> - sources for <b>action</b> - with what data we want to work. Can accept values:<br>
+<br><i>src</i> - source code for OS (${workdir}/src)
+<br><i>obj</i> - object file for source code ($workdir}/obj)
+<br><i>base</i> - world/bases ($workdir/base)
+<br><i>kernel</i> - kernels of OS (${workdir}/base)
+<br><i>img</i> - jails
 <br><br>
-<b>name</b> - имя (используется при sources=obj,base,kernel,img - имя базы/ядра или клетки)
+<b>name</b> - name (used with sources=obj,base,kernel,img - name of base/world or jails)
 <br>
-<b>stable</b> - параметр относится к sources=obj,base - взять RELENG_X вместо RELENG_X_Y
+<b>stable</b> - related to sources=obj,base - get RELENG_X instead of RELENG_X_Y
 <br>
-<b>ver</b> - По-умолчанию, для получения списка или скачивания будет использоватся текущая версия ОС. С параметром ver=X.Y можно указать 
-другую версию для клеток/базы. При ver=any для action=list, будут выводится все доступные данные sources для всех версий
+<b>ver</b> - By default, for obtaining the list or downloading the current version of OS will be used. With the ver=X.Y parameter it is possible to specify 
+other version for jail/base/kernel. At ver=any for action=list, will be it is deduced all available data of sources for all versions
 <br>
 <br><br>
-<b>Пример</b>:
-<br> Получение списка имеющихся клеток для 9.1 версии
+<b>Example</b>:
+<br>Obtaining the list of available jails for 9.1 versions
 <pre>
 % cbsd repo action=list sources=img ver=9.1
 </pre>
-И скачиваем клетку kfreebsd:
+to get and import kfreebsd jail:
 <pre>
 % cbsd repo action=get sources=img name=kfreebsd
 </pre>
 <center>
 <img src="/html/img/repo1.png"></img>
 <br><br>
-<br>По окончании импорта будет задан вопрос о корректном IP для новой клетки и создавать ли alias
-автоматичечки. Выбираем COMMIT для сохранения.
+<br>Upon termination of an import the question of correct IP for a new jails will be asked and whether to create alias
+automatically. We choose COMMIT for preservation.
 <br><br>
 <img src="/html/img/repo2.png"></img>
 <br><br>
-<br>Клетка в системе и можно пользоваться<br>
+<br>Now jail in system also it is possible to use<br>
 <br>
 <img src="/html/img/repo3.png"></img>
-
 <br><br>
 </center>
 </p>

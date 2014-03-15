@@ -1,26 +1,26 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jrename
 </pre>
 
-<b>Описание</b>:
-Выполняет переименовывание jail и соответствующих каталогов данных в новое имя
+<b>Description</b>:
+Performs renaming jail and relevant data in the new name
 <br>
-<p>Может выполнятся только на погашенной клетке.<br>
-<p>В качестве обязательных параметров:<br>
-<b>old</b> - старое имя jail
+<p>Can be executed only on the stopped jail. <br>
+<p>As mandatory parameters: <br>
+<b>old</b> - old name of the jail
 <br>
-<b>new</b> - новое имя jail
+<b>new</b> - new name of the jail
 <br>
-<p>В качестве необязательных параметров:<br>
-<b>host_hostname</b> - FQDN, новое полное имя клетки
+<p>As optional parameters:<br>
+<b>host_hostname</b> - FQDN, new full hostname of jail
 <br>
-<b>ip4_addr</b> - новый IP адрес клетки (если несколько IP, указываются через запятую без пробелов)
+<b>ip4_addr</b> - new IP address of the jail (if multiple IPs, separated by a comma with no spaces)
 <br><br>
-<b>Пример</b> (переименовывание клетки jail1 в jail50 со сменой имени хоста клетки и ip адреса:
+<b>Example</b> (renaming jail <b>jail1</b> into <b>jail50</b> with a FQDN and ip addresses change):
 <br>
 <pre>
-% cbsd jrename old=jail1 new=jail50 host_hostname=jail50.my.domain ip4_addr=192.168.0.5/24
+    % cbsd jrename old=jail1 new=jail50 host_hostname=jail50.my.domain ip4_addr=192.168.0.5/24
 </pre>
 <br><br><center>
 <img src="/html/img/jrename1.png"></img>

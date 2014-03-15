@@ -1,53 +1,53 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jsnapshot
 </pre>
 
-<b>Описание</b>:
+<b>Description</b>:
 <br><br>
-Выводит список, создает, удаляет и откатывает файловые снэпшоты для клетки, если нода запущена на файловой системе ZFS и <b>zfsfeat</b> в файле <b>nc.inventory</b> установлена в 1.
+Show the list, create, delete and rollback snapshots for a jail when node startend on ZFS filesystem and <b>zfsfeat</b> in file <b>$workdir/nc.inventory</b> set to 1.
 <br>
-Через параметр <b>mode</b> указывается, что именно необходимо выполнить. Возможные варианты:
+Through <b>mode</b> parameter you can you specify that it is necessary to make. Possible options:
 <br><br>
-<b>list</b> - вывести список снапшотов для указанной клетки
+<b>list</b> - show snapshot liss for current jail
 <br>
-<b>create</b> - создать снапшот для указанной клетки
+<b>create</b> - create snapshot for jail
 <br>
-<b>destroy</b> - удалить снапшот для указанной клетки
+<b>destroy</b> - delete snapshot for jail
 <br>
-<b>destroyall</b> - удалить все снапшоты для указанной клетки
+<b>destroyall</b> - remove all snapshots for jail
 <br>
-<b>clone</b> - клонировать снашпот для указанной клетки
+<b>clone</b> - clone snapshot into new jail
 <br>
-<b>rollback</b> - откатить снапшот для указанной клетки
+<b>rollback</b> - rollback jail to current snapshot state
 <br><br>
-Дополнительные параметры:
+Additional arguments:
 <br><br>
-<b>jname</b> - для какого jail выполняется действие
+<b>jname</b> - for what jail action is made
 <br>
-<b>snapname</b> - указать имя снапшота
+<b>snapname</b> - snapshot name
 <br>
 <br><br>
-Следует иметь ввиду, что снапшоты имеют древовидную структуру. Тоесть, если вы создали последовательно снапшоты: <b>1,2,3,4</b> и откатились на снапшот <b>2</b>, то снапшотов <b>3</b> и </b>4</b> не будет, поскольку по отношению
-ко времени создания снапшота <b>2</b> они были созданы в будущем.
+It should be borne in mind that snapshots have a tree structure. It mean, if you created a series of snapshots : <b>1,2,3,4</b> and fell back to a snapshot <b>2</b>, then snapshots <b>3</b> and </b>4</b> will be lost, as against
+by the time of the snapshot <b>2</b> they were created in the future.
 <br><br>
-Кроме произвольного и уникального имени снапшота, при создании вы можете указать snapname=gettimeofday. В этом случае, система автоматически в качестве имени подставит timestamp от текущего времени.
+Also arbitrary and unique name for a snapshot when you create, you can specify snapname=gettimeofday. In this case, the system automatically fills in as the name of the timestamp from the current time.
 <br><br>
-При выводе списка снапшотов, вы можете пользоваться модификаторами для уточнения к какому jail вы хотите увидеть снапшоты, а также кастомизировать выводимые поля через аргумент <b>display=</b>
+When listing snapshots, you can use modifiers to clarify to what you want to see jail snapshots, and customize output field through argument <b>display=</b>
+<br> <br>
+<b>Example</b>:
 <br><br>
-<b>Пример</b>:
-<br><br>
-создаем snapshot с именем <i>gromozeka</i> для клетки <b>jail1</b>:
+create snapshot named <i>gromozeka</i> for <b>jail1</b> jail:
 <br>
 <pre>
 % cbsd jsnapshot mode=create jname=jail1 snapname=gromozeka
 </pre>
-создаем snapshot с именем <i>zelepuka</i> для клетки <b>jail1</b>:
+create snapshot named <i>zelepuka</i> for <b>jail1</b> jail:
 <pre>
 % cbsd jsnapshot mode=create jname=jail1 snapname=zelepuka
 </pre>
 <br>
-Запустим jail1, выполним какие-либо модификации, остановим:
+Run jail1 and stop after some modification:
 <pre>
 % cbsd jstart jail1
 ..
@@ -57,7 +57,7 @@
 % cbsd jstop jail1
 ..
 </pre>
-Откатим jail1 на состояние, когда был создан снапшот zelepuka:
+Rollback jail1 to snapshot zelepuka state:
 <pre>
 % cbsd jsnapshot mode=rollback snapname=zelepuka jname=jail1
 % cbsd jstart jail1

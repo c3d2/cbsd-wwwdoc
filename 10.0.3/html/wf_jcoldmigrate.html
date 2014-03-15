@@ -1,45 +1,43 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jcoldmigrate
 </pre>
 
-<b>Описание</b>:
+<b>Description</b>:
 <br><br>
-<b>cbsd jcoldmigrate</b> выполняет холодную (с отстановкой) миграцию клетки с одной ноды на другую.
-Параметр <b>node</b> указывает, на какую ноду следует мигрировать клетку. Предварительно, RSA/DSA ключ
-удаленной ноды должнен быть добавлен через команду <b>cbsd node mode=add</b>, а также, на удаленной ноде 
-должен работать сервис rsyncd <b>cbsdrsync</b>.
+<b>cbsd jcoldmigrate</b> does cold (with stoping) migration jail from one node to another.
+Argmument <b>node</b> point for destination node. Preliminary, RSA/DSA key for remote node must be added via
+ <b>cbsd node mode=add</b> operation. Also, on a remote node service rsyncd should work (<b>cbsdrsync</b>).
 <br><br>
-По-умолчанию, статус клетки на новой ноде наследуется - если клетка работала, она также будет
-автоматически запущена на новой ноде. Если клетка не работала - останется в статусе Off.
-Управлять, какой статус должен быть на удаленной клетке не зависимо от состояния на оригинале, можно
-через параметр <b>start</b>.
+By default, the jail status on a new node is inherited - if the jail worked, it also will be 
+automatically started on a new node. If the jail didn't work - remains in Off status.
+To operate, what status should be on a remote jail not is dependent on a condition on the original, it is possible
+through parameter <b>start</b>.
 <br><br>
-Клетка на первоисточние, после успешного выполнения <b>jcoldmigrate</b> останавливается и переводится
-в статус <b>Slave</b>. В rc.conf файле клетки на новой ноде остается запись, с какой именно ноды
-этот jail был мигрирован.
+Jail on the source, after successful <b>jcoldmigrate</b> will be stoped and switch to <b>Slave</b> status (unregister). 
+In rc.conf file of jail on the destination node there will be a record where this jail came from
 <br><br>
-Примечание: миграция происходит в следующие этапы (в процессе выполния, они проходят автоматически и не видны)<br><br>
-<li>перенос конфигурационных файлов на удаленную ноду, статус клетки - Slave (<b>cbsd j2prepare</b>)
-<li>запуск rsync, которая делает полную копию каталога с данными на удаленной ноду (<b>cbsd j2slave</b>)
-<li>останов клетки (<b>cbsd j2slave</b>)
-<li>повторный запус rsync, которая должна отработать быстрее первого раза за счет того, меньшее кол-во файлов успело модифицироваться
-<li>перевод клетки на локальной ноде в статус Slave (<b>cbsd jswmode</b>)
-<li>перевод клетки на удаленной ноде в статус Master (<b>cbsd rexe + jswmode</b>)
-<li>если клетка была запущена - запуск клетки на удаленной ноде (<b>cbsd rexe + cbsd jstart</b>)
+Notes: For jcoldmigrate, the next action is performed (in process they pass automatically and aren't visible)<br><br>
+<li>copy configuration files to remote node, status of jail set to Slave on remote node (<b>cbsd j2prepare</b>)
+<li>exec rsync, which does a full copy of the directory with data to remote node (<b>cbsd j2slave</b>)
+<li>stop jails (if running) on the source node (<b>cbsd j2slave</b>)
+<li>one more rsync job, for synchronization of those files which be modified
+<li>switch jail status on source to Slave (<b>cbsd jswmode</b>)
+<li>switch jail status to master on the remote node (<b>cbsd rexe + jswmode</b>)
+<li>If jail was running - start jail on remode node (<b>cbsd rexe + cbsd jstart</b>)
 <br><br>
-<b>Пример</b> (выполнить холодную миграцию на ноду netsnap):
+<b>Example</b> (make cold migration for jail amp123 to netsnap node):
 <pre>
 % cbsd jcoldmigrate node=netsnap jname=amp123
 <br>
 <center>
-<i>на сервере netsnap ничего нет:</i>
+<i>on the destionation node anything isn't present now:</i>
 <img src="/html/img/jcoldmigrate1.png"></img>
 <br>
-<i>с сервера cbuilder64 мигрируем клетку amp123 на netsnap:</i>
+<i>from node cbuilder64 migrate jail amp123 to netsnap:</i>
 <img src="/html/img/jcoldmigrate2.png"></img>
 <br>
-<i>клетка amp123 на netsnap запущена автоматически:</i>
+<i>jail amp123 on netsnap was started automatically:</i>
 <img src="/html/img/jcoldmigrate3.png"></img>
 </center>
 </p>

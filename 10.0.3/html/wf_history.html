@@ -1,17 +1,15 @@
-<b>Команды</b>:<br>
+<b>commands</b>:<br>
 <pre>
 % cbsd history
 </pre>
-<b>Описание</b>:
+<b>Descriptions</b>:
 <br><br>
-В том случае, если команды <b>cbsd</b> поступают с терминала и не задана переменная окружения <b>NO_CBSD_HISTORY</b>, то команды будут протоколироваться в файле <i>$workdir/.cbsd_history</i>.
+When <b>cbsd</b> command comes from the terminal and no set the environment variable <b>NO_CBSD_HISTORY</b>, then the command will be logged in the <i>$workdir/.cbsd_history</i> file.
 <br><br>
-Вы можете использовать команду
+You can use the command
 <pre>
-% cbsd history [N]
+  % cbsd history [N]
 </pre>
-(где N - необязательный параметр) для вывода всех введеных <b>cbsd</b> команд или лишь N последних.
+(where N - optional parameter) to display all entered <b>cbsd</b> commands or only N last.
 <br><br>
-Размер файла <i>$workdir/.cbsd_history</i> по-умолчанию лимитирован объемом в 300 Кб и при достижению этого
-лимита, старые команды будут удалятся.
-
+File size <i>$workdir/.cbsd_history</i> by default limited in 300 Kb and when limit is reached the oldest records will be deleted.

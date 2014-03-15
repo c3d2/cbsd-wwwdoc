@@ -1,22 +1,22 @@
-<b>Команды</b>:<br>
+<b>Commands</b>:<br>
 <pre>
 % cbsd jremove jail1 jail2 ..
 </pre>
 
-<b>Описание</b>:
-Удаление jail затрагивает все файлы, так или иначе связанные с клеткой:
+<b>Description</b>:
+Removal of jail mentions all files anyway connected with a jail:
 <br><br>
-a) fstab для данного jail
+a) fstab for current jail
 <br>
-b) каталог или ZFS файловую систему с данными jail
+b) data directory or ZFS filesystem with jail data
 <br>
-c) статистику и описание клетки
+c) statistics and description for jail
 <br>
-d) снапшоты, если были
+d) snapshots
 <br><br>
-В случае, если <b>jremove</b> запускается на работающую клетку, клетка будет остановлена автоматически.
+in a case when <b>jremove</b> executed for jail in status On, it will be automatically stopped.
 </p>
-<b>Пример</b>:
+<b>Example</b>:
 <br>
 <pre>
 % cbsd jremove jail1
