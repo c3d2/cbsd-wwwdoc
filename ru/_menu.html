@@ -1,3 +1,8 @@
+<!--#if expr="$uri = /([^\/]+).html/" -->
+<!--#set var="data" value="$1" -->
+<!--#else -->
+<!--#set var="data" value="about" -->
+<!--#endif -->
 			<ul class="menu-main">
 				<li><a href="/ru/about.html">О проекте »</a>
 					<ul class="submenu">
@@ -21,10 +26,9 @@
 				</li><li>
 					<a href="#">Язык »</a>
 					<ul class="submenu">
-						<li><a href="/ru/about.html">Русский</a></li>
-						<li><a href="/en/about.html">English</a></li>
-						<li><a href="/de/about.html">Deutch</a></li>
-						<!-- <li><a href="#">&hellip;</a></li> -->
+						<li><a href="/ru/<!--#echo var="data" -->.html">Русский</a></li>
+						<li><a href="/en/<!--#echo var="data" -->.html">English</a></li>
+						<li><a href="/de/<!--#echo var="data" -->.html">Deutch</a></li>
 					</ul>
 				</li>
 			</ul>

@@ -45,7 +45,7 @@ table {
 /* End of Eric Meyer's CSS Reset */
 
 html {
-	background-image:url(/img/ornate1.png);
+	background-image:url(/img/ornate1.gif);
 	height:100%;
 }
 body {
@@ -258,4 +258,31 @@ table.images td {
 }
 table.images tr:last-child td {
 	border-bottom-width:0;
+}
+
+.red-text {
+	color:red;
+}
+.attention {
+	border:1px solid red;
+	margin:-20px 20px 30px 20px;
+	padding:6px 20px;
+	background-color:#fef0ef;
+	border-radius:6px;
+	box-shadow:4px 4px 4px rgba(0,0,0,0.1);
+}
+.warning {
+	background:url(http://www.iconsearch.ru/uploads/icons/realistik-new/32x32/messagebox_warning.png) no-repeat 0 50%;
+	margin:-10px 20px 30px 20px;
+}
+.warning p {
+	margin:10px 10px 10px 50px;
+	border-left:3px solid gray;
+	background:#fffadc;
+	padding:10px;
+	min-height:20px;
+}
+
+hr {
+	margin:20px 0;
 }

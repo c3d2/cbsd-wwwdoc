@@ -1,62 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<HTML>
-<HEAD>
-<META http-equiv="content-type" content="text/html; charset=UTF-8">
-<META name="Description" content="CBSD Store">
-<META name="Keywords" content="CBSD, BSDStore">
-<LINK rel="shortcut icon" href="favicon.ico">
-
-<title>CBSD - FreeBSD jails management tools</title>
-</HEAD>
-<!--# include file="/html/cbsdmenu_ru.html" -->
-<body>
-<!--# include file="/html/currentver.html" -->
-<center><FONT face="verdana,arial,helvetica" size="+1">Синтаксис команд cbsd</font></center>
-<FONT face="verdana,arial,helvetica" size="-1">
-<br><br>
-<body>
-<p>Все команды начинаются с префикса <i>cbsd</i>:
-<b>
-<pre>
-% cbsd jls
-% cbsd jstop jname
-% cbsd jstart jname
-% cbsd node mode=list
-...
-</pre></b>
-<p>Команды <b>cbsd</b> могут принимать аргументы, записываемые в виде "param=value".
-<br>
-<b>cbsd</b> команды могут иметь как обязательные аргументы, так и аргументы, являющие опциональными. Порядок аргументов роли не играет.
-<br>
-Для того, чтобы получить краткую информацию о том или ином скрипте, а также получить список обязательных и опциональных аргументов, 
-используйте аргумент --help для соответствующей команды:
-<pre>
-% cbsd &lt;cmd&gt; --help
-</pre>
-Например, получить справку по jls:
-<br>
-<pre>
-% cbsd jls --help
-</pre>
-<pre>
-[jail] List jail and status
-require: 
-opt: alljails shownode display node header
-alljails=1 - get jaillist from remote node
-shownode=1 - show nodename for jails
-node= only for current node
-header=0 don't print header
-display= list by comma for column. Default: jid,jname,ip4_addr,host_hostname,path,status
-External help: http://www.bsdstore.ru/10.0.2/html/wf_jls_en.html
-</pre>
-<br> В первой строчке в квадратных скобках указывается имя модуля, к которому относится команда ( jail в данном случае ), а также краткая информация по функциям.
-<br> В строчке с <b>require:</b> перечисляются обязательные аргументы, без указания которых работа команды невозможна.
-<br> В строчке с <b>opt: </b> перечисляются необязательные аргументы ( тем не менее, в зависимости от режима работы утилиты, в разных случаях они могут быть обязательны )
-<br> В следующих строчках идет краткое описание аргументов, если она есть
-<br><br> Также, может присутствовать ссылка на документацию ( External help ). Она может указывать как на сайт, так и на локальный файл, если устанавливалась документация. Данная
-ссылка в следующих версиях будет автоматически использоваться WEB/GUI front-end для подгрузки справки, однако, это может быть полезно и для пользователей, как прямой указатель на
-расширенное описание команды.
-<br><br>
-<img src="/html/img/cbsd_syntax1.png"></img>
-</body>
-</html>
+<!--#set var="uri" value="$DOCUMENT_URI" -->
+<!--# include file="_start.html" -->
+<!--# include file="currentver.html" -->
+<h1><span>Синтаксис команд cbsd</span></h1>
+<div class="block">
+	<p>Все команды начинаются с&nbsp;префикса <em>cbsd</em>:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jls
+		% cbsd jstop jname
+		% cbsd jstart jname
+		% cbsd node mode=list
+		...
+	</pre>
+	<p>Команды <strong>CBSD</strong> могут принимать аргументы, записываемые в&nbsp;виде &laquo;param=value&raquo;.</p>
+	<p><strong>CBSD</strong> команды могут иметь как обязательные аргументы, так и&nbsp;аргументы, являющие опциональными. Порядок аргументов роли не&nbsp;играет.</p>
+	<p>Для того, чтобы получить краткую информацию о&nbsp;том или ином скрипте, а&nbsp;также получить список обязательных и&nbsp;опциональных аргументов, используйте аргумент <em>--help</em> для соответствующей команды:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd &lt;cmd&gt; --help
+	</pre>
+	<p>Например, получить справку по&nbsp;jls:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jls --help
+	</pre>
+	<p>Результат:</p>
+	<pre>
+		[jail] List jail and status
+		require: 
+		opt: alljails shownode display node header
+		alljails=1 - get jaillist from remote node
+		shownode=1 - show nodename for jails
+		node= only for current node
+		header=0 don't print header
+		display= list by comma for column. Default: jid,jname,ip4_addr,host_hostname,path,status
+		External help: http://www.bsdstore.ru/10.0.2/html/wf_jls_en.html
+	</pre>
+	<p>В&nbsp;первой строчке в&nbsp;квадратных скобках указывается имя модуля, к&nbsp;которому относится команда ( jail в&nbsp;данном случае ), а&nbsp;также краткая информация по&nbsp;функциям.</p>
+	<p>В&nbsp;строчке с&nbsp;<strong>require:</strong> перечисляются обязательные аргументы, без указания которых работа команды невозможна.</p>
+	<p>В&nbsp;строчке с&nbsp;<strong>opt: </strong> перечисляются необязательные аргументы ( тем не&nbsp;менее, в&nbsp;зависимости от&nbsp;режима работы утилиты, в&nbsp;разных случаях они могут быть обязательны )</p>
+	<p>В&nbsp;следующих строчках идет краткое описание аргументов, если она есть</p>
+</div>
+<div class="block">
+	<p>Также, может присутствовать ссылка на&nbsp;документацию ( External help ). Она может указывать как на&nbsp;сайт, так и&nbsp;на&nbsp;локальный файл, если устанавливалась документация. Данная ссылка в&nbsp;следующих версиях будет автоматически использоваться WEB/GUI front-end для подгрузки справки, однако, это может быть полезно и&nbsp;для пользователей, как прямой указатель на&nbsp;расширенное описание команды.</p>
+</div>
+<div class="block">
+	<img src="/img/cbsd_syntax1.png"></img>
+</div>
+<!--# include file="_end.html" -->

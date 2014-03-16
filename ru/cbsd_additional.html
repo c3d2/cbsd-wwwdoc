@@ -1,6 +1,6 @@
+<!--#set var="uri" value="$DOCUMENT_URI" -->
 <!--# include file="_start.html" -->
-<h1><span>Что необходимо знать о cbsd</span></h1>
-<div class="block">
+	<h1><span>Что необходимо знать о cbsd</span></h1>
 	<h2><a name="knowit"><span>Общая информация</a></cpan></h2>
 	<div class="block">
 		<p><strong>cbsd</strong> представляет из себя дополнительный уровень абстракции над <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8" target="_blank">Jail framework</a> и частью функционала FreeBSD.</p>
@@ -57,9 +57,10 @@
 		<p>Важными в плане безопасности, является каталоги <i>${workdir}/.rssh</i> и <i>${workdir}/.ssh</i>, в котором находятся приватные RSA ключи от пользователя cbsd с удаленных нодах и с локальной соответственно. Следите за тем, чтобы данные этих каталогов были недоступены для других пользователей системы. Кроме того, вам может быть интересна информация о <a href="/ru/cbsd_geli.html" target="_blank">GELI криптовании</a>. По-умолчанию, читать ключ может только системный пользователь cbsd.</p>
 		<p>И наконец в-третьих, обязательно ознакомьтесь с модификациями, которые производит cbsd в вашей конфигурации: <a href="custom_freecbsd.html">Модификации, которые выполняют скрипты cbsd в FreeBSD</a></p>
 	</div>
+	
 	<h2><a name="hier"><span>Иерархия cbsd каталога</cpan></a></h2>
 	<div class="block">
-		<table border=1>
+		<table class="images">
 			<tr><td>${workdir}/.rssh/</td><td>Каталог для хранения приватных ключей удаленных нод. Файлы добавляются и удаляются через команду <strong>cbsd node</strong></td></tr>
 			<tr><td>${workdir}/.ssh</td><td>Здесь хранится приватный и публичный ключ непосредственно данной ноды. Формируется на этапе инициализации при команде cbsd initenv. Именно отсюда будут забирать публичный ключ удаленные хосты по команде cbsd node mode=add. Имя, заданное на этапе initenv в вопросе nodename должен совпадать с написанием  имени в аргументе node= при команде cbsd node mode=add. Имя файла ключа является md5 суммой от этого имени.</td></tr>
 			<tr><td>${workdir}/basejail</td><td>Здесь хранятся готовые к использованию базы и ядра FreeBSD (результат cbsd buildworld/buildkernel, cbsd installworld/installkernel или cbsd repo action=get sources=base/kernel)</td></tr>
@@ -74,10 +75,12 @@
 			<tr><td>/usr/local/cbsd</td><td>Копия оригинальных файлов cbsd устанавливаемая портом. Также, содержит рабочие скрипты в каталоге <strong>sudoexec</strong></td></tr>
 		</table>
 	</div>
+	
 	<h2><a name="traffic"><span>Подсчет трафика jail</cpan></a></h2>
 	<div class="block">
 		<p>В данный момент, для подсчета трафика jail используются правила <strong>count</strong> у фильтра <strong>ipfw</strong>. <strong>cbsd</strong> назначает для счетчиков номера правил из диапазона <strong>99 - 2000</strong> (можно изменить в cbsd.conf). Поэтому будьте внимательны и следите за тем, чтобы ваши правила IPFW следовали после указанного диапазона.</p>
 	</div>
+	
 	<h2><a name="color"><span>ANSII Color</span></a></h2>
 	<div class="block">
 		<p>По-умолчанию, <strong>cbsd</strong> выводит текст в цвете (используя управляющие последовательности ANSII). Если по каким-то причинам цвет неприятен, либо вы используете вывод от утилит cbsd в своих скриптах, которым последовательность ANSII мешает, вы можете запретить цвет через переменную окружения NOCOLOR=1. Например, команда</p>
@@ -86,6 +89,7 @@
 		</pre>
 		запретит использование цвета при выводе заголовка.
 	</div>
+	
 	<h2><a name="troubles"><span>Если что-то пошло не так</span></a></h2>
 	<div class="block">
 		<p>В случае, если при выполнении утилит <strong>cbsd</strong> возникают ошибки, рекомендуется оформить проблему в баг-трекере проекта: <a href="https://github.com/olevole/cbsd/issues">cbsd issues</a> или сообщить об ошибке по email: <strong>cbsd</strong> <i>at</i> <strong>bsdstore.ru</strong></p>
@@ -100,5 +104,4 @@
 		</pre>
 		<p>вы вернете клетку в общий пул и рабочее состояние.</p>
 	</div>
-</div>
 <!--# include file="_end.html" -->
