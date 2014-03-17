@@ -121,7 +121,7 @@ a#orphus img {
 }
 #referat {
 	text-align:center;
-	margin-bottom:30px;
+	margin-bottom:10px;
 	padding:6px;
 }
 #referat a {
@@ -290,7 +290,7 @@ table.images tr:last-child td {
 }
 .warning {
 	background:url(http://www.iconsearch.ru/uploads/icons/realistik-new/32x32/messagebox_warning.png) no-repeat 0 50%;
-	margin:-10px 10px 10px 20px;
+	margin:10px 10px 10px 20px;
 	padding:10px 10px 10px 50px;
 	line-height:140%;
 }
