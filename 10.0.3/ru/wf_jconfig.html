@@ -1,107 +1,85 @@
-<b>Команды</b>:<br>
-<pre>
-% cbsd jconfig
-% cbsd jset
-</pre>
+<div class="block">
+	<strong>Команды</strong>:<br>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jconfig
+		% cbsd jset
+	</pre>
+	<p><strong>Описание</strong>:</p>
+	<p>Конфигурирование параметров jail</p>
+	<p>Каждая клетка cbsd хранит настройки в SQLite3 базе. Помимо этого, в каталоге <em><strong>$workdir/jails-fstab/</strong></em> могут быть fstab файлы (см. ниже). Для изменения настроек клетки может служить команда <strong>cbsd jconfig</strong>, запускающая TUI меню для изменения основных параметров.</p>
+</div>
+<h2><a name="ip">IP адреса клеток</a></h2>
+<div class="block">
+	<p>IP адреса, которые привязываются к клетке, указываются в параметре <strong>ip4_addr</strong>. В качестве IP могут выступать как IPv4, так и IPv6 адреса. При запуске и останове клетки, работа с IP может проходить в двух режимах:</p>
+	<ul>
+		<li>автоматическое создание на-лету IP адресов для клетки в момент запуска и автоматическое удаление IP с интерфейса при останове</li>
+		<li>использование ранее иницииализированных IP адресов. </li>
+	</ul>
+	<p>Если клетке назначаются более одного адреса, они должны быть указаны через запятую без пробелов. IP могут содержать префикс сети, указанный через IP/<strong>prefix</strong>. По-умолчанию, alias создается с префиксом /32, что может не подходить, если jail использует подсеть отдельную от сети сервера - в этом случае, корректный <strong>/prefix</strong> необходим.</p>
+	<p><strong>interface</strong> является параметром, который управляющий этим поведением. Если он установлен в значение 0, то при <strong>jstart</strong> и <strong>jstop</strong> не будут вызываться ifconfig alias и ifconfig -alias соответственно. Если его значение равно <strong>auto</strong> или имени физического интерфейса (например <strong>bce0</strong>), то  перед запуском клетки будет вызвана команда</p>
+	<pre class="brush:bash;ruler:true;">
+		ifconfig <em>alias</em> <strong>interface</strong> <strong>ips</strong>,
+	</pre>
+	<p>а при остановке - </p>
+	<pre class="brush:bash;ruler:true;">
+		ifconfig <strong>inteface</strong> <strong>ips</strong> <em>-alias</em>
+	</pre>
+	<p>Будьте предельно аккуратны с этим параметром. Если в наличие есть только 1 IP сервера, который используется и основной системой и этот же IP назначается клетке, убедитесь, что <strong>interface</strong> выставлен в значение <strong>0</strong>, иначе при остановки клетки, единственный ip адрес сервера будет удален автоматически и сервер станет недоступен. Например, чтобы запустить конфигуратор для клетки jail1, выполните:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jconfig jname=jail1
+	</pre>
+</div>
+<h2><a name="fstab">Монтирование файловых систем в jail</a></h2>
+<div class="block">
+	<p>Каждый jail может иметь свой fstab файл, в котором перечисляются файловые системы, монтирующиеся в jail при запуске клетки.  Системные записи (ими управляет cbsd и править этот файл ненадо) располагаются в файле <em><strong>$workdir/jails-fstab/</strong>fstab.name</em> и совпадает по синтаксису с форматом системного файла <strong>/etc/fstab</strong> с тем исключением,  что в качестве точки монтирования указывается путь относительно корня JAIL, а не мастер системы. Для пользовательских записей, вы можете использовать файл в том же каталоге с расширением <em>.local</em>. Например, если вы хотите сделать между клетками jail1 и jail2 один общий каталог (через nullfs), который физически расположен в мастер ноде (например <em>/usr/home/sharefs</em>), в файлах <em><strong>$workdir/jails-fstab/</strong>fstab.jail1.local</em> и <em><strong>$workdir/jails-fstab/</strong>fstab.jail2.local</em> должна присутствовать строчка:</p>
+	<pre class="brush:bash;ruler:true;">
+		/usr/home/sharefs /usr/home/sharefs nullfs rw 0 0
+	</pre>
+	<p>если вы хотите смонтировать в каталог /tmp клетки jail1 <strong>tmpfs</strong> (те, фактически в /usr/jails/jails/jail1/tmp), то запись в <em><strong>$workdir/jails-fstab/</strong>fstab.jail1.local</em> должна выглядить так:</p>
+	<pre class="brush:bash;ruler:true;">
+		tmpfs /tmp tmpfs rw 0 0
+	</pre>
+	<p>Если вы хотите смонтировать в jail2 каталог из jail1, путь к jail1 должен указывать на каталог содержащий данные jail1 (а их точки монтирования ${workdir}/jails/jail1). Например запись в <em><strong>$workdir/jails-fstab/</strong>fstab.jail2.local</em>:</p>
+	<pre class="brush:bash;ruler:true;">
+		/usr/jails/jails-data/jail1-data/usr/local/www /usr/local/www nullfs ro 0 0
+	</pre>
+	<p>Сделает каталог /usr/local/www между jail1 и jail2 общим, но в jail2 он будет в режиме read-only</p>
+</div>
+<h2><a name="allow_zfs">Презентация ZFS файловых систем в jail</a></h2>
+<div class="block">
+	<p>Если вы хотите привязать отдельные ZFS файловые системы в jail ( тоесть, хотите иметь возможности внутри jail выполнить zfs mount ),  список ZFS необходимо перечислить в <em><strong>$workdir/jails-fstab/</strong>fstab.$jname.local</em> файле, указав в поле FStype ключевое слово zfs. Например, если вы хотите презентовать файловую систему ZFS: <strong>zroot/jail1_webfs</strong> для клетки jail1, запись в <em><strong>$workdir/jails-fstab/</strong>fstab.jail1.local</em> должна выглядеть так:</p>
+		<pre class="brush:bash;ruler:true;">
+		zroot/jail1_webfs /usr/home/web zfs rw 0 0
+	</pre>
+	<p><em>Примечание:</em> точка монтирования (/usr/home/web в данном примере) роли не играет</p>
+	<p><em>Примечание2:</em> клетка должна иметь параметр <em>allow_zfs</em> установленным в 1, что можно сделать через <strong>cbsd jconfig jname=$jname</strong></p>
+	<p>Фактически, это заставляет cbsd выполнить команды:</p>
+	<pre class="brush:bash;ruler:true;">
+		% zfs set jailed=on $FS
+		% zfs jail $jname $FS
+		</pre>
+	<p>при старте клетки, и</p>
+	<pre class="brush:bash;ruler:true;">
+		% zfs set jailed=off $FS
+		% zfs unjail $jname $FS
+	</pre>
+	<p>при ее остановке.</p>
+</div>
+<h2><a name="jset">Изменение параметров через jset</a></h2>
+<div class="block">
+	<p>Другая возможность изменить определенные параметры клетки - воспользоваться командой <strong>cbsd jset</strong> Полный список возможных аргументов можно получить через <em>--help</em>:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jget --help
+	</pre>
+	<p>Например, поменять ip адрес для клетки jail1:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jset jname=jail1 ip4_addr="10.0.0.20/24,192.168.0.20/24" 
+	</pre>
+</div>
+<div class="block">
+	<p><em>cbsd jconfig jname=jail2</em></p>
+	<p><img src="/img/jconfig1.png"></img></p>
+	<p><em>cbsd jset</em></p>
+	<p><img src="/img/jconfig2.png"></img></p>
+</div>
 
-<b>Описание</b>:
-Конфигурирование параметров jail
-<br>
-<p>Каждая клетка cbsd хранит настройки в SQLite3 базе. Помимо этого, в каталоге <i><b>$workdir/jails-fstab/</b></i> могут быть fstab файлы (см. ниже).
-Для изменения настроек клетки может служить команда <b>cbsd jconfig</b>, запускающая TUI меню для изменения основных параметров.
-<h3>IP адреса клеток</h3>
-IP адреса, которые привязываются к клетке, указываются в параметре <b>ip4_addr</b>.
-В качестве IP могут выступать как IPv4, так и IPv6 адреса. При запуске и останове клетки, работа с IP может проходить в двух режимах:<br><br>
-<li>автоматическое создание на-лету IP адресов для клетки в момент запуска и автоматическое удаление IP с интерфейса при останове
-<li>использование ранее иницииализированных IP адресов. 
-<p>
-Если клетке назначаются более одного адреса, они должны быть указаны через запятую без пробелов. IP могут содержать префикс сети, указанный
-через IP/<b>prefix</b>. По-умолчанию, alias создается с префиксом /32, что может не подходить, если jail использует подсеть отдельную от сети сервера - в
-этом случае, корректный <b>/prefix</b> необходим.
-<p>
-<b>interface</b> является параметром, который управляющий этим поведением. Если он установлен в значение 0, то при <b>jstart</b> и <b>jstop</b> не будут вызываться
-ifconfig alias и ifconfig -alias соответственно. Если его значение равно <b>auto</b> или имени физического интерфейса (например <b>bce0</b>), то 
-перед запуском клетки будет вызвана команда 
-<pre>
-ifconfig <i>alias</i> <b>interface</b> <b>ips</b>,
-</pre>
-а при остановке - 
-<pre>
-ifconfig <b>inteface</b> <b>ips</b> <i>-alias</i>
-</pre>
-Будьте предельно аккуратны с этим параметром. Если в наличие есть только 1 IP сервера, который используется и основной системой и этот же IP назначается клетке, убедитесь,
-что <b>interface</b> выставлен в значение <b>0</b>, иначе при остановки клетки, единственный ip адрес сервера будет удален автоматически и сервер станет недоступен.
-<br><br>
-Например, чтобы запустить конфигуратор для клетки jail1, выполните:<br>
-<pre>
-    % cbsd jconfig jname=jail1
-</pre>
-
-<h3>Монтирование файловых систем в jail</h3>
-
-Каждый jail может иметь свой fstab файл, в котором перечисляются файловые системы, монтирующиеся в jail при запуске клетки. 
-Системные записи (ими управляет cbsd и править этот файл ненадо) располагаются в файле <i><b>$workdir/jails-fstab/</b>fstab.name</i> и совпадает по синтаксису с форматом системного файла <b>/etc/fstab</b> с тем исключением, 
-что в качестве точки монтирования указывается путь относительно корня JAIL, а не мастер системы. 
-<br>
-Для пользовательских записей, вы можете использовать файл в том же каталоге с расширением <i>.local</i>. Например, если вы хотите сделать между клетками jail1 и jail2 один общий каталог (через nullfs), который
-физически расположен в мастер ноде (например <i>/usr/home/sharefs</i>), в файлах <i><b>$workdir/jails-fstab/</b>fstab.jail1.local</i> и <i><b>$workdir/jails-fstab/</b>fstab.jail2.local</i> должна присутствовать строчка:
-<pre>
-/usr/home/sharefs /usr/home/sharefs nullfs rw 0 0
-</pre>
-если вы хотите смонтировать в каталог /tmp клетки jail1 <b>tmpfs</b> (те, фактически в /usr/jails/jails/jail1/tmp), то запись в 
-<i><b>$workdir/jails-fstab/</b>fstab.jail1.local</i> должна выглядить так:
-<pre>
-tmpfs /tmp tmpfs rw 0 0
-</pre>
-Если вы хотите смонтировать в jail2 каталог из jail1, путь к jail1 должен указывать на каталог содержащий данные jail1 (а их точки монтирования ${workdir}/jails/jail1). Например запись в
-<i><b>$workdir/jails-fstab/</b>fstab.jail2.local</i>:
-<pre>
-/usr/jails/jails-data/jail1-data/usr/local/www /usr/local/www nullfs ro 0 0
-</pre>
-Сделает каталог /usr/local/www между jail1 и jail2 общим, но в jail2 он будет в режиме read-only
-<br>
-<h3>Презентация ZFS файловых систем в jail</h3>
-<br>
-Если вы хотите привязать отдельные ZFS файловые системы в jail ( тоесть, хотите иметь возможности внутри jail выполнить zfs mount ), 
-список ZFS необходимо перечислить в <i><b>$workdir/jails-fstab/</b>fstab.$jname.local</i> файле, указав в поле FStype ключевое слово zfs.
-<br>
-Например, если вы хотите презентовать файловую систему ZFS: <b>zroot/jail1_webfs</b> для клетки jail1, запись в <i><b>$workdir/jails-fstab/</b>fstab.jail1.local</i>
-должна выглядеть так:
-<pre>
-zroot/jail1_webfs /usr/home/web zfs rw 0 0
-</pre>
-<i>Примечание:</i> точка монтирования (/usr/home/web в данном примере) роли не играет
-<i>Примечание2:</i> клетка должна иметь параметр <i>allow_zfs</i> установленным в 1, что можно сделать через <b>cbsd jconfig jname=$jname</b>
-Фактически, это заставляет cbsd выполнить команды:
-<pre>
-% zfs set jailed=on $FS
-% zfs jail $jname $FS
-</pre>
-при старте клетки, и 
-<pre>
-% zfs set jailed=off $FS
-% zfs unjail $jname $FS
-</pre>
-при ее остановке.
-<br>
-<h3>Изменение параметров через jset</h3>
-<br>
-Другая возможность изменить определенные параметры клетки - воспользоваться командой <b>cbsd jset</b>
-Полный список возможных аргументов можно получить через <i>--help</i>:
-<pre>
-     % cbsd jget --help
-</pre>
-Например, поменять ip адрес для клетки jail1:
-<pre>
-    % cbsd jset jname=jail1 ip4_addr="10.0.0.20/24,192.168.0.20/24" 
-</pre>
-<br><br><center>
-<i>cbsd jconfig jname=jail2</i>
-<br>
-<img src="/html/img/jconfig1.png"></img>
-<br><br>
-<i>cbsd jset</i>
-<br>
-<img src="/html/img/jconfig2.png"></img>
-<br><br>
-</center>
