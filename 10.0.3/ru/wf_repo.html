@@ -1,49 +1,47 @@
-<div class="block">
-	<p><strong>Команды</strong>:</p>
-	<pre class="brush:bash;ruler:true;">
-		% cbsd repo
-	</pre>
-	<pre class="brush:bash;ruler:true;">
-		% cbsd repo-tui
-	</pre>
-</div>
-<div class="block">
-	<p><strong>Описание</strong>:</p>
-	<p>Работа с репозиторием баз, ядер и клеток. Количество репозиторий может быть больше одного и они указываются через пробел в переменной repo файла <em>$workdir/nc.inventory</em>. Скачивание будет происходить с первого репозитория, где объект найдет. Соотв., если используется свой локальный репозиторий - он должен быть первым.</p>
-	<p>Обязательные аргументы:</p>
-	<ul>
-		<li><strong>action</strong> - может принимать значение <em>list</em> (получить список), <em>get</em> (скачать), <em>put</em> (закачать)</li>
-	</ul>
-	<p>Аргументы, которые в некоторых случаях не являются обязательными:</p>
-	<ul>
-		<li><strong>sources</strong> - источник для <strong>action</strong> - с какими данными хотим работать. Может принимать значения:
-			<ul>
-				<li><em>src</em> - исходный код ОС (${workdir}/src)</li>
-				<li><em>obj</em> - обьектные файлы ($workdir}/obj)</li>
-				<li><em>base</em> - базы ($workdir/base)</li>
-				<li><em>kernel</em> - ядра ОС (${workdir}/base)</li>
-				<li><em>img</em> - клетки</li>
-			</ul>
-		</li>
-		<li><strong>name</strong> - имя (используется при sources=obj,base,kernel,img - имя базы/ядра или клетки)</li>
-		<li><strong>stable</strong> - параметр относится к sources=obj,base - взять RELENG_X вместо RELENG_X_Y</li>
-		<li><strong>ver</strong> - По-умолчанию, для получения списка или скачивания будет использоватся текущая версия ОС. С параметром ver=X.Y можно указать  другую версию для клеток/базы. При ver=any для action=list, будут выводится все доступные данные sources для всех версий</li>
-	</ul>
-	<p><strong>Пример</strong>:</p>
-	<p>Получение списка имеющихся клеток для 9.1 версии</p>
-	<pre class="brush:bash;ruler:true;">
-		% cbsd repo action=list sources=img ver=9.1
-	</pre>
-	<p>И скачиваем клетку kfreebsd:</p>
-	<pre class="brush:bash;ruler:true;">
-		% cbsd repo action=get sources=img name=kfreebsd
-	</pre>
-</div>
-<div class="block">
-	<p><img src="/img/repo1.png"></img></p>
-	<p>По окончании импорта будет задан вопрос о корректном IP для новой клетки и создавать ли alias автоматичечки. Выбираем COMMIT для сохранения.</p>
-	<p><img src="/img/repo2.png"></img></p>
-	<p>Клетка в системе и можно пользоваться<br></p>
-	<p><img src="/img/repo3.png"></img></p>
-</div>
+	<div class="block">
+		<p><strong>Команды</strong>:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo
+		</pre>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo-tui
+		</pre>
+		<p>&nbsp;</p>
+		<p><strong>Описание</strong>:</p>
+		<p>Работа с репозиторием баз, ядер и клеток. Количество репозиторий может быть больше одного и они указываются через пробел в переменной repo файла <em>$workdir/nc.inventory</em>. Скачивание будет происходить с первого репозитория, где объект найдет. Соотв., если используется свой локальный репозиторий - он должен быть первым.</p>
+		<p>Обязательные аргументы:</p>
+		<ul>
+			<li><strong>action</strong> - может принимать значение <em>list</em> (получить список), <em>get</em> (скачать), <em>put</em> (закачать)</li>
+		</ul>
+		<p>Аргументы, которые в некоторых случаях не являются обязательными:</p>
+		<ul>
+			<li><strong>sources</strong> - источник для <strong>action</strong> - с какими данными хотим работать. Может принимать значения:
+				<ul>
+					<li><em>src</em> - исходный код ОС (${workdir}/src)</li>
+					<li><em>obj</em> - обьектные файлы ($workdir}/obj)</li>
+					<li><em>base</em> - базы ($workdir/base)</li>
+					<li><em>kernel</em> - ядра ОС (${workdir}/base)</li>
+					<li><em>img</em> - клетки</li>
+				</ul>
+			</li>
+			<li><strong>name</strong> - имя (используется при sources=obj,base,kernel,img - имя базы/ядра или клетки)</li>
+			<li><strong>stable</strong> - параметр относится к sources=obj,base - взять RELENG_X вместо RELENG_X_Y</li>
+			<li><strong>ver</strong> - По-умолчанию, для получения списка или скачивания будет использоватся текущая версия ОС. С параметром ver=X.Y можно указать  другую версию для клеток/базы. При ver=any для action=list, будут выводится все доступные данные sources для всех версий</li>
+		</ul>
+		<p><strong>Пример</strong>:</p>
+		<p>Получение списка имеющихся клеток для 9.1 версии</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=list sources=img ver=9.1
+		</pre>
+		<p>И скачиваем клетку kfreebsd:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=kfreebsd
+		</pre>
+		<p>&nbsp;</p>
+		<p class="text-center"><img src="/img/repo1.png" /></p>
+		<p>По окончании импорта будет задан вопрос о корректном IP для новой клетки и создавать ли alias автоматичечки. Выбираем COMMIT для сохранения.</p>
+		<p class="text-center"><img src="/img/repo2.png" /></p>
+		<p>Клетка в системе и можно пользоваться<br></p>
+		<p class="text-center"><img src="/img/repo3.png" /></p>
+	</div>
 
