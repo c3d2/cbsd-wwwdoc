@@ -61,18 +61,18 @@
 	<h2><a name="hier"><span>Иерархия cbsd каталога</cpan></a></h2>
 	<div class="block">
 		<table class="images">
-			<tr><td>${workdir}/.rssh/</td><td>Каталог для хранения приватных ключей удаленных нод. Файлы добавляются и удаляются через команду <strong>cbsd node</strong></td></tr>
-			<tr><td>${workdir}/.ssh</td><td>Здесь хранится приватный и публичный ключ непосредственно данной ноды. Формируется на этапе инициализации при команде cbsd initenv. Именно отсюда будут забирать публичный ключ удаленные хосты по команде cbsd node mode=add. Имя, заданное на этапе initenv в вопросе nodename должен совпадать с написанием  имени в аргументе node= при команде cbsd node mode=add. Имя файла ключа является md5 суммой от этого имени.</td></tr>
-			<tr><td>${workdir}/basejail</td><td>Здесь хранятся готовые к использованию базы и ядра FreeBSD (результат cbsd buildworld/buildkernel, cbsd installworld/installkernel или cbsd repo action=get sources=base/kernel)</td></tr>
-			<tr><td>${workdir}/etc</td><td>Конфигурационные файлы, необходимые для работы cbsd</td></tr>
-			<tr><td>${workdir}/export</td><td>Каталог по-умолчанию, в который будет сохраняться экспортированная в файл клетка (при команде cbsd jexport jname=$jname, в этом каталоге появится файл $jname.img)</td></tr>
-			<tr><td>${workdir}/import</td><td>Каталог по-умолчанию, из которого будет импортирован jail (при cbsd jimport jname=$jname, будет развернута клета $jname)</td></tr>
-			<tr><td>${workdir}/jails</td><td>В данном каталоге находятся точка монтирования корня для jail-ов, использующих baserw=0.</td></tr>
-			<tr><td>${workdir}/jails-data</td><td>В этом каталоге лежат данные клетки. Именно этим местам необходим бекап для сохранности данных клетки. Также, если клетка использует baserw=1, эти каталоги являются корнем клетки при ее старте</td></tr>
-			<tr><td>${workdir}/jails-fstab</td><td>fstab файл для клеток. Синтаксис обычный для FreeBSD за тем лишь исключением, что путь к точке монтирования пишется относительно корня jail (запись <strong>/usr/ports /usr/ports nullfs rw 0 0</strong> в файле fstab.$jname означает, что из мастер-ноды каталог /usr/ports будет примонтирован при запуске в ${workdir}/jails/$jname/usr/ports)</td></tr>
-			<tr><td>${workdir}/jails-system</td><td>Этот каталог может содержать какие-то вспомогательные скрипты, относящиеся к клетке (например скрипты-wizard-ы для настройки, конфигураторы и пр) а также, сохраняется трафик клетки, если используется ipfw и ее описание. Данный каталог учавствует при jimport/jexport операциях и мигрировании клеток</td></tr>
-			<tr><td>${workdir}/var</td><td>Каталог который содержит различную системную информацию cbsd. Например, в ${workdir}/var/db находится инвентаризация локальных и удаленных нод если они были добавлены</td></tr>
-			<tr><td>/usr/local/cbsd</td><td>Копия оригинальных файлов cbsd устанавливаемая портом. Также, содержит рабочие скрипты в каталоге <strong>sudoexec</strong></td></tr>
+			<tr><td class="bg-gray">${workdir}/.rssh/</td><td>Каталог для хранения приватных ключей удаленных нод. Файлы добавляются и удаляются через команду <strong>cbsd node</strong></td></tr>
+			<tr><td class="bg-gray">${workdir}/.ssh</td><td>Здесь хранится приватный и публичный ключ непосредственно данной ноды. Формируется на этапе инициализации при команде cbsd initenv. Именно отсюда будут забирать публичный ключ удаленные хосты по команде cbsd node mode=add. Имя, заданное на этапе initenv в вопросе nodename должен совпадать с написанием  имени в аргументе node= при команде cbsd node mode=add. Имя файла ключа является md5 суммой от этого имени.</td></tr>
+			<tr><td class="bg-gray">${workdir}/basejail</td><td>Здесь хранятся готовые к использованию базы и ядра FreeBSD (результат cbsd buildworld/buildkernel, cbsd installworld/installkernel или cbsd repo action=get sources=base/kernel)</td></tr>
+			<tr><td class="bg-gray">${workdir}/etc</td><td>Конфигурационные файлы, необходимые для работы cbsd</td></tr>
+			<tr><td class="bg-gray">${workdir}/export</td><td>Каталог по-умолчанию, в который будет сохраняться экспортированная в файл клетка (при команде cbsd jexport jname=$jname, в этом каталоге появится файл $jname.img)</td></tr>
+			<tr><td class="bg-gray">${workdir}/import</td><td>Каталог по-умолчанию, из которого будет импортирован jail (при cbsd jimport jname=$jname, будет развернута клета $jname)</td></tr>
+			<tr><td class="bg-gray">${workdir}/jails</td><td>В данном каталоге находятся точка монтирования корня для jail-ов, использующих baserw=0.</td></tr>
+			<tr><td class="bg-gray">${workdir}/jails-data</td><td>В этом каталоге лежат данные клетки. Именно этим местам необходим бекап для сохранности данных клетки. Также, если клетка использует baserw=1, эти каталоги являются корнем клетки при ее старте</td></tr>
+			<tr><td class="bg-gray">${workdir}/jails-fstab</td><td>fstab файл для клеток. Синтаксис обычный для FreeBSD за тем лишь исключением, что путь к точке монтирования пишется относительно корня jail (запись <strong>/usr/ports /usr/ports nullfs rw 0 0</strong> в файле fstab.$jname означает, что из мастер-ноды каталог /usr/ports будет примонтирован при запуске в ${workdir}/jails/$jname/usr/ports)</td></tr>
+			<tr><td class="bg-gray">${workdir}/jails-system</td><td>Этот каталог может содержать какие-то вспомогательные скрипты, относящиеся к клетке (например скрипты-wizard-ы для настройки, конфигураторы и пр) а также, сохраняется трафик клетки, если используется ipfw и ее описание. Данный каталог учавствует при jimport/jexport операциях и мигрировании клеток</td></tr>
+			<tr><td class="bg-gray">${workdir}/var</td><td>Каталог который содержит различную системную информацию cbsd. Например, в ${workdir}/var/db находится инвентаризация локальных и удаленных нод если они были добавлены</td></tr>
+			<tr><td class="bg-gray">/usr/local/cbsd</td><td>Копия оригинальных файлов cbsd устанавливаемая портом. Также, содержит рабочие скрипты в каталоге <strong>sudoexec</strong></td></tr>
 		</table>
 	</div>
 	
