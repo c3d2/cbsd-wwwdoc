@@ -81,7 +81,7 @@
 		* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&1
 		0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&1
 	</pre>
-	<p>в пользовательский cron tab для пользователя <strong>root</strong> (/var/cron/tabs/root). Пользовательский cron tab, вместо системного, используется по соображениям, описанными в <a href="html/articles/upgrade_for_fun.html">Не бойтесь mergemaster</a>. Если вы не хотите чтобы подобны вызовы тревожили вашу систему, вызовите редактор cron tab через команду:</p>
+	<p>в пользовательский cron tab для пользователя <strong>root</strong> (/var/cron/tabs/root). Пользовательский cron tab, вместо системного, используется по соображениям, описанными в <a href="html/articles/upgrade_for_fun.html" target="_blank">Не бойтесь mergemaster</a>. Если вы не хотите чтобы подобны вызовы тревожили вашу систему, вызовите редактор cron tab через команду:</p>
 	<pre class="brush:bash;ruler:true;">
 		% crontab -e
 	</pre>
