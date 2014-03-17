@@ -1,24 +1,17 @@
-<b>Команды</b>:<br>
-<pre>
-% cbsd jimport
-</pre>
-<b>Описание</b>:
-<br><br>
-Импортировать из имиджа (*.img) клетку. В качестве аргумента <b>jname</b> указывается полный путь к файлу или имя имиджа (без расширения .<b>img</b>), который должен находится в соответствующем каталоге (<b><i>$workdir/import</i></b>). <b>img</b>-файл после импорта остается на месте.
-<br>
-Дополнительно, вы можете импортировать клетку из образа в альтернативное имя (например, вы хотите развернуть клетку jail1 из образа jail1.img, однако в вашей системе уже имеется клетка с таким именем). В этом случае, используйте аргумент <b>newjname</b>
-<br><br>
-<b>Пример:</b> Импортировать имидж из файла <i>/tmp/mysqljail.img</i>:
-<br>
-<pre>
-    % cbsd jimport jname=/tmp/mysqljail.img
-</pre>
-<b>Пример:</b> Импортировать образ jail2.img находящийся в <i>$workdir/import</i> под новым именем <b>jail5</b>:
-<pre>
-   % cbsd jimport jname=jail2 newjname=jail5 
-</pre>
-<br><center>
-<img src="/html/img/jimport1.png"></img>
-<br><br>
-</center>
-</p>
+<strong>Команды</strong>:<br>
+<div class="block">
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jimport
+	</pre>
+	<strong>Описание</strong>:
+	<p>Импортировать из имиджа (*.img) клетку. В качестве аргумента <strong>jname</strong> указывается полный путь к файлу или имя имиджа (без расширения .<strong>img</strong>), который должен находится в соответствующем каталоге (<strong><em>$workdir/import</em></strong>). <strong>img</strong>-файл после импорта остается на месте. Дополнительно, вы можете импортировать клетку из образа в альтернативное имя (например, вы хотите развернуть клетку jail1 из образа jail1.img, однако в вашей системе уже имеется клетка с таким именем). В этом случае, используйте аргумент <strong>newjname</strong></p>
+	<p><strong>Пример:</strong> Импортировать имидж из файла <em>/tmp/mysqljail.img</em>:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jimport jname=/tmp/mysqljail.img
+	</pre>
+	<p><strong>Пример:</strong> Импортировать образ jail2.img находящийся в <em>$workdir/import</em> под новым именем <strong>jail5</strong>:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jimport jname=jail2 newjname=jail5 
+	</pre>
+	<p class="text-align"><img src="/img/jimport1.png"></img></p>
+</div>

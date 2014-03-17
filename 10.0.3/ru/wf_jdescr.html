@@ -1,38 +1,22 @@
-<b>Команды</b>:<br>
-<pre>
-% cbsd jdescr
-</pre>
-<b>Описание</b>:
-<br><br>
-Для каждой клетки можно ввести какое-то описание/аннотацию, что может быть использовано различными админками для построения динамической документации.
-<br><br>
-<b>cbsd jdescr</b> без параметров выводит описание для всех клеток на ноде.
-<br><br>
-Команда<br>
-<pre>
-% cbsd jdescr mode=update jname=jname
-</pre>
-запустит редактор <b>nvi</b> в режиме редактирования описания.
-<br><br>Через параметр <b>editor</b> можно указать альтернативный редактор, например <b>vim</b>, <b>mcedit</b> и тп.
-<br><br>
-Описание хранится в ASCII-файле, сохраняемый в каталоге $workdir/jails-system/<b>jname</b>/descr, где <b>jname</b> - имя редактируемой клетки.
-Соответственно, файл можно просто скопировать. 
-<br><br>Поскольку каталог jails-system учавствует в <b>jcoldmigrate, jclone, jimport/export</b> и тп операциях, 
-описание будет сохраняться.
-<br><br>
-<b>Пример</b> (запустить редактор mcedit для редактирования описания клетки kde4 на русском языке в UTF8):
-<pre>
-% setenv LANG ru_RU.UTF-8
-% cbsd jdescr jname=kde4 editor=mcedit mode=update
-<br>
-Подобные описания рекомендуется взять за правило при заведении клеток, если их количество большое. Впоследствии, удобно агрегировать данную
-информацию в каких-то своих dashboard и построения карты jail-ов. К примеру, таким простым скриптиком: <a href="/misc/jmap2html.sh">jmap2html.sh</a>
-получается HTML страница вида <a href="dashboard/index.html">dashboard sample</a>, где по наведению на название клетки выводится описание, а ссылка
-на имя клетки ведет на список ПО клетки.
-<br><br><center>
-<img src="/html/img/jdescr1.png"></img>
-<br><br>
-<img src="/html/img/jdescr2.png"></img>
-<br><br>
-</center>
-</p>
+<div class="block">
+	<strong>Команды</strong>:<br>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jdescr
+	</pre>
+	<strong>Описание</strong>:
+	<p>Для каждой клетки можно ввести какое-то описание/аннотацию, что может быть использовано различными админками для построения динамической документации. <strong>cbsd jdescr</strong> без параметров выводит описание для всех клеток на ноде.</p>
+	<p>Команда</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jdescr mode=update jname=jname
+	</pre>
+	<p>запустит редактор <strong>nvi</strong> в режиме редактирования описания. Через параметр <strong>editor</strong> можно указать альтернативный редактор, например <strong>vim</strong>, <strong>mcedit</strong> и тп. Описание хранится в ASCII-файле, сохраняемый в каталоге $workdir/jails-system/<strong>jname</strong>/descr, где <strong>jname</strong> - имя редактируемой клетки. Соответственно, файл можно просто скопировать. Поскольку каталог jails-system учавствует в <strong>jcoldmigrate, jclone, jimport/export</strong> и тп операциях,  описание будет сохраняться.</p>
+	<p><strong>Пример</strong> (запустить редактор mcedit для редактирования описания клетки kde4 на русском языке в UTF8):</p>
+	<pre class="brush:bash;ruler:true;">
+		% setenv LANG ru_RU.UTF-8
+		% cbsd jdescr jname=kde4 editor=mcedit mode=update
+	</pre>
+	<p>Подобные описания рекомендуется взять за правило при заведении клеток, если их количество большое. Впоследствии, удобно агрегировать данную информацию в каких-то своих dashboard и построения карты jail-ов. К примеру, таким простым скриптиком: <a href="/misc/jmap2html.sh" target="_blank">jmap2html.sh</a> получается HTML страница вида <a href="/misc/dashboard/index.html" target="_blank">dashboard sample</a>, где по наведению на название клетки выводится описание, а ссылка на имя клетки ведет на список ПО клетки.</p>
+	<p class="text-align"><img src="/img/jdescr1.png"></img></p>
+	<p class="text-align"><img src="/img/jdescr2.png"></img></p>
+</div>
+
