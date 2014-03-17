@@ -22,26 +22,24 @@
 		% cbsd jls --help
 	</pre>
 	<p>Результат:</p>
-	<pre>
-		[jail] List jail and status
-		require: 
-		opt: alljails shownode display node header
-		alljails=1 - get jaillist from remote node
-		shownode=1 - show nodename for jails
-		node= only for current node
-		header=0 don't print header
-		display= list by comma for column. Default: jid,jname,ip4_addr,host_hostname,path,status
-		External help: http://www.bsdstore.ru/10.0.2/html/wf_jls_en.html
+	<pre class="cli">
+	[jail] List jail and status
+	require: 
+	opt: alljails shownode display node header
+	alljails=1 - get jaillist from remote node
+	shownode=1 - show nodename for jails
+	node= only for current node
+	header=0 don't print header
+	display= list by comma for column. Default: jid,jname,ip4_addr,host_hostname,path,status
+	External help: http://www.bsdstore.ru/10.0.2/html/wf_jls_en.html
 	</pre>
 	<p>В&nbsp;первой строчке в&nbsp;квадратных скобках указывается имя модуля, к&nbsp;которому относится команда ( jail в&nbsp;данном случае ), а&nbsp;также краткая информация по&nbsp;функциям.</p>
 	<p>В&nbsp;строчке с&nbsp;<strong>require:</strong> перечисляются обязательные аргументы, без указания которых работа команды невозможна.</p>
 	<p>В&nbsp;строчке с&nbsp;<strong>opt: </strong> перечисляются необязательные аргументы ( тем не&nbsp;менее, в&nbsp;зависимости от&nbsp;режима работы утилиты, в&nbsp;разных случаях они могут быть обязательны )</p>
-	<p>В&nbsp;следующих строчках идет краткое описание аргументов, если она есть</p>
-</div>
-<div class="block">
+	<p>В&nbsp;следующих строчках идет краткое описание аргументов, если она есть.</p>
 	<p>Также, может присутствовать ссылка на&nbsp;документацию ( External help ). Она может указывать как на&nbsp;сайт, так и&nbsp;на&nbsp;локальный файл, если устанавливалась документация. Данная ссылка в&nbsp;следующих версиях будет автоматически использоваться WEB/GUI front-end для подгрузки справки, однако, это может быть полезно и&nbsp;для пользователей, как прямой указатель на&nbsp;расширенное описание команды.</p>
-</div>
-<div class="block">
-	<img src="/img/cbsd_syntax1.png"></img>
+	<p class="text-center">
+		<img src="/img/cbsd_syntax1.png" />
+	</p>
 </div>
 <!--# include file="_end.html" -->
