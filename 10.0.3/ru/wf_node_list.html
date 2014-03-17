@@ -1,20 +1,13 @@
-<b>Команды</b>:<br>
-<pre>
-% cbsd node mode=list
-</pre>
+	<div class="block">
+		<strong>Команды</strong>:<br>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd node mode=list
+		</pre>
+		<p>Команда <strong>cbsd node mode=list</strong> выведет имена тех нод, RSA ключи которых были получены через  <strong>cbsd node add</strong>. Тоже самое можно получить, просмотрев каталог <em>$workdir/.rssh</em>, в котором находятся ключи. Выведенный список не означает, что имеющийся ключ актуален или связь с нодой имеется (для этих задач есть специальный демон <strong>nodepinger</strong>)</p>
+		<p><strong>Пример:</strong></p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd node mode=list
+		</pre>
+		<p class="text-center"><img src="/img/nodelist1.png"></img></p>
+	</div>
 
-Команда <b>cbsd node mode=list</b> выведет имена тех нод, RSA ключи которых были получены через 
-<b>cbsd node add</b>. Тоже самое можно получить, просмотрев каталог <b>$workdir/.rssh</b>, в котором
-находятся ключи. Выведенный список не означает, что имеющийся ключ актуален или связь с нодой
-имеется (для этих задач есть специальный демон <b>nodepinger</b>)
-<br>
-<br><br>
-<b>Пример:</b>
-<pre>
-% cbsd node mode=list
-</pre>
-<br><center>
-<img src="/html/img/nodelist1.png"></img>
-<br><br>
-</center>
-</p>
