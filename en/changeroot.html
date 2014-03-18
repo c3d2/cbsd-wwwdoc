@@ -1,14 +1,8 @@
-<table border=1>
-<tr><td background="#EEDDCC">
-<center><p style="color:RED">Important:</p></center>
-When a new jail is created or obtaining from the repository, make it a rule ALWAYS change the user's password <b>root</b> in jail, 
-even if you do not plan to run it ssh/ftp/rsh and similar services. If the jail is created with applytpl=0, by default <i>/etc/{passwd,master.passwd,group}</i> 
- in the jail as the original "clean" files FreeBSD, so password of <b>root</b> user is empty. 
- If jail created with applytpl=1 (it also refers to images from repository) <i>$workdir/share/jail-skel</i>
-files will be used as templates where root password is <b>'cbsd'</b> in default <b>cbsd</b> installation.
-You can change default root password when new jail is created via edit of hash in skel master.passwd via
-<pre>
-% vipw -d ${workdir}/share/jail-skel/etc
-</pre>
-commands, or specify alternative path to jail-skel dir in .jconf (jcreate tools) config
-</tr></td></table>
+<div class="warning">
+	<p><strong>Important:</strong></p>
+	<p>When a new jail is created or obtaining from the repository, make it a rule ALWAYS change the user's password <strong>root</strong> in jail, even if you do not plan to run it ssh/ftp/rsh and similar services. If the jail is created with applytpl=0, by default <em>/etc/{passwd,master.passwd,group}</em> in the jail as the original "clean" files FreeBSD, so password of <strong>root</strong> user is empty.  If jail created with applytpl=1 (it also refers to images from repository) <em>$workdir/share/jail-skel</em> files will be used as templates where root password is <strong>'cbsd'</strong> in default <strong>cbsd</strong> installation. You can change default root password when new jail is created via edit of hash in skel master.passwd via
+	<pre class="brush:bash;ruler:true;">
+		% vipw -d ${workdir}/share/jail-skel/etc
+	</pre>
+	<p>commands, or specify alternative path to jail-skel dir in .jconf (jcreate tools) config</p>
+</div>
