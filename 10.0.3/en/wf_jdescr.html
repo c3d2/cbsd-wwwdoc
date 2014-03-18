@@ -1,38 +1,24 @@
-<b>Commands</b>:<br>
-<pre>
-% cbsd jdescr
-</pre>
-<b>Descriptions</b>:
-<br><br>
-Each jail can have the description/summary, that can be used to construct various dynamic documentation on admin pages.
-<br><br>
-<b>cbsd jdescr</b> without arguments just out description for all jails on the local node.
-<br><br>
-Command<br>
-<pre>
-% cbsd jdescr mode=update jname=jname
-</pre>
-run <b>nvi</b> in edit mode for description. By argument <b>editor</b> you can start alternative favorite editor for example - <b>vim</b>, <b>mcedit</b> and other.
-<br><br>
-Descriptions stored in ASCII-file, placed to <b>$workdir/jails-system/$jname/descr</b> file, where <b>jname</b> - name of jail.
-This file you can just copy.
-<br><br>
-As directory jails-system participates in jcoldmigrate, jclone, jimport/export operations, description 
-will be will remain.
-<br><br>
-<b>Example</b> (run mcedit editor for description edit for kde4 jail on russian in UTF8):
-<pre>
-% setenv LANG ru_RU.UTF-8
-% cbsd jdescr jname=kde4 editor=mcedit mode=update
-<br>
-Similar descriptions are advised to rule when jail is created, if the quantity is large. Subsequently, it is convenient to aggregate this
-information in some of their dashboard and building jail maps. For example, follow simple script: <a href="/misc/jmap2html.sh">jmap2html.sh</a>
-generate HTML page as <a href="dashboard/index.html">dashboard sample</a>, where tooltip on the jail name is displayed a description and link
-the name of the jail leads to a list of software.
-<br><br><center>
-<img src="/html/img/jdescr1.png"></img>
-<br><br>
-<img src="/html/img/jdescr2.png"></img>
-<br><br>
-</center>
-</p>
+	<h1><span>Jail description</span></h1>
+	
+	<h2><a name="jdescr_cmd">jdescr command</a></h2>
+	<div class="block">
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jdescr
+		</pre>
+		<strong>Description</strong>
+		<p>Each jail can have the description/summary, that can be used to construct various dynamic documentation on admin pages. <strong>cbsd jdescr</strong> without arguments just out description for all jails on the local node.</p>
+		<p>Command</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jdescr mode=update jname=jname
+		</pre>
+		<p>run <strong>nvi</strong> in edit mode for description. By argument <strong>editor</strong> you can start alternative favorite editor for example - <strong>vim</strong>, <strong>mcedit</strong> and other. Descriptions stored in ASCII-file, placed to <em>$workdir/jails-system/$jname/descr</em> file, where <strong>jname</strong> - name of jail. This file you can just copy. As directory jails-system participates in jcoldmigrate, jclone, jimport/export operations, description  will be will remain.</p>
+		<p><strong>Example</strong> (run mcedit editor for description edit for kde4 jail on russian in UTF8):</p>
+		<pre class="brush:bash;ruler:true;">
+			% setenv LANG ru_RU.UTF-8
+			% cbsd jdescr jname=kde4 editor=mcedit mode=update
+		</pre>
+		<p>Similar descriptions are advised to rule when jail is created, if the quantity is large. Subsequently, it is convenient to aggregate this information in some of their dashboard and building jail maps. For example, follow simple script: <a href="/misc/jmap2html.sh.html" target="_blank">jmap2html.sh.html</a> generate HTML page as <a href="/misc/dashboard/index.html" target="_blank">dashboard sample</a>, where tooltip on the jail name is displayed a description and link the name of the jail leads to a list of software.</p>
+		<p class="text-center"><img src="/img/jdescr1.png" /></p>
+		<p class="text-center"><img src="/img/jdescr2.png" /></p>
+	</div>
+
