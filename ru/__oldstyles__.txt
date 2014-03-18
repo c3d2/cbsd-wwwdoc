@@ -1,3 +1,5 @@
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
 	<link type="text/css" rel="stylesheet" href="/sh/styles/shCoreDefault.css"/>
 	<script type="text/javascript" src="/js/scripts.js"></script>
 	<script type="text/javascript" src="/sh/scripts/shCore.js"></script>

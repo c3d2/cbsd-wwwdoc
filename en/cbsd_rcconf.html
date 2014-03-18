@@ -92,7 +92,7 @@
 		<p>Also, the value can be&nbsp;set to&nbsp;the name of&nbsp;the interface, if&nbsp;you do&nbsp;not want to&nbsp;search for a&nbsp;suitable interface. For example record</p>
 		<p>interface = &laquo;igb0&raquo;</p>
 		<p>sets the&nbsp;IP address of&nbsp;the jail at&nbsp;the interface igb0.</p>
-		<p>As&nbsp;well as&nbsp;during start-up, when cbsd will sets the necessary&nbsp;IP for jail on&nbsp;interface, when you stop them cbsd unset IPs from the interface automatically. Therefore, be&nbsp;extremely careful - If&nbsp;you set by&nbsp;mistake&nbsp;IP address of&nbsp;the node for jail , then, during the cbsd jstop sequence, cbsd execute</p>
+		<p>As&nbsp;well as&nbsp;during start-up, when cbsd will sets the necessary&nbsp;IP for jail on&nbsp;interface, when you stop them cbsd unset IPs from the interface automatically. Therefore, be&nbsp;extremely careful — If&nbsp;you set by&nbsp;mistake&nbsp;IP address of&nbsp;the node for jail , then, during the cbsd jstop sequence, cbsd execute</p>
 		<p>ifconfig <iface> <ip> -alias</p>
 		<p>and a&nbsp;node will be&nbsp;lost in&nbsp;the network.</p>
 		<p>To&nbsp;the stop of&nbsp;management&nbsp;IP address, the interface= param can be&nbsp;commented out or&nbsp;removed, or&nbsp;the value is&nbsp;left blank:</p>

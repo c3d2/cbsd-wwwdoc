@@ -46,16 +46,16 @@
 				<pre class="brush:bash;rule:true">
 					% cbsd buildworld maxjobs=1
 				</pre>
-				At compilation, the personal <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&sektion=5" target="_blank">src.conf(5)</a> can be used , in which it is possible to specify standard KNOBS-y. The src.conf file should placed in the catalog $workdir/etc/ and have name <strong>src-</strong><em>basename</em><strong>.conf</strong>, where basename - any name of configuration. For example, in default cbsd installation there are file <strong>/usr/jails/etc/src-lite.conf</strong>. For base build with certain src.conf, it is necessary to specify <em>basename</em> parameter:
+				At compilation, the personal <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&sektion=5" target="_blank">src.conf(5)</a> can be used , in which it is possible to specify standard KNOBS-y. The src.conf file should placed in the catalog $workdir/etc/ and have name <strong>src-</strong><em>basename</em><strong>.conf</strong>, where basename — any name of configuration. For example, in default cbsd installation there are file <strong>/usr/jails/etc/src-lite.conf</strong>. For base build with certain src.conf, it is necessary to specify <em>basename</em> parameter:
 				<pre class="brush:bash;rule:true">
 					% cbsd buildworld basename=lite
 				</pre>
-				The next operation over building result (installworld), also should contain <em>basename=</em> parameter, as the result of building will be placed in <em>$workdir/basejail/base_$basename_$arch_$ver</em> directory, where $basename - is name of configuartion.
+				The next operation over building result (installworld), also should contain <em>basename=</em> parameter, as the result of building will be placed in <em>$workdir/basejail/base_$basename_$arch_$ver</em> directory, where $basename — is name of configuartion.
 				Other params of  buildworld:
 				<ul>
-					<li><em>ver</em>  - to specify the concrete version of source code</li>
-					<li><em>arch</em> - build for concrete architecture</li>
-					<li><em>stable</em> - build for RELENG_X branch</li>
+					<li><em>ver</em>  — to specify the concrete version of source code</li>
+					<li><em>arch</em> — build for concrete architecture</li>
+					<li><em>stable</em> — build for RELENG_X branch</li>
 				</ul>
 			</li>
 			<li>
@@ -71,8 +71,8 @@
 				</pre>
 				other params for installworld:
 				<ul>
-					<li><em>arch</em> - install for concrete architecture</li>
-					<li><em>stable</em> - install for RELENG_X branch</li>
+					<li><em>arch</em> — install for concrete architecture</li>
+					<li><em>stable</em> — install for RELENG_X branch</li>
 				</ul>
 			</li>
 		</ul>

@@ -21,13 +21,13 @@
 		<p>First, the official articles about <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/jails.html" target="_blank">FreeBSD Jails</a> required for the study to understand what is a jail in the usual way.</p>
 		<p>Secondly, it is useful to know about the file system hierarchy <strong>cbsd</strong>. Let us agree to use the following naming documentation and values:</p>
 		<ul>
-			<li><strong>Node</strong> - physical server / resource unit.</li>
-			<li><strong>Jail</strong> - isolated environment with its own set of software/services. They can be a server-side components (DNS, Apache / nginx, postfix) and graphic environment.</li>
-			<li><strong>Cloud</strong> - Farm/cluster of interconnected nodes, a full-fledged peer network (each node can do other tasks through cbsd)</li>
-			<li><strong>Base</strong> - in the cbsd content - copy of FreeBSD file base.</li>
-			<li><strong>CBSD</strong> - an entity that has control over the particular node(s) and certain subsystems of FreeBSD, is able to provide a simplified and unified action (API) on the nodes or jails and provides ACL and setting permissions for cbsd customers</li>
-			<li><strong>$workdir</strong> - working directory on cbsd node is initialized through cbsd initenv the first run. Usually <strong>/usr/jails</strong>.</li>
-			<li><strong>$jname</strong> - Name some jails, participate in the example.</li>
+			<li><strong>Node</strong> — physical server / resource unit.</li>
+			<li><strong>Jail</strong> — isolated environment with its own set of software/services. They can be a server-side components (DNS, Apache / nginx, postfix) and graphic environment.</li>
+			<li><strong>Cloud</strong> — Farm/cluster of interconnected nodes, a full-fledged peer network (each node can do other tasks through cbsd)</li>
+			<li><strong>Base</strong> — in the cbsd content — copy of FreeBSD file base.</li>
+			<li><strong>CBSD</strong> — an entity that has control over the particular node(s) and certain subsystems of FreeBSD, is able to provide a simplified and unified action (API) on the nodes or jails and provides ACL and setting permissions for cbsd customers</li>
+			<li><strong>$workdir</strong> — working directory on cbsd node is initialized through cbsd initenv the first run. Usually <strong>/usr/jails</strong>.</li>
+			<li><strong>$jname</strong> — Name some jails, participate in the example.</li>
 		</ul>
 		<p>&nbsp;</p>
 		
@@ -36,7 +36,7 @@
 			% cd ~cbsd
 		</pre>
 		<p>The most important data are located in <em>$workdir/jails-data/$jname</em>, as it is directly the root of the file system jails called </strong>$jname</strong>, if jail is created with the flag <strong>baserw=1</strong>, or contains the data of jail, which are superimposed on the standard <em>$workdir/basejail/$basename</em> in the directory <em>${workdir}/jails</em></p>
-		<p>Given that the base you can always get through the building source code, or by downloading from the repository.  The other words, cbsd jail to migrate to any other project management of jails or use the basic functionality FreeBSD jail, the main thing - is to have a consistent data in this directory.</p>
+		<p>Given that the base you can always get through the building source code, or by downloading from the repository.  The other words, cbsd jail to migrate to any other project management of jails or use the basic functionality FreeBSD jail, the main thing — is to have a consistent data in this directory.</p>
 		<p><br><em>Notes:</em> if you use a jails type md, then the directory $workdir/jails-data/$jname will contain the image of the jail.</p>
 		<p><em>Notes2:</em>If you are using ZFS and discovered that the data directories is empty (when the jail is inactive), check the output of the command:</p>
 		<pre class="brush:bash;ruler:true;">
@@ -81,7 +81,7 @@
 	
 	<h2><a name="traffic"><span>Counting traffic jail</cpan></a></h2>
 	<div class="block">
-		<p>At this point,  for counting jail traffic used <strong>count</strong> ruleset of <strong>ipfw</strong> filter. <strong>CBSD</strong> sets number of counters in <strong>99 - 2000</strong> range (you can change this in cbsd.conf). So be careful and make sure to follow your rules IPFW after a specified range.</p>
+		<p>At this point,  for counting jail traffic used <strong>count</strong> ruleset of <strong>ipfw</strong> filter. <strong>CBSD</strong> sets number of counters in <strong>99 — 2000</strong> range (you can change this in cbsd.conf). So be careful and make sure to follow your rules IPFW after a specified range.</p>
 	</div>
 	
 	<h2><a name="color"><span>ANSII Color</span></a></h2>
@@ -97,7 +97,7 @@
 	<div class="block">
 		<p>In the case when with <strong>CBSD</strong> tools errors, it is recommended to make the problem a bug-tracker of the project: If something went wrong <a href="https://github.com/olevole/cbsd/issues" target="_blank">cbsd issues</a>  or report via e-mail: <strong>cbsd</strong> <em>at</em> <strong>bsdstore.ru</strong></p>
 		<p>Please make backup copies of directory ${workdir}/var/db, ${workdir}/var/db, ${workdir}/jails-fstab, ${workdir}/jails-system regularly. And also, of course, the data of their cells <em>${workdir}/jails-data</em></p>
-		<p>If you restore jail from backup, you will need to file ${workdir}/jails-system/${jname}/rc.conf_${jname} -after return back jails-data and jails-fstab directories for this jail to $workdir directory structure, copy this rc.conf_${jname} in  ${workdir}/jails-rcconf/ directory - then, at the command</p>
+		<p>If you restore jail from backup, you will need to file ${workdir}/jails-system/${jname}/rc.conf_${jname} -after return back jails-data and jails-fstab directories for this jail to $workdir directory structure, copy this rc.conf_${jname} in  ${workdir}/jails-rcconf/ directory — then, at the command</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jls
 		</pre>
