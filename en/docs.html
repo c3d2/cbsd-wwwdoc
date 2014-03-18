@@ -1,62 +1,60 @@
 <!--#set var="uri" value="$DOCUMENT_URI" -->
 <!--# include file="_start.html" -->
 <!--# include file="translate.html" -->
-<h1><span>Documentation</span></h1>
-<h2><a name="docs">General information</a></h2>
-<div class="block">
-	<ul>
-		<li><a href="cbsd_additional.html">What you need to know about cbsd</a></li>
-		<li><a href="installing_cbsd.html">Installing cbsd</a></li>
-		<li><a href="base_cbsd.html">Building and upgrading bases (one file)</a></li>
-		<li><a href="cmdsyntax_cbsd.html">cbsd syntax</a></li>
-		<li><a href="cbsd_rcconf.html">jail settings</a></li>
-		<li><a href="cbsd_vnet.html">cbsd jail and VIMAGE (vnet)</a></li>
-		<li><a href="cbsd_qemu_usermode.html">cbsd and Qemu User mode</a></li>
-		<li><a href="cbsd_geli.html">encrypting images and cbsd</a></li>
-		<li><a href="/<!--#echo var="version" -->/en/wf_repo_ssi.html">Operation with repository (one file)</a></li>
-		<li><a href="/<!--#echo var="version" -->/em/wf_history_ssi.html">cbsd history</a> :: cbsd history</li>
-		<li><a href="custom_freecbsd.html">Modification which are carried out by cbsd scripts in FreeBSD</a></li>
-	</ul>
-</div>
-<h2><a name="jailsflow">Operation with jail</a></h2>
-<div class="block">
-	<p><a href="workflow_cbsd.html">One file</a></p>
-	<ul>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jcreate_ssi.html">jail create via dialog menu</a></td><td>:: jcreate, jconstruct-tui</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jcreate_secondary_ssi.html">other methods of creating jail</a></td><td>:: jcreate, jconstruct</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jconfig_ssi.html">jail config</a></td><td>:: jconfig</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jstop_jstart_ssi.html">starting and stoping jail</a></td><td>:: jstart, jstop, jrestart</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jremove_ssi.html">jail remove</a></td><td>:: jremove</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jrename_ssi.html">jail renaming</a></td><td>:: jrename</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jupgrade_ssi.html">jail upgrade</a></td><td>:: jupgrade</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_natcfg_ssi.html">working with NAT</a></td><td>:: natcfg, naton, natoff</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jls_ssi.html">jails list</a></td><td>:: jls</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jlogin_ssi.html">jail login</a></td><td>:: jlogin</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jget_ssi.html">work with jail parameters</a></td><td>:: jset,jget</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jclone_ssi.html">jail cloning</a></td><td>:: j[r]clone</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jsnapshot_ssi.html">jails snapshot (zfs-only)</a></td><td>:: jsnapshot</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jexport_ssi.html">jail export</a></td><td>:: jexport</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jimport_ssi.html">jail import</a></td><td>:: jimport</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jbackup_ssi.html">backup and file replication for jail</a></td><td>:: jbackup</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jdescr_ssi.html">jail description</a></td><td>:: jdescr</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jcoldmigrate_ssi.html">jail cold migration</a></td><td>:: jcoldmigrate</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jrctl_ssi.html">jail limits control</a></td><td>:: jrctl, jrctl-tui</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_ddns_ssi.html">Dynamic DNS for jail</a></td><td>:: ddns</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jail2iso_ssi.html">Generation of bootable ISO and USB Memstick from jail</a></td><td>:: jail2iso</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_jlocate_ssi.html">Searching for jail in node farm</a></td><td>:: jwhereis, jailmapdb</li>
-	</ul>
-</div>
-
+	<h1><span>Documentation</span></h1>
+	<h2><a name="docs">General information</a></h2>
+	<div class="block">
+		<ul>
+			<li><a href="cbsd_additional.html">What you need to know about cbsd</a></li>
+			<li><a href="installing_cbsd.html">Installing cbsd</a></li>
+			<li><a href="base_cbsd.html">Building and upgrading bases (one file)</a></li>
+			<li><a href="cmdsyntax_cbsd.html">cbsd syntax</a></li>
+			<li><a href="cbsd_rcconf.html">jail settings</a></li>
+			<li><a href="cbsd_vnet.html">cbsd jail and VIMAGE (vnet)</a></li>
+			<li><a href="cbsd_qemu_usermode.html">cbsd and Qemu User mode</a></li>
+			<li><a href="cbsd_geli.html">encrypting images and cbsd</a></li>
+			<li><a href="/<!--#echo var="version" -->/en/wf_repo_ssi.html">Operation with repository</a></li>
+			<li><a href="/<!--#echo var="version" -->/em/wf_history_ssi.html">cbsd command history</a> :: cbsd history</li>
+			<li><a href="custom_freecbsd.html">Modification which are carried out by cbsd scripts in FreeBSD</a></li>
+		</ul>
+	</div>
+	<h2><a name="jailsflow">Operation with jail</a></h2>
+	<div class="block">
+		<p><a href="/en/workflow_cbsd.html">Single file</a></p>
+		<ul>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jcreate_ssi.html">jail create via dialog menu</a></td><td>:: jcreate, jconstruct-tui</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jcreate_secondary_ssi.html">other methods of creating jail</a></td><td>:: jcreate, jconstruct</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jconfig_ssi.html">jail config</a></td><td>:: jconfig</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jstop_jstart_ssi.html">starting and stoping jail</a></td><td>:: jstart, jstop, jrestart</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jremove_ssi.html">jail remove</a></td><td>:: jremove</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jrename_ssi.html">jail renaming</a></td><td>:: jrename</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jupgrade_ssi.html">jail upgrade</a></td><td>:: jupgrade</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_natcfg_ssi.html">working with NAT</a></td><td>:: natcfg, naton, natoff</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jls_ssi.html">jails list</a></td><td>:: jls</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jlogin_ssi.html">jail login</a></td><td>:: jlogin</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jget_ssi.html">work with jail parameters</a></td><td>:: jset,jget</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jclone_ssi.html">jail cloning</a></td><td>:: j[r]clone</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jsnapshot_ssi.html">jails snapshot (zfs-only)</a></td><td>:: jsnapshot</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jexport_ssi.html">jail export</a></td><td>:: jexport</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jimport_ssi.html">jail import</a></td><td>:: jimport</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jbackup_ssi.html">backup and file replication for jail</a></td><td>:: jbackup</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jdescr_ssi.html">jail description</a></td><td>:: jdescr</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jcoldmigrate_ssi.html">jail cold migration</a></td><td>:: jcoldmigrate</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jrctl_ssi.html">jail limits control</a></td><td>:: jrctl, jrctl-tui</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_ddns_ssi.html">Dynamic DNS for jail</a></td><td>:: ddns</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jail2iso_ssi.html">Generation of bootable ISO and USB Memstick from jail</a></td><td>:: jail2iso</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_jlocate_ssi.html">Searching for jail in node farm</a></td><td>:: jwhereis, jailmapdb</li>
+		</ul>
+	</div>
 <h2><a name="nodesflow">Operation with nodes</a></h2>
-<div class="block">
-	<p><a href="/<!--#echo var="version" -->/html/node_cbsd.html">One file</li></p>
-	<ul>
-		<li><a href="/<!--#echo var="version" -->/html/wf_node_overview_ssi.html">overview</a></td><td>:: node</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_node_list_ssi.html">list of nodes</a></td><td>:: node</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_node_add_ssi.html">adding nodes</a></td><td>:: node</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_node_del_ssi.html">removal nodes</a></td><td>:: node</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_node_rexe_ssi.html">execute commands on remote nodes</a></td><td>:: rexe</li>
-		<li><a href="/<!--#echo var="version" -->/html/wf_node_cmd_ssi.html">some cbsd tools that use keys of nodes</a></td><td>:: nodecmd</li>
-	</ul>
+	<div class="block">
+		<p><a href="/<!--#echo var="version" -->/html/node_cbsd.html">Single file</li></p>
+		<ul>
+			<li><a href="/<!--#echo var="version" -->/html/wf_node_overview_ssi.html">What nodes is meant</a></td><td>:: node</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_node_list_ssi.html">list of nodes</a></td><td>:: node</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_node_add_ssi.html">adding nodes</a></td><td>:: node</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_node_del_ssi.html">removal nodes</a></td><td>:: node</li>
+			<li><a href="/<!--#echo var="version" -->/html/wf_node_rexe_ssi.html">execute commands on remote nodes</a></td><td>:: rexe</li>
+		</ul>
 </div>
 <!--# include file="_end.html" -->
