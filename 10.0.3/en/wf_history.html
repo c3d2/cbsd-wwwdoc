@@ -1,15 +1,14 @@
-<b>commands</b>:<br>
-<pre>
-% cbsd history
-</pre>
-<b>Descriptions</b>:
-<br><br>
-When <b>cbsd</b> command comes from the terminal and no set the environment variable <b>NO_CBSD_HISTORY</b>, then the command will be logged in the <i>$workdir/.cbsd_history</i> file.
-<br><br>
-You can use the command
-<pre>
-  % cbsd history [N]
-</pre>
-(where N - optional parameter) to display all entered <b>cbsd</b> commands or only N last.
-<br><br>
-File size <i>$workdir/.cbsd_history</i> by default limited in 300 Kb and when limit is reached the oldest records will be deleted.
+<h1><span>History of CBSD commands</span></h1>
+	<h2><a name="history_cmd">history command</a></h2>
+	<div class="block">
+		<pre class="brush:bash;ruler:true;">
+			% cbsd history
+		</pre>
+	<p><strong>Descriptions</strong>:</p>
+	<p>When <strong>cbsd</strong> command comes from the terminal and no set the environment variable <strong>NO_CBSD_HISTORY</strong>, then the command will be logged in the <em>$workdir/.cbsd_history</em> file.</p>
+	<p>You can use the command</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd history [N]
+	</pre>
+	<p>(where N - optional parameter) to display all entered <strong>cbsd</strong> commands or only N last. File size <em>$workdir/.cbsd_history</em> by default limited in 300 Kb and when limit is reached the oldest records will be deleted.</p>
+	</div>
