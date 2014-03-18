@@ -1,28 +1,23 @@
-<b>Commands</b>:<br>
-<pre>
-% cbsd jimport
-</pre>
+	<h1><span>Jail import</span></h1>
+	
+	<h2><a name="jimport_cmd">jimport command</a></h2>
+	<div class="block">
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jimport
+		</pre>
+		<strong>Description</strong>:
+		<p>Import jail from (*.img) file. </p>
+		<p>In <strong>jname</strong> argument you can set full path to file or just filename (without <strong>.img</strong> extension) if file placed in <i>$workdir/import</i> directory. <strong>img</strong>-file after import is not modified. In addition, you can import an image of a jail in an alternate name (for example, you want to deploy the image of the jail1 from <strong>jail1.img</strong>, however, your system already has a jail of the same name). In this case, an argument newjname can be used.</p>
+		<p><strong>Example:</strong></p>
+		<p>import jail from <em>/tmp/mysqljail.img</em> file:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jimport jname=/tmp/mysqljail.img
+		</pre>
+		<p><strong>Example</strong>:</p>
+		<p>import the image jail2.img placed in <em>$workdir/import</em> with a new name <strong>jail5</strong>:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jimport jname=jail2 newjname=jail5 
+		</pre>
+		<p class="text-center"><img src="/img/jimport1.png" /></p>
+	</div>
 
-<b>Description</b>:
-<br><br>
-Import jail from (*.img) file. 
-In <b>jname</b> argument you can set full path to file or just filename (without <b>.img</b> extension) if file placed in <i><b>$workdir/import</b></i> directory. 
-<b>img</b>-file after import is not modified.
-<br>
-In addition, you can import an image of a jail in an alternate name (for example, you want to deploy the image of the jail1 from <b>jail1.img</b>,
-however, your system already has a jail of the same name). In this case, an argument newjname can be used.
-<br>
-<b>Example:</b> import jail from <i>/tmp/mysqljail.img</i> file:
-<br>
-<pre>
-    % cbsd jimport jname=/tmp/mysqljail.img
-</pre>
-<b>Example</b>: import the image jail2.img placed in $workdir/import with a new name <b>jail5</b>:
-<pre>
-    % cbsd jimport jname=jail2 newjname=jail5 
-</pre>
-<br><center>
-<img src="/html/img/jimport1.png"></img>
-<br><br>
-</center>
-</p>
