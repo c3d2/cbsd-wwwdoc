@@ -59,6 +59,7 @@
 				StrictHostKeyChecking no
 				UserKnownHostsFile /dev/null
 			</pre>
+			</li>
 			<li>3) <em>devfs_load_rulesets</em></li>
 			<p> Данный параметр необходим для инициализации devfs rule. По-умолчанию, создаваемые jail будут использовать <strong>4</strong> ruleset (смотрите /etc/defaults/devfs.rules). Однако, по-умолчанию параметр devfs_load_rulesets в /etc/defaults/rc.conf установлен в NO, что в свою очередь откроет в клетках все устройства в каталоге <strong>/dev</strong>, что в общем случае - нежелательно. Поменять номер набора правил для конкретной клетки вы можете через команду <strong>cbsd jconfig</strong></p>
 			<li>4) <em>cbsdd_enable, cbsdrsyncd_enable, cbsdrsyncd_flags, cbsd_workdir</em></li>
