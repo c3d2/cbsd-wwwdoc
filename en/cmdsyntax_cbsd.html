@@ -1,62 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<HTML>
-<HEAD>
-<META http-equiv="content-type" content="text/html; charset=UTF-8">
-<META name="Description" content="CBSD Store">
-<META name="Keywords" content="CBSD, BSDStore">
-<LINK rel="shortcut icon" href="favicon.ico">
-
-<title>CBSD - FreeBSD jails management tools</title>
-</HEAD>
-<!--# include file="/html/cbsdmenu_en.html" -->
-<body>
-<!--# include file="/html/translate_en.html" -->
-<center><FONT face="verdana,arial,helvetica" size="+1">cbsd syntax</font></center>
-<FONT face="verdana,arial,helvetica" size="-1">
-<br><br>
-<body>
-<p>All commands begin with cbsd prefix:
-<b>
-<pre>
-% cbsd jls
-% cbsd jstop jname
-% cbsd jstart jname
-% cbsd node mode=list
-...
-</pre></b>
-<p>Commands of <b>cbsd</b> can accept arguments that are written in the form "param=value".
-<br>
-<b>cbsd</b> commands can have as required arguments, and the arguments are optional. Order of the arguments does not matter.
-<br>
-In order to get brief information about a particular script, and get a list of required and optional arguments 
-use the --help argument for the corresponding command
-<pre>
-% cbsd &lt;cmd&gt; --help
-</pre>
-For example, to get help on jls:
-<br>
-<pre>
-% cbsd jls --help
-</pre>
-<pre>
-[jail] List jail and status
-require: 
-opt: alljails shownode display node header
-alljails=1 - get jaillist from remote node
-shownode=1 - show nodename for jails
-node= only for current node
-header=0 don't print header
-display= list by comma for column. Default: jid,jname,ip4_addr,host_hostname,path,status
-External help: http://www.bsdstore.ru/10.0.2/html/wf_jls_en.html
-</pre>
-<br> The first line in square brackets the name of the module to which the command (jail in this case), as well as a summary of the functions.
-<br> In line with <b>require:</b> lists the required arguments, without specifying which command work impossible.
-<br> In line with <b>opt: </b> lists the optional arguments (though, depending on the mode of the utility, in various cases, they may be required)
-<br> In the following lines is a brief description of the arguments, if it exist
-<br><br> Also, it may be a reference to the documentation (External help). It can point to a site and a local file, if installed documentation. This 
-reference in future releases will be automatically used by WEB/GUI front-end to load reference, however, it may be useful for users as a direct pointer to the 
-extended description of the command.
-<br><br>
-<img src="/html/img/cbsd_syntax1.png"></img>
-</body>
-</html>
+<!--#set var="uri" value="$DOCUMENT_URI" -->
+<!--# include file="_start.html" -->
+<!--# include file="currentver.html" -->
+<!--# include file="/en/translate.html" -->
+<h1><span>CBSD syntax</span></h1>
+<div class="block">
+	<p>All commands begin with cbsd prefix:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jls
+		% cbsd jstop jname
+		% cbsd jstart jname
+		% cbsd node mode=list
+		...
+	</pre>
+	<p>Commands of <strong>CBSD</strong> can accept arguments that are written in the form "param=value". <strong>CBSD</strong> commands can have as required arguments, and the arguments are optional. Order of the arguments does not matter.
+	<p>In order to get brief information about a particular script, and get a list of required and optional arguments use the --help argument for the corresponding command</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd &lt;cmd&gt; --help
+	</pre>
+	<p>For example, to get help on jls:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd jls --help
+	</pre>
+	<p>Result:</p>
+	<pre class="cli">
+	[jail] List jail and status
+	require: 
+	opt: alljails shownode display node header
+	alljails=1 - get jaillist from remote node
+	shownode=1 - show nodename for jails
+	node= only for current node
+	header=0 don't print header
+	display= list by comma for column. Default: jid,jname,ip4_addr,host_hostname,path,status
+	External help: http://www.bsdstore.ru/10.0.2/html/wf_jls_en.html
+	</pre>
+	<p>The first line in square brackets the name of the module to which the command (jail in this case), as well as a summary of the functions.</p>
+	<p>In line with <strong>require:</strong> lists the required arguments, without specifying which command work impossible.</p>
+	<p>In line with <strong>opt: </strong> lists the optional arguments (though, depending on the mode of the utility, in various cases, they may be required)</p>
+	<p>In the following lines is a brief description of the arguments, if it exist</p>
+	<p>Also, it may be a reference to the documentation (External help). It can point to a site and a local file, if installed documentation. This  reference in future releases will be automatically used by WEB/GUI front-end to load reference, however, it may be useful for users as a direct pointer to the  extended description of the command.</p>
+	<p class="text-center">
+		<img src="/img/cbsd_syntax1.png" />
+	</p>
+</div>
+<!--# include file="_end.html" -->
