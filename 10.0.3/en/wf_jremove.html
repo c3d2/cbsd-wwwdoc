@@ -1,27 +1,22 @@
-<b>Commands</b>:<br>
-<pre>
-% cbsd jremove jail1 jail2 ..
-</pre>
-
-<b>Description</b>:
-Removal of jail mentions all files anyway connected with a jail:
-<br><br>
-a) fstab for current jail
-<br>
-b) data directory or ZFS filesystem with jail data
-<br>
-c) statistics and description for jail
-<br>
-d) snapshots
-<br><br>
-in a case when <b>jremove</b> executed for jail in status On, it will be automatically stopped.
-</p>
-<b>Example</b>:
-<br>
-<pre>
-% cbsd jremove jail1
-</pre>
-<br>
-<center>
-<img src="/html/img/jremove1.png"></img>
-</center>
+	<h1><span>Jail remove</span></h1>
+	
+	<h2><a name="jremove_cmd">jremove command</a></h2>
+	<div class="block">
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jremove jail1 jail2 ..
+		</pre>
+		<strong>Description</strong>:
+		<p>Removal of jail mentions all files anyway connected with a jail:</p>
+		<ul>
+			<li>a) fstab for current jail</li>
+			<li>b) data directory or ZFS filesystem with jail data</li>
+			<li>c) statistics and description for jail</li>
+			<li>d) snapshots</li>
+		</ul>
+		<p>in a case when <strong>jremove</strong> executed for jail in status On, it will be automatically stopped.</p>
+		<strong>Example</strong>:
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jremove jail1
+		</pre>
+		<p class="text-center"><img src="/img/jremove1.png" /></p>
+	</div>
