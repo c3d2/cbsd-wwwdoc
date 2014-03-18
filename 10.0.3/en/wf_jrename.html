@@ -1,29 +1,25 @@
-<b>Commands</b>:<br>
-<pre>
-% cbsd jrename
-</pre>
-
-<b>Description</b>:
-Performs renaming jail and relevant data in the new name
-<br>
-<p>Can be executed only on the stopped jail. <br>
-<p>As mandatory parameters: <br>
-<b>old</b> - old name of the jail
-<br>
-<b>new</b> - new name of the jail
-<br>
-<p>As optional parameters:<br>
-<b>host_hostname</b> - FQDN, new full hostname of jail
-<br>
-<b>ip4_addr</b> - new IP address of the jail (if multiple IPs, separated by a comma with no spaces)
-<br><br>
-<b>Example</b> (renaming jail <b>jail1</b> into <b>jail50</b> with a FQDN and ip addresses change):
-<br>
-<pre>
-    % cbsd jrename old=jail1 new=jail50 host_hostname=jail50.my.domain ip4_addr=192.168.0.5/24
-</pre>
-<br><br><center>
-<img src="/html/img/jrename1.png"></img>
-<br><br>
-</center>
-</p>
+	<h1><span>Jail renaming:</span></h1>
+	
+	<h2><a name="jrename_cmd">jrename command</a></h2>
+	<div class="block">
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jrename
+		</pre>
+		<p><strong>Description</strong>:</p>
+		<p>Performs renaming jail and relevant data in the new name. Can be executed only on the stopped jail.</p>
+		<p>As mandatory parameters:</p>
+		<ul>
+			<li><strong>old</strong> - old name of the jail</li>
+			<li><strong>new</strong> - new name of the jail</li>
+		</ul>
+		<p>As optional parameters:</p>
+		<ul>
+			<li><strong>host_hostname</strong> - FQDN, new full hostname of jail</li>
+			<li><strong>ip4_addr</strong> - new IP address of the jail (if multiple IPs, separated by a comma with no spaces)</li>
+		</ul>
+		<p><strong>Example</strong> (renaming jail <strong>jail1</strong> into <strong>jail50</strong> with a FQDN and ip addresses change):</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jrename old=jail1 new=jail50 host_hostname=jail50.my.domain ip4_addr=192.168.0.5/24
+		</pre>
+		<p class="text-center"><img src="/img/jrename1.png" /></p>
+	</div>
