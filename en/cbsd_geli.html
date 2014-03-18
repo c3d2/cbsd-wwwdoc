@@ -1,65 +1,65 @@
 <!--#set var="uri" value="$DOCUMENT_URI" -->
 <!--# include file="_start.html" -->
-	<h1><span>Шифрованные образы с&nbsp;cbsd geli</span></h1>
+	<h1><span>Encrypting images with &nbsp;cbsd geli</span></h1>
 	<div class="block">
 		<p>There are situations where the information posted on the server's hard drive should preferably be stored in encrypted form. For example, you are setting up a server with important information in any foreign datacenter . There are real cases (author familiar with the case not by hearsay ) when disgruntled employees datacenter can take a few minutes to turn off your server , under any pretext ( breaks technical work - not uncommon) , make an image of the hard drive and turn back , that you will look like rebooting the server , while all the information is from third parties became individuals. Either you rent VDS / VPS, where a stranger to you, not only the data center , but also the server and media.</p>
-		<p>In such cases, resort to encrypt that data leakage which is undesirable. Currently, CBSD has a script wrapper <strong>geli</strong> для работы с working with encrypted images through GELI&nbsp;framework. Также, как перед использованием <strong>cbsd</strong> крайне желательно ознакомится с&nbsp;оригинальным man на&nbsp;<a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8" target="_blank">jail</a>, так и&nbsp;в&nbsp;данном контексте настоятельно рекомендуется ознакомиться со&nbsp;следующей информацией:</p>
+		<p>In such cases, resort to encrypt that data leakage which is undesirable. Currently, CBSD has a script wrapper <strong>geli</strong> для работы с working with encrypted images through GELI&nbsp;framework. As well as before using <strong>cbsd</strong> is highly desirable to get acquainted with &nbsp;original man for &nbsp;<a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8" target="_blank">jail</a>, and in this context, it is strongly recommended to read the following information:</p>
 		<ul>
 			<li><a href="http://www.freebsd.org/cgi/man.cgi?query=geli&sektion=8" target="_blank">man geli</a></li>
-			<li>пункт 18.14.2&nbsp;в <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-encrypting.html" target="_blank">Encrypting Disk Partitions</a></li>
+			<li>paragraph 18.14.2&nbsp;в <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-encrypting.html" target="_blank">Encrypting Disk Partitions</a></li>
 		</ul>
-		<p>перед использованием <strong>cbsd geli</strong>.</p>
-		<p>Работа с&nbsp;GELI предполагается по&nbsp;следующему сценарию:</p>
+		<p>Before using <strong>cbsd geli</strong>.</p>
+		<p>Working with GELI assumed the following scenario:</p>
 		<ul>
-			<li>Криптованию подлежат только выборочные данные. Поскольку операция шифрования зависима в&nbsp;первую очередь от&nbsp;вашего процессора, потребление ресурсов всегда будет выше, а&nbsp;I/O&nbsp;&mdash; ниже при работе с&nbsp;данными на&nbsp;зашифрованном разделе. Вместо того, чтобы шифровать всю клетку, вы&nbsp;можете предпочесть зашифровать только важные данны внутри клетки, например: <em>/root</em>, <em>/home/user</em>, <em>/var/db/mysql</em>. <em>/usr/local/etc</em> и&nbsp;тд, при этом логи, база или весь сторонний софт, который вы&nbsp;установили через pkg/ports&nbsp;&mdash; можно оставить незашифрованными. Также, кроме шифрования данных клеток, вы&nbsp;можете захотеть шифровать каталог <em>$workdir/.rssh</em>, в&nbsp;котором cbsd хранит ID_RSA ключи удаленных машин и&nbsp;<em>$workdir/.ssh</em> в&nbsp;котором расположен собственный ключ от&nbsp;пользователя cbsd.</li>
-			<li>Каждому зашифрованному устройству назначается свой собственный пароль/фраза для дешифрации. Однако, все они будут хранится на&nbsp;системном образе <strong>CBSD</strong>, который в&nbsp;свою очередь будет зашифрован master-ключем. Другими словами, поскольку вы&nbsp;доверяете вашему собственному серверу, то&nbsp;при необходимости включить тот или иной зашифрованный раздел, <strong>CBSD</strong> будет сама применять нужный ключ при подключении того или иного криптованного образа. При этом ключи для их&nbsp;дешифровки хранится в&nbsp;файле, который в&nbsp;свою очередь зашифрованным вашим паролем и&nbsp;активируется вручную.</li>
+			<li>Encryption be only selected data. Since the encryption operation is dependent primarily on your CPU resource consumption will always be higher , and I/O - lower than when working with data on the encrypted partition. Instead of encrypting the entire jail, you can choose to encrypt only important path inside the jail, for example: <em>/root, /home/user, /var/db/mysql, /usr/local/etc</em> etc, while the logs, database, or all of the third party software that you installed via pkg/ports - can be left unencrypted. Also, besides the encryption of these jails, you may want to encrypt the directory <em>$workdir/.rssh</em>, which keeps cbsd ID_RSA keys remote machines and <em>$workdir/.ssh</em> which is your own key to the user cbsd.</li>
+			<li>Each encrypted device is assigned their own password/passphrase to decrypt. However, they will all be stored on the system image of <strong>CBSD</strong>, which in turn will be encrypted master- key. In other words, as you trust your own server, if necessary, to include one or another encrypted partition, <strong>CBSD</strong> itself will apply the correct key when using of encrypted image. At the same keys for their decryption is stored in a file, which in turn is encrypted with your password and activated manually.</li>
 		</ul>
-		<p>Для общего понимания, обозначим следующие условности:</p>
+		<p>For common understanding, we denote the following conventions:</p>
 		<ul>
-			<li><strong>${dbdir}</strong>&mdash;&nbsp;каталог <em>$workdir/var/db</em>, где <em>workdir</em>&nbsp;&mdash; куда проинициализирована cbsd. Например: <em>/usr/jails/var/db</em></li>
-			<li><strong>MASTER_GELI</strong>&mdash;&nbsp;зашифрованный вашим паролем образ, в&nbsp;котором <strong>CBSD</strong> будет искать ключи для всех остальных geli attach операций. Расположен на&nbsp;файловой системе в&nbsp;виде файла <em>${dbdir}/master_geli.img</em></li>
+			<li><strong>${dbdir}</strong>&mdash;&nbsp;directory <em>$workdir/var/db</em>, where <em>workdir</em>&nbsp;&mdash; is path to initialized of <strong>CBSD</strong>. For example: <em>/usr/jails/var/db</em></li>
+			<li><strong>MASTER_GELI</strong>&mdash;&nbsp;your password encrypted image, which <strong>CBSD</strong> will look for clues to the rest geli attach operations. Located on the file system as a file <em>${dbdir}/master_geli.img</em></li>
 			<div class="warning">
-				<p><strong>ВНИМАНИЕ!</strong> Удаление или порча этогоо файла сделает невозможным подключение всех остальные криптованных образов автоматически и&nbsp;подмонтировать эти образы будет возможно только если вы&nbsp;помните, какому образу какой пароль вы&nbsp;назначали на&nbsp;<strong>cbsd geli mode=init file=</strong> стадии. В&nbsp;связи с&nbsp;этим, регулярно делайте резервные копии этого файла.</p>
+				<p><strong>Attention!</strong>  Removing or defacing this file would make it impossible to connect all remaining crypted images automatically and mount these images will only be possible if you remember what the image which password you assigned to the &nbsp;<strong>cbsd geli mode=init file=</strong> stage. In this regard, make regular backups of the file.</p>
 			</div>
-			<li><strong>каталог ключей</strong>&mdash;&nbsp;смонтированный образ <strong>MASTER_GELI</strong> файла в&nbsp;каталог <em>${dbdir}/geli</em>. Во&nbsp;избежание возможной порчи из-за некорректного размонтирования (сбой сервера, пропажа питания, некорректное выключение), данный ресурс подключен в&nbsp;режиме <em>Read-only</em> и&nbsp;переходит в&nbsp;режим записи только при модификациях.</p></li>
+			<li><strong>key directory</strong>&mdash;&nbsp;mounted image of <strong>MASTER_GELI</strong> file into <em>${dbdir}/geli</em> directory. To avoid possible damage due to incorrect unmount (server failure, loss of power, improper shutdown), the resource is connected in Read-only mode and re-mount in rw only for modifications.</p></li>
 		</ul>
 	</div>
-	<h2><a name="geliinit">Инициализация cbsd geli</a></h2>
+	<h2><a name="geliinit">cbsd geli initialization</a></h2>
 	<div class="block">
-		<p>Для начала работы с&nbsp;шифрованными разделами на&nbsp;ноде, необходимо создать <strong>MASTER_GELI</strong> файл и&nbsp;придумать для него пароль. Используйте сложный пароль, поскольку он&nbsp;открывает доступ для всех остальных ключей. Для инициалиации служит команда <strong>cbsd geli mode=initmaster</strong>.</p>
+		<p>To start working with an encrypted partition on the node, you must create <strong>MASTER_GELI</strong> file and come up with a password for it. Use a strong password, because it gives access to all other keys. To use the command of initialization: <strong>cbsd geli mode=initmaster</strong>.</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd geli mode=initmaster
 			Initialization. Please set master password for geli base image
 			Enter new passphrase:
 		</pre>
-		<p>Вторичный запуск этой команды выдаст вопрос на&nbsp;ввод пароля, либо команда отработает без какого-либо вывода, если данный файл уже проиницализирован и&nbsp;подмонтирован в&nbsp;$dbdir/geli. Успешная инициализация файла подключает содержимое файла в&nbsp;каталог $dbdir/geli, давай остальным скриптам доступ к&nbsp;ключам остальных образов.</p>
-		<p><em>Примечание</em>:</p>
-		<p>По-умолчанию, образ для хранения ключей создается равным 5Mb и&nbsp;используется алгоритм AES-XTS. Данная настройка находится в&nbsp;файле <em>${workdir}/etc/defaults/geli.conf</em> и&nbsp;может быть изменена через соответствующие записи в&nbsp;<em>$workdir/etc/geli.conf</em></p>
+		<p>Secondary running this command will give the question to enter the password, or the command will work without any output, if the file already initialized and mounted automatically at $dbdir/geli. Successful initialization file contents of the file mounted to the directory $dbdir/geli, let the rest of the scripts access to keys for other images.</p>
+		<p><em>Note</em>:</p>
+		<p>By default, the image is created for storage of keys equal to 5Mb with AES-XTS algorithm. This setting is in the file <em>${workdir}/etc/defaults/geli.conf</em> and can be changed via the corresponding entries in &nbsp;<em>$workdir/etc/geli.conf</em></p>
 	</div>
-	<h2><a name="imageinit">Инициализация geli-образов для использования cbsd</a></h2>
+	<h2><a name="imageinit">Initialization geli-images for CBSD use</a></h2>
 	<div class="block">
-		<p>GELI образ должен быть приинициализирован до&nbsp;того, как вы&nbsp;примонтируете его и&nbsp;начнете писать информацию. Для инициализации служит команда:</p>
+		<p>GELI Initialization of image should be before you start it up and mounting the write data. To initialize, use the command:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd geli mode=init file=/path/to/file
 		</pre>
-		<p>При первом запуске geli init для файла /path/to/file будет выполнены следующие шаги:</p>
+		<p>When you first start geli init file /path/to/file will perform the following steps:</p>
 		<ul>
-			<li>1) если в&nbsp;путь к&nbsp;файлу начинается с&nbsp;$workdir (например, cbsd установлена в&nbsp;/usr/jails, а&nbsp;cbsd init выполняется с&nbsp;параметрами <strong>mode=init file=/usr/jails/jails-system/jail1/root.img</strong>), то&nbsp;логикой скрипта путь $workdir  удаляется из&nbsp;пути и&nbsp;эта локация используется для генерации имени файла ключа через md5. Подобная операция необходима для тех случаев, если вы&nbsp;будете мигрировать клетку с&nbsp;одной ноды на&nbsp;другую и&nbsp;различными $workdir&nbsp;&mdash; если не&nbsp;отрезать workdir, то&nbsp;md5 имена ключей станут разными.  Если&nbsp;же путь задается для файла, не&nbsp;входящего в&nbsp;$workdir, путь остается без изменений.</li>
-			<li>2) скрипт <strong>cbsd geli</strong> запрашивает от&nbsp;вас пароль для файла в&nbsp;переменной file= и&nbsp;сохраняет его в&nbsp;файле $dbdir/geli/md5_от_результата_шага_1</li>
-			<li>3) выполняет <strong>geli attach</strong> с&nbsp;этим ключем и&nbsp;выводит имя получившегося устройства, например:
+			<li>1) if path begins with $workdir (eg, cbsd installed in /usr/jails, and cbsd init executed with settings <strong>mode=init file=/usr/jails/jails-system/jail1/root.img</strong>), then&nbsp;logic of script path $workdir removed out of the way and this location is used to generate key file name via md5. Such an operation is needed for those cases, if you migrate from one jail to another node and various $workdir - if not cut workdir, then md5 key names will be different. If the path is a file that is not in $workdir, the path remains unchanged.</li>
+			<li>2) <strong>cbsd geli</strong> script prompts you to password for the file in the file = variable and stores it in a file $dbdir/geli/md5_from_result_of_step_1</li>
+			<li>3) Executing of <strong>geli attach</strong> with this key, and displays the name of the resulting device, such as:
 			<pre class="brush:bash;ruler:true;">
 				/dev/md1.eli
 			</pre>
-			который вы&nbsp;уже можете отформатировать и&nbsp;заполнить теми данными, которые будут зашифрованы.</li>
+			you can already format and fill the data that will be encrypted.</li>
 		</ul>
-		<p>Как и&nbsp;в&nbsp;случае с&nbsp;initmaster, если запускается init на&nbsp;файл вторично&nbsp;&mdash; система без вопросов его презентует, если ключ уже имеется.</p>
+		<p>As is the case with initmaster, if you start a second init file - the system without question it presents, if the key already exists..</p>
 	</div>
-	<h2><a name="imageinit">Использование fstab клеток для составления списка криптованных имиджей и&nbsp;точек монтирования</a></h2>
+	<h2><a name="imageinit">Using jails fstab to list crypted images and mount points</a></h2>
 	<div class="block">
 		<p> // WIP //</p>
 	</div>
 	<div class="block">
-		<p class="text-center">Схематично, взаимодействие с&nbsp;CBSD GELI скрипта с&nbsp;системой выглядит примерно следующем образом:</p>
+		<p class="text-center">Schematically, the interaction with CBSD GELI script with the system looks like this::</p>
 		<p class="text-center"><img src="/img/cbsd_geli1.png" /></p>
 	</div>
 
