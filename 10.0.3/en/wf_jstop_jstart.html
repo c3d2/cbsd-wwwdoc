@@ -1,4 +1,4 @@
-<h1><span>Starting and stoping jail:</span></h1>
+<h1><span>Starting and stoping jail</span></h1>
 	
 	<h2><a name="jstart_cmd">jstart, jrestart, jorder commands</a></h2>
 	<div class="block">
@@ -27,7 +27,7 @@
 			% cbsd jstart jail1 jail2 jail3 ..
 		</pre>
 		<p>(to launch multiple jails by one command)</p>
-		<p>When ( You can change this behavior in cbsd initenv-tui ) <strong>parallel=0</strong> and you try to launch/stoping a few jails, start/stop will be held consecutively. It is not always good, as any error triggered inside jails in the rc-scripts, which leads to a pause, can block start/stop next jails. In the case when <strong>parallel</strong> have a non-zero value, each next jails will be launched/stopped in N seconds after the previous one, where N - <strong>parallel</strong> value. After this timeout, no matter whether the previous jail o start fully and next jail will be started.</p>
+		<p>When ( You can change this behavior in cbsd initenv-tui ) <strong>parallel=0</strong> and you try to launch/stoping a few jails, start/stop will be held consecutively. It is not always good, as any error triggered inside jails in the rc-scripts, which leads to a pause, can block start/stop next jails. In the case when <strong>parallel</strong> have a non-zero value, each next jails will be launched/stopped in N seconds after the previous one, where N — <strong>parallel</strong> value. After this timeout, no matter whether the previous jail o start fully and next jail will be started.</p>
 		<p>To stoping jail <strong>jstop</strong> must be used, with the same syntax and behavior:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jstop jname=jail1

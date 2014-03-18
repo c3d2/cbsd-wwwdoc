@@ -1,4 +1,4 @@
-	<h1><span>Jail upgrade:</span></h1>
+	<h1><span>Jail upgrade</span></h1>
 
 	<h2><a name="jupgrade_cmd">jupgrade command</a></h2>
 	<div class="block">
@@ -19,7 +19,7 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jexport jname=jail1
 		</pre>
-		<p>And in the case of success, remove the image jail1.img from $workdir/export directory. An upgrade jail <strong>CBSD</strong>, we assume only update files base FreeBSD. Upgrade procedure 3rd-party software in jails similar to upgrade in the non-jail system. You can update the database as between different versions of the system (eg from version 9.2 to FreeBSD 9.3 or FreeBSD 9.3 -> FreeBSD 10.1), and update the files within the same version. It should be remembered that the jails have two modes - <strong>baserw=1</strong>, when the base part of each jail - have their own copy located in the directory $workdir/jails-data/$jail, and <strong>baserw=0</strong>, when one and the same base dir <em>${workdir}/basejail/base_\*_\*_ver</em> mounted to all jails.</p>
+		<p>And in the case of success, remove the image jail1.img from $workdir/export directory. An upgrade jail <strong>CBSD</strong>, we assume only update files base FreeBSD. Upgrade procedure 3rd-party software in jails similar to upgrade in the non-jail system. You can update the database as between different versions of the system (eg from version 9.2 to FreeBSD 9.3 or FreeBSD 9.3 -> FreeBSD 10.1), and update the files within the same version. It should be remembered that the jails have two modes — <strong>baserw=1</strong>, when the base part of each jail — have their own copy located in the directory $workdir/jails-data/$jail, and <strong>baserw=0</strong>, when one and the same base dir <em>${workdir}/basejail/base_\*_\*_ver</em> mounted to all jails.</p>
 	</div>
 	
 	<h2><a name="jupgrade_rw0">Upgrading baserw=0 jails between different versions of the bases</a></h2>
@@ -34,8 +34,8 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jconfig jname=jail1
 		</pre>
-		<p>and change <em>ver</em> parameter to <strong>10.0</strong>, then save it via "Commit". Or, as in the screenshot - do change through <strong>cbsd jset</strong></p>
-		<p>On the next run, the jails will mount base 10.0 (on screenshot the base in the system not found and <strong>CBSD</strong> has invited her to download). Of course, with such a upgrade to a new major version, after this operation you need to rebuild the software in the jail or  update it through <strong>pkg</strong> - operation is highly desirable because library system changed.  As a minimum, to identify this fact we can use the <strong>libchk</strong> utils.</p>
+		<p>and change <em>ver</em> parameter to <strong>10.0</strong>, then save it via "Commit". Or, as in the screenshot — do change through <strong>cbsd jset</strong></p>
+		<p>On the next run, the jails will mount base 10.0 (on screenshot the base in the system not found and <strong>CBSD</strong> has invited her to download). Of course, with such a upgrade to a new major version, after this operation you need to rebuild the software in the jail or  update it through <strong>pkg</strong> — operation is highly desirable because library system changed.  As a minimum, to identify this fact we can use the <strong>libchk</strong> utils.</p>
 		<p class="text-center"><img src="/img/jupgrade1.png" /></p>
 	</div>
 	

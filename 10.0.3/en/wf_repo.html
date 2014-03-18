@@ -9,24 +9,24 @@
 			% cbsd repo-tui
 		</pre>
 		<p><strong>Description</strong>:</p>
-		<p>Work with a repository of bases, kernels and images. The quantity a repository can be more than one and they are specified through a gap  in the file repo variable <em>$workdir/nc.inventory</em>. Downloading will occur from the first repository where the object will find. Respectively, if the local repository is used - it should be the first.</p>
+		<p>Work with a repository of bases, kernels and images. The quantity a repository can be more than one and they are specified through a gap  in the file repo variable <em>$workdir/nc.inventory</em>. Downloading will occur from the first repository where the object will find. Respectively, if the local repository is used — it should be the first.</p>
 		<p>obligatory parameters:</p>
 		<ul>
-			<li><strong>action</strong> - can accept value <em>list</em> (get list), <em>get</em> (download), <em>put</em> (upload)</li>
+			<li><strong>action</strong> — can accept value <em>list</em> (get list), <em>get</em> (download), <em>put</em> (upload)</li>
 		</ul>
 		<p>Arguments which in certain cases aren't obligatory:</p>
 		<ul>
-			<li><strong>sources</strong> - sources for <strong>action</strong> - with what data we want to work. Can accept values:</li>
+			<li><strong>sources</strong> — sources for <strong>action</strong> — with what data we want to work. Can accept values:</li>
 			<ul>
-				<li><em>src</em> - source code for OS (${workdir}/src)</li>
-				<li><em>obj</em> - object file for source code ($workdir}/obj)</li>
-				<li><em>base</em> - world/bases ($workdir/base)</li>
-				<li><em>kernel</em> - kernels of OS (${workdir}/base)</li>
-				<li><em>img</em> - jails</li>
+				<li><em>src</em> — source code for OS (${workdir}/src)</li>
+				<li><em>obj</em> — object file for source code ($workdir}/obj)</li>
+				<li><em>base</em> — world/bases ($workdir/base)</li>
+				<li><em>kernel</em> — kernels of OS (${workdir}/base)</li>
+				<li><em>img</em> — jails</li>
 			</ul>
-			<li><strong>name</strong> - name (used with sources=obj,base,kernel,img - name of base/world or jails)</li>
-			<li><strong>stable</strong> - related to sources=obj,base - get RELENG_X instead of RELENG_X_Y</li>
-			<li><strong>ver</strong> - By default, for obtaining the list or downloading the current version of OS will be used. With the ver=X.Y parameter it is possible to specify other version for jail/base/kernel. At ver=any for action=list, will be it is deduced all available data of sources for all versions</li>
+			<li><strong>name</strong> — name (used with sources=obj,base,kernel,img — name of base/world or jails)</li>
+			<li><strong>stable</strong> — related to sources=obj,base — get RELENG_X instead of RELENG_X_Y</li>
+			<li><strong>ver</strong> — By default, for obtaining the list or downloading the current version of OS will be used. With the ver=X.Y parameter it is possible to specify other version for jail/base/kernel. At ver=any for action=list, will be it is deduced all available data of sources for all versions</li>
 		</ul>
 		<p><strong>Example</strong>:
 		<p>Obtaining the list of available jails for 9.1 versions</p>

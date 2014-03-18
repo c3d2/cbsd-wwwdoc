@@ -1,4 +1,4 @@
-	<h1><span>Jails list:</span></h1>
+	<h1><span>Jails list</span></h1>
 	<h2><a name="jls_cmd">jls command</a></h2>
 	<div class="block">
 		<pre class="brush:bash;ruler:true;">
@@ -11,12 +11,12 @@
 		</pre>
 		<p>All possible options for the sample described in the <em>$workdir/share/jail-arg</em> file</p>
 		<ul>
-			<li><strong>JID</strong> - Jail ID</li>
-			<li><strong>JNAME</strong> - jail name</li>
-			<li><strong>IP4_ADDR</strong> - list of assigned IP addresses (IPv4,IPv6)</li>
-			<li><strong>HOST_HOSTNAME</strong> - FQDN jail</li>
-			<li><strong>PATH</strong> - root filesystem for jail</li>
-			<li><strong>STATUS</strong> - On (running), Off (stoped), Unregister (jail has its rc.conf (old format) but not in the SQL database)</li>
+			<li><strong>JID</strong> — Jail ID</li>
+			<li><strong>JNAME</strong> — jail name</li>
+			<li><strong>IP4_ADDR</strong> — list of assigned IP addresses (IPv4,IPv6)</li>
+			<li><strong>HOST_HOSTNAME</strong> — FQDN jail</li>
+			<li><strong>PATH</strong> — root filesystem for jail</li>
+			<li><strong>STATUS</strong> — On (running), Off (stoped), Unregister (jail has its rc.conf (old format) but not in the SQL database)</li>
 		</ul>
 		<p>Note: Jail in the unregister status may be insert to SQL database via command: <strong>cbsd jregister</strong>. Also, they are automatically converted on <em>Upgrading</em> stage of <strong>cbsd initenv</strong> command. In a case when to the local server are added a key of remote of nodes, it is possible to receive  the list of all jails in a farm via</p>
 		<pre class="brush:bash;ruler:true;">

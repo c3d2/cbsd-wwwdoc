@@ -16,7 +16,7 @@
 			<li>automatic on-the-fly creation of IP addresses for the jail at the time of launch + automatic removal from the interface IP when stopping</li>
 			<li>the use of previously initialized IP addresses.</li>
 		</ul>
-		<p>When for jails assigned to more than one address, they should be listed separated by commas without spaces. IP can include network prefix specified through IP/<strong>prefix</strong>. By default, aliases created with the prefix /32, that may not be appropriate if the jail uses a separate subnet from the network server - in this case, the correct <strong>/prefix </strong> is needed.
+		<p>When for jails assigned to more than one address, they should be listed separated by commas without spaces. IP can include network prefix specified through IP/<strong>prefix</strong>. By default, aliases created with the prefix /32, that may not be appropriate if the jail uses a separate subnet from the network server — in this case, the correct <strong>/prefix </strong> is needed.
 		<p>The parameter that controls this behavior pointed by <strong>interface</strong> parameter. When <strong>interface=0</strong>, jstart and jstop will not be called ifconfig alias and ifconfig -alias, respectively. If its value is <strong>auto</strong> or name of network nics, this command will be executed:</p>
 			<pre class="brush:bash;ruler:true;">
 				% ifconfig <em>alias</em> <strong>interface</strong> <strong>ips</strong>,
@@ -72,7 +72,7 @@
 		<p>when stoped.</p>
 	<h2><a name="jset">Change settings via the jset</a></h2>
 	<div class="block">
-		<p>Another possibility is to change certain parameters of the jail - use the command <strong>cbsd jset</strong>. Full list of possible arguments can be accessed through <em>--help</em>:</p>
+		<p>Another possibility is to change certain parameters of the jail — use the command <strong>cbsd jset</strong>. Full list of possible arguments can be accessed through <em>--help</em>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jget --help
 		</pre>
