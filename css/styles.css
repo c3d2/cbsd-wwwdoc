@@ -1,49 +1,3 @@
-/* Eric Meyer's CSS Reset */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-/* End of Eric Meyer's CSS Reset */
-
 html {
 	background-image:url(/img/ornate1.gif);
 	height:100%;
@@ -129,7 +83,7 @@ a#orphus img {
 	margin:2px;
 	padding:4px 6px;
 	border-radius:4px;
-	background:#f0f0f0 url(http://www.iconsearch.ru/uploads/icons/silk2/16x16/anchor.png) no-repeat 4px 2px;
+	background:#f0f0f0 url(/img/iface/anchor.png) no-repeat 4px 2px;
 	text-decoration:none;
 	font-size:small;
 	color:black;
@@ -289,7 +243,7 @@ table.images tr:last-child td {
 	box-shadow:4px 4px 4px rgba(0,0,0,0.1);
 }
 .warning {
-	background:url(http://www.iconsearch.ru/uploads/icons/realistik-new/32x32/messagebox_warning.png) no-repeat 0 50%;
+	background:url(/img/iface/messagebox_warning.png) no-repeat 0 50%;
 	margin:10px 10px 10px 20px;
 	padding:10px 10px 10px 50px;
 	line-height:140%;
@@ -342,6 +296,6 @@ pre.cli {
 
 a[target="_blank"] {
 	text-indent: 20px;
-	background: transparent url(http://www.iconsearch.ru/uploads/icons/nuvola2/32x32/link.png) no-repeat 4px -13px;
+	background: transparent url(/img/iface/link_out.png) no-repeat 4px 50%;
 	display: inline-block;
 }
