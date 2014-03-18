@@ -20,11 +20,11 @@
 		<p>Если клетке назначаются более одного адреса, они должны быть указаны через запятую без пробелов. IP могут содержать префикс сети, указанный через IP/<strong>prefix</strong>. По-умолчанию, alias создается с префиксом /32, что может не подходить, если jail использует подсеть отдельную от сети сервера - в этом случае, корректный <strong>/prefix</strong> необходим.</p>
 		<p><strong>interface</strong> является параметром, который управляющий этим поведением. Если он установлен в значение 0, то при <strong>jstart</strong> и <strong>jstop</strong> не будут вызываться ifconfig alias и ifconfig -alias соответственно. Если его значение равно <strong>auto</strong> или имени физического интерфейса (например <strong>bce0</strong>), то  перед запуском клетки будет вызвана команда</p>
 		<pre class="brush:bash;ruler:true;">
-			ifconfig <em>alias</em> <strong>interface</strong> <strong>ips</strong>,
+			% ifconfig <em>alias</em> <strong>interface</strong> <strong>ips</strong>,
 		</pre>
 		<p>а при остановке - </p>
 		<pre class="brush:bash;ruler:true;">
-			ifconfig <strong>inteface</strong> <strong>ips</strong> <em>-alias</em>
+			% ifconfig <strong>inteface</strong> <strong>ips</strong> <em>-alias</em>
 		</pre>
 		<p>Будьте предельно аккуратны с этим параметром. Если в наличие есть только 1 IP сервера, который используется и основной системой и этот же IP назначается клетке, убедитесь, что <strong>interface</strong> выставлен в значение <strong>0</strong>, иначе при остановки клетки, единственный ip адрес сервера будет удален автоматически и сервер станет недоступен. Например, чтобы запустить конфигуратор для клетки jail1, выполните:</p>
 		<pre class="brush:bash;ruler:true;">
