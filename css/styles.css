@@ -339,3 +339,9 @@ pre.cli {
 	margin-left:30px;
 	line-height:120%;
 }
+
+a[target="_blank"] {
+	text-indent: 20px;
+	background: transparent url(http://www.iconsearch.ru/uploads/icons/nuvola2/32x32/link.png) no-repeat 4px -13px;
+	display: inline-block;
+}
