@@ -1,6 +1,7 @@
-<h1><span>Добавление нод</span></h1>
+	<h1><span>Добавление нод</span></h1>
+	
+	<h2><a name="nodeadd_cmd">Команда node mode=add</a></h2>
 	<div class="block">
-		<h2><a name="nodeadd_cmd">Команда node mode=add</a></h2>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd node mode=add
 		</pre>
@@ -14,13 +15,15 @@
 		<ul>
 			<li><strong>port</strong> = альтернативный номер порта sshd. По-умолчанию, ноды cbsd используют порт 22222 для соединения по SSH.</li>
 		</ul>
-		<div class="warning">
-			<p><strong>Внимание:</strong>пароль пользвоателя cbsd используется только в момент получения приватного ключа. Соответственно, доступ на сервер будет до тех пор, пока ключ не будет удален или перегенерирован. Смена пароля пользователя роли в этом случае играть не будет.</p>
-		</div>
+	</div>
+	<div class="warning">
+		<p><strong>Внимание:</strong> пароль пользователя CBSD используется только в момент получения приватного ключа. Соответственно, доступ на сервер будет до тех пор, пока ключ не будет удален или перегенерирован. Смена пароля пользователя роли в этом случае играть не будет.</p>
+	</div>
+	<div class="block">
 		<p><strong>Пример:</strong></p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd node mode=add node=192.168.1.2 pw=superpw port=22
 		</pre>
-		<p class="text-center"><img src="/img/nodeadd1.png"></img></p>
+		<p class="text-center"><img src="/img/nodeadd1.png" /></p>
 	</div>
 

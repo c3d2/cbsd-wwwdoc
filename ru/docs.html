@@ -1,59 +1,59 @@
 <!--#set var="uri" value="$DOCUMENT_URI" -->
 <!--# include file="_start.html" -->
-<h1><span>Документация</span></h1>
-<h2><a name="docs">Общая информация</a></h2>
-<div class="block">
-	<ul>
-		<li><a href="cbsd_additional.html">Что необходимо знать о cbsd</a></li>
-		<li><a href="installing_cbsd.html">Установка cbsd</a></li>
-		<li><a href="base_cbsd.html">Сборка и обновление мира</a></li>
-		<li><a href="cmdsyntax_cbsd.html">Синтаксис команд cbsd</a></li>
-		<li><a href="cbsd_rcconf.html">Параметры клеток cbsd</a></li>
-		<li><a href="cbsd_vnet.html">Cbsd jail и VIMAGE (vnet)</a></li>
-		<li><a href="cbsd_qemu_usermode.html">Cbsd и Qemu User mode</a></li>
-		<li><a href="cbsd_geli.html">О криптованных имиджах и cbsd</a></li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_repo_ssi.html">Работа с репозиторием</a></li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_history_ssi.html">История команд cbsd</a> :: cbsd history</li>
-		<li><a href="custom_freecbsd.html">Модификации, которые выполняют скрипты cbsd в FreeBSD</a></li>
-	</ul>
-</div>
-<h2><a name="jailsflow">Работа с jail</a></h2>
-<div class="block">
-	<p><a href="/ru/workflow_cbsd.html">Одним файлом</a></p>
-	<ul>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jcreate_ssi.html">Создание jail через dialog меню</a> :: jcreate, jconstruct-tui</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jcreate_secondary_ssi.html">Другие методы создание jail</a> :: jcreate, jconstruct</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jconfig_ssi.html">Конфигурации jail</a> :: jconfig</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jstop_jstart_ssi.html">Запуск и останов jail</a> :: jstart, jstop, jrestart</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jremove_ssi.html">Удаление jail</a> :: jremove</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jrename_ssi.html">Переименовывание jail</a> :: jrename</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jupgrade_ssi.html">Обновление jail</a> :: jupgrade</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_natcfg_ssi.html">Работа с NAT</a> :: natcfg, naton, natoff</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jls_ssi.html">Список jail</a> :: jls</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jlogin_ssi.html">Логин в jail</a> :: jlogin</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jget_ssi.html">Работа с параметрами jail</a> :: jset,jget</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jclone_ssi.html">Клонирование jail</a> :: j[r]clone</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jsnapshot_ssi.html">Снапшоты (zfs-only)</a> :: jsnapshot</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jexport_ssi.html">Экспорт jail</a> :: jexport</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jimport_ssi.html">Импорт jail</a> :: jimport</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jbackup_ssi.html">Бекап и репликация jail</a> :: jbackup</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jdescr_ssi.html">Описание jail</a> :: jdescr</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jcoldmigrate_ssi.html">Холодная миграция jail</a> :: jcoldmigrate</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jrctl_ssi.html">Управление лимитами jail</a> :: jrctl, jrctl-tui</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_ddns_ssi.html">Динамический DNS и jail</a> :: ddns</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jail2iso_ssi.html">Получение ISO и USB Memstick загрузочных образов из клеток</a> :: jail2iso</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_jlocate_ssi.html">Поиск клеток в ферме</a> :: jwhereis, jailmapdb</li>
-	</ul>
-</div>
-<h2><a name="nodesflow">Работа с нодами</a></h2>
-<div class="block">
-	<p><a href="/ru/node_cbsd.html">Одним файлом</a></p>
-	<ul>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_node_overview_ssi.html">Что подразумевается под нодами</a> :: node</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_node_list_ssi.html">Список нод</a> :: node</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_node_add_ssi.html">Добавление нод</a> :: node</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_node_del_ssi.html">Удаление нод</a> :: node</li>
-		<li><a href="/<!--#echo var="version" -->/ru/wf_node_rexe_ssi.html">Выполнение команд на удаленных нодах</a> :: rexe</li>
-	</ul>
-</div>
+	<h1><span>Документация</span></h1>
+	<h2><a name="docs">Общая информация</a></h2>
+	<div class="block">
+		<ul>
+			<li><a href="cbsd_additional.html">Что необходимо знать о cbsd</a></li>
+			<li><a href="installing_cbsd.html">Установка cbsd</a></li>
+			<li><a href="base_cbsd.html">Сборка и обновление мира</a></li>
+			<li><a href="cmdsyntax_cbsd.html">Синтаксис команд cbsd</a></li>
+			<li><a href="cbsd_rcconf.html">Параметры клеток cbsd</a></li>
+			<li><a href="cbsd_vnet.html">Cbsd jail и VIMAGE (vnet)</a></li>
+			<li><a href="cbsd_qemu_usermode.html">Cbsd и Qemu User mode</a></li>
+			<li><a href="cbsd_geli.html">О криптованных имиджах и cbsd</a></li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_repo_ssi.html">Работа с репозиторием</a></li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_history_ssi.html">История команд cbsd</a> :: cbsd history</li>
+			<li><a href="custom_freecbsd.html">Модификации, которые выполняют скрипты cbsd в FreeBSD</a></li>
+		</ul>
+	</div>
+	<h2><a name="jailsflow">Работа с jail</a></h2>
+	<div class="block">
+		<p><a href="/ru/workflow_cbsd.html">Одним файлом</a></p>
+		<ul>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jcreate_ssi.html">Создание jail через dialog меню</a> :: jcreate, jconstruct-tui</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jcreate_secondary_ssi.html">Другие методы создание jail</a> :: jcreate, jconstruct</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jconfig_ssi.html">Конфигурации jail</a> :: jconfig</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jstop_jstart_ssi.html">Запуск и останов jail</a> :: jstart, jstop, jrestart</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jremove_ssi.html">Удаление jail</a> :: jremove</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jrename_ssi.html">Переименовывание jail</a> :: jrename</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jupgrade_ssi.html">Обновление jail</a> :: jupgrade</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_natcfg_ssi.html">Работа с NAT</a> :: natcfg, naton, natoff</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jls_ssi.html">Список jail</a> :: jls</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jlogin_ssi.html">Логин в jail</a> :: jlogin</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jget_ssi.html">Работа с параметрами jail</a> :: jset,jget</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jclone_ssi.html">Клонирование jail</a> :: j[r]clone</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jsnapshot_ssi.html">Снапшоты (zfs-only)</a> :: jsnapshot</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jexport_ssi.html">Экспорт jail</a> :: jexport</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jimport_ssi.html">Импорт jail</a> :: jimport</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jbackup_ssi.html">Бекап и репликация jail</a> :: jbackup</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jdescr_ssi.html">Описание jail</a> :: jdescr</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jcoldmigrate_ssi.html">Холодная миграция jail</a> :: jcoldmigrate</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jrctl_ssi.html">Управление лимитами jail</a> :: jrctl, jrctl-tui</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_ddns_ssi.html">Динамический DNS и jail</a> :: ddns</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jail2iso_ssi.html">Получение ISO и USB Memstick загрузочных образов из клеток</a> :: jail2iso</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_jlocate_ssi.html">Поиск клеток в ферме</a> :: jwhereis, jailmapdb</li>
+		</ul>
+	</div>
+	<h2><a name="nodesflow">Работа с нодами</a></h2>
+	<div class="block">
+		<p><a href="/ru/node_cbsd.html">Одним файлом</a></p>
+		<ul>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_node_overview_ssi.html">Что подразумевается под нодами</a> :: node</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_node_list_ssi.html">Список нод</a> :: node</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_node_add_ssi.html">Добавление нод</a> :: node</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_node_del_ssi.html">Удаление нод</a> :: node</li>
+			<li><a href="/<!--#echo var="version" -->/ru/wf_node_rexe_ssi.html">Выполнение команд на удаленных нодах</a> :: rexe</li>
+		</ul>
+	</div>
 <!--# include file="_end.html" -->
