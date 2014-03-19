@@ -21,11 +21,11 @@
 		<p>When for jails assigned to more than one address, they should be listed separated by commas without spaces. IP can include network prefix specified through IP/<strong>prefix</strong>. By default, aliases created with the prefix /32, that may not be appropriate if the jail uses a separate subnet from the network server — in this case, the correct <strong>/prefix </strong> is needed.
 		<p>The parameter that controls this behavior pointed by <strong>interface</strong> parameter. When <strong>interface=0</strong>, jstart and jstop will not be called ifconfig alias and ifconfig -alias, respectively. If its value is <strong>auto</strong> or name of network nics, this command will be executed:</p>
 			<pre class="brush:bash;ruler:true;">
-				% ifconfig <em>alias</em> <strong>interface</strong> <strong>ips</strong>,
+				% ifconfig interface ips alias
 			</pre>
 		<p>and when jail stop:</p>
 		<pre class="brush:bash;ruler:true;">
-				% ifconfig <strong>inteface</strong> <strong>ips</strong> <em>-alias</em>
+				% ifconfig interface ips -alias
 		</pre>
 		<p>Be careful with this option, if you have only one IP for server that is used and this IP is assigned to the same jail, when stopping jail, ip address of the server will be removed automatically that will make the server unavailable. In this case, you need to use:<p>
 		<pre class="brush:bash;ruler:true;">
