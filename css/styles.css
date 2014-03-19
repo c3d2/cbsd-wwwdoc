@@ -171,7 +171,7 @@ h2 a {
 	padding:4px 20px 4px 40px;
 	border-radius:0 8px 8px 0;
 	font-size:larger;
-	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px 0 rgba(0, 0, 0, 0.1) inset;
 	text-decoration:none;
 }
 h1 {
@@ -184,7 +184,7 @@ h1 span {
 	padding:4px 20px;
 	border-radius:8px 0 0 8px;
 	font-size:larger;
-	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px 0 rgba(0, 0, 0, 0.1) inset;
 }
 
 p {

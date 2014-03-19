@@ -1,34 +1,36 @@
-<!--#if expr="$uri = /([^\/]+).html/" -->
+<!--#if expr="$uri = /\/[a-z^\/]+\/(.*)/" -->	<!-- ([^\/]+).html -->
 <!--#set var="data" value="$1" -->
 <!--#else -->
 <!--#set var="data" value="about" -->
 <!--#endif -->
-			<ul class="menu-main">
-				<li><a href="/ru/about.html">О проекте »</a>
-					<ul class="submenu">
-						<li><a href="/ru/feedback.html">Обратная связь</a></li>
-					</ul>
-				</li><li>
-					<a href="/ru/news.html">Новости</a>
-				</li><li>
-					<a href="/ru/screenshots.html">Скриншоты</a>
-				</li><li>
-					<a href="/ru/downloads.html">Скачать »</a>
-					<ul class="submenu">
-						<li><a href="/ru/rescuebsd.html">Rescue LiveCD</a></li>
-						<li><a href="/ru/downloads.html">CBSD ISO</a></li>
-					</ul>
-				</li><li>
-					<a href="/ru/docs.html">Документация »</a>
-					<ul class="submenu">
-						<li><a href="/ru/articles.html">Статьи/HowTo</a></li>
-					</ul>
-				</li><li>
-					<a href="#">Язык »</a>
-					<ul class="submenu">
-						<li><a href="/ru/<!--#echo var="data" -->.html">Русский</a></li>
-						<li><a href="/en/<!--#echo var="data" -->.html">English</a></li>
-						<li><a href="/de/<!--#echo var="data" -->.html">Deutch</a></li>
-					</ul>
-				</li>
-			</ul>
+			<nav>
+				<ul class="menu-main">
+					<li><a href="/ru/about.html">О проекте »</a>
+						<ul class="submenu">
+							<li><a href="/ru/feedback.html">Обратная связь</a></li>
+						</ul>
+					</li><li>
+						<a href="/ru/news.html">Новости</a>
+					</li><li>
+						<a href="/ru/screenshots.html">Скриншоты</a>
+					</li><li>
+						<a href="/ru/downloads.html">Скачать »</a>
+						<ul class="submenu">
+							<li><a href="/ru/rescuebsd.html">Rescue LiveCD</a></li>
+							<li><a href="/ru/downloads.html">CBSD ISO</a></li>
+						</ul>
+					</li><li>
+						<a href="/ru/docs.html">Документация »</a>
+						<ul class="submenu">
+							<li><a href="/ru/articles.html">Статьи/HowTo</a></li>
+						</ul>
+					</li><li>
+						<a href="#">Язык »</a>
+						<ul class="submenu">
+							<li><a href="/ru/<!--#echo var="data" -->.html">Русский</a></li>
+							<li><a href="/en/<!--#echo var="data" -->.html">English</a></li>
+							<li><a href="/de/<!--#echo var="data" -->.html">Deutch</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
