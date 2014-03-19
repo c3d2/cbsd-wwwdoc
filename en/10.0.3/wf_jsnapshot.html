@@ -21,7 +21,7 @@
 			<li><strong>jname</strong> — for what jail action is made</li>
 			<li><strong>snapname</strong> — snapshot name</li>
 		</ul>
-		<p>It should be borne in mind that snapshots have a tree structure. It mean, if you created a series of snapshots : <strong>1,2,3,4</strong> and fell back to a snapshot <strong>2</strong>, then snapshots <strong>3</strong> and </strong>4</strong> will be lost, as against by the time of the snapshot <strong>2</strong> they were created in the future. Also arbitrary and unique name for a snapshot when you create, you can specify snapname=gettimeofday. In this case, the system automatically fills in as the name of the timestamp from the current time. When listing snapshots, you can use modifiers to clarify to what you want to see jail snapshots, and customize output field through argument <strong>display=</strong></p>
+		<p>It should be borne in mind that snapshots have a tree structure. It mean, if you created a series of snapshots : <strong>1,2,3,4</strong> and fell back to a snapshot <strong>2</strong>, then snapshots <strong>3</strong> and <strong>4</strong> will be lost, as against by the time of the snapshot <strong>2</strong> they were created in the future. Also arbitrary and unique name for a snapshot when you create, you can specify snapname=gettimeofday. In this case, the system automatically fills in as the name of the timestamp from the current time. When listing snapshots, you can use modifiers to clarify to what you want to see jail snapshots, and customize output field through argument <strong>display=</strong></p>
 		<p><strong>Example</strong>:</p>
 		<p>create snapshot named <em>gromozeka</em> for <strong>jail1</strong> jail:</p>
 		<pre class="brush:bash;ruler:true;">
@@ -49,6 +49,6 @@
 			% cbsd jexec jname=jail1 file -s /root/date
 			/root/date: ERROR: cannot open `/root/date' (No such file or directory)
 		</pre>
-		<p class="text-center"><img src="/img/jsnapshot1.png" /></p>
-		<p class="text-center"><img src="/img/jsnapshot2.png" /></p>
+		<p class="text-center"><img src="/img/jsnapshot1.png" alt="" /></p>
+		<p class="text-center"><img src="/img/jsnapshot2.png" alt="" /></p>
 	</div>

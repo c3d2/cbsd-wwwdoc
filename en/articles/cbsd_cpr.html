@@ -52,7 +52,7 @@
 		</ul>
 		
 		<p><strong>Схематичный рисунок сборочной фермы:</strong></p>
-		<p class="text-center"><img src="/img/bldfarm.png" /></p>
+		<p class="text-center"><img src="/img/bldfarm.png" alt="" /></p>
 		
 		<p>Для комфортной работы напишем переключатель версионности каталогов.</p>
 		
@@ -88,9 +88,9 @@
 		get_symlink() {
 			local _res
 
-			[ -z $1 ] && return 1
+			[ -z $1 ] &amp;&amp; return 1
 			_res=`readlink ${_PATH}/${1}`
-			[ $? -ne 0 ] && return 1
+			[ $? -ne 0 ] &amp;&amp; return 1
 			printf `basename ${_res}`
 		}
 
@@ -102,9 +102,9 @@
 			_count=0
 
 			for i in ${_RANGE}; do
-				[ ${_count} -eq 0 ] && _first=${i}  ## store first element
-				[ ${_cur} -eq 1 ] && printf ${i} && return 0
-				[ "${_PATH}/$i" = "${_test}" ] && _cur=1
+				[ ${_count} -eq 0 ] &amp;&amp; _first=${i}  ## store first element
+				[ ${_cur} -eq 1 ] &amp;&amp; printf ${i} &amp;&amp; return 0
+				[ "${_PATH}/$i" = "${_test}" ] &amp;&amp; _cur=1
 				_count=$(( _count + 1 ))
 			done
 
@@ -119,9 +119,9 @@
 			_REVSLOTS=`echo ${_RANGE} | tr " " "\n" |sort -r`
 
 			for i in ${_REVSLOTS}; do
-				[ ${_count} -eq 0 ] && _first=${i}  ## store first element
-				[ ${_cur} -eq 1 ] && printf ${i} && return 0
-				[ "${_PATH}/$i" = "${_test}" ] && _cur=1
+				[ ${_count} -eq 0 ] &amp;&amp; _first=${i}  ## store first element
+				[ ${_cur} -eq 1 ] &amp;&amp; printf ${i} &amp;&amp; return 0
+				[ "${_PATH}/$i" = "${_test}" ] &amp;&amp; _cur=1
 				_count=$(( _count + 1 ))
 			done
 
@@ -132,18 +132,18 @@
 		# $2 - new dir for slave
 		sym_action() {
 			local _masterdir _slavedir
-			[ -z "${1}" -o -z "${2}" ] && return 1
+			[ -z "${1}" -o -z "${2}" ] &amp;&amp; return 1
 
 			_masterdir="${_PATH}/${1}"
 			_slavedir="${_PATH}/${2}"
 
-			[ ! -d "${_masterdir}" ] && mkdir "${_masterdir}"
-			[ ! -d "${_slavedir}" ] && mkdir "${_slavedir}"
+			[ ! -d "${_masterdir}" ] &amp;&amp; mkdir "${_masterdir}"
+			[ ! -d "${_slavedir}" ] &amp;&amp; mkdir "${_slavedir}"
 
 			# ln -sf not work correctly here - create symlink in old master folder
 			cd ${_PATH}
-			rm -f "${_PATH}/${_MASTER_LINK}" && /bin/ln -s "${1}" "${_MASTER_LINK}"
-			rm -f "${_PATH}/${_SLAVE_LINK}" && /bin/ln -s "${2}" "${_SLAVE_LINK}"
+			rm -f "${_PATH}/${_MASTER_LINK}" &amp;&amp; /bin/ln -s "${1}" "${_MASTER_LINK}"
+			rm -f "${_PATH}/${_SLAVE_LINK}" &amp;&amp; /bin/ln -s "${2}" "${_SLAVE_LINK}"
 		}
 
 		usage() {
@@ -170,18 +170,18 @@
 				shift $(($OPTIND - 1))
 		done
 
-		[ -n "${_conf}" -a -f "${_conf}" ] && . ${_conf}
+		[ -n "${_conf}" -a -f "${_conf}" ] &amp;&amp; . ${_conf}
 
-		[ -n "${_path}" ] && _PATH=${_path}
-		[ -n "${_range}" ] && _RANGE=${_range}
-		[ -n "${_master_link}" ] && _MASTER_LINK=${_master_link}
-		[ -n "${_slave_link}" ] && _SLAVE_LINK=${_slave_link}
-		[ -n "${_action}" ] && _ACTION=${_action}
-		[ -n "${_x}" ] && _X=${_x}
-		[ -n "${_y}" ] && _Y=${_y}
+		[ -n "${_path}" ] &amp;&amp; _PATH=${_path}
+		[ -n "${_range}" ] &amp;&amp; _RANGE=${_range}
+		[ -n "${_master_link}" ] &amp;&amp; _MASTER_LINK=${_master_link}
+		[ -n "${_slave_link}" ] &amp;&amp; _SLAVE_LINK=${_slave_link}
+		[ -n "${_action}" ] &amp;&amp; _ACTION=${_action}
+		[ -n "${_x}" ] &amp;&amp; _X=${_x}
+		[ -n "${_y}" ] &amp;&amp; _Y=${_y}
 
-		[ -z "${_ACTION}" ] && err 1 "Give me action"
-		[ -z "${_PATH}" -o -z "${_MASTER_LINK}" -o -z "${_SLAVE_LINK}" -o -z "${_RANGE}" ] && err 1 "not all neccesary variable has been set"
+		[ -z "${_ACTION}" ] &amp;&amp; err 1 "Give me action"
+		[ -z "${_PATH}" -o -z "${_MASTER_LINK}" -o -z "${_SLAVE_LINK}" -o -z "${_RANGE}" ] &amp;&amp; err 1 "not all neccesary variable has been set"
 		cd ${_PATH} || err 1 "Cant cwd to ${_PATH}"
 
 		# init area
@@ -209,7 +209,7 @@
 		sym_action ${_master} ${_slave}
 		</pre>
 
-		<p>...</p>
+		<p>&hellip;</p>
 		<p><strong>WIP</strong><em>(Work in progress)</em></p>
 	</div>
 <!--# include file="/ru/_end.html" -->

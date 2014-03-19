@@ -23,47 +23,48 @@
 				</pre>
 				<p>Будьте крайне внимательны к этому изменению. Если вы хотите оставить стандартные флаги sshd демона, продублируйте запись для sshd_flags из файла /etc/defaults/rc.conf в /etc/rc.conf и cbsd не будет предлагать изменение.</p>
 			</li>
-			<p>Также, возможно вы захотите запретить ресолв хоста по имени DNS, что может существенно ускорять соединения между нодами, расширив запись в /etc/rc.conf до</p>
-			<pre class="brush:bash;ruler:true;">
-				sshd_flags="-oUseDNS=no -oPort=22222"
-			</pre>
-			<p>Если вы хотите, чтобы sshd слушал как 22222 порт, так и стандартный 22, такая запись будет корректна:</p>
-			<pre class="brush:bash;ruler:true;">
-				sshd_flags="-oPort=22 -oPort=22222 -oUseDNS=no"
-			</pre>
-			<p>Порт 22222 вместо стандартного 22 предлагается к изменению по некоторым следующим соображениям:</p>
-			<ul>
-				<li>до этого порта доходит меньше сканеров sshd для bruteforce. Конечно же, этот аргумент несерьезен ;-) и если вы хотите защитится от перебора, присмотритесь к утилитам <strong>security/{bruteblock,denyhosts}</strong>;</li>
-				<li> Идеология работы <strong>CBSD</strong> с нодами подразумевает связь серверов между собой через ssh и желательно, чтобы уникальный/выбранный порт sshd (в данном случае 22222), всегда идентифицировал <strong>sshd</strong> обслуживающим <ins><strong>ноду</strong></ins>.</li>
-			</ul>
-			<p>На практике, разные порты sshd на мастер-ноде и клеток полезны тем, что если вы внезапно забыли на какой именно ноде работает ваша клетка <strong>jail1024.my.domain</strong>, вы всегда можете быть уверенными что соединяясь на хост <strong>jail1024.my.domain</strong> по 22222 порту вы непременно попадете на физическую ноду, обслуживающую эту клетку. Второй момент&nbsp;— это клетки с параметром oninterface=0 и имеющие одинаковый с основной системой IP. </p>
-			<p>Кроме этого, подобная настройка исключит конфликты портов sshd между нодой и sshd сервисом в клетках.</p>
-			<p>Также учитывайте, что при параметре <strong>applytpl=1</strong> и создании новой клетки, <strong>CBSD</strong> таким же способом конфигурирует порт клетки на порт 2222 (однако, sshd_enable по-умолчанию остается в NO). Данное изменение также продиктовано желанием идентифицировать jail уникальным номером порта. Что, в свою очередь, удобно использовать для систем управления конфигурациями, как например  <a href="http://www.ansible.com/home" target="_blank"><strong>Ansible</strong></a>, внося имена клеток в отдельный домен (например jail1024.<strong>j</strong>.my.domain) и по маске из <strong>.j.</strong> в зоне система будет применять определенные фильтры и знать корректный порт для  установления соединения. Подобный пример из <strong>CBSD</strong> и <strong>Ansible</strong> будет описан отдельной статьей.</p>
-			<p>Для того, чтобы не править скрипты на серверах, откуда происходит соединение с нодой или клетками, рекомендуется использовать возможности ~/.ssh/config , в котором можно указать порты для конкретного хоста или маске хостов, например:</p>
-			<pre class="brush:bash;ruler:true;">
-				# this server on 22 default ssh port
-				Host otherserver.my.domain
-				Port 22
-				User root
-				
-				# mask for jails which have records in blabla.j.my.domain zones:
-				Host *.j.*
-				Port 2222
-				
-				# Default records - all host on 22222 port
-				Host *
-				ControlMaster auto
-				ControlPath ~/.ssh/sockets/%r@%h:%p
-				Port 22222
-				StrictHostKeyChecking no
-				UserKnownHostsFile /dev/null
-			</pre>
-			</li>
+		</ul>
+		<p>Также, возможно вы захотите запретить ресолв хоста по имени DNS, что может существенно ускорять соединения между нодами, расширив запись в /etc/rc.conf до</p>
+		<pre class="brush:bash;ruler:true;">
+			sshd_flags="-oUseDNS=no -oPort=22222"
+		</pre>
+		<p>Если вы хотите, чтобы sshd слушал как 22222 порт, так и стандартный 22, такая запись будет корректна:</p>
+		<pre class="brush:bash;ruler:true;">
+			sshd_flags="-oPort=22 -oPort=22222 -oUseDNS=no"
+		</pre>
+		<p>Порт 22222 вместо стандартного 22 предлагается к изменению по некоторым следующим соображениям:</p>
+		<ul>
+			<li>до этого порта доходит меньше сканеров sshd для bruteforce. Конечно же, этот аргумент несерьезен ;-) и если вы хотите защитится от перебора, присмотритесь к утилитам <strong>security/{bruteblock,denyhosts}</strong>;</li>
+			<li> Идеология работы <strong>CBSD</strong> с нодами подразумевает связь серверов между собой через ssh и желательно, чтобы уникальный/выбранный порт sshd (в данном случае 22222), всегда идентифицировал <strong>sshd</strong> обслуживающим <ins><strong>ноду</strong></ins>.</li>
+		</ul>
+		<p>На практике, разные порты sshd на мастер-ноде и клеток полезны тем, что если вы внезапно забыли на какой именно ноде работает ваша клетка <strong>jail1024.my.domain</strong>, вы всегда можете быть уверенными что соединяясь на хост <strong>jail1024.my.domain</strong> по 22222 порту вы непременно попадете на физическую ноду, обслуживающую эту клетку. Второй момент&nbsp;— это клетки с параметром oninterface=0 и имеющие одинаковый с основной системой IP.</p>
+		<p>Кроме этого, подобная настройка исключит конфликты портов sshd между нодой и sshd сервисом в клетках.</p>
+		<p>Также учитывайте, что при параметре <strong>applytpl=1</strong> и создании новой клетки, <strong>CBSD</strong> таким же способом конфигурирует порт клетки на порт 2222 (однако, sshd_enable по-умолчанию остается в NO). Данное изменение также продиктовано желанием идентифицировать jail уникальным номером порта. Что, в свою очередь, удобно использовать для систем управления конфигурациями, как например  <a href="http://www.ansible.com/home" target="_blank"><strong>Ansible</strong></a>, внося имена клеток в отдельный домен (например jail1024.<strong>j</strong>.my.domain) и по маске из <strong>.j.</strong> в зоне система будет применять определенные фильтры и знать корректный порт для  установления соединения. Подобный пример из <strong>CBSD</strong> и <strong>Ansible</strong> будет описан отдельной статьей.</p>
+		<p>Для того, чтобы не править скрипты на серверах, откуда происходит соединение с нодой или клетками, рекомендуется использовать возможности ~/.ssh/config , в котором можно указать порты для конкретного хоста или маске хостов, например:</p>
+		<pre class="brush:bash;ruler:true;">
+			# this server on 22 default ssh port
+			Host otherserver.my.domain
+			Port 22
+			User root
+			
+			# mask for jails which have records in blabla.j.my.domain zones:
+			Host *.j.*
+			Port 2222
+			
+			# Default records - all host on 22222 port
+			Host *
+			ControlMaster auto
+			ControlPath ~/.ssh/sockets/%r@%h:%p
+			Port 22222
+			StrictHostKeyChecking no
+			UserKnownHostsFile /dev/null
+		</pre>
+		<ul>
 			<li>3) <em>devfs_load_rulesets</em></li>
-			<p> Данный параметр необходим для инициализации devfs rule. По-умолчанию, создаваемые jail будут использовать <strong>4</strong> ruleset (смотрите /etc/defaults/devfs.rules). Однако, по-умолчанию параметр devfs_load_rulesets в /etc/defaults/rc.conf установлен в NO, что в свою очередь откроет в клетках все устройства в каталоге <strong>/dev</strong>, что в общем случае&nbsp;— нежелательно. Поменять номер набора правил для конкретной клетки вы можете через команду <strong>cbsd jconfig</strong></p>
+			<li>Данный параметр необходим для инициализации devfs rule. По-умолчанию, создаваемые jail будут использовать <strong>4</strong> ruleset (смотрите /etc/defaults/devfs.rules). Однако, по-умолчанию параметр devfs_load_rulesets в /etc/defaults/rc.conf установлен в NO, что в свою очередь откроет в клетках все устройства в каталоге <strong>/dev</strong>, что в общем случае&nbsp;— нежелательно. Поменять номер набора правил для конкретной клетки вы можете через команду <strong>cbsd jconfig</strong></li>
 			<li>4) <em>cbsdd_enable, cbsdrsyncd_enable, cbsdrsyncd_flags, cbsd_workdir</em></li>
 		</ul>
-		<p>Следующие записи необходимы для корректной работы <strong>CBSD</strong>, что предлагает сделать скрипт установки initenv:
+		<p>Следующие записи необходимы для корректной работы <strong>CBSD</strong>, что предлагает сделать скрипт установки initenv:</p>
 		<pre class="brush:bash;ruler:true;">
 			cbsdrsyncd_enable="YES"
 			cbsdrsyncd_flags="--config=/usr/jails/etc/rsyncd.conf"
@@ -113,7 +114,7 @@
 		<p>роли в работе cbsd не играет, однако он включен по причинам того, что модуль IPFW по-умолчанию запрещает все, а на момент настройки <strong>CBSD</strong> часть пользователей могут не настроить ipfw правила (или настроят с ошибкой), что повлечет за собой потерю доступа к системе. Имейте ввиду, что данный параметр заставляет последнее правило <strong>65535</strong> выглядеть следующим образом:</p>
 		<pre class="brush:bash;ruler:true;">
 			allow ip from any to any
-			</pre>
+		</pre>
 		<p>Подробнее: <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/firewalls-ipfw.html" target="_blank">FreeBSD handbook::Firewalls-ipfw</a></p>
 		<p>Кроме этого, при старте NAT (<strong>cbsd naton</strong>), выполняется вызов:</p>
 		<pre class="brush:bash;ruler:true;">
@@ -121,7 +122,7 @@
 			% sysctl -qn net.inet6.ip6.forwarding=1
 		</pre>
 		<p>для корректного функционирования NAT, а при запуске <strong>vnet</strong>-клетки ( VIMAGE ), автоматически подгружается модуль <strong>if_bridge</strong>.</p>
-		<p>Обратите внимание, что <strong>CBSD</strong> не удаляет за собой записи в /boot/loader.conf при ее удалении, или к примеру, если вы переходите от одного NAT фреймворка к другому (к примеру сначала сконфигурировани PF, затем переключили на IPFW), то при выборе другого фреймворка, модули предыдущего удаляться не будут. </p>
+		<p>Обратите внимание, что <strong>CBSD</strong> не удаляет за собой записи в /boot/loader.conf при ее удалении, или к примеру, если вы переходите от одного NAT фреймворка к другому (к примеру сначала сконфигурировани PF, затем переключили на IPFW), то при выборе другого фреймворка, модули предыдущего удаляться не будут.</p>
 	</div>
 	
 	<h2><a name="sudoers">Файл /usr/local/etc/sudoers.d/cbsd_sudoers</a></h2>

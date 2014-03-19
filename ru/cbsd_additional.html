@@ -1,6 +1,7 @@
 <!--# include file="_start.html" -->
 	<h1><span>Что необходимо знать о cbsd</span></h1>
-	<h2><a name="knowit"><span>Общая информация</a></cpan></h2>
+	
+	<h2><a name="knowit">Общая информация</a></h2>
 	<div class="block">
 		<p><strong>CBSD</strong> представляет из себя дополнительный уровень абстракции над <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8" target="_blank">Jail framework</a> и частью функционала FreeBSD.</p>
 		<p>Некоторый список этого функционала, задействованного в cbsd:</p>
@@ -25,13 +26,13 @@
 			<li><strong>$workdir</strong>&nbsp;— рабочий каталог cbsd на нодах, инициализируется через cbsd initenv при первом запуске. Обычно <em>/usr/jails</em>.</li>
 			<li><strong>$jname</strong>&nbsp;— Какое-то имя клетки, учавствующей в примере.</li>
 		</ul>
-	</div>
-	<div class="block">
+		<p>&nbsp;</p>
+		
 		<p>Вся рабочие данные <strong>CBSD</strong> находится в каталоге <strong>$workdir</strong> (например <em>/usr/jails</em>), он же является домашним каталогом для пользователя <strong>CBSD</strong> и вы всегда можете быстро перейти в него по команде:</p>
 		<pre class="brush:bash;ruler:true;">
 		% cd ~cbsd
 		</pre>
-		<p>Самые важные данные находятся в каталоге <strong>$workdir/jails-data/$jname-data</strong>, поскольку это непосредственно корень файловой системы клетки с именем </strong>$jname</strong>, если клетка создана с флагом <strong>baserw=1</strong>, либо содержит те данные клетки, которые накладываются на стандартный <strong>$workdir/basejail/$basename</strong> в каталоге <strong>${workdir}/jails</strong></p>
+		<p>Самые важные данные находятся в каталоге <strong>$workdir/jails-data/$jname-data</strong>, поскольку это непосредственно корень файловой системы клетки с именем <strong>$jname</strong>, если клетка создана с флагом <strong>baserw=1</strong>, либо содержит те данные клетки, которые накладываются на стандартный <strong>$workdir/basejail/$basename</strong> в каталоге <strong>${workdir}/jails</strong></p>
 		<p>Учитывая, что базу вы всегда можете получить через сборку исходных кодов или скачав с репозитория, то для миграции jail на любой другой проект по управлению клетками самое главное&nbsp;— это иметь консистентные данные в этом каталоге.</p>
 		<p><em>Примечение:</em> если использовать тип клетки md, то в каталог $workdir/jails-data/$jname будет содержать имидж клетки.</p>
 		<p><em>Примечание2:</em> если вы используете ZFS и обнаружили, кто данные каталоги пусты (при остановленной клетке), проверьте вывод команды:</p>
@@ -57,7 +58,7 @@
 		<p>И наконец в-третьих, обязательно ознакомьтесь с модификациями, которые производит cbsd в вашей конфигурации: <a href="custom_freecbsd.html" target="_blank">Модификации, которые выполняют скрипты cbsd в FreeBSD</a></p>
 	</div>
 	
-	<h2><a name="hier"><span>Иерархия cbsd каталога</cpan></a></h2>
+	<h2><a name="hier">Иерархия cbsd каталога</a></h2>
 	<div class="block">
 		<table class="images">
 			<tr><td class="bg-gray">${workdir}/.rssh/</td><td>Каталог для хранения приватных ключей удаленных нод. Файлы добавляются и удаляются через команду <strong>cbsd node</strong></td></tr>
@@ -75,7 +76,7 @@
 		</table>
 	</div>
 	
-	<h2><a name="traffic"><span>Подсчет трафика jail</cpan></a></h2>
+	<h2><a name="traffic">Подсчет трафика jail</a></h2>
 	<div class="block">
 		<p>В данный момент, для подсчета трафика jail используются правила <strong>count</strong> у фильтра <strong>ipfw</strong>. <strong>CBSD</strong> назначает для счетчиков номера правил из диапазона <strong>99&nbsp;— 2000</strong> (можно изменить в cbsd.conf). Поэтому будьте внимательны и следите за тем, чтобы ваши правила IPFW следовали после указанного диапазона.</p>
 	</div>
@@ -86,10 +87,10 @@
 		<pre class="brush:bash;ruler:true;">
 		% env NOCOLOR=1 cbsd jls
 		</pre>
-		запретит использование цвета при выводе заголовка.
+		<p>запретит использование цвета при выводе заголовка.</p>
 	</div>
 	
-	<h2><a name="troubles"><span>Если что-то пошло не так</span></a></h2>
+	<h2><a name="troubles">Если что-то пошло не так</a></h2>
 	<div class="block">
 		<p>В случае, если при выполнении утилит <strong>CBSD</strong> возникают ошибки, рекомендуется оформить проблему в баг-трекере проекта: <a href="https://github.com/olevole/cbsd/issues" target="_blank">cbsd issues</a> или сообщить об ошибке по email: <strong>CBSD</strong> <em>at</em> <strong>bsdstore.ru</strong></p>
 		<p>Делайте резервные копии каталогов ${workdir}/var/db, ${workdir}/var/db, ${workdir}/jails-fstab, ${workdir}/jails-system и, конечно же, данные клеток в каталоге ${workdir}/jails-data</p>

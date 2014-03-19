@@ -36,7 +36,7 @@
 		</pre>
 		<p>и меняем параметр <em>ver</em> на <strong>10.0</strong>, после чего выбираем "Commit". Либо, как на снимке&nbsp;— делаем изменение через <strong>cbsd jset</strong></p>
 		<p>При следующем запуске, клетка будет монтировать уже базу 10.0 (на снимке этой базы в системе не оказалось и <strong>CBSD</strong> предложила ее скачать). Разумеется, при подобном переходе на новую мажорную версию, после этой операции пересобрать ПО в клетке или обновить через <strong>pkg</strong>&nbsp;— крайне желательная операция, поскольку библиотеки системы изменились. Как минимум, для выявления этого факта можно воспользоваться утилитой <strong>libchk</strong>.</p>
-		<p class="text-center"><img src="/img/jupgrade1.png" /></p>
+		<p class="text-center"><img src="/img/jupgrade1.png" alt="" /></p>
 	</div>
 	
 	<h2><a name="jupgrade_rw1">Обновление baserw=1 клеток между различными версиями баз</a></h2>
@@ -52,7 +52,7 @@
 			% cbsd jupgrade jname=jail1
 		</pre>
 		<p>Данная операция заставляет перезаписать все системные базовые файлы в клетке на файлы из вашего оригинального каталога <strong>$workdir/basejails/base_\*_\*_ver</strong></p>
-		<p class="text-center"><img src="/img/jupgrade2.png" /></p>
+		<p class="text-center"><img src="/img/jupgrade2.png" alt="" /></p>
 	</div>
 	
 	<h2><a name="jupgrade_stable">Обновление baserw=0,1 клеток в рамках одной версии, переход на stable=1</a></h2>
@@ -67,7 +67,7 @@
 			% cbsd repo action=get sources=base mode=upgrade stable=1
 		</pre>
 		<p>Аналогичные правила характеры также для клеток с baserw=1, необходимо лишь не забывать после обновления баз в <strong>CBSD</strong> запустить процедуру обновления файлов в конкретном jail через <strong>cbsd jupgrade</strong>.  Кроме этого, при условии что у вас в системе есть база соответствующей версии (или вы мигрировали клетку на другой сервер где есть база новее), при запуске клетки baserw,  <strong>CBSD</strong> способна автоматически проверить наличие более свежих файлов для этой версии и выдать соответствующее информационное сообщение "You have a more recent version of the base in &hellip;":</p>
-		<p class="text-center"><img src="/img/jupgrade3.png" /></p>
+		<p class="text-center"><img src="/img/jupgrade3.png" alt="" /></p>
 	</div>
 	
 	<h2><a name="jail_etcupdate">Обновление конфигурационных файлов клеток, etcupdate/mergemaster</a></h2>
