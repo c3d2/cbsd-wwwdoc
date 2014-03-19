@@ -7,7 +7,7 @@
 			% cbsd jconfig
 		</pre>
 		<strong>Description</strong>:
-		<p>Upgrade procedure jail always carries certain risks in the form of disruption of service, therefore, make it a rule to always create backups of the jail. If you are running on ZFS file system, you can use the command <a href="/10.0.3/en/wf_jsnapshot_ssi_en.html" target="_blank">cbsd jsnapshot</a> for a frozen state of the jail before the start of work. For example:</p>
+		<p>Upgrade procedure jail always carries certain risks in the form of disruption of service, therefore, make it a rule to always create backups of the jail. If you are running on ZFS file system, you can use the command <a href="/en/<!--#echo var="version" -->/wf_jsnapshot_ssi_en.html" target="_blank">cbsd jsnapshot</a> for a frozen state of the jail before the start of work. For example:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jsnapshot mode=create jname=jail1 snapname=before_update
 		</pre>

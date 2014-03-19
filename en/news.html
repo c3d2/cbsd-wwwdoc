@@ -19,17 +19,17 @@
 	<p><strong>10.0.3</strong>&nbsp;&mdash; 2013-02-18</p>
 	<ul>
 		<li><em>(bugfix)</em> Fixed path to&nbsp;pkg(8) in&nbsp;<strong>pkgbrowser</strong>, thanks to&nbsp;Anton Iutin.</li>
-		<li><strong>jsnapshot</strong> now only works with snapshots created by&nbsp;<em>cbsd</em>, improving output for snapshot list (<a href="/10.0.3/en/wf_jsnapshot_ssi.html">jail snapshot (zfs-only)</a>)</li>
-		<li><strong>history</strong> for output last cbsd commands (<a href="/10.0.3/en/wf_history_ssi.html">cbsd history</a>)</li>
+		<li><strong>jsnapshot</strong> now only works with snapshots created by&nbsp;<em>cbsd</em>, improving output for snapshot list (<a href="/en/10.0.3/wf_jsnapshot_ssi.html">jail snapshot (zfs-only)</a>)</li>
+		<li><strong>history</strong> for output last cbsd commands (<a href="/en/10.0.3/wf_history_ssi.html">cbsd history</a>)</li>
 	</ul>
 	<p><strong>10.0.2</strong>&nbsp;&mdash; 2013-02-01</p>
 	<ul>
 		<li>Improving output for <strong>--help</strong>&nbsp;&mdash; external link to&nbsp;documentation(<a href="/en/cmdsyntax_cbsd.html">cbsd syntax</a>)</li>
 		<li>Support for non-native architecture via Qemu UserMode (<a href="/en/cbsd_qemu_usermode.html">cbsd and Qemu User mode</a>)</li>
-		<li>Improvement <strong>jls</strong> to&nbsp;support custom data output (<a href="/10.0.2/en/wf_jls_ssi.html">jail list</a>)</li>
-		<li><strong>nice(1)</strong> support for jail priority (<a href="/10.0.2/en/wf_jrctl_ssi.html">jail limits control</a>)</li>
+		<li>Improvement <strong>jls</strong> to&nbsp;support custom data output (<a href="/en/10.0.3/wf_jls_ssi.html">jail list</a>)</li>
+		<li><strong>nice(1)</strong> support for jail priority (<a href="/en/10.0.3/wf_jrctl_ssi.html">jail limits control</a>)</li>
 		<li>Nameing of&nbsp;base changed from base_<strong>arch</strong>_<em>ver</em> to&nbsp;base_<strong>arch</strong>_<strong>platform</strong>_<em>ver</em> due to&nbsp;the increasing popularity of&nbsp;non-x86&nbsp;architecture. After the upgrade, you will need to&nbsp;re-fetch the base dir or&nbsp;rename the old (with stopped jails)&nbsp;&mdash; directory with base_<strong>arch</strong>_ver name now inactive in&nbsp;$workdir/basejail and must be&nbsp;deleted manually.
-		<li>Support the creation of&nbsp;images for <strong>bhyve</strong> from jail (<a href="/10.0.2/en/wf_jail2iso_ssi.html">jail2iso</a>)</li>
+		<li>Support the creation of&nbsp;images for <strong>bhyve</strong> from jail (<a href="/en/10.0.3/wf_jail2iso_ssi.html">jail2iso</a>)</li>
 		<li>cbsdsar script has been removed, this functionality was included/enabled by&nbsp;mistake from development version</li>
 		<li>system cbsd account now created by&nbsp;ports framework (or&nbsp;manually).</li>
 	</ul>
