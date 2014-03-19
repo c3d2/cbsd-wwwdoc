@@ -23,9 +23,10 @@
 			<p><strong>Attention!</strong>  Removing or defacing this file would make it impossible to connect all remaining crypted images automatically and mount these images will only be possible if you remember what the image which password you assigned to the &nbsp;<strong>cbsd geli mode=init file=</strong> stage. In this regard, make regular backups of the file.</p>
 		</div>
 		<ul>
-			<li><strong>key directory</strong>&mdash;&nbsp;mounted image of <strong>MASTER_GELI</strong> file into <em>${dbdir}/geli</em> directory. To avoid possible damage due to incorrect unmount (server failure, loss of power, improper shutdown), the resource is connected in Read-only mode and re-mount in rw only for modifications.</p></li>
+			<li><strong>key directory</strong>&mdash;&nbsp;mounted image of <strong>MASTER_GELI</strong> file into <em>${dbdir}/geli</em> directory. To avoid possible damage due to incorrect unmount (server failure, loss of power, improper shutdown), the resource is connected in Read-only mode and re-mount in rw only for modifications.</li>
 		</ul>
 	</div>
+	
 	<h2><a name="geliinit">cbsd geli initialization</a></h2>
 	<div class="block">
 		<p>To start working with an encrypted partition on the node, you must create <strong>MASTER_GELI</strong> file and come up with a password for it. Use a strong password, because it gives access to all other keys. To use the command of initialization: <strong>cbsd geli mode=initmaster</strong>.</p>
@@ -58,7 +59,7 @@
 		<p>As is the case with initmaster, if you start a second init file — the system without question it presents, if the key already exists..</p>
 	</div>
 	
-	<h2><a name="imageinit">Using jails fstab to list crypted images and mount points</a></h2>
+	<h2><a name="mountpoints">Using jails fstab to list crypted images and mount points</a></h2>
 	<div class="block">
 		<p> // WIP //</p>
 	</div>
