@@ -1,4 +1,5 @@
 	<h1><span>Jail config</span></h1>
+	
 	<h2><a name="jconfig_cmd">jconfig, jset commands</a></h2>
 	<div class="block">
 		<pre class="brush:bash;ruler:true;">
@@ -9,6 +10,7 @@
 		<p>Cconfiguration parameters jail</p>
 		<p>Each cbsd jail stores the settings in SQLite3 database. In addition, <em>$workdir/jails-fstab/</em> may have fstab files (see below).  To change the settings of jail can serve <strong>cbsd jconfig</strong> command, which is runs the TUI menu to change basic settings:</p>
 	</div>
+	
 	<h2><a name="ip">Jails IP address</a></h2>
 	<div class="block">
 		<p>IP addresses that are bound to the jail sets in <strong>ip4_addr</strong> parameter. As an IP may serve as IPv4, and the IPv6 address. When starting and stopping jail, working with IP may take place in two modes:</p>
@@ -34,6 +36,7 @@
 			% cbsd jconfig jname=jail1
 		</pre>
 	</div>
+	
 	<h2><a name="fstab">Mounting File Systems in jail</a></h2>
 	<div class="block">
 		<p>Each jail can have your fstab file, which lists the file systems that are mounted jail is startup. System records (they are managed by cbsd and edit this file inappropriately) are located in the file <em>$workdir/jails-fstab/fstab.name</em> and the same syntax to format the file system <strong>/etc/fstab</strong> with the exception that as a mount point is the path relative to the root jail, not the master system.</p>
@@ -51,6 +54,7 @@
 		</pre>
 		<p>Make the shared directory /usr/local/www between jail1 and jail2, but it will jail2 in read-only mode</p>
 	</div>
+	
 	<h2><a name="allow_zfs">Presentation of ZFS file systems in jail</a></h2>
 	<div class="block">
 		<p>If you want to attach separate ZFS filesystems in jail (ie, want to be able to perform in jail zfs mount), ZFS dataset must list in <em>$workdir/jails-fstab/fstab.$jname.local</em> file with specifying the keyword zfs in FStype field. For example, if you want to present the file system ZFS: <strong>zroot/jail1_webfs</strong> for jail jail1 <em>$workdir/jails-fstab/fstab.jail1.local</em> must have:</p>
@@ -70,6 +74,8 @@
 			% zfs unjail $jname $FS
 		</pre>
 		<p>when stoped.</p>
+	</div>
+	
 	<h2><a name="jset">Change settings via the jset</a></h2>
 	<div class="block">
 		<p>Another possibility is to change certain parameters of the jail — use the command <strong>cbsd jset</strong>. Full list of possible arguments can be accessed through <em>--help</em>:</p>
@@ -81,7 +87,7 @@
 			% cbsd jset jname=jail1 ip4_addr="10.0.0.20/24,192.168.0.20/24" 
 		</pre>
 		<p><em>cbsd jconfig jname=jail2</em></p>
-		<p class="text-center"><img src="/img/jconfig1.png" /></p>
+		<p class="text-center"><img src="/img/jconfig1.png" alt="" /></p>
 		<p><em>cbsd jset</em></p>
-		<p class="text-center"><img src="/img/jconfig2.png" /></p>
+		<p class="text-center"><img src="/img/jconfig2.png" alt="" /></p>
 	</div>

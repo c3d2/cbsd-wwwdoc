@@ -2,7 +2,7 @@
 <!--# include file="currentver.html" -->
 <!--# include file="/en/translate.html" -->
 	<h1><span>What you need to know about cbsd</span></h1>
-	<h2><a name="knowit"><span>General information</a></cpan></h2>
+	<h2><a name="knowit">General information</a></h2>
 	<div class="block">
 		<p><strong>CBSD</strong> represents an additional layer of abstraction over <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8" target="_blank">Jail framework</a> and the part on FreeBSD functional</p>
 		<p>A list of some of the functional involved in the cbsd:</p>
@@ -34,7 +34,7 @@
 		<pre class="brush:bash;ruler:true;">
 			% cd ~cbsd
 		</pre>
-		<p>The most important data are located in <em>$workdir/jails-data/$jname</em>, as it is directly the root of the file system jails called </strong>$jname</strong>, if jail is created with the flag <strong>baserw=1</strong>, or contains the data of jail, which are superimposed on the standard <em>$workdir/basejail/$basename</em> in the directory <em>${workdir}/jails</em></p>
+		<p>The most important data are located in <em>$workdir/jails-data/$jname</em>, as it is directly the root of the file system jails called <strong>$jname</strong>, if jail is created with the flag <strong>baserw=1</strong>, or contains the data of jail, which are superimposed on the standard <em>$workdir/basejail/$basename</em> in the directory <em>${workdir}/jails</em></p>
 		<p>Given that the base you can always get through the building source code, or by downloading from the repository.  The other words, cbsd jail to migrate to any other project management of jails or use the basic functionality FreeBSD jail, the main thing — is to have a consistent data in this directory.</p>
 		<p><br><em>Notes:</em> if you use a jails type md, then the directory $workdir/jails-data/$jname will contain the image of the jail.</p>
 		<p><em>Notes2:</em>If you are using ZFS and discovered that the data directories is empty (when the jail is inactive), check the output of the command:</p>
@@ -59,7 +59,7 @@
 		<p>Finally, thirdly, be sure to read the modifications that prepares cbsd in your configuration: <a href="/en/custom_freecbsd.html" target="_blank">Modification which are carried out by cbsd scripts in FreeBSD</a></p>
 	</div>
 	
-	<h2><a name="hier"><span>A brief summary of the hierarchy cbsd</cpan></a></h2>
+	<h2><a name="hier">A brief summary of the hierarchy cbsd</a></h2>
 	<div class="block">
 		<table class="images">
 			<tr><td class="bg-gray">${workdir}/.rssh/</td><td>Directory for storage of private keys of remote nodes. The files are added and removed via the command <strong>cbsd node</strong></td></tr>
@@ -78,12 +78,12 @@
 		</table>
 	</div>
 	
-	<h2><a name="traffic"><span>Counting traffic jail</cpan></a></h2>
+	<h2><a name="traffic">Counting traffic jail</a></h2>
 	<div class="block">
 		<p>At this point,  for counting jail traffic used <strong>count</strong> ruleset of <strong>ipfw</strong> filter. <strong>CBSD</strong> sets number of counters in <strong>99 — 2000</strong> range (you can change this in cbsd.conf). So be careful and make sure to follow your rules IPFW after a specified range.</p>
 	</div>
 	
-	<h2><a name="color"><span>ANSII Color</span></a></h2>
+	<h2><a name="color">ANSII Color</a></h2>
 	<div class="block">
 		<p>By default, <strong>CBSD</strong> displayed text in color (using escape sequences ANSII).  If for some reason the color is unpleasant, or you can use output from utilities cbsd in your scripts,  which prevents ANSII sequence, you can disable the color through the environment variable NOCOLOR=1. For example, the command</p>
 		<pre class="brush:bash;ruler:true;">
@@ -92,7 +92,7 @@
 		<p>prohibit the use of color in the derivation of the title.</p>
 	</div>
 	
-	<h2><a name="troubles"><span>If something went wrong</span></a></h2>
+	<h2><a name="troubles">If something went wrong</a></h2>
 	<div class="block">
 		<p>In the case when with <strong>CBSD</strong> tools errors, it is recommended to make the problem a bug-tracker of the project: If something went wrong <a href="https://github.com/olevole/cbsd/issues" target="_blank">cbsd issues</a>  or report via e-mail: <strong>CBSD</strong> <em>at</em> <strong>bsdstore.ru</strong></p>
 		<p>Please make backup copies of directory ${workdir}/var/db, ${workdir}/var/db, ${workdir}/jails-fstab, ${workdir}/jails-system regularly. And also, of course, the data of their cells <em>${workdir}/jails-data</em></p>
