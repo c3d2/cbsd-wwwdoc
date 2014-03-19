@@ -1,4 +1,5 @@
-<!--#if expr="$uri = /\/[a-z^\/]+\/(.*)/" -->	<!-- ([^\/]+).html -->
+<!--#set var="uri" value="$REQUEST_URI" -->
+<!--#if expr="$uri = /\/[a-z]{2}/(.*)/" -->
 <!--#set var="data" value="$1" -->
 <!--#else -->
 <!--#set var="data" value="about" -->
