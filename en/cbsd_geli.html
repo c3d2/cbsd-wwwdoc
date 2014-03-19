@@ -18,9 +18,11 @@
 		<ul>
 			<li><strong>${dbdir}</strong>&mdash;&nbsp;directory <em>$workdir/var/db</em>, where <em>workdir</em>&nbsp;&mdash; is path to initialized of <strong>CBSD</strong>. For example: <em>/usr/jails/var/db</em></li>
 			<li><strong>MASTER_GELI</strong>&mdash;&nbsp;your password encrypted image, which <strong>CBSD</strong> will look for clues to the rest geli attach operations. Located on the file system as a file <em>${dbdir}/master_geli.img</em></li>
-			<div class="warning">
-				<p><strong>Attention!</strong>  Removing or defacing this file would make it impossible to connect all remaining crypted images automatically and mount these images will only be possible if you remember what the image which password you assigned to the &nbsp;<strong>cbsd geli mode=init file=</strong> stage. In this regard, make regular backups of the file.</p>
-			</div>
+		</ul>
+		<div class="warning">
+			<p><strong>Attention!</strong>  Removing or defacing this file would make it impossible to connect all remaining crypted images automatically and mount these images will only be possible if you remember what the image which password you assigned to the &nbsp;<strong>cbsd geli mode=init file=</strong> stage. In this regard, make regular backups of the file.</p>
+		</div>
+		<ul>
 			<li><strong>key directory</strong>&mdash;&nbsp;mounted image of <strong>MASTER_GELI</strong> file into <em>${dbdir}/geli</em> directory. To avoid possible damage due to incorrect unmount (server failure, loss of power, improper shutdown), the resource is connected in Read-only mode and re-mount in rw only for modifications.</p></li>
 		</ul>
 	</div>
@@ -36,6 +38,7 @@
 		<p><em>Note</em>:</p>
 		<p>By default, the image is created for storage of keys equal to 5Mb with AES-XTS algorithm. This setting is in the file <em>${workdir}/etc/defaults/geli.conf</em> and can be changed via the corresponding entries in &nbsp;<em>$workdir/etc/geli.conf</em></p>
 	</div>
+	
 	<h2><a name="imageinit">Initialization geli-images for CBSD use</a></h2>
 	<div class="block">
 		<p>GELI Initialization of image should be before you start it up and mounting the write data. To initialize, use the command:</p>
@@ -54,13 +57,13 @@
 		</ul>
 		<p>As is the case with initmaster, if you start a second init file — the system without question it presents, if the key already exists..</p>
 	</div>
+	
 	<h2><a name="imageinit">Using jails fstab to list crypted images and mount points</a></h2>
 	<div class="block">
 		<p> // WIP //</p>
 	</div>
 	<div class="block">
 		<p class="text-center">Schematically, the interaction with CBSD GELI script with the system looks like this::</p>
-		<p class="text-center"><img src="/img/cbsd_geli1.png" /></p>
+		<p class="text-center"><img src="/img/cbsd_geli1.png" alt="" /></p>
 	</div>
-
 <!--# include file="_end.html" -->

@@ -42,7 +42,7 @@
 			% git clone https://github.com/olevole/cbsd.git /usr/local/cbsd
 		</pre>
 		<p>2) First run</p>
-		<p>If you are installing <strong>CBSD</strong> not from ports, you must first create a cbsd user's with home directory selected as the directory that will contain your jails (in this example — <em>/usr/jails</em>)
+		<p>If you are installing <strong>CBSD</strong> not from ports, you must first create a cbsd user's with home directory selected as the directory that will contain your jails (in this example — <em>/usr/jails</em>)</p>
 		<pre class="brush:bash;ruler:true;">
 			%  pw useradd cbsd -s /bin/sh -d /nonexistent -c "cbsd user"
 		</pre>
@@ -57,7 +57,6 @@
 		<pre class="brush:bash;ruler:true;">
  			%  pw usermod cbsd -d /usr/jails
 		</pre>
-		</p>
 		<p>3) Initialization with the working catalog into <em>/usr/jails</em>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% env workdir="/usr/jails" /usr/local/cbsd/sudoexec/initenv
