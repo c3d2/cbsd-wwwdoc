@@ -35,7 +35,7 @@ a:active {
 	display:inline-block;
 	width:275px;
 	height:130px;
-	background:url(/img/cbsd-logo-clean.png) no-repeat 50% 50%	;
+	background:url(/img/cbsd-logo-clean.png) no-repeat 50% 50%;
 }
 a#orphus {
 	float:right;
@@ -295,7 +295,6 @@ pre.cli {
 }
 
 a[target="_blank"] {
-	text-indent: 20px;
-	background: transparent url(/img/iface/link_out.png) no-repeat 4px 50%;
-	display: inline-block;
+	padding-left: 20px;
+	background: transparent url(/img/iface/link_out.png) no-repeat 4px 2px;
 }

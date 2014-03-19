@@ -46,16 +46,16 @@
 			<pre class="brush:bash;rule:true">
 				% cbsd buildworld maxjobs=1
 			</pre>
-			При компиляции, может учитываться персональный <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&sektion=5" target="_blank">src.conf(5)</a>, в котором можно указывать стандартные KNOBS-ы. Файл src.conf должен лежать в каталоге $workdir/etc/ с именем <strong>src-</strong><em>basename</em><strong>.conf</strong>, где basename - любое имя-название конфигурации. Например, в стандартной cbsd имеется файл /usr/jails/etc/src-lite.conf. Для сборки мира с определенным src.conf, необходимо указать параметр basename:
+			При компиляции, может учитываться персональный <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&sektion=5" target="_blank">src.conf(5)</a>, в котором можно указывать стандартные KNOBS-ы. Файл src.conf должен лежать в каталоге $workdir/etc/ с именем <strong>src-</strong><em>basename</em><strong>.conf</strong>, где basename&nbsp;— любое имя-название конфигурации. Например, в стандартной cbsd имеется файл /usr/jails/etc/src-lite.conf. Для сборки мира с определенным src.conf, необходимо указать параметр basename:
 			<pre class="brush:bash;rule:true">
 				% cbsd buildworld basename=lite
 			</pre>
-			Последующие операции над результатом этой сборки, также должны содержать параметр basename=, поскольку результат сборки будет сформирован в катало <strong>$workdir/basejail/base_$basename_$arch_$ver</strong>, где $basename - название конфигурации.
+			Последующие операции над результатом этой сборки, также должны содержать параметр basename=, поскольку результат сборки будет сформирован в катало <strong>$workdir/basejail/base_$basename_$arch_$ver</strong>, где $basename&nbsp;— название конфигурации.
 			Другие параметры buildworld:
 			<ul>
-				<li><em>ver</em>  - указать конкретную версию</li>
-				<li><em>arch</em> - сборка для конкретной архитектуры</li>
-				<li><em>stable</em> - сборка RELENG_X ветки</li>
+				<li><em>ver</em>&nbsp;— указать конкретную версию</li>
+				<li><em>arch</em>&nbsp;— сборка для конкретной архитектуры</li>
+				<li><em>stable</em>&nbsp;— сборка RELENG_X ветки</li>
 			</ul>
 		</li>
 		<li>Инсталляция мира через cbsd installworld:
@@ -69,8 +69,8 @@
 			</pre>
 			Другие параметры installworld:
 			<ul>
-				<li><em>arch</em> - инсталляция для конкретной архитектуры</li>
-				<li><em>stable</em> - инсталляция RELENG_X ветки</li>
+				<li><em>arch</em>&nbsp;— инсталляция для конкретной архитектуры</li>
+				<li><em>stable</em>&nbsp;— инсталляция RELENG_X ветки</li>
 			</ul>
 		</li>
 	</ul>

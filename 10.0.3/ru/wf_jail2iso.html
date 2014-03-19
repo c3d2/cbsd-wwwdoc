@@ -66,7 +66,7 @@
 		</pre>
 		<p>Поскольку без этого параметра, создается диск объемом, равным объему фактических данных, без запаса. Это сделает систему нерабочей, поэтому, через <strong>imgsize=</strong> указывайте всегда размер заведомо больше чем текущий объем данных в jail</p>
 		<p>Дополнительные сведения</p>
-		<p><strong>cbsd jail2iso</strong> не контроллирует и не лимитирует объемы конечного результата - они ограничены лишь вашим носителем, для которого создается образ.</p>
+		<p><strong>cbsd jail2iso</strong> не контроллирует и не лимитирует объемы конечного результата&nbsp;— они ограничены лишь вашим носителем, для которого создается образ.</p>
 		<p>Для создания ISO образа:</p>
 		<pre class="brush:bash;ruler:true;">
 			cbsd jail2iso media=iso ..
@@ -97,7 +97,7 @@
 		<pre class="brush:bash;ruler:true;">
 			dd if=/tmp/mc.img of=/dev/da0 bs="10240" conv="sync"
 		</pre>
-		<p>, если <strong>/dev/da0</strong> - это USB flash носитель.</p>
+		<p>, если <strong>/dev/da0</strong>&nbsp;— это USB flash носитель.</p>
 		<p>Пример создания и запуск bhyve образа из jail1 с сетью через интерфейс <strong>em0</strong>:</p>
 		<pre class="cli">
 	% cbsd jail2iso media=bhyve jname=jail1 dstdir=/tmp imgsize=5g
@@ -110,5 +110,5 @@
 	% ifconfig bridge0 up
 	% sh /usr/share/examples/bhyve/vmrun.sh -d /tmp/jail1-10.0_amd64.img vm1 
 		</pre>
-		<p>где <strong>/tmp/jail1-10.0_amd64.img</strong> - результат работы jail2iso.</p>
+		<p>где <strong>/tmp/jail1-10.0_amd64.img</strong>&nbsp;— результат работы jail2iso.</p>
 	</div>

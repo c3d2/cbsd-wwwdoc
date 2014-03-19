@@ -17,23 +17,23 @@
 	
 	<h2><a name="renice">Приоритезация через renice</a></h2>
 	<div class="block">
-		<p>Для приоритезации используется подсистема <a href="http://www.freebsd.org/cgi/man.cgi?query=renice&sektion=8" target="_blank">renice(8)</a>. Вы можете указывать различные приоритеты у разных клеток, чтобы наиболее важные клетки получали максимум CPU-времени за счет клеток, которые процессорное время могут уступить. К примеру, вы можете захотеть выдать клеткам distcc минимальный приоритет, тогда как клетке с WEB сервером - средний, а клетке с базой данных - максимальный. За это поведение отвечает параметр <strong>nice</strong> в настройках jrctl клетки, его значение и поведение соответствует nice(1) - чем ниже коэффициент, тем клетка приоритетнее.</p>
+		<p>Для приоритезации используется подсистема <a href="http://www.freebsd.org/cgi/man.cgi?query=renice&sektion=8" target="_blank">renice(8)</a>. Вы можете указывать различные приоритеты у разных клеток, чтобы наиболее важные клетки получали максимум CPU-времени за счет клеток, которые процессорное время могут уступить. К примеру, вы можете захотеть выдать клеткам distcc минимальный приоритет, тогда как клетке с WEB сервером&nbsp;— средний, а клетке с базой данных&nbsp;— максимальный. За это поведение отвечает параметр <strong>nice</strong> в настройках jrctl клетки, его значение и поведение соответствует nice(1)&nbsp;— чем ниже коэффициент, тем клетка приоритетнее.</p>
 		<p>Демонстрация работы nice:</p>
-		<p>1) Создадим AMP клетку, поместив в docroot .php скрипт выполняющий некоторые математические действия, например <a href="/misc/bench.zip" target="_blank">bench.zip</a> взятый с <a href="http://www.php-benchmark-script.com/" target="_blank">http://www.php-benchmark-script.com/</a> с увеличенными в 10 раз итерациями в циклах. Склонируем клетку, первой дав имя <strong>highprio1</strong>, второй  - <strong>lowprio1</strong>. Через <strong>cbsd jrctl-tui</strong> укажем первой максимальный приоритет <strong>-20</strong>, второй - минимальный, <strong>20</strong>. Кроме этого, повесим клетки на одно ядро через <strong>cpuset</strong> в  <strong>cbsd jconfig</strong> (одноядерные системы сейчас найти сложно, а умный шедулер ОС не позволит провести чистый эксперемент без этих действий ;-).</p>
+		<p>1) Создадим AMP клетку, поместив в docroot .php скрипт выполняющий некоторые математические действия, например <a href="/misc/bench.zip" target="_blank">bench.zip</a> взятый с <a href="http://www.php-benchmark-script.com/" target="_blank">http://www.php-benchmark-script.com/</a> с увеличенными в 10 раз итерациями в циклах. Склонируем клетку, первой дав имя <strong>highprio1</strong>, второй&nbsp;— <strong>lowprio1</strong>. Через <strong>cbsd jrctl-tui</strong> укажем первой максимальный приоритет <strong>-20</strong>, второй&nbsp;— минимальный, <strong>20</strong>. Кроме этого, повесим клетки на одно ядро через <strong>cpuset</strong> в  <strong>cbsd jconfig</strong> (одноядерные системы сейчас найти сложно, а умный шедулер ОС не позволит провести чистый эксперемент без этих действий ;-).</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jls display=jid,jname,ip4_addr,cpuset
 				16   highprio1   10.0.0.121/24  4
 				17   lowprio1    10.0.0.122/24  4
 		</pre>
-		<p>- jid 16 имеет приоритетная клетка и jid 17 - неприоритетная, обе на четвертом ядре.</p>
+		<p>— jid 16 имеет приоритетная клетка и jid 17&nbsp;— неприоритетная, обе на четвертом ядре.</p>
 		<p>сделаем опрос через <strong>top</strong> состояния загруженности <strong>php-fpm</strong> и выводом JID:</p>
 		<pre class="brush:bash;ruler:true;">
 			% export iter=1
 			% while [ 1 ]; do
-			printf "Iter: $iter" ;
-			iter=$((iter+1))
-			top -jab | grep php
-			sleep 1
+				printf "Iter: $iter" ;
+				iter=$((iter+1))
+				top -jab | grep php
+				sleep 1
 			done
 		</pre>
 		<p>Запускаем скрипт одновременно в обоих IP:</p>

@@ -45,6 +45,7 @@
 		</pre>
 		<p>You can specify what type of image <strong>jail2iso</strong> is to create, ISO image with cd9960 for CD/DVD/VMs or Memstick, an image that you can burn to a USB Flash drive.</p>
 	</div>
+	
 	<h2><a name="bhyve">Script job for bhyve image</a></h2>
 	<div class="block">
 		<p>Since the image will be initially bhyve mode RW, it does not require the creation of RO image with UZIP and support tmpfsdir, so at this stage there is no formation of an image. The script will automatically create a fstab-entry to mount an appropriate device in bhyve machine and updates /etc/ttys as required <a href="http://people.freebsd.org/~neel/bhyve/bhyve_instructions.txt" target="_blank">instructions</a>. When creating an image bhyve, use the parameter:</p>
@@ -53,7 +54,7 @@
 		</pre>
 		<p>Because without this option, create disk volume equal to the volume of evidence, without reserve. This will make the system broken, so through <strong>imgsize=</strong> specify the size always known  greater than the current data volume in jail</p>
 		<p>For more information</p>
-		<p><strong>cbsd jail2iso</strong> is not controlled and does not limit the volume of the final result - they are limited only by your destination media:</p>
+		<p><strong>cbsd jail2iso</strong> is not controlled and does not limit the volume of the final result&nbsp;— they are limited only by your destination media:</p>
 		<p>For create ISO image use:</p>
 		<pre class="brush:bash;ruler:true;">
 			%  cbsd jail2iso media=iso ..
@@ -84,7 +85,7 @@
 		<pre class="brush:bash;ruler:true;">
 			dd if=/tmp/mc.img of=/dev/da0 bs="10240" conv="sync"
 		</pre>
-		<p>, where <strong>/dev/da0</strong> - is USB Flash storage.</p>
+		<p>, where <strong>/dev/da0</strong>&nbsp;— is USB Flash storage.</p>
 		<p>Example of creating and launching bhyve image from jail1 with networks via interface <strong>em0</strong>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jail2iso media=bhyve jname=jail1 dstdir=/tmp imgsize=5g
@@ -97,5 +98,5 @@
 			% ifconfig bridge0 up
 			% sh /usr/share/examples/bhyve/vmrun.sh -d /tmp/jail1-10.0_amd64.img vm1 
 		</pre>
-		<p>where <strong>/tmp/jail1-10.0_amd64.img</strong> - result from jail2iso.</p>
+		<p>where <strong>/tmp/jail1-10.0_amd64.img</strong>&nbsp;— result from jail2iso.</p>
 	</div>

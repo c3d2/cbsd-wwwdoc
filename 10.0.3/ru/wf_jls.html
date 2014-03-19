@@ -12,12 +12,12 @@
 		</pre>
 		<p>Все возможные параметры для выборк описаны в файле <em>$workdir/share/jail-arg</em></p>
 		<ul>
-			<li><strong>JID</strong> - Jail ID</li>
-			<li><strong>JNAME</strong> - имя jail</li>
-			<li><strong>IP4_ADDR</strong> - список привязанных к Jail IP адресов (IPv4,IPv6)</li>
-			<li><strong>HOST_HOSTNAME</strong> - FQDN jail</li>
-			<li><strong>PATH</strong> - корень клетки</li>
-			<li><strong>STATUS</strong> - On (запущена), Off (остановлена), Unregister (клетка имеет свой rc.conf (старый формат) но отсутствует в SQL базе)</li>
+			<li><strong>JID</strong>&nbsp;— Jail ID</li>
+			<li><strong>JNAME</strong>&nbsp;— имя jail</li>
+			<li><strong>IP4_ADDR</strong>&nbsp;— список привязанных к Jail IP адресов (IPv4,IPv6)</li>
+			<li><strong>HOST_HOSTNAME</strong>&nbsp;— FQDN jail</li>
+			<li><strong>PATH</strong>&nbsp;— корень клетки</li>
+			<li><strong>STATUS</strong>&nbsp;— On (запущена), Off (остановлена), Unregister (клетка имеет свой rc.conf (старый формат) но отсутствует в SQL базе)</li>
 		</ul>
 		<p>Прим: клетки в статусе Unregister могут быть внесены в SQL через команду <strong>cbsd jregister</strong>. Также, они автоматически конвертируются при отработке <em>Upgrading</em> стадии команды <strong>cbsd initenv</strong>. В случае, если к локальному серверу добавлены RSA/DSA ключи удаленных нод, можно вывести все клетки в ферме через<p> 
 		<pre class="brush:bash;ruler:true;">
@@ -33,6 +33,6 @@
 			% cbsd jls
 		</pre>
 		<p class="text-center"><img src="/img/jls1.png" /></p>
-		<p>Вывод кастомизированных данных (Внимание, прочерки в полях может означать, что версия <strong>CBSD</strong> на удаленной ноде более старая, соответственно, SQL запрос в ее базу не находит актуальных записей)</p>
+		<p>Вывод кастомизированных данных (Внимание, прочерки в полях может означать, что версия <strong>CBSD</strong> на удаленной ноде более старая, соответственно, SQL запрос в ее базу не находит актуальных записей).</p>
 		<p class="text-center"><img src="/img/jls2.png" /></p>
 	</div>

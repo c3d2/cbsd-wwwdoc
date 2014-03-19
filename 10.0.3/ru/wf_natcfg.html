@@ -23,7 +23,7 @@
 		<p>Выбор фреймворка и IP в качестве NAT alias выполняется при первом запуске <strong>cbsd initenv</strong>, в последствии может быть переконфигурирован через <strong>cbsd initenv-tui</strong>. Для того, чтобы измененный <strong>natip</strong> вступил в силу, необходимо запустить <strong>cbsd natcfg</strong> и <strong>cbsd naton</strong> еще раз. В данный момент, средства cbsd по конфигурации nat ограничиваются только созданием правил для трансляции приватных сетей и если вам необходимо получить от NAT чего-то большее, вы можете отредактировать созданный файл правил вручную в каталоге <em>$workdir/etc/</em> в файлах:</p>
 		<ul>
 			<li><strong>pfnat.conf</strong>, если используется PF</li>
-			<li><strong>ipfw.conf</strong>, если используется IPFW<li>
+			<li><strong>ipfw.conf</strong>, если используется IPFW</li>
 			<li><strong>ipnat.conf</strong>, если используется IPNAT из пакета IPFilter</li>
 		</ul>
 		<p>Примечание:</p>

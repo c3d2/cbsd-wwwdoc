@@ -11,7 +11,7 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jdescr mode=update jname=jname
 		</pre>
-		<p>запустит редактор <strong>nvi</strong> в режиме редактирования описания. Через параметр <strong>editor</strong> можно указать альтернативный редактор, например <strong>vim</strong>, <strong>mcedit</strong> и тп. Описание хранится в ASCII-файле, сохраняемый в каталоге <em>$workdir/jails-system/jname/descr</em>, где <strong>jname</strong> - имя редактируемой клетки. Соответственно, файл можно просто скопировать. Поскольку каталог jails-system учавствует в <strong>jcoldmigrate, jclone, jimport/export</strong> и тп операциях,  описание будет сохраняться.</p>
+		<p>запустит редактор <strong>nvi</strong> в режиме редактирования описания. Через параметр <strong>editor</strong> можно указать альтернативный редактор, например <strong>vim</strong>, <strong>mcedit</strong> и тп. Описание хранится в ASCII-файле, сохраняемый в каталоге <em>$workdir/jails-system/jname/descr</em>, где <strong>jname</strong>&nbsp;— имя редактируемой клетки. Соответственно, файл можно просто скопировать. Поскольку каталог jails-system учавствует в <strong>jcoldmigrate, jclone, jimport/export</strong> и тп операциях,  описание будет сохраняться.</p>
 		<p><strong>Пример</strong> (запустить редактор mcedit для редактирования описания клетки kde4 на русском языке в UTF8):</p>
 		<pre class="brush:bash;ruler:true;">
 			% setenv LANG ru_RU.UTF-8
