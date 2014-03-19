@@ -18,7 +18,7 @@
 		</ul>
 		<p>Many of these subsystems are not directly related to the <strong>jail</strong>, however, allow cbsd (which is the connecting link between these components) to provide a system administrator more advanced and integrated system solutions for the problems. Below provides information useful to the system administrator and describes the architecture cbsd more detail.</p>
 		<p>First, the official articles about <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/jails.html" target="_blank">FreeBSD Jails</a> required for the study to understand what is a jail in the usual way.</p>
-		<p>Secondly, it is useful to know about the file system hierarchy <strong>cbsd</strong>. Let us agree to use the following naming documentation and values:</p>
+		<p>Secondly, it is useful to know about the file system hierarchy <strong>CBSD</strong>. Let us agree to use the following naming documentation and values:</p>
 		<ul>
 			<li><strong>Node</strong> — physical server / resource unit.</li>
 			<li><strong>Jail</strong> — isolated environment with its own set of software/services. They can be a server-side components (DNS, Apache / nginx, postfix) and graphic environment.</li>
@@ -30,7 +30,7 @@
 		</ul>
 		<p>&nbsp;</p>
 		
-		<p>All working data of <strong>CBSD</strong> placed in the directory <strong>$workdir</strong>(e.g.: <em>/usr/jails</em>), it is also the home directory for the user <strong>cbsd</strong> and you always can quickly change dit to it via:</p>
+		<p>All working data of <strong>CBSD</strong> placed in the directory <strong>$workdir</strong>(e.g.: <em>/usr/jails</em>), it is also the home directory for the user <strong>CBSD</strong> and you always can quickly change dit to it via:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cd ~cbsd
 		</pre>
@@ -56,7 +56,7 @@
 		<p>You can use this command if you want to return from <strong>CBSD</strong> back to base version (with losing functionality of <strong>CBSD</strong>)
 		<p>The <em>$workdir/jails-system/</em> directory serves as an additional storage for cbsd jail data, for example it may be configurators services, file with the description of the jail, traffic statistics, resources statistics, and so on. Internal information for cbsd stored in $workdir/db directory. For example, the information on the list of added nodes, inventory both the local and remote nodes, and so on.</p>
 		<p>Important in terms of security, is the directories <em>${workdir}/.rssh</em> and <em>${workdir}/.ssh</em>, in which there are private RSA keys with remote user cbsd nodes and local respectively. Make sure that the data of these directories were not available to other users of the system. Besides, to you information about <a href="/en/cbsd_geli.html" target="_blank">scan be interesting for GELI encryption</a>. By default, the key can be read only by a system user cbsd.</p>
-		<p>Finally, thirdly, be sure to read the modifications that prepares cbsd in your configuration: <a href="custom_freecbsd_en.html" target="_blank">Modification which are carried out by cbsd scripts in FreeBSD</a></p>
+		<p>Finally, thirdly, be sure to read the modifications that prepares cbsd in your configuration: <a href="/en/custom_freecbsd.html" target="_blank">Modification which are carried out by cbsd scripts in FreeBSD</a></p>
 	</div>
 	
 	<h2><a name="hier"><span>A brief summary of the hierarchy cbsd</cpan></a></h2>
@@ -94,7 +94,7 @@
 	
 	<h2><a name="troubles"><span>If something went wrong</span></a></h2>
 	<div class="block">
-		<p>In the case when with <strong>CBSD</strong> tools errors, it is recommended to make the problem a bug-tracker of the project: If something went wrong <a href="https://github.com/olevole/cbsd/issues" target="_blank">cbsd issues</a>  or report via e-mail: <strong>cbsd</strong> <em>at</em> <strong>bsdstore.ru</strong></p>
+		<p>In the case when with <strong>CBSD</strong> tools errors, it is recommended to make the problem a bug-tracker of the project: If something went wrong <a href="https://github.com/olevole/cbsd/issues" target="_blank">cbsd issues</a>  or report via e-mail: <strong>CBSD</strong> <em>at</em> <strong>bsdstore.ru</strong></p>
 		<p>Please make backup copies of directory ${workdir}/var/db, ${workdir}/var/db, ${workdir}/jails-fstab, ${workdir}/jails-system regularly. And also, of course, the data of their cells <em>${workdir}/jails-data</em></p>
 		<p>If you restore jail from backup, you will need to file ${workdir}/jails-system/${jname}/rc.conf_${jname} -after return back jails-data and jails-fstab directories for this jail to $workdir directory structure, copy this rc.conf_${jname} in  ${workdir}/jails-rcconf/ directory — then, at the command</p>
 		<pre class="brush:bash;ruler:true;">
