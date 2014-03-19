@@ -82,7 +82,7 @@
 			* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&1
 			0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&1
 		</pre>
-		<p>in user-cron tab for user <strong>root</strong> (/var/cron/tabs/root). Users cron tab, instead of the system used for the reasons described in <a href="/ru/articles/upgrade_for_fun.html" target="_blank"> Do not be afraid mergemaster</a> (rus version only). If you do not want to disturb these calls in your system, just open the editor via cron tab command:</p>
+		<p>in user-cron tab for user <strong>root</strong> (/var/cron/tabs/root). Users cron tab, instead of the system used for the reasons described in <a href="/ru/articles/upgrade_for_fun.html"> Do not be afraid mergemaster</a> (rus version only). If you do not want to disturb these calls in your system, just open the editor via cron tab command:</p>
 		<pre class="brush:bash;ruler:true;">
 			% crontab -e
 		</pre>
