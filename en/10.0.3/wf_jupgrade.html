@@ -36,7 +36,7 @@
 		</pre>
 		<p>and change <em>ver</em> parameter to <strong>10.0</strong>, then save it via "Commit". Or, as in the screenshot — do change through <strong>cbsd jset</strong></p>
 		<p>On the next run, the jails will mount base 10.0 (on screenshot the base in the system not found and <strong>CBSD</strong> has invited her to download). Of course, with such a upgrade to a new major version, after this operation you need to rebuild the software in the jail or  update it through <strong>pkg</strong> — operation is highly desirable because library system changed.  As a minimum, to identify this fact we can use the <strong>libchk</strong> utils.</p>
-		<p class="text-center"><img src="/img/jupgrade1.png" /></p>
+		<p class="text-center"><img src="/img/jupgrade1.png" alt="" /></p>
 	</div>
 	
 	<h2><a name="jupgrade_rw1">Upgrading baserw=1 jails between different versions of the base</a></h2>
@@ -53,7 +53,7 @@
 			% cbsd jupgrade jname=jail1
 		</pre>
 		<p>This operation causes the system to overwrite all the files in the base jail from your base original directory <em>$workdir/basejails/base_\*_\*_ver</em></p>
-		<p class="text-center"><img src="/img/jupgrade2.png" /></p>
+		<p class="text-center"><img src="/img/jupgrade2.png" alt="" /></p>
 	</div>
 	<h2><a name="jupgrade_stable">Upgrading baserw=0,1 jail in one version, switch to stable=1</a></h2>
 	<div class="block">
@@ -65,9 +65,9 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd repo action=get sources=base mode=upgrade stable=1
 		</pre>
-		<p>Similar rules for jails with baserw=1, it is only necessary to remember after update in <strong>CBSD</strong> to start the update process files by <strong>cbsd jupgrade</strong><p>
+		<p>Similar rules for jails with baserw=1, it is only necessary to remember after update in <strong>CBSD</strong> to start the update process files by <strong>cbsd jupgrade</strong></p>
 		<p>In addition, provided that you have a base system in the corresponding version (or you jail migrated to another server where there is a base more recent), when you start the jail with baserw=1, <strong>CBSD</strong> can automatically check for more recent files for this version and show information message "You have a more recent version of the base in ...":</p>
-		<p class="text-center"><img src="/img/jupgrade3.png" /></p>
+		<p class="text-center"><img src="/img/jupgrade3.png" alt="" /></p>
 	</div>
 
 	<h2><a name="jail_etcupdate">Update of configuration files in jail, etcupdate/mergemaster</a></h2>
