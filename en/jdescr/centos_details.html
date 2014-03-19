@@ -1,47 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<HTML>
-<HEAD>
-  <META http-equiv="content-type" content="text/html; charset=UTF-8">
-  <META name="Description" content="CBSD Store">
-  <META name="Keywords" content="CentOS FreeBSD jail">
-  <LINK rel="shortcut icon" href="favicon.ico">
-  <title>CBSD - FreeBSD jails management tools</title>
-</HEAD>
-<!--# include file="/html/cbsdmenu_en.html" -->
-<!--# include file="/html/translate_en.html" -->
-<FONT face="verdana,arial,helvetica" size="+1">CentOS Jail</font>
-<FONT face="verdana,arial,helvetica" size="-1">
-<br><br> Linux CentOS 6.2 i386 as FreeBSD jail images
-<br><br>
-<br><br>For installing CentOS cbsd jail just follow this steps (for FreeBSD 10 and above):
-<pre>
-  % cbsd repo action=get sources=img name=centos
-</pre>
-or
-<pre>
-  % cbsd repo action=get sources=img name=centos ver=10.0
-</pre>
-If you hosted on another ( non 10.0 ) FreeBSD version.
-<br>
-Follow settings must be set before starting:
-<pre>
-% sysrc linux_enable=YES
-% service abi restart
-</pre>
+<!--# include file="/en/_start.html" -->
+<!--# include file="/en/currentver.html" -->
+<!--# include file="/en/translate.html" -->
+	<h1><span>CentOS jail</span></h1>
+		<div class="block">
+		<p>Linux CentOS 6.2 i386 as FreeBSD jail images</p>
+		<p>For installing CentOS cbsd jail just follow this steps (for FreeBSD 10 and above):</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=centos
+		</pre>
+		<p>or</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=centos ver=10.0
+		</pre>
+		<p>If you hosted on another ( non 10.0 ) FreeBSD version.</p>
+		<p>Follow settings must be set before starting:</p>
+		<pre class="brush:bash;ruler:true;">
+			% sysrc linux_enable=YES
+			% service abi restart
+		</pre>
+		<p>Also please set in <strong>sysctl.conf</strong></p>
+		<pre class="brush:bash;ruler:true;">
+			compat.linux.osrelease=2.6.18
+		</pre>
+		<p>then:</p>
+		<pre class="brush:bash;ruler:true;">
+			% service sysctl restart
+		</pre>
+		<p>PS: Linux login is not allow -f for <em>root</em> user, so <strong>cbsd jlogin</strong> will not work. Use alternative method (such as <strong>jexec</strong> <em>jid</em> <strong>login -f </strong><em>nonroot_user</em>) or:</p>
+		<pre class="brush:bash;ruler:true;">
+			% chroot $workdir/jails-data/centos-data bash
+		</pre>
+		<p>And setup openssh services for remote login</p>
+		</div>
+<!--# include file="/en/_end.html" -->
 
-Also please set in <b>sysctl.conf</b>
-<pre>
-compat.linux.osrelease=2.6.18
-</pre>
-then:
-<pre>
-% service sysctl restart
-</pre>
-PS: Linux login is not allow -f for <i>root</i> user, so <b>cbsd jlogin</b> will not work. Use alternative method (such as <b>jexec</b> <i>jid</i> <b>login -f </b><i>nonroot_user</i>) or:
-<pre>
-chroot $workdir/jails-data/centos-data bash
-</pre>
-And setup openssh services for remote login
-<br>
-</BODY>
-</HTML>

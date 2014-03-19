@@ -1,40 +1,30 @@
 <!--# include file="/en/_start.html" -->
 <!--# include file="/en/currentver.html" -->
 <!--# include file="/en/translate.html" -->
-<h1><span>Redmine jail</span></h1>
-
-<br><br>For installing Redmine cbsd jail just follow this steps:
-<pre>
-% cbsd repo action=get sources=img name=redmine
-</pre>
-or
-<pre>
-% cbsd repo action=get sources=img name=redmine ver=10.0
-</pre>
-If you hosted on another ( non 10.0 ) FreeBSD version.
-<br>
-After image downloading please set correct name and ip address of the jail and run a <b>install script</b> that asks you for passwords of MySQL superuser and redmine SQL user:
-<pre>
-% cbsd jconfig jname=redmine redmineinstall
-</pre>
-<br><br>
-<img src="/img/redmine1.png"></img>
-<br>
-<br><br>
-Now Redmine ready to use. Do not forget to set <i>astart=1</i> in <b>cbsd jconfig jname=redmine</b> if you want for starting jail automatically.
-<br><br>By the starting jail via
-<pre>
-% cbsd jstart redmine
-</pre>
-a clean Redmine installation in the jail will be available for accessing via <b>http://FQDN</b> with default login and password: <b>admin</b>
-<br>
-<br><br>
-<!--# include file="/en/changeroot.html" -->
-<br><br>
-For non-interactive and automatic deploying (for example you create hosting with lots of RM installation for customer) you can use: 
-<pre>
-   % cbsd jconfig jname=redmine redmineinstall rootpw= rmpw= fqdn= redmine_lang=
-</pre>
-
-</BODY>
-</HTML>
+	<h1><span>Redmine jail</span></h1>
+	<div class="block">
+		<p>For installing Redmine cbsd jail just follow this steps:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=redmine
+		</pre>
+		<p>or</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=redmine ver=10.0
+		</pre>
+		<p>If you hosted on another ( non 10.0 ) FreeBSD version. After image downloading please set correct name and ip address of the jail and run a <strong>install script</strong> that asks you for passwords of MySQL superuser and redmine SQL user:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jconfig jname=redmine redmineinstall
+		</pre>
+		<p class="text-center"><img src="/img/redmine1.png"></img></p>
+		<p>Now Redmine ready to use. Do not forget to set <em>astart=1</em> in <strong>cbsd jconfig jname=redmine</strong> if you want for starting jail automatically. By the starting jail via</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jstart redmine
+		</pre>
+		<p>a clean Redmine installation in the jail will be available for accessing via <strong>http://FQDN</strong> with default login and password: <strong>admin</strong></p>
+		<!--# include file="/en/changeroot.html" -->
+		<p>For non-interactive and automatic deploying (for example you create hosting with lots of RM installation for customer) you can use: </p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jconfig jname=redmine redmineinstall rootpw= rmpw= fqdn= redmine_lang=
+		</pre>
+	</div>
+<!--# include file="/en/_end.html" -->
