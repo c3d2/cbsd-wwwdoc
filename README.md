@@ -11,7 +11,7 @@ server {
         access_log /var/log/httpd/www.bsdstore.ru.acc main buffer=1m;
         error_log /var/log/httpd/move.err;
 
-        root   /usr/home/web/devwww.bsdstore.ru;
+        root   /usr/home/web/www.bsdstore.ru;
 
         location ~* \.(css|txt|html|js|xsl)$ {
             ssi on;
