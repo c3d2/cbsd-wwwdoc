@@ -1,10 +1,4 @@
-<!--#set var="uri" value="$REQUEST_URI" -->
-<!--#set var="lang" value="ru" -->
-<!--#if expr="$uri = /^\/([a-z]{2})\//" -->
-<!--#set var="lang" value="$1" -->
-<!-- endif -->
-<!--# include file="/_version.html" -->
-<!DOCTYPE html>
+<!--#set var="uri" value="$REQUEST_URI" --><!--#set var="lang" value="ru" --><!--#if expr="$uri = /^\/([a-z]{2})\//" --><!--#set var="lang" value="$1" --><!--#endif --><!--#include file="/_version.html" --><!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -19,7 +13,6 @@
 	<script type="text/javascript">SyntaxHighlighter.all();</script>
 	<style type="text/css">html{background-color:#4e4e4e;}</style>
 </head>
-
 <body>
 	<div class="main">
 		<div class="intro">Management and Repository for FreeBSD Jails</div>
