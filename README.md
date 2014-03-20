@@ -18,6 +18,9 @@ server {
 		rewrite ^(.*)$ http://www.$host$1 permanent;
 	}
 
+	rewrite  ^/ru/$  /ru/about.html permanent;
+	rewrite  ^/en/$  /en/about.html permanent;
+
 	location ~* \.(css|txt|html|js|xsl)$ {
 		ssi on;
 		ssi_types text/css text/javascript application/x-javascript;
