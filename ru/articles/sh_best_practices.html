@@ -60,7 +60,7 @@
 		function sum() {
 			local _a _b
 
-			[ -z "${1}" -o -z "${2}" ] && return 1
+			[ -z "${1}" -o -z "${2}" ] &amp;&amp; return 1
 			_a=$1
 			_b=$2
 			res=$(( _a + _b ))
@@ -114,7 +114,7 @@
 	
 	<h2><a name="ifxor">Логические И-ИЛИ вместо if-then блоков, continue/return/break</a></h2>
 	<div class="block">
-		<p>Стараемся избегать большого количества if; then; fi конструкций, там где это возможно, заменяем их логичискими *И — &&* или *ИЛИ — ||*.</p>
+		<p>Стараемся избегать большого количества if; then; fi конструкций, там где это возможно, заменяем их логичискими *И — &amp;&amp;* или *ИЛИ — ||*.</p>
 		
 		<p>Например:</p>
 		
@@ -133,12 +133,12 @@
 		
 		<p>Стаемся не раздувать и пишем так:</p>
 		<pre class="brush:bash;ruler:rule;">
-		[ $a -ne 10 ] && exit
-		[ $b -gt 10 ] && exit
+		[ $a -ne 10 ] &amp;&amp; exit
+		[ $b -gt 10 ] &amp;&amp; exit
 		...
 		</pre>
 		
-		<p>(читаем как: если условие правильно, то выполним то что после && )</p>
+		<p>(читаем как: если условие правильно, то выполним то что после &amp;&amp; )</p>
 		<p>либо</p>
 		<pre class="brush:bash;ruler:rule;">
 		[ $a -gt 10 ] || exit
@@ -147,7 +147,7 @@
 		
 		<p>(читаем как: если условие правильно, идем дальше, иначе, выполним то что после || )</p>
 		
-		<p>Простые конструкции без *else/elif* с одной командой внутри, заменяем на &&</p>
+		<p>Простые конструкции без *else/elif* с одной командой внутри, заменяем на &amp;&amp;</p>
 		
 		<p>Вместо:</p>
 		<pre class="brush:bash;ruler:rule;">
@@ -158,18 +158,18 @@
 		
 		<p>Пишем:</p>
 		<pre class="brush:bash;ruler:rule;">
-		[ -n "$filled_par" ] && echo "ok"
+		[ -n "$filled_par" ] &amp;&amp; echo "ok"
 		</pre>
 		
-		<p>Если внутри конструкции идет уже больше двух++ команд, то вместо <strong>&& ||</strong> наоборот ухудшают читаемость и в данном случае лучше использовать <strong>*if / fi*</strong> блоки:</p>
+		<p>Если внутри конструкции идет уже больше двух++ команд, то вместо <strong>&amp;&amp; ||</strong> наоборот ухудшают читаемость и в данном случае лучше использовать <strong>*if / fi*</strong> блоки:</p>
 		
 		<p>Вместо:</p>
 		<pre class="brush:bash;ruler:rule;">
-		[ -n "$filled_par" ] && echo "ok" && date && echo "Cool"
+		[ -n "$filled_par" ] &amp;&amp; echo "ok" &amp;&amp; date &amp;&amp; echo "Cool"
 		</pre>
 		<p>или</p>
 		<pre class="brush:bash;ruler:rule;">
-		[ -n "$filled_par" ] && { 
+		[ -n "$filled_par" ] &amp;&amp; { 
 			echo "ok" 
 			date
 			echo "Cool"
@@ -206,7 +206,7 @@
 		<p>Пишите:</p>
 		<pre class="brush:bash;ruler:rule;">
 		 for i in PARAM; do
-		   [ "${i}" != "name" ] && continue
+		   [ "${i}" != "name" ] &amp;&amp; continue
 			  do something
 				and something else
 				 and something else
@@ -247,7 +247,7 @@
 		{
 		local _i
 
-			[ -z "${1}" ] && echo "argument is mandatory" && return 1
+			[ -z "${1}" ] &amp;&amp; echo "argument is mandatory" &amp;&amp; return 1
 			for _i in `jot 0 1000`; do
 				echo ${1}
 			done
@@ -257,18 +257,18 @@
 	
 	<h2><a name="stderr">Stderr и функция err()</a></h2>
 	<div class="block">
-		<p>Ошибки необходимо выводить в stderr: echo "Error"  >&2. Удобно вывод ошибок обернуть в отдельную процедуру err и использовать ее через && :</p>
+		<p>Ошибки необходимо выводить в stderr: echo "Error"  >&amp;2. Удобно вывод ошибок обернуть в отдельную процедуру err и использовать ее через &amp;&amp; :</p>
 		<pre class="brush:bash;ruler:rule;">
 		# fatal error. Print message then quit with exitval
 		err()
 		{
 			exitval=$1
 			shift
-			echo -e "$*" 1>&2
+			echo -e "$*" 1>&amp;2
 			exit $exitval
 		}
 
-		[ -z "${must_be_not_empty}" ] && err 1 "param must_be_not_empty is empty"
+		[ -z "${must_be_not_empty}" ] &amp;&amp; err 1 "param must_be_not_empty is empty"
 		</pre>
 	</div>
 	

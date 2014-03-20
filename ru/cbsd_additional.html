@@ -3,7 +3,7 @@
 	
 	<h2><a name="knowit">Общая информация</a></h2>
 	<div class="block">
-		<p><strong>CBSD</strong> представляет из себя дополнительный уровень абстракции над <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8" target="_blank">Jail framework</a> и частью функционала FreeBSD.</p>
+		<p><strong>CBSD</strong> представляет из себя дополнительный уровень абстракции над <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">Jail framework</a> и частью функционала FreeBSD.</p>
 		<p>Некоторый список этого функционала, задействованного в cbsd:</p>
 		<ul>
 			<li>vnet (VIMAGE)</li>
@@ -47,7 +47,7 @@
 		<pre class="brush:bash;ruler:true;">
 		% sqlite3 /usr/jails/var/db/local.sqlite "select jname,ip4_addr from jails"
 		</pre>
-		<p>Когда клетка запускается, cbsd генерирует <a href="http://www.freebsd.org/cgi/man.cgi?query=jail.conf&sektion=5" target="_blank">jail.conf(5)</a> файл из данных SQLite3 командой</p>
+		<p>Когда клетка запускается, cbsd генерирует <a href="http://www.freebsd.org/cgi/man.cgi?query=jail.conf&amp;sektion=5" target="_blank">jail.conf(5)</a> файл из данных SQLite3 командой</p>
 		<pre class="brush:bash;ruler:true;">
 		% cbsd jmkrcconf jname=jailname
 		</pre>

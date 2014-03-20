@@ -1,15 +1,15 @@
 <!--# include file="_start.html" -->
 <!--# include file="currentver.html" -->
 <!--# include file="/en/translate.html" -->
-<h1><span>Jail settings</span></h1>
+		<h1><span>Jail settings</span></h1>
 		<div class="block">
-		<p>Each jail of&nbsp;cbsd has its own settings which is&nbsp;used for starting and stopping the jail. Some of&nbsp;them are specified during the creation of&nbsp;jail, the rest you can change via the command<p>
+		<p>Each jail of&nbsp;cbsd has its own settings which is&nbsp;used for starting and stopping the jail. Some of&nbsp;them are specified during the creation of&nbsp;jail, the rest you can change via the command</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jconfig jname=jname
 		</pre>
 		<p>Only few options at&nbsp;this point can be&nbsp;changed on-the-fly.</p>
 		<p>This page contains a&nbsp;summary of&nbsp;the default settings and description.</p>
-		<hr>
+		<hr />
 		<pre class="brush:bash;ruler:true;">
 			jname="jail1";
 		</pre>
@@ -21,8 +21,8 @@
 		<p>Indicates the path that will be&nbsp;used as&nbsp;the root at&nbsp;the start of&nbsp;the jail. The above configuration is&nbsp;characteristic of&nbsp;jails who are setting baserw to&nbsp;0 (no&nbsp;write access in&nbsp;base), ie, the base of&nbsp;which is&nbsp;mounted in&nbsp;read-only. In&nbsp;this case, the algorithm will work jstart follows:</p>
 		<ul>
 			<li>1) mount a&nbsp;base via nullfs specific version (see below) to&nbsp;/usr/jails/jails/$jname directory</li>
-			<li>2) on&nbsp;the mounted base at&nbsp;$workdir/jails/jails/$jname mount directories related directly to&nbsp;the jail data (in&nbsp;the directory $workdir/jails-data/$jname), usually in&nbsp;write access<li>
-			<li>3) start jail with the root $workdir/jails/jails/$jname<li>
+			<li>2) on&nbsp;the mounted base at&nbsp;$workdir/jails/jails/$jname mount directories related directly to&nbsp;the jail data (in&nbsp;the directory $workdir/jails-data/$jname), usually in&nbsp;write access</li>
+			<li>3) start jail with the root $workdir/jails/jails/$jname</li>
 		</ul>
 		<p>If&nbsp;baserw=1, then nullfs not use and the jail immediately starts with the directory $workdir/jails-data/$jname as&nbsp;root. In&nbsp;these cases, the path is&nbsp;usually seen as&nbsp;a <em>path=&quot;/usr/jails/jails-data/jail1-data&quot;;</em>
 		<hr>
@@ -92,7 +92,7 @@
 		<p>interface = &laquo;igb0&raquo;</p>
 		<p>sets the&nbsp;IP address of&nbsp;the jail at&nbsp;the interface igb0.</p>
 		<p>As&nbsp;well as&nbsp;during start-up, when cbsd will sets the necessary&nbsp;IP for jail on&nbsp;interface, when you stop them cbsd unset IPs from the interface automatically. Therefore, be&nbsp;extremely careful — If&nbsp;you set by&nbsp;mistake&nbsp;IP address of&nbsp;the node for jail , then, during the cbsd jstop sequence, cbsd execute</p>
-		<p>ifconfig <iface> <ip> -alias</p>
+		<p>ifconfig &lt;iface&gt; &lt;ip&gt; -alias</p>
 		<p>and a&nbsp;node will be&nbsp;lost in&nbsp;the network.</p>
 		<p>To&nbsp;the stop of&nbsp;management&nbsp;IP address, the interface= param can be&nbsp;commented out or&nbsp;removed, or&nbsp;the value is&nbsp;left blank:</p>
 		<p>interface=&quot;&quot;</p>
@@ -249,7 +249,7 @@
 		<pre class="brush:bash;ruler:true;">
 			cpuset="0";
 		</pre>
-		<p>Assign jail and its processes to&nbsp;specific cores CPU. A&nbsp;value of&nbsp;0 (default) means that there is&nbsp;no&nbsp;binding to&nbsp;CPUs and processes will take up&nbsp;all the available cores. Nonzero value identifies the kernel or&nbsp;a&nbsp;list of&nbsp;the CPUs allowed to&nbsp;work jail.  Entry must match an&nbsp;entry form for <em>-l cpu-list</em> from <a href="http://www.freebsd.org/cgi/man.cgi?query=cpuset&sektion=1" target="_blank"><strong>cpuset(1)</strong></a> command, for example:</p>
+		<p>Assign jail and its processes to&nbsp;specific cores CPU. A&nbsp;value of&nbsp;0 (default) means that there is&nbsp;no&nbsp;binding to&nbsp;CPUs and processes will take up&nbsp;all the available cores. Nonzero value identifies the kernel or&nbsp;a&nbsp;list of&nbsp;the CPUs allowed to&nbsp;work jail.  Entry must match an&nbsp;entry form for <em>-l cpu-list</em> from <a href="http://www.freebsd.org/cgi/man.cgi?query=cpuset&amp;sektion=1" target="_blank"><strong>cpuset(1)</strong></a> command, for example:</p>
 		<pre class="brush:bash;ruler:true;">
 			cpuset="1";
 		</pre>
@@ -278,7 +278,7 @@
 		<p>Regulates logging output of&nbsp;jail(8) at&nbsp;the start and stop of&nbsp;the jail. By&nbsp;default, the value is&nbsp;<strong>0</strong>.</p>
 		<p>Possible values are:</p>
 		<ul>
-			<li><strong>0</strong>&nbsp;&mdash; disable exec.consolelog. In&nbsp;this case, on&nbsp;jstart/jstop will show all output for jail start and jail stop procedures.<li>
+			<li><strong>0</strong>&nbsp;&mdash; disable exec.consolelog. In&nbsp;this case, on&nbsp;jstart/jstop will show all output for jail start and jail stop procedures.</li>
 			<li><strong>1</strong>&nbsp;&mdash; Enable logging to&nbsp;file <em>${workdir}/var/log/${jname}.log</em>, where $jname&nbsp;&mdash; an&nbsp;appropriate name if&nbsp;jail. Thus, the terminal these messages will not.</li>
 		</ul>
 		<p><strong><em>/path/to/file</em></strong>&nbsp;&mdash; Path to&nbsp;alternate file. For example, with <strong>/dev/null</strong>, the jail will not show anything and it&nbsp;will not record.</p>

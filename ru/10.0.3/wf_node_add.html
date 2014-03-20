@@ -6,7 +6,7 @@
 			% cbsd node mode=add
 		</pre>
 		<p>Команда <strong>cbsd node mode=add ..</strong>, при доступности удаленной машины по ssh и правильном пароле пользователя cbsd, забирает с удаленной машины приватный ключ, сохраняя его в каталоге <em>$workdir/.rssh</em></p>
-		<p>Обязательные параметры для mode=add:<p>
+		<p>Обязательные параметры для mode=add:</p>
 		<ul>
 			<li><strong>node</strong> = IP адрес или FQDN сервера (в списке нод, однако, этот сервер будет называться именно так, как указано в <strong>nodename</strong> на удаленной машине. Это то имя, которое спрашивается при первом запуске <strong>cbsd initenv</strong>, в дальнейшем его можно изменить через <strong>cbsd inienv-tui</strong>.</li>
 			<li><strong>pw</strong> = пароль для пользователя cbsd</li>

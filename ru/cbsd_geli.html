@@ -2,9 +2,9 @@
 	<h1><span>Шифрованные образы с&nbsp;cbsd geli</span></h1>
 	<div class="block">
 		<p>Имеются ситуации, когда информацию, размещенную на&nbsp;жестком диске сервера желательно хранить в&nbsp;зашифрованном виде.  Например, вы&nbsp;устанавливаете сервер с&nbsp;важной информацией в&nbsp;любом чужом датацентре. Бывают реальные случаи (автор с&nbsp;таким случаем знаком не&nbsp;по&nbsp;наслышке), когда недобросовестные сотрудники датацентра могут на&nbsp;несколько минут выключить ваш сервер под любым предлогом (перерывы на&nbsp;технические работы&nbsp;&mdash; не&nbsp;редкость),  сделать образ жесткого диска и&nbsp;включить обратно, что для вас будет выглядеть как перезагрузка сервера, в&nbsp;то&nbsp;время как вся информация стала находится у&nbsp;сторонних лиц. Либо, вы&nbsp;арендуете VDS/VPS, где чужой для вас не&nbsp;только датацентр, но&nbsp;и&nbsp;сам сервер и&nbsp;носитель информации.</p>
-		<p>В&nbsp;подобных случаях прибегают к&nbsp;шифрованию тех данных, утечка которых нежелательна. В&nbsp;данный момент, CBSD имеет скрипт-враппер <strong>geli</strong> для работы с зашифрованными образами через GELI&nbsp;фреймворк. Также, как перед использованием <strong>CBSD</strong> крайне желательно ознакомится с&nbsp;оригинальным man на&nbsp;<a href="http://www.freebsd.org/cgi/man.cgi?query=jail&sektion=8" target="_blank">jail</a>, так и&nbsp;в&nbsp;данном контексте настоятельно рекомендуется ознакомиться со&nbsp;следующей информацией:</p>
+		<p>В&nbsp;подобных случаях прибегают к&nbsp;шифрованию тех данных, утечка которых нежелательна. В&nbsp;данный момент, CBSD имеет скрипт-враппер <strong>geli</strong> для работы с зашифрованными образами через GELI&nbsp;фреймворк. Также, как перед использованием <strong>CBSD</strong> крайне желательно ознакомится с&nbsp;оригинальным man на&nbsp;<a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">jail</a>, так и&nbsp;в&nbsp;данном контексте настоятельно рекомендуется ознакомиться со&nbsp;следующей информацией:</p>
 		<ul>
-			<li><a href="http://www.freebsd.org/cgi/man.cgi?query=geli&sektion=8" target="_blank">man geli</a></li>
+			<li><a href="http://www.freebsd.org/cgi/man.cgi?query=geli&amp;sektion=8" target="_blank">man geli</a></li>
 			<li>пункт 18.14.2&nbsp;в <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-encrypting.html" target="_blank">Encrypting Disk Partitions</a></li>
 		</ul>
 		<p>перед использованием <strong>cbsd geli</strong>.</p>
@@ -17,7 +17,7 @@
 		<ul>
 			<li><strong>${dbdir}</strong>&mdash;&nbsp;каталог <em>$workdir/var/db</em>, где <em>workdir</em>&nbsp;&mdash; куда проинициализирована cbsd. Например: <em>/usr/jails/var/db</em></li>
 			<li><strong>MASTER_GELI</strong>&mdash;&nbsp;зашифрованный вашим паролем образ, в&nbsp;котором <strong>CBSD</strong> будет искать ключи для всех остальных geli attach операций. Расположен на&nbsp;файловой системе в&nbsp;виде файла <em>${dbdir}/master_geli.img</em></li>
-		</li>
+		</ul>
 		<div class="warning">
 			<p><strong>ВНИМАНИЕ!</strong> Удаление или порча этогоо файла сделает невозможным подключение всех остальные криптованных образов автоматически и&nbsp;подмонтировать эти образы будет возможно только если вы&nbsp;помните, какому образу какой пароль вы&nbsp;назначали на&nbsp;<strong>cbsd geli mode=init file=</strong> стадии. В&nbsp;связи с&nbsp;этим, регулярно делайте резервные копии этого файла.</p>
 		</div>

@@ -10,7 +10,7 @@
 		
 		<p>Между тем не многие критики "толстой базы" FreeBSD знают, что с крайне бородадых времен разработчиками ОС ведутся <a href="http://www.freebsd.org/doc/en/books/porters-handbook/makefile-options.html" target="_blank"><em>KNOBS</em></a>-ы — определенные переменные, специфичные для того или иного приложения.</p>
 		
-		<p>С помощью них, например, собирают кастомайженные базы через <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&apropos=0&sektion=0&manpath=FreeBSD+9.2-RELEASE&arch=default&format=html" target="_blank">src.conf</a>. Остается лишь решить вопрос построения репозитория в автоматическом режиме и методов его дистрибьюции, с чем нам может помочь <strong>pkgng</strong>. Следующими парой строчек <strong>sh</strong>-сценария ( сырцы тут: <a href="https://github.com/olevole/base2pkg/" target="_blank">base2pkg</a> ) решается один из самых наистрашнейших минусов FreeBSD, которым десятилетиями пугают молодежь камрады с Ubuntu.</p>
+		<p>С помощью них, например, собирают кастомайженные базы через <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+9.2-RELEASE&amp;arch=default&amp;format=html" target="_blank">src.conf</a>. Остается лишь решить вопрос построения репозитория в автоматическом режиме и методов его дистрибьюции, с чем нам может помочь <strong>pkgng</strong>. Следующими парой строчек <strong>sh</strong>-сценария ( сырцы тут: <a href="https://github.com/olevole/base2pkg/" target="_blank">base2pkg</a> ) решается один из самых наистрашнейших минусов FreeBSD, которым десятилетиями пугают молодежь камрады с Ubuntu.</p>
 		
 		<p>Всю работу по автоматическому построению списка файлов, соответствующих тому или иному KNOBs и построению файлов MANIFEST, необходимые для создания <strong>pkg</strong>, выполняет скрипт <a href="https://github.com/olevole/base2pkg/blob/master/makepkg" target="_blank">makepkg</a>.</p>
 		
@@ -72,7 +72,7 @@
 	<div class="block">
 		<p>Чисто теоретически, в <strong>pkgng</strong> таким образом можно обернуть абсолютно всю базу, включая разные ядра ОС и обеспечить альтернативу бинарного обновления через <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/articles/freebsd-update-server/index.html" target="_blank">FreeBSD update server</a>, однако привычное поведение <strong>pkg</strong> при любой ошибке делать <em>deinstall</em> устанавливаемого пакета по манифесту, делает не очень надеждым данный способ: неприятно будет потерять файлы в каталоге <em>/lib/*</em> если что-то пойдет не так. Конечно, через <strong>pkg hold <em>package</em></strong> можно заморозить состояние пакета, поставив иммунитет на обновления и тп.</p>
 		
-		<p>Однако гораздо лучшим решением будет создание микро-базы (например средствами <a href="http://www.freebsd.org/cgi/man.cgi?query=picobsd&apropos=0&sektion=0&manpath=FreeBSD+9.2-RELEASE&arch=default&format=html" target="_blank"><strong>picobsd</strong></a>, которая идет в составе FreeBSD, или <a href="http://mfsbsd.vx.sk/" target="_blank">mfsBSD</a>. Оба инструмента по-умолчанию создают рабочую базу FreeBSD объемем ~20-30 Мб</a>, не подверженную обновлению в pkg, которая будет проливаться на ваш хостинг/парк серверов, а уже сверху через <strong>pkg</strong> доставлять все, что заблагорассудится.</p>
+		<p>Однако гораздо лучшим решением будет создание микро-базы (например средствами <a href="http://www.freebsd.org/cgi/man.cgi?query=picobsd&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+9.2-RELEASE&amp;arch=default&amp;format=html" target="_blank"><strong>picobsd</strong></a>, которая идет в составе FreeBSD, или <a href="http://mfsbsd.vx.sk/" target="_blank">mfsBSD</a>. Оба инструмента по-умолчанию создают рабочую базу FreeBSD объемем ~20-30 Мб, не подверженную обновлению в pkg, которая будет проливаться на ваш хостинг/парк серверов, а уже сверху через <strong>pkg</strong> доставлять все, что заблагорассудится.</p>
 		
 		<p>Наслаждаемся результатом:</p>
 		<pre class="cli">
@@ -217,6 +217,6 @@
 	gdb: Command not found.
 		</pre>
 
-		<p>PS: В данной реализации не учтены возможные конфликты по устанавливаемым файлам ( поскольку сборка сделана из общей базы, то при установке пакета <strong>freebsd-examples</strong> всегда будет выдаваться руганть о коллизиях некоторых файлов ), а также не учтены зависимости. Например, пакет <strong>freebsd-openssh</strong> и <strong>freebsd-openssl<strong> зависят от пакета <strong>freebsd-crypto</strong>.</p>
+		<p>PS: В данной реализации не учтены возможные конфликты по устанавливаемым файлам ( поскольку сборка сделана из общей базы, то при установке пакета <strong>freebsd-examples</strong> всегда будет выдаваться руганть о коллизиях некоторых файлов ), а также не учтены зависимости. Например, пакет <strong>freebsd-openssh</strong> и <strong>freebsd-openssl</strong> зависят от пакета <strong>freebsd-crypto</strong>.</p>
 	</div>
 <!--# include file="/ru/_end.html" -->

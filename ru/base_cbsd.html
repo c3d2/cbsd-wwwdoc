@@ -45,7 +45,7 @@
 			<pre class="brush:bash;rule:true">
 				% cbsd buildworld maxjobs=1
 			</pre>
-			При компиляции, может учитываться персональный <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&sektion=5" target="_blank">src.conf(5)</a>, в котором можно указывать стандартные KNOBS-ы. Файл src.conf должен лежать в каталоге $workdir/etc/ с именем <strong>src-</strong><em>basename</em><strong>.conf</strong>, где basename&nbsp;— любое имя-название конфигурации. Например, в стандартной cbsd имеется файл /usr/jails/etc/src-lite.conf. Для сборки мира с определенным src.conf, необходимо указать параметр basename:
+			При компиляции, может учитываться персональный <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&amp;sektion=5" target="_blank">src.conf(5)</a>, в котором можно указывать стандартные KNOBS-ы. Файл src.conf должен лежать в каталоге $workdir/etc/ с именем <strong>src-</strong><em>basename</em><strong>.conf</strong>, где basename&nbsp;— любое имя-название конфигурации. Например, в стандартной cbsd имеется файл /usr/jails/etc/src-lite.conf. Для сборки мира с определенным src.conf, необходимо указать параметр basename:
 			<pre class="brush:bash;rule:true">
 				% cbsd buildworld basename=lite
 			</pre>

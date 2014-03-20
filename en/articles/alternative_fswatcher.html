@@ -55,20 +55,20 @@
 
 		3) How to use:
 		 cc mypr.c -o mypr -lbsm
-		 ./mypr <watchdirectory>
+		 ./mypr &lt;watchdirectory&gt;
 		*/
 
-		#include <bsm/libbsm.h>
+		#include &lt;bsm/libbsm.h&gt;
 
-		#include <stdio.h>
-		#include <stdlib.h>
-		#include <unistd.h>
-		#include <string.h>
-		#include <regex.h>
-		#include <fcntl.h>
-		#include <sys/types.h>
-		#include <sys/stat.h>
-		#include <libgen.h>
+		#include &lt;stdio.h&gt;
+		#include &lt;stdlib.h&gt;
+		#include &lt;unistd.h&gt;
+		#include &lt;string.h&gt;
+		#include &lt;regex.h&gt;
+		#include &lt;fcntl.h&gt;
+		#include &lt;sys/types.h&gt;
+		#include &lt;sys/stat.h&gt;
+		#include &lt;libgen.h&gt;
 
 		const char *auditpipe = "/dev/auditpipe";
 
@@ -82,14 +82,14 @@
 			if( f < 0 ) {
 				return 2;
 			}
-			n = fstat( f, &sb );
+			n = fstat( f, &amp;sb );
 
 			if( n < 0 ) {
 				close(f);
 				return 2;
 			}
 
-		if ((sb.st_mode & S_IFMT) == S_IFREG ) n=0;
+		if ((sb.st_mode &amp; S_IFMT) == S_IFREG ) n=0;
 			else n=1;
 		close(f);
 		return n;
@@ -101,22 +101,22 @@
 		const char *ss = "";
 		int match=0;
 
-		regcomp(&preg, tp, REG_EXTENDED);
-		if ( regexec(&preg, t1, 1, substmatch, 0) == 0 )
+		regcomp(&amp;preg, tp, REG_EXTENDED);
+		if ( regexec(&amp;preg, t1, 1, substmatch, 0) == 0 )
 			{
 			char *ns = malloc(substmatch[0].rm_so + 1 + strlen(ss) + (strlen(t1) - substmatch[0].rm_eo) + 2);
 			  memcpy(ns, t1, substmatch[0].rm_so+1);
-			  memcpy(&ns[substmatch[0].rm_so], ss, strlen(ss));
-			  memcpy(&ns[substmatch[0].rm_so+strlen(ss)], &t1[substmatch[0].rm_eo],
-						strlen(&t1[substmatch[0].rm_eo]));
+			  memcpy(&amp;ns[substmatch[0].rm_so], ss, strlen(ss));
+			  memcpy(&amp;ns[substmatch[0].rm_so+strlen(ss)], &amp;t1[substmatch[0].rm_eo],
+						strlen(&amp;t1[substmatch[0].rm_eo]));
 			  ns[ substmatch[0].rm_so + strlen(ss) +
-				  strlen(&t1[substmatch[0].rm_eo]) ] = 0;
+				  strlen(&amp;t1[substmatch[0].rm_eo]) ] = 0;
 			  match=1;
 			  free(ns);
 		   } else {
 			  match=0;
 		   }
-		   regfree(&preg);
+		   regfree(&amp;preg);
 		   return match;
 		}
 		static int
@@ -130,16 +130,16 @@
 				int part;
 				int raw=1;
 
-				while ((reclen = au_read_rec(fp, &buf)) != -1) {
+				while ((reclen = au_read_rec(fp, &amp;buf)) != -1) {
 						bytesread = 0;
 						part=0;
 						while (bytesread < reclen) {
-								if (-1 == au_fetch_tok(&tok, buf + bytesread,
+								if (-1 == au_fetch_tok(&amp;tok, buf + bytesread,
 									reclen - bytesread))
 										break;
 								bytesread += tok.len;
 								//token id ?
-								if ((tok.id == 35)&&(regex_match(dst,tok.tt.path.path))) {
+								if ((tok.id == 35)&amp;&amp;(regex_match(dst,tok.tt.path.path))) {
 									if (file_is_special(tok.tt.path.path)==0) { 
 									   printf("%s\n", tok.tt.path.path);
 									   fflush(stdout);
@@ -229,7 +229,7 @@
 		Symlink to /var/audit/20121013183048.not_terminated
 		</pre>
 		
-		<p>(вывод при выполнении cbsd jstop jail1 && cbsd jstart jail1)</p>
+		<p>(вывод при выполнении cbsd jstop jail1 &amp;&amp; cbsd jstart jail1)</p>
 		<pre class="brush:bash;ruler=true;">
 		5,Q: /usr/jails/jails/jail1/var/run/syslog.pid
 		4,Q: /usr/jails/jails/jail1/var/run/logpriv
@@ -261,7 +261,7 @@
 
 		syscall::open*:entry
 		/
-		arg1 & (O_WRONLY | O_RDWR) &&
+		arg1 &amp; (O_WRONLY | O_RDWR) &amp;&amp;
 			substr(copyinstr(arg0),0,dirlen))==dir
 		/
 		{

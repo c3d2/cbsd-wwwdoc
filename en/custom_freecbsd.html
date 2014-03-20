@@ -59,9 +59,9 @@
 				</pre>
 			</li>
 			<li>3) <em>devfs_load_rulesets</em></li>
-			<p>This parameter is needed to initialize the devfs rule. By default, new jail will use <strong>4</strong> ruleset (see /etc/defaults/devfs.rules). However, the default setting devfs_load_rulesets in /etc/defaults/rc.conf is set to NO, which in turn will open up in jails all devices in <strong>/dev</strong>,  that in the general case — is undesirable. to change the number of rule sets for a specific jail you can via <strong>cbsd jconfig</strong></p>
-			<li>4) <em>cbsdd_enable, cbsdrsyncd_enable, cbsdrsyncd_flags, cbsd_workdir</em></li>
 		</ul>
+		<p>This parameter is needed to initialize the devfs rule. By default, new jail will use <strong>4</strong> ruleset (see /etc/defaults/devfs.rules). However, the default setting devfs_load_rulesets in /etc/defaults/rc.conf is set to NO, which in turn will open up in jails all devices in <strong>/dev</strong>,  that in the general case — is undesirable. to change the number of rule sets for a specific jail you can via <strong>cbsd jconfig</strong></p>
+		<p>4) <em>cbsdd_enable, cbsdrsyncd_enable, cbsdrsyncd_flags, cbsd_workdir</em></p>
 		<p>The following entries are required in /etc/rc.conf for correct operation <strong>CBSD</strong>, which proposes to make the installation script initenv:</p>
 		<pre class="brush:bash;ruler:true;">
 			cbsdrsyncd_enable="YES"
@@ -79,8 +79,8 @@
 	<div class="block">
 		<p><strong>CBSD</strong> may have "internal" tasks requiring periodic execution (eg: traffic stats, <strong>RACCT</strong> stats). To do this, it can configure its own periodic via records:</p>
 		<pre class="brush:bash;ruler:true;">
-			* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&1
-			0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&1
+			* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&amp;1
+			0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&amp;1
 		</pre>
 		<p>in user-cron tab for user <strong>root</strong> (/var/cron/tabs/root). Users cron tab, instead of the system used for the reasons described in <a href="/ru/articles/upgrade_for_fun.html"> Do not be afraid mergemaster</a> (rus version only). If you do not want to disturb these calls in your system, just open the editor via cron tab command:</p>
 		<pre class="brush:bash;ruler:true;">
@@ -88,8 +88,8 @@
 		</pre>
 		<p>and put this lines with starting comment character '#':</p>
 		<pre class="brush:bash;ruler:true;">
-			#* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&1
-			#0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&1
+			#* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&amp;1
+			#0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&amp;1
 		</pre>
 		<p>In this case, <strong>cbsd initenv</strong> will not make changes.</p>
 	</div>

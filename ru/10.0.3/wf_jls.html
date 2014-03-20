@@ -19,7 +19,7 @@
 			<li><strong>PATH</strong>&nbsp;— корень клетки</li>
 			<li><strong>STATUS</strong>&nbsp;— On (запущена), Off (остановлена), Unregister (клетка имеет свой rc.conf (старый формат) но отсутствует в SQL базе)</li>
 		</ul>
-		<p>Прим: клетки в статусе Unregister могут быть внесены в SQL через команду <strong>cbsd jregister</strong>. Также, они автоматически конвертируются при отработке <em>Upgrading</em> стадии команды <strong>cbsd initenv</strong>. В случае, если к локальному серверу добавлены RSA/DSA ключи удаленных нод, можно вывести все клетки в ферме через<p> 
+		<p>Прим: клетки в статусе Unregister могут быть внесены в SQL через команду <strong>cbsd jregister</strong>. Также, они автоматически конвертируются при отработке <em>Upgrading</em> стадии команды <strong>cbsd initenv</strong>. В случае, если к локальному серверу добавлены RSA/DSA ключи удаленных нод, можно вывести все клетки в ферме через</p> 
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jls alljails=1
 		</pre>

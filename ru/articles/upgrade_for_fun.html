@@ -27,7 +27,7 @@
 		% mkdir /root/etc
 		</pre>
 		
-		<p>Если используется <strong>ipfw</strong> и </strong>/etc/rc.firewalll</strong> вы модифицируйте, скопируйте файл /etc/rc.firewall в /root/etc/rc.firewall, а через флаги в /etc/rc.conf скормите альтернативный путь к боевой конфиге:</p>
+		<p>Если используется <strong>ipfw</strong> и <strong>/etc/rc.firewalll</strong> вы модифицируйте, скопируйте файл /etc/rc.firewall в /root/etc/rc.firewall, а через флаги в /etc/rc.conf скормите альтернативный путь к боевой конфиге:</p>
 		<pre class="brush:bash;ruler=true;">
 		firewall_script="/root/etc/rc.firewall"
 		</pre>
@@ -43,7 +43,7 @@
 		
 		<p>и т.д. — все базовые утилиты, имеющие конфиг файлы, можно переопределить на альтернативный путь.</p>
 		
-		<p>Необходимость редактирования системного файла <strong>/etc/crontab</strong> заменяем на пользовательский <strong>cron</strong> ( </strong>crontab -e</strong>), который хранит все записи в <strong>/var/cron</strong>.</p>
+		<p>Необходимость редактирования системного файла <strong>/etc/crontab</strong> заменяем на пользовательский <strong>cron</strong> ( <strong>crontab -e</strong>), который хранит все записи в <strong>/var/cron</strong>.</p>
 		
 		<p>Соответственно, вы правите лишь те файлы, которые скопировали в <strong>/root/etc</strong> (в случае с <strong>named</strong> выше, копируете <strong>/etc/namedb/named.conf</strong> в <strong>/etc/namedb/myconf.conf</strong>).</p>
 		
