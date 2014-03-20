@@ -1,3 +1,8 @@
+<!--#set var="uri" value="$REQUEST_URI" -->
+<!--#set var="lang" value="ru" -->
+<!--#if expr="$uri = /^\/([a-z]{2})\//" -->
+<!--#set var="lang" value="$1" -->
+<!-- endif -->
 <!--# include file="/_version.html" -->
 <!DOCTYPE html>
 <html>
@@ -24,7 +29,7 @@
 			<a href="/ru/about.html" class="llogo"></a>
 		</div>
 		<div class="menu">
-<!--# include file="_menu.html" -->
+<!--# include file="/$lang/_menu.html" -->
 		</div>
 	<div id="referat"></div>
 	<div class="content">
