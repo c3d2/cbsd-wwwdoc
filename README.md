@@ -5,10 +5,12 @@ cbsd documentation part for http://bsdstore.ru site
 
 nginx-vhost.conf sample for site:
 
-========
-server {
+============
+
+    server {
 	listen       *:80;
 	listen      [::]:80;
+
 	server_name  bsdstore.ru www.bsdstore.ru;
 	access_log /var/log/httpd/www.bsdstore.ru.acc main buffer=1m;
 	error_log /var/log/httpd/www.bsdstore.err;
@@ -45,4 +47,4 @@ server {
 	error_page      404     /404.html;
 }
 
-=======
+============
