@@ -24,7 +24,7 @@
 .syntaxhighlighter table thead,
 .syntaxhighlighter table caption,
 .syntaxhighlighter textarea {
-  background: none !important;
+  background: transparent !important;
   border: 0 !important;
   bottom: auto !important;
   float: none !important;
@@ -47,7 +47,7 @@
   font-style: normal !important;
   font-size: 1em !important;
   min-height: inherit !important;
-  min-height: auto !important;
+  /*min-height: auto !important;*/
 }
 
 .syntaxhighlighter {
@@ -165,7 +165,7 @@
 .syntaxhighlighter.printing .line.highlighted .number,
 .syntaxhighlighter.printing .line.highlighted.alt1 .content,
 .syntaxhighlighter.printing .line.highlighted.alt2 .content {
-  background: none !important;
+  background: transparent !important;
 }
 .syntaxhighlighter.printing .line .number {
   color: #bbbbbb !important;
@@ -309,7 +309,7 @@
 .syntaxhighlighter .script {
   font-weight: bold !important;
   color: #006699 !important;
-  background-color: none !important;
+  background-color: transparent !important;
 }
 .syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
   color: gray !important;

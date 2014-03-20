@@ -24,7 +24,7 @@
 .syntaxhighlighter table thead,
 .syntaxhighlighter table caption,
 .syntaxhighlighter textarea {
-  background: none !important;
+  background: transparent !important;
   border: 0 !important;
   bottom: auto !important;
   float: none !important;
@@ -165,7 +165,7 @@
 .syntaxhighlighter.printing .line.highlighted .number,
 .syntaxhighlighter.printing .line.highlighted.alt1 .content,
 .syntaxhighlighter.printing .line.highlighted.alt2 .content {
-  background: none !important;
+  background: transparent !important;
 }
 .syntaxhighlighter.printing .line .number {
   color: #bbbbbb !important;
