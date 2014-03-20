@@ -4,6 +4,7 @@ cbsd-wwwdoc
 cbsd documentation part for http://bsdstore.ru site
 
 nginx-vhost.conf sample for site:
+
 ========
 server {
 	listen       *:80;
@@ -47,4 +48,5 @@ server {
 
 	error_page      404     /404.html;
 }
+
 =======
