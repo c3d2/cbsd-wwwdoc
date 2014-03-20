@@ -34,16 +34,12 @@ server {
 
 	location / {
 		set $language_suffix 'en';
-		
+
 		if ($http_accept_language ~* '^(en|ru){1}') {
-			set $first_language $1;
+			set $language_suffix $1;
 		}
-		
-		if ($language_suffix ~* 'ru') {
-			rewrite ^/$ /ru/about.html permanent;
-		}
-		
-		rewrite ^/$ /en/about.html permanent;
+		rewrite ^/$ /$language_suffix/about.html permanent;
+
 	}
 
 	error_page      404     /404.html;
