@@ -4,7 +4,7 @@
 <!--# include file="/en/translate.html" -->
 <h2><a name="intro"><span>Introduction</span></a></h2>
 	<div class="block">
-		<p>Traditionally, it&nbsp;is&nbsp;assumed that FreeBSD&nbsp;&mdash; decent choice as&nbsp;a&nbsp;server&nbsp;OS, but on&nbsp;the role as&nbsp;a&nbsp;modern workstation suitable weak. Apologists and just hotheads on&nbsp;both sides of&nbsp;this opinion give different pros and cons and this article is&nbsp;not about this endless debate. Instead, there will also attempt to&nbsp;relate and fantasize about seemingly completely different technologies, such as&nbsp;Xorg and Jail, and demonstrated one of&nbsp;the scenarios with FreeBSD as&nbsp;a&nbsp;workstation.</p>
+		<p>Traditionally, it&nbsp;is&nbsp;assumed that FreeBSD&nbsp;&mdash; decent choice as&nbsp;a&nbsp;server&nbsp;OS, but on&nbsp;the role as&nbsp;a&nbsp;modern workstation suitable weak. Apologists and just hotheads on&nbsp;both sides of&nbsp;this opinion give different pros and cons and this article is&nbsp;not about this stupid dispute. Instead, there will also attempt to&nbsp;relate and fantasize about seemingly completely different technologies, such as&nbsp;Xorg and Jail, and demonstrated one of&nbsp;the scenarios with FreeBSD as&nbsp;a&nbsp;workstation.</p>
 		<p>Not so&nbsp;rare on&nbsp;the Internet you can find information about what additional properties from the *nix system acquires user running Xorg-based application <a href="http://www.freebsd.org/cgi/man.cgi?query=chroot&amp;sektion=8" target="_blank"><strong>chroot(8)</strong></a>.</p>
 		<p>There may be&nbsp;many reasons, one of&nbsp;them&nbsp;&mdash; you like to&nbsp;experiment with different numbers of&nbsp;environments and do&nbsp;not really want to&nbsp;convert the file system in&nbsp;the trash (and possibly receive conflicts between one or&nbsp;another application on&nbsp;the file system.)</p>
 		<p>Also, do&nbsp;not last role security. No&nbsp;one can guarantee that any installed software, whether <strong>skype</strong>, <strong>mc</strong>, <strong>screen</strong>, <strong>firefox</strong> and&nbsp;so, at&nbsp;the first update, due to&nbsp;an&nbsp;unfortunate typo in&nbsp;the code will scan randomly your home directory for <strong>id_rsa</strong> keys and <strong>known_hosts</strong>, <strong>.mysql_history, .bash_history</strong> and all your settings from an&nbsp;account <em>~/.local</em>, <em>~/.config</em> , <em>~/.kde4</em> and send them to&nbsp;the developer&rsquo;s website as&nbsp;necessary for further development of&nbsp;software updates statistics. Thus, chroot allows in&nbsp;this case to&nbsp;keep your eggs in&nbsp;one basket, which in&nbsp;itself&nbsp;&mdash; perfect.</p>
@@ -66,6 +66,9 @@
 			<li>Generate <em>/etc/X11/xorg.conf</em> (if&nbsp;necessary) and create <em>~/.xinitrc</em>
 			<li>Run X</li>
 		</ul>
+		<div class="warning">
+			<p><strong>Attention:</strong> allow_kmem option violates the concept of jail security and should be used for containerization <strong>ONLY YOUR</strong> X-jails. Do not enable this feature in the jail that have the potential attackers access.</p>
+		</div>
 		<a href="http://youtu.be/YcfmRnxHRKY" target="_blank">Short demo of XJail from scratch</a>.
 	</div>
 <!--# include file="_end.html" -->
