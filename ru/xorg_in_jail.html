@@ -21,7 +21,7 @@
 			<li>можно использовать <a href="http://www.freebsd.org/cgi/man.cgi?query=cpuset&amp;sektion=1" target="_blank"><strong>cpuset(1)</strong></a> для привязки всех&nbsp;X приложений на&nbsp;конкретное ядро или группу ядер;</li>
 			<li>можно использовать различные лимиты на&nbsp;всю клетку, тогда как при chroot, вы&nbsp;можете применять лимиты через <a href="http://www.freebsd.org/cgi/man.cgi?query=limit&amp;sektion=1" target="_blank"><strong>limit(1)</strong></a> лишь на&nbsp;пользователя или PID, что не&nbsp;так удобно.</li>
 			<li>В&nbsp;случае chroot и&nbsp;при наличие нескольких&nbsp;IP alias-ов в&nbsp;системе, в&nbsp;качестве source ip&nbsp;при установке соединения, приложение будет всегда использовать первый IP. В&nbsp;случае с&nbsp;jail и&nbsp;при наличие нескольких&nbsp;IP, вы&nbsp;можете ограничить&nbsp;IP для приложений лишь теми, которые вам нужны. При этом вы&nbsp;можете использовать <strong>PF/IPFW</strong> для подсчета трафика X-приложений, эмулировать &laquo;плохую&raquo; сеть, добавив задержки или потери на&nbsp;сеть этого jail, играясь с&nbsp;traffic bandwith и&nbsp;тд&nbsp;для изучения работы того или иного приложения в&nbsp;разных условиях.</li>
-			<li>Если у&nbsp;вас есть несколько рабочих станций, с&nbsp;помощью jail вы&nbsp;можете устроить &laquo;плавающее&raquo; окружение более простым образом: за&nbsp;какой станцией вы&nbsp;бы не&nbsp;находились, вы&nbsp;всегда находитесь в&nbsp;одном окружении, вся history, вся принятая почта, даже если она была принята при работе на&nbsp;другой станции&nbsp;&mdash; всегда с&nbsp;вами. Вам не&nbsp;нужно обновлять софт сразу в&nbsp;3&nbsp;системах, если вы&nbsp;испольуете 3&nbsp;рабочих системы и&nbsp;набор&nbsp;ПО не&nbsp;меняется.</li>
+			<li>Если у&nbsp;вас есть несколько рабочих станций, с&nbsp;помощью jail вы&nbsp;можете устроить &laquo;плавающее&raquo; окружение более простым образом: за&nbsp;какой станцией вы&nbsp;бы не&nbsp;находились, вы&nbsp;всегда находитесь в&nbsp;одном окружении, вся history, вся принятая почта, даже если она была принята при работе на&nbsp;другой станции&nbsp;&mdash; всегда с&nbsp;вами. Вам не&nbsp;нужно обновлять софт сразу в&nbsp;3&nbsp;системах, если вы&nbsp;используете 3&nbsp;рабочих системы и&nbsp;набор&nbsp;ПО не&nbsp;меняется.</li>
 		</ul>
 		
 	</div>
@@ -37,7 +37,7 @@
 			<p><strong>Внимание:</strong> Ввиду ограничений в&nbsp;ресурсах, данный патч применен только для ядра FreeBSD 11&nbsp;aka HEAD (на&nbsp;момент написания статьи) в&nbsp;репозитории <strong>CBSD</strong></p>
 		</div>
 		<p>При наличие этих патчей, в&nbsp;конфигурации <strong>CBSD</strong> jail появится опция <strong>allow_kmem</strong>, которую можно установить через <strong>cbsd jset</strong> или <strong>cbsd jconfig</strong></p>
-		<p>Кроме того, вам может понадобится дописать отдельное правило для <a href="http://www.freebsd.org/cgi/man.cgi?query=devfs.ruleset&amp;sektion=5" target="_blank"><strong>devfs.ruleset(5)</strong></a>, чтобы соответствующие устройства стали видимы в&nbsp;<em>/dev</em> каталоге jail. Например такого содержания:</p>
+		<p>Кроме того, вам может понадобиться дописать отдельное правило для <a href="http://www.freebsd.org/cgi/man.cgi?query=devfs.ruleset&amp;sektion=5" target="_blank"><strong>devfs.ruleset(5)</strong></a>, чтобы соответствующие устройства стали видимы в&nbsp;<em>/dev</em> каталоге jail. Например такого содержания:</p>
 		<pre class="brush:bash;ruler:true;">
 			[devfsrules_unhide_xorg=8]
 			add include $devfsrules_hide_all
