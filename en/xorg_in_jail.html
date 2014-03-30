@@ -1,0 +1,70 @@
+<!--# include file="/en/_start.html" -->
+	<h1><span>FreeBSD: Xorg in&nbsp;jail</span></h1>
+<!--# include file="currentver.html" -->
+<!--# include file="/en/translate.html" -->
+<h2><a name="intro"><span>Introduction</span></a></h2>
+	<div class="block">
+		<p>Traditionally, it&nbsp;is&nbsp;assumed that FreeBSD&nbsp;&mdash; decent choice as&nbsp;a&nbsp;server&nbsp;OS, but on&nbsp;the role as&nbsp;a&nbsp;modern workstation suitable weak. Apologists and just hotheads on&nbsp;both sides of&nbsp;this opinion give different pros and cons and this article is&nbsp;not about this endless debate. Instead, there will also attempt to&nbsp;relate and fantasize about seemingly completely different technologies, such as&nbsp;Xorg and Jail, and demonstrated one of&nbsp;the scenarios with FreeBSD as&nbsp;a&nbsp;workstation.</p>
+		<p>Not so&nbsp;rare on&nbsp;the Internet you can find information about what additional properties from the *nix system acquires user running Xorg-based application <a href="http://www.freebsd.org/cgi/man.cgi?query=chroot&amp;sektion=8" target="_blank"><strong>chroot(8)</strong></a>.</p>
+		<p>There may be&nbsp;many reasons, one of&nbsp;them&nbsp;&mdash; you like to&nbsp;experiment with different numbers of&nbsp;environments and do&nbsp;not really want to&nbsp;convert the file system in&nbsp;the trash (and possibly receive conflicts between one or&nbsp;another application on&nbsp;the file system.)</p>
+		<p>Also, do&nbsp;not last role security. No&nbsp;one can guarantee that any installed software, whether <strong>skype</strong>, <strong>mc</strong>, <strong>screen</strong>, <strong>firefox</strong> and&nbsp;so, at&nbsp;the first update, due to&nbsp;an&nbsp;unfortunate typo in&nbsp;the code will scan randomly your home directory for <strong>id_rsa</strong> keys and <strong>known_hosts</strong>, <strong>.mysql_history, .bash_history</strong> and all your settings from an&nbsp;account <em>~/.local</em>, <em>~/.config</em> , <em>~/.kde4</em> and send them to&nbsp;the developer&rsquo;s website as&nbsp;necessary for further development of&nbsp;software updates statistics. Thus, chroot allows in&nbsp;this case to&nbsp;keep your eggs in&nbsp;one basket, which in&nbsp;itself&nbsp;&mdash; perfect.</p>
+		<p>If&nbsp;<strong>chroot</strong> deal with&nbsp;it, one might ask&nbsp;&mdash; &laquo;what can give jail startup it&nbsp;Xorg&raquo;. Chances are, if&nbsp;you know the differences between jail and chroot and since you are reading this article, the answer is&nbsp;found and you can proceed to&nbsp;the next chapter. If&nbsp;not, then:</p>
+		<p>The main difference in&nbsp;this respect from jail chroot, a&nbsp;grouping of&nbsp;processes by&nbsp;ID (<strong>jid</strong>), which may participate in&nbsp;certain activities as&nbsp;an&nbsp;audit only for these processes, the ability to&nbsp;gather statistics through RACCT, setting limits through <a href="http://www.freebsd.org/cgi/man.cgi?query=rctl&amp;sektion=8" target="_blank"><strong>rctl(8)</strong></a> (useful for profiling applications). And, of&nbsp;course, binding network addresses, the ability to&nbsp;stack isolated and separate routing tables for all jailed processes.</p>
+		<p>The remaining additional advantages can already provide specific jail management utility. So, what can you get from X-jail, depends on&nbsp;your knowledge and imagination, and <strong>FreeBSD</strong> as&nbsp;usual, playing only a&nbsp;tool for the task.</p>
+		
+		<p>Bring their own particular cases that receives and uses the author.</p>
+		<p>In&nbsp;the case of&nbsp;<strong>CBSD/jail/FreeBSD</strong>, an&nbsp;opportunity&nbsp;to:</p>
+		<ul>
+			<li>downloaded from the repository environment preconfigured with various embodiments of&nbsp;the popular Windows Manager: <strong>KDE4, Fluxbox, Gnome3, LXDE</strong> and so&nbsp;on;</li>
+			<li>convenient option to&nbsp;export and import the image;</li>
+			<li>repciation via <strong>zrep</strong> for incremental backup;</li>
+			<li>opportunity to&nbsp;apply file snapshots;</li>
+			<li>opportunity to&nbsp;using <a href="http://www.freebsd.org/cgi/man.cgi?query=cpuset&amp;sektion=1" target="_blank"><strong>cpuset(1)</strong></a> to&nbsp;bind all&nbsp;X applications on&nbsp;a&nbsp;specific core or&nbsp;core group;</li>
+			<li>You can use different limits for the entire cell, whereas the chroot, you can apply through the limits <a href="http://www.freebsd.org/cgi/man.cgi?query=limit&amp;sektion=1" target="_blank"><strong>limit(1)</strong></a> only user or&nbsp;PID, which is&nbsp;not so&nbsp;convenient.</li>
+			<li>In&nbsp;the case of&nbsp;chroot and having multiple&nbsp;IP alias-s in&nbsp;the system as&nbsp;a&nbsp;source ip&nbsp;for a&nbsp;connection, the application will always use the first IP. In&nbsp;the case of&nbsp;jail and having multiple&nbsp;IP, you can restrict the&nbsp;IP for applications to&nbsp;only those that you need. In&nbsp;this case you can use <strong>PF/IPFW</strong> to&nbsp;calculate the X-traffic applications emulate the &laquo;bad&raquo; network, adding delay or&nbsp;loss on&nbsp;the net this jail, playing with traffic bandwith, etc. to&nbsp;study the work of&nbsp;an&nbsp;application under different conditions.</li>
+			<li>If&nbsp;you have multiple workstations via jail you can make a&nbsp;&laquo;floating&raquo; environment in&nbsp;a&nbsp;simpler way: for any station you would not&nbsp;be, you are always in&nbsp;the same environment, all history, all received email, even if&nbsp;it&nbsp;was adopted with the work station to&nbsp;another&nbsp;&mdash; always with you. You do&nbsp;not need to&nbsp;update the software directly in&nbsp;3&nbsp;systems if&nbsp;you ispoluete 3&nbsp;working system and a&nbsp;set of&nbsp;software changes.</li>
+		</ul>
+		
+	</div>
+	<h2><a name="intro"><span>What is&nbsp;required for X-jail</span></a></h2>
+	<div class="block">
+		<p>To&nbsp;Xorg worked successfully in&nbsp;jail, it&nbsp;is&nbsp;necessary to&nbsp;remove the restrictions jailed processes to&nbsp;access <em>/dev/io</em> and <em>/dev/kmem</em> devices. Already <a href="http://www.leidinger.net/blog/2007/04/07/a-desktop-environment-in-a-jail/" target="_blank">long time</a> there are patches of&nbsp;Alexander Leidinger aka <a href="http://www.leidinger.net/" target="_blank">netchild</a>, optionality that provide these settings. And now, as&nbsp;far as&nbsp;I&nbsp;know, Jammie Gritton <a href="http://lists.freebsd.org/pipermail/svn-src-head/2014-January/055578.html" target="_blank">gave a&nbsp;jolt to&nbsp;the discussion</a> the possible inclusion of&nbsp;patches in&nbsp;one form or&nbsp;another in&nbsp;the base. You can apply the patch and recompile your kernel yourself, or&nbsp;you can use the command:</p>
+	
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=kernel
+		</pre>
+		<p>And get a&nbsp;kernel with patches applied from the repository <strong>CBSD</strong>.</p>
+		<div class="warning">
+			<p><strong>Attention:</strong> Due to&nbsp;resource limitations, this patch is&nbsp;applied only for the FreeBSD kernel 11&nbsp;aka HEAD (as&nbsp;of&nbsp;this writing) in&nbsp;the repository <strong>CBSD</strong></p>
+		</div>
+		<p>In&nbsp;the presence of&nbsp;these patches, configuration <strong>CBSD</strong> jail will have the option <strong>allow_kmem</strong>, which can be&nbsp;set through <strong>cbsd jset</strong> or&nbsp;<strong>cbsd jconfig</strong></p>
+		<p>In&nbsp;addition, you may need to&nbsp;add a&nbsp;separate rule for <a href="http://www.freebsd.org/cgi/man.cgi?query=devfs.ruleset&amp;sektion=5" target="_blank"><strong>devfs.ruleset(5)</strong></a>, appropriate devices to&nbsp;become visible in&nbsp;the <em>/dev</em> directory in&nbsp;jail. For example this content:</p>
+		<pre class="brush:bash;ruler:true;">
+			[devfsrules_unhide_xorg=8]
+			add include $devfsrules_hide_all
+			add include $devfsrules_unhide_basic
+			add include $devfsrules_unhide_login
+			add path agpgart unhide
+			add path console unhide
+			add path consolectl unhide
+			add path dri unhide
+			add path 'dri/*' unhide
+			add path io unhide
+			add path 'nvidia*' unhide
+			add path sysmouse unhide
+			add path mem unhide
+			add path pci unhide
+			add path tty unhide
+			add path ttyv0 unhide
+			add path ttyv1 unhide
+			add path ttyv8 unhide
+		</pre>
+		<p>and specify the appropriate number <strong>8</strong>&nbsp;in&nbsp;<strong>devfs_ruleset</strong> parameter from jail config.</p>
+		<p>The configuration is&nbsp;completed and further work on&nbsp;the launch of&nbsp;Xorg in&nbsp;jail is&nbsp;no&nbsp;different from the usual steps:</p>
+		<ul>
+			<li>Install software</li>
+			<li>Generate <em>/etc/X11/xorg.conf</em> (if&nbsp;necessary) and create <em>~/.xinitrc</em>
+			<li>Run X</li>
+		</ul>
+	</div>
+<!--# include file="_end.html" -->

@@ -1,0 +1,69 @@
+<!--# include file="_start.html" -->
+<!--# include file="currentver.html" -->
+<h1><span>FreeBSD: Xorg in&nbsp;jail</span></h1>
+<h2><a name="intro"><span>Введение</span></a></h2>
+	<div class="block">
+		<p>Традиционно принято считать, что FreeBSD&nbsp;&mdash; неплохой выбор в&nbsp;качестве серверной&nbsp;ОС, но&nbsp;на&nbsp;роль в&nbsp;качестве современной рабочей станции годится слабо. Апологеты и&nbsp;просто горячие головы с&nbsp;обеих сторон этого мнения приводят разные доводы за&nbsp;и&nbsp;против и&nbsp;данная статья не&nbsp;посвящена этому бесконечному спору. Вместо этого, здесь будет произведена попытка связать и&nbsp;пофантазировать вокруг, казалось&nbsp;бы, совершенно разных технологий, таких как Xorg и&nbsp;Jail, а&nbsp;также продемонстрирован один из&nbsp;сценариев работы с&nbsp;FreeBSD в&nbsp;качестве рабочей станции.</p>
+		<p>Не&nbsp;так уж&nbsp;и&nbsp;редко на&nbsp;просторах интернета можно встретить информацию о&nbsp;том, какие дополнительные свойства от&nbsp;*nix системы приобретает пользователь, запускающий Xorg-based приложение в&nbsp;<a href="http://www.freebsd.org/cgi/man.cgi?query=chroot&amp;sektion=8" target="_blank"><strong>chroot(8)</strong></a>.</p>
+		<p>На&nbsp;это может быть множество причин, одна из&nbsp;них&nbsp;&mdash; вы&nbsp;любите эксперементировать с&nbsp;разным количеством окружений и&nbsp;при этом не&nbsp;очень хочется превращать файловую систему в&nbsp;помойку (и&nbsp;возможно, получать конфликты между тем или иным приложением по&nbsp;файловой системе.)</p>
+		<p>Также, не&nbsp;последнюю роль играет безопасность. Никто не&nbsp;даст гарантии, что любой установленный софт, будь&nbsp;то <strong>skype</strong>, <strong>mc</strong>, <strong>screen</strong>, <strong>firefox</strong> и&nbsp;тд, при первом&nbsp;же обновлении, из-за досадной опечатки в&nbsp;коде не&nbsp;просканируют случайным образом ваш домашний каталог на&nbsp;предмет <strong>id_rsa</strong> ключей и&nbsp;<strong>known_hosts</strong>, <strong>.mysql_history, .bash_history</strong> и&nbsp;все ваши настройки эккаунтов из <em>~/.local</em>, <em>~/.config</em> , <em>~/.kde4</em> и&nbsp;не&nbsp;отправит их&nbsp;на&nbsp;сайт разработчика в&nbsp;качестве необходимой для дальнейшего развития обновленного софта статистики. Таким образом, chroot позволяет в&nbsp;этом случае не&nbsp;держать ваши яйца в&nbsp;одной корзине, что само по&nbsp;себе&nbsp;&mdash; прекрасно.</p>
+		<p>Если <strong>chroot</strong> с&nbsp;этим справляется, может возникнуть вопрос&nbsp;&mdash; &laquo;а&nbsp;что может дать jail при запуске в&nbsp;нем Xorg&raquo;. Скорее всего, если знаете о&nbsp;различиях между jail и&nbsp;chroot и&nbsp;поскольку вы&nbsp;уже читаете эту статью, ответ уже найден и&nbsp;можно перейти к&nbsp;следующей главе. Если&nbsp;же нет, то:</p>
+		<p>Основное различие в&nbsp;этом плане jail от&nbsp;chroot, это группирование процессов по&nbsp;ID (<strong>jid</strong>), который может учавствовать в&nbsp;определенных действиях как: вести аудит только за&nbsp;этими процессами, возможность собирать статистику через RACCT, установка лимитов через <a href="http://www.freebsd.org/cgi/man.cgi?query=rctl&amp;sektion=8" target="_blank"><strong>rctl(8)</strong></a> (полезно для профилирования приложения). И, конечно&nbsp;же, привязка сетевых адресов, возможность изолированного стека и&nbsp;отдельной таблицы маршрутизации на&nbsp;все jailed процессы.</p>
+		<p>Остальные дополнительные плюсы могут уже предоставить конкретные jail management утилиты. Таким образом, то&nbsp;что можно получить от&nbsp;X-jail, зависит только от&nbsp;ваших знаний и&nbsp;фантазии, а&nbsp;<strong>FreeBSD</strong> как обычно, выступает лишь инструментом для решения поставленной задачи.</p>
+		
+		<p>Приведу собственные частные случаи, что получает и&nbsp;использует автор.</p>
+		<p>В&nbsp;случае с&nbsp;<strong>CBSD/jail/FreeBSD</strong>, появляется возможность:</p>
+		<ul>
+			<li>скачивать из&nbsp;репозитория преднастроенные окружения с&nbsp;различными вариантами популярных Windows Manager: <strong>KDE4, Fluxbox, Gnome3, LXDE</strong> и&nbsp;тд;</li>
+			<li>удобная возможность экспорта и&nbsp;импорта в&nbsp;образ;</li>
+			<li>репликация через <strong>zrep</strong> для инкрементальных бекапов;</li>
+			<li>возможность применять файловые снапшоты;</li>
+			<li>можно использовать <a href="http://www.freebsd.org/cgi/man.cgi?query=cpuset&amp;sektion=1" target="_blank"><strong>cpuset(1)</strong></a> для привязки всех&nbsp;X приложений на&nbsp;конкретное ядро или группу ядер;</li>
+			<li>можно использовать различные лимиты на&nbsp;всю клетку, тогда как при chroot, вы&nbsp;можете применять лимиты через <a href="http://www.freebsd.org/cgi/man.cgi?query=limit&amp;sektion=1" target="_blank"><strong>limit(1)</strong></a> лишь на&nbsp;пользователя или PID, что не&nbsp;так удобно.</li>
+			<li>В&nbsp;случае chroot и&nbsp;при наличие нескольких&nbsp;IP alias-ов в&nbsp;системе, в&nbsp;качестве source ip&nbsp;при установке соединения, приложение будет всегда использовать первый IP. В&nbsp;случае с&nbsp;jail и&nbsp;при наличие нескольких&nbsp;IP, вы&nbsp;можете ограничить&nbsp;IP для приложений лишь теми, которые вам нужны. При этом вы&nbsp;можете использовать <strong>PF/IPFW</strong> для подсчета трафика X-приложений, эмулировать &laquo;плохую&raquo; сеть, добавив задержки или потери на&nbsp;сеть этого jail, играясь с&nbsp;traffic bandwith и&nbsp;тд&nbsp;для изучения работы того или иного приложения в&nbsp;разных условиях.</li>
+			<li>Если у&nbsp;вас есть несколько рабочих станций, с&nbsp;помощью jail вы&nbsp;можете устроить &laquo;плавающее&raquo; окружение более простым образом: за&nbsp;какой станцией вы&nbsp;бы не&nbsp;находились, вы&nbsp;всегда находитесь в&nbsp;одном окружении, вся history, вся принятая почта, даже если она была принята при работе на&nbsp;другой станции&nbsp;&mdash; всегда с&nbsp;вами. Вам не&nbsp;нужно обновлять софт сразу в&nbsp;3&nbsp;системах, если вы&nbsp;испольуете 3&nbsp;рабочих системы и&nbsp;набор&nbsp;ПО не&nbsp;меняется.</li>
+		</ul>
+		
+	</div>
+	<h2><a name="intro"><span>Что необходимо для X-jail</span></a></h2>
+	<div class="block">
+		<p>Для того, чтобы Xorg успешно работал в&nbsp;jail, необходимо снять ограничения jailed процессов на&nbsp;доступ к&nbsp;<em>/dev/io</em> и&nbsp;<em>/dev/kmem</em> устройствам. Уже <a href="http://www.leidinger.net/blog/2007/04/07/a-desktop-environment-in-a-jail/" target="_blank">долгое время</a> существуют патчи от&nbsp;Alexander Leidinger aka <a href="http://www.leidinger.net/" target="_blank">netchild</a>, которые предоставляют опциональность этих настроек. И&nbsp;сейчас, насколько мне известно, Jammie Gritton <a href="http://lists.freebsd.org/pipermail/svn-src-head/2014-January/055578.html" target="_blank">дал толчек к&nbsp;обсуждению</a> о&nbsp;возможном включении патчей в&nbsp;том или ином виде в&nbsp;базу. Вы&nbsp;можете применить патчи самостоятельно и&nbsp;пересобрать ядро, либо можете воспользоваться командой:</p>
+	
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=kernel
+		</pre>
+		<p>И&nbsp;получить ядро с&nbsp;примененными патчами из&nbsp;репозитория <strong>CBSD</strong>.</p>
+		<div class="warning">
+			<p><strong>Внимание:</strong> Ввиду ограничений в&nbsp;ресурсах, данный патч применен только для ядра FreeBSD 11&nbsp;aka HEAD (на&nbsp;момент написания статьи) в&nbsp;репозитории <strong>CBSD</strong></p>
+		</div>
+		<p>При наличие этих патчей, в&nbsp;конфигурации <strong>CBSD</strong> jail появится опция <strong>allow_kmem</strong>, которую можно установить через <strong>cbsd jset</strong> или <strong>cbsd jconfig</strong></p>
+		<p>Кроме того, вам может понадобится дописать отдельное правило для <a href="http://www.freebsd.org/cgi/man.cgi?query=devfs.ruleset&amp;sektion=5" target="_blank"><strong>devfs.ruleset(5)</strong></a>, чтобы соответствующие устройства стали видимы в&nbsp;<em>/dev</em> каталоге jail. Например такого содержания:</p>
+		<pre class="brush:bash;ruler:true;">
+			[devfsrules_unhide_xorg=8]
+			add include $devfsrules_hide_all
+			add include $devfsrules_unhide_basic
+			add include $devfsrules_unhide_login
+			add path agpgart unhide
+			add path console unhide
+			add path consolectl unhide
+			add path dri unhide
+			add path 'dri/*' unhide
+			add path io unhide
+			add path 'nvidia*' unhide
+			add path sysmouse unhide
+			add path mem unhide
+			add path pci unhide
+			add path tty unhide
+			add path ttyv0 unhide
+			add path ttyv1 unhide
+			add path ttyv8 unhide
+		</pre>
+		<p>и&nbsp;указать соответствующий номер <strong>8</strong>&nbsp;в параметре <strong>devfs_ruleset</strong> из&nbsp;настройки jail.</p>
+		<p>На&nbsp;этом настройка закончена и&nbsp;дальнейшая работа по&nbsp;запуску Xorg в&nbsp;jail ничем не&nbsp;отличается от&nbsp;обычных шагов:</p>
+		<ul>
+			<li>Установка ПО</li>
+			<li>Генерация <em>/etc/X11/xorg.conf</em> (если необходимо) и&nbsp;создание <em>~/.xinitrc</em>
+			<li>Запуск X</li>
+		</ul>
+	</div>
+<!--# include file="_end.html" -->
