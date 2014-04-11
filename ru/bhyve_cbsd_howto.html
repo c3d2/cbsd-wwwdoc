@@ -1,0 +1,47 @@
+<!--# include file="_start.html" -->
+<!--# include file="currentver.html" -->
+<h1><span>Bhyve via cbsd scripts howto</span></h1>
+<h2><a name="intro"><span>howto</span></a></h2>
+<div class="block">
+	<p>Это быстрый howto если вы хотите поэксперементировать с bhyve через cbsd</p>
+	<p>Установить зависимости <strong>CBSD</strong>:</p>
+	<pre class="brush:bash;ruler:true;">
+		% make -C /usr/ports/net/rsync install
+		% make -C /usr/ports/security/sudo install
+		% make -C /usr/ports/databases/sqlite3 install
+		% make -C /usr/ports/security/libssh2 install
+	</pre>
+	<p>Получить скрипты cbsd и привести их в рабочее состояние:</p>
+	<pre class="brush:bash;ruler:true;">
+		% git clone https://github.com/olevole/cbsd.git /usr/local/cbsd
+		% pw useradd cbsd -s /bin/sh -d /nonexistent -c "cbsd user"
+		% cd /usr/local/etc/rc.d
+		% ln -s /usr/local/cbsd/rc.d/cbsdd
+		% ln -s /usr/local/cbsd/rc.d/cbsdrsyncd
+		
+		% env workdir="/usr/jails" /usr/local/cbsd/sudoexec/initenv
+		//ответить на пару глупых вопросов из http://www.bsdstore.ru/ru/installing_cbsd.html
+	</pre>
+	<p>Создание vm:</p>
+	<pre class="brush:bash;ruler:true;">
+		% cbsd bconstruct-tui
+	</pre>
+	<ul>
+		<li><b>vm_os_type</b> - freebsd или linux (адекватная работа остальных пока под подозрением)</li>
+		<li><b>vm_os_profile</b> - если Linux, выбрать через пробел профиль линукса.</li>
+		<li><b>freesize</b> - объем виртуального жесткого диска. Если гвест - Linux, это будет общий размер на весь диск. Если это FreeBSD, это будет количество доступного свободного места после создания (создается из jail). Например: <strong>10g</strong> для Linux или <strong>1g</strong> для FreeBSD</li>
+		<li><b>jname</b> - имя виртуалки. например: freebsd, ubuntu, centos, debian</li>
+		<li><b>fqdn</b> - полное имя с доменом, например blabla_foo.my.domain</li>
+	</ul>
+	<p>Остальные параметры необязательны. Для виртуалок FreeBSD можно сразу заполнить <strong>ip4_addr</strong>  (например: 192.168.0.5/24) и <strong>gw4</strong> (например: 192.168.0.1) - по задумке, это применится в создаваемую VM. Если Linux, <strong>ip4_addr</strong> оставить в значении 0, <strong>gw4</strong> - пустое.</p>
+	<p>После отработки bconstruct-tui можно попробовать запустить виртуалку через <strong>cbsd bstart $jname</strong>. По-умолчанию, запускается с образа жесткого диска (order у меня пока захардкожен), однако если образ пустой, должно пробовать запуститься с CD/ISO.</p>
+	<p>Запуск как и положено сейчас в bhyve, проходит в два этапа - загрузка ядра через <strong>bhyveload</strong> (в инородных, не FreeBSD-гвестах, эта операция проходит через <strong>grub2-bhyve</strong>) и непосредственно запуск виртуальности через <strong>bhyve</strong>. Обе операции в случае с cbsd происходят в <strong>tmux</strong> сессии и если после отработки <strong>cbsd bstart</strong> вас вернуло в терминал и по команде <strong>cbsd bls</strong> статус гвеста - в On, скорее всего ядро загрузилось успешно и можно подключится в ее консоль через <strong>cbsd blogin $jname</strong>.</p>
+	<p>При логине наследуется навигация tmux - главное, что вам нужно в случае с <strong>cbsd</strong> знать о tmux, что операция отключения от терминала происходит через комбинацию <strong>Ctrl + B</strong>  и <strong>D</strong> (удерживая Ctrl, нажимаете B. Отпускаете их и давите D). Остановка виртуалки (а также, завершение bhyveload если оно зависло и вас не выпустило обратно в терминал при <strong>bstart</strong> выполняется через команду <strong>cbsd bstop $jname</strong></p>
+	<p>Пара комментариев:</p>
+	<ul>
+		<li> При "резиновых" данных на экране на широкоформатном мониторе, если количество знакомест больше 255, grub уходит в ступор и уводит туда же bhyveload. Например на моем мониторе <a href="http://www.olevole.ru/normal_grub2.png">http://www.olevole.ru/normal_grub2.png</a> если растянуть konsole еще на одно знакоместо и  перезапустить bhyveload, он начнет есть 100% cpu. Скорее всего ошибка в grub и FreeBSD-шники и пользователи bhyve первые, кто запускают grub на широкоформате в хорошем разрешении и текстовом режиме. Соответственно, если при cbsd bstart XXX процесс залочился, выполните cbsd bstop XXX и уменьшив геометрию окна, попробуйте запустить вновь.</li>
+		<li> FreeBSD гвест создается через скрипт jail2iso из jail, поэтому он не предлагает запустится с ISO</li>
+		<li> Сеть для вируталок создается через tap интерфейсы, которые прописываются в bridge на ваш аплинковый интерфейс</li>
+		<li>Если вы хотите добавить пару дисков в виртуалку, смотрите <a href="https://github.com/olevole/cbsd/blob/master/share/local-bhyvedsk.schema">схему</a> таблицы bhyvectl из файла $workdir/var/db/local.sqlite - при добавлении в таблицу новых записей соответствующим виртуалкам, они будут подключаться автоматически при запуске. Позже будет написан какой-то интерфейс к этому.</li>
+<div>
+<!--# include file="_end.html" -->
