@@ -39,9 +39,23 @@
 	<p>При логине наследуется навигация tmux - главное, что вам нужно в случае с <strong>cbsd</strong> знать о tmux, что операция отключения от терминала происходит через комбинацию <strong>Ctrl + B</strong>  и <strong>D</strong> (удерживая Ctrl, нажимаете B. Отпускаете их и давите D). Остановка виртуалки (а также, завершение bhyveload если оно зависло и вас не выпустило обратно в терминал при <strong>bstart</strong> выполняется через команду <strong>cbsd bstop $jname</strong></p>
 	<p>Пара комментариев:</p>
 	<ul>
-		<li> При "резиновых" данных на экране на широкоформатном мониторе, если количество знакомест больше 255, grub уходит в ступор и уводит туда же bhyveload. Например на моем мониторе <a href="http://www.olevole.ru/normal_grub2.png">http://www.olevole.ru/normal_grub2.png</a> если растянуть konsole еще на одно знакоместо и  перезапустить bhyveload, он начнет есть 100% cpu. Скорее всего ошибка в grub и FreeBSD-шники и пользователи bhyve первые, кто запускают grub на широкоформате в хорошем разрешении и текстовом режиме. Соответственно, если при cbsd bstart XXX процесс залочился, выполните cbsd bstop XXX и уменьшив геометрию окна, попробуйте запустить вновь.</li>
 		<li> FreeBSD гвест создается через скрипт jail2iso из jail, поэтому он не предлагает запустится с ISO</li>
 		<li> Сеть для вируталок создается через tap интерфейсы, которые прописываются в bridge на ваш аплинковый интерфейс</li>
-		<li>Если вы хотите добавить пару дисков в виртуалку, смотрите <a href="https://github.com/olevole/cbsd/blob/master/share/local-bhyvedsk.schema">схему</a> таблицы bhyvectl из файла $workdir/var/db/local.sqlite - при добавлении в таблицу новых записей соответствующим виртуалкам, они будут подключаться автоматически при запуске. Позже будет написан какой-то интерфейс к этому.</li>
-<div>
+		<li>Если вы хотите добавить пару дисков в виртуалку, смотрите <a href="https://github.com/olevole/cbsd/blob/master/share/local-bhyvedsk.schema" target="_blank">схему</a> таблицы bhyvectl из файла $workdir/var/db/local.sqlite - при добавлении в таблицу новых записей соответствующим виртуалкам, они будут подключаться автоматически при запуске. Позже будет написан какой-то интерфейс к этому.</li>
+		<li> При "резиновых" данных на экране на широкоформатном мониторе, если количество знакомест больше 255, grub уходит в ступор и уводит туда же bhyveload. Например на моем мониторе <a href="http://www.olevole.ru/normal_grub2.png" _target="_blank">http://www.olevole.ru/normal_grub2.png</a> если растянуть konsole еще на одно знакоместо и  перезапустить bhyveload, он начнет есть 100% cpu. Скорее всего ошибка в grub и FreeBSD-шники и пользователи bhyve первые, кто запускают grub на широкоформате в хорошем разрешении и текстовом режиме. Соответственно, если при cbsd bstart XXX процесс залочился, выполните cbsd bstop XXX и уменьшив геометрию окна, попробуйте запустить вновь.
+		Комментарий на это поведение от <strong>Peter Grehan</strong> (автор порта grub-bhyve):
+		<pre class="cli">
+		Thanks for the detailed report: looks like this may not be too 
+		difficult to fix in grub-bhyve i.e. limit the max terminal size to 255.
+
+		> I suggest to add pkg-message for sysutils/grub2-bhyve with "Known issue: ..."
+		> for this feature if you find the same behavior on the wide display.
+		> PS: as I understand it, grub-bhyve - this is a temporary solution for OS boot?
+
+		Yes - it's really a proof-of-concept that bhyve can run non-FreeBSD 
+		guests. The solution currently being worked on is to use the OVMF build 
+		of UEFI as a boot ROM, rather than having a separate user-space boot loader.
+		</pre>
+		</li>
+		<div>
 <!--# include file="_end.html" -->
