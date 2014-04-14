@@ -42,7 +42,7 @@
 	<ul>
 		<li> FreeBSD guest created through the script jail2iso of jail, so it does not offer starts with ISO</li>
 		<li> Network for VMs created through tap-interfaces that are attached to in your uplink interface via bridge</li>
-		<li> If you want to add a couple of disks in VMs see <a href="https://github.com/olevole/cbsd/blob/master/share/local-bhyvedsk.schema" target="_blank">schema</a> of bhyvedsk table for <em>$workdir/var/db/local.sqlite</em> file - adding new records to the table corresponding VMs, they will connect automatically at startup. Later, some will be written to this interface.</li>
+		<li> For disk control (adding, removing, modify of controller type) use <strong>cbsd bhyvedsk-tui $jname</strong> command</li>
 		<li> When "rubber" of the data on the screen on a widescreen monitor, if the amount is more than 255 familiarity, grub goes into a stupor and leads to the same bhyveload. For example on my monitor <a href="http://www.olevole.ru/normal_grub2.png" _target="_blank">http://www.olevole.ru/normal_grub2.png</a> if konsole stretch one more familiarity and restart bhyveload, he starts eating 100% cpu. Most likely a bug in grub and FreeBSD/bhyve users is first people who start grub on widescreen in high resolution and text mode. Accordingly, if cbsd bstart XXX process is locked, follow cbsd bstop XXX and reducing the window geometry, try to run again.
 		Comment on this behavior from <strong>Peter Grehan</strong> (creator of grub-bhyve port/project):
 		<pre class="cli">
