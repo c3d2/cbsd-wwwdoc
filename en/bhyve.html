@@ -12,12 +12,10 @@
 			<p>Second thought - that the code <strong>CBSD</strong> a lot of action primitives inherent and for virtual environments. In addition, when working with gusts FreeBSD, part of potentially useful functions intersect with what we would like to see in cbsd4bhyve. In this regard, there was a thought in <strong>CBSD</strong> 10.0.4 if you do not add support bhyve directly in the code, then do it as a module for <strong>CBSD</strong>.</p>
 			<p>What are the pros (except for the fact that FreeBSD is able to be fast host system) can be obtained with FreeBSD as a host, and Linux / OpenBSD / NetBSD as a guest?
 			The options are many and the question is unlikely to ever be closed. For example, the ability to use HASTD and iscsi to use NAS, is the ability to limit <strong>cputime</strong> or <strong>pcpu</strong> on a virtual machine, it is possible to use Link Aggregation,
-			aggregating multiple physical network cards in one trunk and feed it into a virtual systems. It is an opportunity to infiltrate NetGraph hooks in traffic from systems that do not possess NetGraph. This is an opportunity to use <strong>GELI</strong>-crypto partition. Opportunity to
+			aggregating multiple physical network cards in one trunk and feed it into a virtual systems. It is an opportunity to infiltrate NetGraph hooks in traffic from systems that do not possess NetGraph. This is an opportunity to use <strong>GELI</strong>-crypto partition, <strong>FIB</strong>, <strong>nice</strong>. Opportunity to
 			using ZFS snapshots and cloning to obtain file system inside the virtual systems that are about snapshots are not even aware. Allowing for example to do TimeMachine Linux/ext3/ext4/xfs/btrfs, while
 			rollbacking did not depend on the file system and killed operability guest OS - just outside the virtual system to make an API for managing snapshots. Which is very beneficial 
-			you can use the hosting Linux/BSD systems. Also, you can perform bulk actions - for example, having one image of the virtual system to make 100 clonings means ZFS, parallel mount the image and modifying the configuration in its own way.
-			In addition, if bhyve runs in turn through jail, can be inherited <strong>fib</strong>, <strong>cpuset</strong>, <strong>nice</strong> and limit IP addresses that can take guest 
-			(that when you turn on virtual through tap, which in bridge - quite justified - guest can not use IP, not tied to jail).<p>
+			you can use the hosting Linux/BSD systems. Also, you can perform bulk actions - for example, having one image of the virtual system to make 100 clonings means ZFS, parallel mount the image and modifying the configuration in its own way.<p>
 			<p>Currently, in the wrapper bhyve cbsd available version on github and implemented as commands jails, but beginning with the letter <strong>b</strong>:</p>
 			<ul>
 				<li><strong>jstart</strong> (jail start) -> <strong>bstart</strong> (bhyve start)</li>
