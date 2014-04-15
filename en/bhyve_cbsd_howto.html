@@ -53,8 +53,9 @@
 <h2><a name="intro"><span>A couple of other comments</span></a></h2>
 <div class="block">
 	<ul>
+		<li>bhyve-vms removed from the <a href="/en/<!--#echo var="version" -->/wf_jls_ssi.html">jls</a> output, as by command <strong>cbsd bls</strong> you will not see jail-based environment.</li>
 		<li>Since all hard drives are created in $workdir/jails-data/$jname-data, <strong>bhyve</strong> virtual machine can be exported, moved with all discs and imported to other hosts through the <strong>cbsd jexport</strong> and <strong>cbsd jimport</strong> commands.</li>
-		<li>By analogy with <a href="wf_jrename_ssi.html">jrename</a> and <a href="wf_jclone_ssi.html">jclone</a> work scripts <strong>brename</strong> and <strong>bclone</strong> with the only exception that only appear when working parameters <strong>old=</strong> and <strong>new=</strong>.</p>
+		<li>By analogy with <a href="/en/<!--#echo var="version" -->/wf_jrename_ssi.html">jrename</a> and <a href="/en/<!--#echo var="version" -->/wf_jclone_ssi.html">jclone</a> work scripts <strong>brename</strong> and <strong>bclone</strong> with the only exception that only appear when working parameters <strong>old=</strong> and <strong>new=</strong>.</p>
 		<li> FreeBSD guest created through the script jail2iso of jail, so it does not offer starts with ISO</li>
 		<li> Network for VMs created through tap-interfaces that are attached to in your uplink interface via bridge</li>
 		<li> For disk control (adding, removing, modify of controller type) use <strong>cbsd bhyvedsk-tui $jname</strong> command</li>
