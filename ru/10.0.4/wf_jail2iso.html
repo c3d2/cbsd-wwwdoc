@@ -62,9 +62,9 @@
 	<div class="block">
 		<p>Поскольку образ bhyve изначально будет в режиме RW, для него не требуется создание RO образа c UZIP и сопровождение tmpfsdir, поэтому данная стадия при формировании образа отсутствует. Скрипт автоматически создаст fstab-запись для монтирования соответствующего устройства в bhyve машине и откорректирует /etc/ttys как этого требует <a href="http://people.freebsd.org/~neel/bhyve/bhyve_instructions.txt" target="_blank">инструкция</a>. При создании образа bhyve, пользуйтесь параметром</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jail2iso ... imgsize=
+			% cbsd jail2iso ... freesize=
 		</pre>
-		<p>Поскольку без этого параметра, создается диск объемом, равным объему фактических данных, без запаса. Это сделает систему нерабочей, поэтому, через <strong>imgsize=</strong> указывайте всегда размер заведомо больше чем текущий объем данных в jail</p>
+		<p>Поскольку без этого параметра, создается диск объемом, равным объему фактических данных, без запаса. Это сделает систему нерабочей, поэтому, через <strong>freesize=</strong> дополнительно указывается объем свободного места в образе после копирования туда основных данных.</p>
 		<p>Дополнительные сведения</p>
 		<p><strong>cbsd jail2iso</strong> не контроллирует и не лимитирует объемы конечного результата&nbsp;— они ограничены лишь вашим носителем, для которого создается образ.</p>
 		<p>Для создания ISO образа:</p>
@@ -77,7 +77,7 @@
 		</pre>
 		<p>Для создания bhyve образа:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jail2iso media=bhyve imgsize=XXg ..
+			% cbsd jail2iso media=bhyve freesize=XXg ..
 		</pre>
 		<p>Каталог, куда будет сохранен образ указывается через аргумент <strong>dstdir</strong>. По-умолчанию, на образ будет сохранено GENERIC ядро из каталога $workdir/basejail/. Его можно получить по команде:</p>
 		<pre class="brush:bash;ruler:true;">
@@ -100,7 +100,7 @@
 		<p>, если <strong>/dev/da0</strong>&nbsp;— это USB flash носитель.</p>
 		<p>Пример создания и запуск bhyve образа из jail1 с сетью через интерфейс <strong>em0</strong>:</p>
 		<pre class="cli">
-	% cbsd jail2iso media=bhyve jname=jail1 dstdir=/tmp imgsize=5g
+	% cbsd jail2iso media=bhyve jname=jail1 dstdir=/tmp freesize=1g
 	% kldload vmm
 	% kldload if_tap
 	% sysctl -w net.link.tap.up_on_open=1

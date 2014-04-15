@@ -36,6 +36,12 @@
 	</div>
 	<!--# include file="/ru/changeroot.html" -->
 	<div class="block">
+		<p>Вы можете переопределить параметр <strong>jailskeldir</strong>="$workdir/share/jail-skel", прописанный в <em>$workdir/etc/defaults/jail.conf</em> для указания альтернативного каталога темплейтов, файлы в котором перезапишут оригинальные файлы базы при создании клетки. Для этого, создайте файл <strong>jail.conf</strong> в каталоге <em>$workdir/etc</em> и впишите свое значение, например:</p>
+		<pre class="brush:bash;ruler=true;">
+			jailskeldir="/root/share/jail-skel"
+		</pre>
+	</div>
+	<div class="block">
 		<p><strong>Пример</strong> (заполнение jname, fqdn, ips полей + GO):</p>
 		<pre class="brush:bash;ruler=true;">
 		% cbsd jconstruct-tui

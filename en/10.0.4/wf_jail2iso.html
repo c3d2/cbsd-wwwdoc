@@ -50,9 +50,9 @@
 	<div class="block">
 		<p>Since the image will be initially bhyve mode RW, it does not require the creation of RO image with UZIP and support tmpfsdir, so at this stage there is no formation of an image. The script will automatically create a fstab-entry to mount an appropriate device in bhyve machine and updates /etc/ttys as required <a href="http://people.freebsd.org/~neel/bhyve/bhyve_instructions.txt" target="_blank">instructions</a>. When creating an image bhyve, use the parameter:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jail2iso ... imgsize=
+			% cbsd jail2iso ... freesize=
 		</pre>
-		<p>Because without this option, create disk volume equal to the volume of evidence, without reserve. This will make the system broken, so through <strong>imgsize=</strong> specify the size always known  greater than the current data volume in jail</p>
+		<p>Because without this option, create disk volume equal to the volume of evidence, without reserve. This will make the system broken, so through <strong>freesize=</strong> further specify the amount of free space in the image there after copying master data.</p>
 		<p>For more information</p>
 		<p><strong>cbsd jail2iso</strong> is not controlled and does not limit the volume of the final result&nbsp;— they are limited only by your destination media:</p>
 		<p>For create ISO image use:</p>
@@ -65,7 +65,7 @@
 		</pre>
 		<p>For create bhyve image use:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jail2iso media=bhyve imgsize=XXg ..
+			% cbsd jail2iso media=bhyve freesize=XXg ..
 		</pre>
 		<p>Directory where to save the image specified as an argument <strong>dstdir</strong>.</p>
 		<p>By default, the image will be have GENERIC kernel from <em>$workdir/basejail/</em> directory. You can get this kernel via</p>
@@ -88,7 +88,7 @@
 		<p>, where <strong>/dev/da0</strong>&nbsp;— is USB Flash storage.</p>
 		<p>Example of creating and launching bhyve image from jail1 with networks via interface <strong>em0</strong>:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jail2iso media=bhyve jname=jail1 dstdir=/tmp imgsize=5g
+			% cbsd jail2iso media=bhyve jname=jail1 dstdir=/tmp freesize=1g
 			% kldload vmm
 			% kldload if_tap
 			% sysctl -w net.link.tap.up_on_open=1
