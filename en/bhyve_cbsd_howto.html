@@ -1,62 +1,78 @@
 <!--# include file="_start.html" -->
-<!--# include file="currentver.html" -->
 <!--# include file="/en/translate.html" -->
-<h1><span>Bhyve via cbsd scripts howto</span></h1>
-<h2><a name="intro"><span>howto</span></a></h2>
+<!--# include file="currentver.html" -->
+<!--# include file="bhyvealert.html" -->
+<h2><a name="intro"><span>work with bhyve</span></a></h2>
 <div class="block">
-	<p>This is a quick howto if you want to experiment with bhyve through cbsd</p>
-	<p>install dependencies <strong>CBSD</strong>:</p>
-	<pre class="brush:bash;ruler:true;">
-		% make -C /usr/ports/net/rsync install
-		% make -C /usr/ports/security/sudo install
-		% make -C /usr/ports/databases/sqlite3 install
-		% make -C /usr/ports/security/libssh2 install
-	</pre>
-	<p>Get cbsd scripts and bring them in working condition:</p>
-	<pre class="brush:bash;ruler:true;">
-		% git clone https://github.com/olevole/cbsd.git /usr/local/cbsd
-		% pw useradd cbsd -s /bin/sh -d /nonexistent -c "cbsd user"
-		% cd /usr/local/etc/rc.d
-		% ln -s /usr/local/cbsd/rc.d/cbsdd
-		% ln -s /usr/local/cbsd/rc.d/cbsdrsyncd
-		
-		% env workdir="/usr/jails" /usr/local/cbsd/sudoexec/initenv
-		//answer a couple of stupid questions from http://www.bsdstore.ru/en/installing_cbsd.html
-	</pre>
-	<p>Creation of VMs:</p>
+		<p>Here we describe the differences between bhyve-related scripts in relation to jail-related</p>
+</div>
+<h2><a name="intro"><span>Creating a Virtual Machine</span></a></h2>
+<div class="block">
 	<pre class="brush:bash;ruler:true;">
 		% cbsd bconstruct-tui
 	</pre>
+	<p class="text-center"><img src="/img/bcreate1.png" alt="" /></p>
 	<ul>
-		<li><b>vm_os_type</b> - freebsd или linux (correct operation of other OSs while under suspicion)</li>
-		<li><b>vm_os_profile</b> - if Linux, select linux through space profile.</li>
-		<li><b>freesize</b> - volume of VHD. If guest is Linux, it will be the total size of the entire disk. If this is FreeBSD, it is the amount of free space available after creation (created out of jail). For example: <strong>10g</strong> for Linux or <strong>1g</strong> for FreeBSD</li>
-		<li><b>jname</b> - имя виртуалки. например: freebsd, ubuntu, centos, debian</li>
-		<li><b>fqdn</b> - полное имя с доменом, например blabla_foo.my.domain</li>
+		<li><strong>vm_os_type</strong> - Freebsd or Linux (other OSes while under suspicion)</li>
+		<li><strong>vm_os_profile</strong> - if Linux, select distribution profile.</li>
+		<li><strong>freesize</strong> -volume of VHD. If guest is Linux, it will be the total size of the entire disk. If this is FreeBSD, it is the amount of free space available after creation (created out of jail). For example: <strong>10g</strong> for Linux or <strong>1g</strong> for FreeBSD</li>
+		<li><strong>jname</strong> - name of VMs. For example: freebsd, ubuntu, centos, debian</li>
+		<li><strong>fqdn</strong> - Full name with domain. For example: blabla_foo.my.domain</li>
 	</ul>
-	<p>The remaining parameters are optional. For FreeBSD virtual ok can immediately fill <strong>ip4_addr</strong>  (for example: 192.168.0.5/24) and <strong>gw4</strong> (for example: 192.168.0.1) - by design, it will apply to the newly created VM. If Linux, <strong>ip4_addr</strong> leave it set to 0, <strong>gw4</strong> - empty.</p>
-	<p>After working bconstruct-tui can try to run through <strong>cbsd bstart $jname</strong>. By default, run from the hard disk image (order is hardcoded for a while), but if the image is blank, should try to start with the CD/ISO.</p>
-	<p>Running as it should now bhyve, takes place in two stages - booting the kernel through <strong>bhyveload</strong> (in foreign, not FreeBSD-guests, this operation goes through <strong>grub2-bhyve</strong>) directly and through the launch of virtuality <strong>bhyve</strong>. Both in the case of operations taking place in cbsd <strong>tmux</strong> session and if after working <strong>cbsd bstart</strong> you returned to the terminal and if the command <strong>cbsd bls</strong> show status On for the guest, likely kernel booted successfully and can connect to the console via its <strong>cbsd blogin $jname</strong>.</p>
-	<p>If you are logged inherited navigation tmux - the main thing that you need in the case of <strong>cbsd</strong> know about tmux, that the operation of the terminal shutdown occurs through a combination of <strong>Ctrl + B</strong>  and <strong>D</strong> (hold Ctrl, press B. let them push and D). Stoping VMs (as well as the completion of bhyveload if it hangs and you are not released back to the terminal at <strong>bstart</strong>) via a command <strong>cbsd bstop $jname</strong></p>
-	<p>Couple of comments:</p>
+	<p class="text-center"><img src="/img/bcreate2.png" alt="" /></p>
+	<p>The remaining parameters are optional. For FreeBSD virtual can immediately fill <strong>ip4_addr</strong>  (for example: 192.168.0.5/24) and <strong>gw4</strong> (for example: 192.168.0.1) - by design, it will apply to the newly created VM. If Linux, leave <strong>ip4_addr</strong> by zero with empty <strong>gw4</strong></p>
+	<p>A further change is made through the VM configuration scripts <strong>cbsd bconfig</strong> and <strong>cbsd bhyvedsk-tui</strong>.
+</div>
+<h2><a name="intro"><span>Running a virtual machine</span></a></h2>
+<div class="block">
+	<p>After working out bconstruct-tui can try to run VMs through <strong>cbsd bstart $jname</strong>. By default, run from the hard disk image. Boot device priority can be changed via <strong>cbsd bconfig</strong>. In case the first device is hdd and the hard disk drive does not contain data, scripts  suggest to start from CD/ISO.</p>
+	<p>Running, as befits now bhyve, takes place in two stages - booting the kernel through <strong>bhyveload</strong> (for foreigner, not FreeBSD-guests, this operation goes through <strong>grub2-bhyve</strong>) and the launch of virtuality via <strong>bhyve</strong>. Both operations in the case of cbsd tested with the creation and output of the console <strong>tmux</strong> session. If after working <strong>cbsd bstart</strong> you returned to the terminal and the command <strong>cbsd bls</strong> show status On for VMs, likely kernel booted successfully and you can connect to the console via <strong>cbsd blogin $jname</strong>.</p>
+	<p class="text-center"><img src="/img/bcreate3.png" alt="" /></p>
+</div>
+<h2><a name="intro"><span>Stop the virtual machine</span></a></h2>
+<div class="block">
+	<p>Stop of VMs (as well as the completion bhyveload, as if it is stuck on the execution of <strong>cbsd bstart</strong> and you are not released back into the terminal) via a command <strong>cbsd bstop $jname</strong></p>
+</div>
+<h2><a name="intro"><span>Connecting to the terminal VM</span></a></h2>
+<div class="block">
+	<p>To connect to the session, use the command <strong>cbsd blogin</strong>. Since the session starts in tmux, when connecting inherited his navigation. If you are not familiar with tmux - the main thing that you need in the case of <strong>CBSD</strong> know about tmux, that the operation of the terminal shutdown occurs through a combination of <strong>Ctrl + B</strong> и <strong>D</strong> (by holding Ctrl, press B. let them push and press D).</p>
+</div>
+<h2><a name="intro"><span>Operation with Hard Disk of VM</span></a></h2>
+<div class="block">
+	<p>When VM created, in the <em>${workdir}/jails-data/$jname-data/</em> creates an image of the first hard disk with the name <strong>dsk1.vhd</strong>. In this case, the type of controller used that specified in the profile of the virtual machine (<em>$workdir/etc/defaults/bhyve-*.conf</em> files).<p>
+	<p>By <strong>cbsd bhyvedsk-tui</strong> you can change the type of controller and add or remove new images</p>
+	<p class="text-center"><img src="/img/bcreate4.png" alt="" /></p>
+	<p>At the moment, you can choose emulation <strong>virtio-blk</strong> driver or <strong>ahci-hd</strong>. One virtual machine may be up to 16 devices with different controllers. Through <strong>cbsd bhyvedsk</strong> command you can display a list of all hard disks of virtual machines, or drives for only specific VM.</p>
+	<p class="text-center"><img src="/img/bcreate5.png" alt="" /></p>
+</div>
+<h2><a name="intro"><span>VM configuration</span></a></h2>
+<div class="block">
+	<p>Change some settings for the virtual machine, you can click through <strong>cbsd bconfig</strong>.
+	<p class="text-center"><img src="/img/bcreate6.png" alt="" /></p>
+</div>
+<h2><a name="intro"><span>A couple of other comments</span></a></h2>
+<div class="block">
 	<ul>
+		<li>Since all hard drives are created in $workdir/jails-data/$jname-data, <strong>bhyve</strong> virtual machine can be exported, moved with all discs and imported to other hosts through the <strong>cbsd jexport</strong> and <strong>cbsd jimport</strong> commands.</li>
+		<li>By analogy with <a href="wf_jrename_ssi.html">jrename</a> and <a href="wf_jclone_ssi.html">jclone</a> work scripts <strong>brename</strong> and <strong>bclone</strong> with the only exception that only appear when working parameters <strong>old=</strong> and <strong>new=</strong>.</p>
 		<li> FreeBSD guest created through the script jail2iso of jail, so it does not offer starts with ISO</li>
 		<li> Network for VMs created through tap-interfaces that are attached to in your uplink interface via bridge</li>
 		<li> For disk control (adding, removing, modify of controller type) use <strong>cbsd bhyvedsk-tui $jname</strong> command</li>
 		<li> When "rubber" of the data on the screen on a widescreen monitor, if the amount is more than 255 familiarity, grub goes into a stupor and leads to the same bhyveload. For example on my monitor <a href="http://www.olevole.ru/normal_grub2.png" _target="_blank">http://www.olevole.ru/normal_grub2.png</a> if konsole stretch one more familiarity and restart bhyveload, he starts eating 100% cpu. Most likely a bug in grub and FreeBSD/bhyve users is first people who start grub on widescreen in high resolution and text mode. Accordingly, if cbsd bstart XXX process is locked, follow cbsd bstop XXX and reducing the window geometry, try to run again.
 		Comment on this behavior from <strong>Peter Grehan</strong> (creator of grub-bhyve port/project):
 		<pre class="cli">
-		Thanks for the detailed report: looks like this may not be too 
+		Thanks for the detailed report: looks like this may not be too
 		difficult to fix in grub-bhyve i.e. limit the max terminal size to 255.
-
+		
 		> I suggest to add pkg-message for sysutils/grub2-bhyve with "Known issue: ..."
 		> for this feature if you find the same behavior on the wide display.
 		> PS: as I understand it, grub-bhyve - this is a temporary solution for OS boot?
-
-		Yes - it's really a proof-of-concept that bhyve can run non-FreeBSD 
-		guests. The solution currently being worked on is to use the OVMF build 
+		
+		Yes - it's really a proof-of-concept that bhyve can run non-FreeBSD
+		guests. The solution currently being worked on is to use the OVMF build
 		of UEFI as a boot ROM, rather than having a separate user-space boot loader.
 		</pre>
 		</li>
-		<div>
+	</ul>
+<div>
 <!--# include file="_end.html" -->
