@@ -59,21 +59,7 @@
 		<li> FreeBSD guest created through the script jail2iso of jail, so it does not offer starts with ISO</li>
 		<li> Network for VMs created through tap-interfaces that are attached to in your uplink interface via bridge</li>
 		<li> For disk control (adding, removing, modify of controller type) use <strong>cbsd bhyvedsk-tui $jname</strong> command</li>
-		<li> When "rubber" of the data on the screen on a widescreen monitor, if the amount is more than 255 familiarity, grub goes into a stupor and leads to the same bhyveload. For example on my monitor <a href="http://www.olevole.ru/normal_grub2.png" target="_blank">http://www.olevole.ru/normal_grub2.png</a> if konsole stretch one more familiarity and restart bhyveload, he starts eating 100% cpu. Most likely a bug in grub and FreeBSD/bhyve users is first people who start grub on widescreen in high resolution and text mode. Accordingly, if cbsd bstart XXX process is locked, follow cbsd bstop XXX and reducing the window geometry, try to run again.
-		Comment on this behavior from <strong>Peter Grehan</strong> (creator of grub-bhyve port/project):
-		<pre class="cli">
-		Thanks for the detailed report: looks like this may not be too
-		difficult to fix in grub-bhyve i.e. limit the max terminal size to 255.
-		
-		> I suggest to add pkg-message for sysutils/grub2-bhyve with "Known issue: ..."
-		> for this feature if you find the same behavior on the wide display.
-		> PS: as I understand it, grub-bhyve - this is a temporary solution for OS boot?
-		
-		Yes - it's really a proof-of-concept that bhyve can run non-FreeBSD
-		guests. The solution currently being worked on is to use the OVMF build
-		of UEFI as a boot ROM, rather than having a separate user-space boot loader.
-		</pre>
-		</li>
+		<li> In the old grub-bhyve version when "rubber" of the data on the screen on a widescreen monitor, if the amount is more than 255 familiarity, grub goes into a stupor and leads to the same bhyveload. Accordingly, if cbsd bstart XXX process is locked, follow cbsd bstop XXX and reducing the window geometry, try to run again. Patch: <a href="https://github.com/grehan-freebsd/grub2-bhyve/commit/70ace4fd43f5017d4aacc920017b5641c9d45431" target="_blank">https://github.com/grehan-freebsd/grub2-bhyve/commit/70ace4fd43f5017d4aacc920017b5641c9d45431</a></li>
 	</ul>
 <div>
 <!--# include file="_end.html" -->
