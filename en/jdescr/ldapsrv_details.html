@@ -1,7 +1,7 @@
 <!--# include file="/en/_start.html" -->
 <!--# include file="/en/currentver.html" -->
 <!--# include file="/en/translate.html" -->
-	<h2><a name="why">LDAP jail&hellip;</a></h2>
+	<h2><a name="why">LDAP jail</a></h2>
 	<div class="block">
 		<p>For installing LDAP cbsd jail just follow this steps:</p>
 		<pre class="brush:bash;ruler:true;">
@@ -36,7 +36,7 @@
 			ldapadd -Z -D "cn=Manager,dc=example,dc=com" -W -f /root/skel/example_user.ldif
 		</pre>
 	</div>
-	<h2><a name="why">LDAP PAM authentication.&hellip;</a></h2>
+	<h2><a name="why">LDAP PAM authentication</a></h2>
 	<div class="block">
 		<p>You can use the LDAP server not only for authorization applications like Asterisk, GitLab, Redmine, OwnCloud, but also to provide centralized management of Unix account on all servers and jails. To add authentication via PAM, you need to install inside the jail follow packages: <strong>nss_ldap</strong> and <strong>pam_ldap</strong>. To the home directory is automatically created when you first enter, also  need <strong>pam_mkhomedir</strong>. The following files need to change inside the jails:</p>
 		<ul>
