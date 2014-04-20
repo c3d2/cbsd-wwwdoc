@@ -27,13 +27,13 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jconfig jname=ldapsrv ldapsrvinstall cn= cnpw= fqdn= ldapsuffix=
 		</pre>
-		<p>After starting the LDAP jail, you can use <em>/root/skel/example_user.ldif</em> as an example LDIF template to add your user. For this purpose, after the command received password</p>
+		<p>After starting the LDAP jail, you can use <em>/root/example_user.ldif</em> as an example LDIF template to add your user. For this purpose, after the command received password</p>
 		<pre class="brush:bash;ruler:true;">
 			% slappasswd -h "{SSHA}" -s yourpassword
 		</pre>
 		<p>fill in the userPassword and run:</p>
 		<pre class="brush:bash;ruler:true;">
-			ldapadd -Z -D "cn=Manager,dc=example,dc=com" -W -f /root/skel/example_user.ldif
+			ldapadd -Z -D "cn=Manager,dc=example,dc=com" -W -f /root/example_user.ldif
 		</pre>
 	</div>
 	<h2><a name="why">LDAP PAM authentication</a></h2>
