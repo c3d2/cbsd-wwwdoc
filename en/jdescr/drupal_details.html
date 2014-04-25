@@ -1,0 +1,23 @@
+<!--# include file="/en/_start.html" -->
+<!--# include file="/en/currentver.html" -->
+<!--# include file="/en/translate.html" -->
+	<h1><span>Drupal/MySQL jail</span></h1>
+	<div class="block">
+		<p>For installing Drupal7 with MySQL backend just follow this steps (for FreeBSD 10 and above):</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=drupal
+		</pre>
+		<p>or</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=drupal ver=10.0
+		</pre>
+		<p>If you hosted on another ( non 10.0 ) FreeBSD version. After image downloading please set correct name and ip address of the jail and run a <strong>install script</strong> that asks you for FQDN of WEB server and Drupal:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jconfig jname=drupal install
+		</pre>
+		<p>After entering FQDN of instance, <strong>Install</strong> procedure and starting jail the clean Drupal installation will be available via <strong>http://FQDN/</strong></p>
+		<p class="text-center"><img src="/img/drupal1.jpg" alt="" /></p>
+		<!--# include file="/en/changeroot.html" -->
+		<!--# include file="ldapize.html" -->
+	</div>
+<!--# include file="/en/_end.html" -->
