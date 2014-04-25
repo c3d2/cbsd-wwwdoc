@@ -1,0 +1,23 @@
+<!--# include file="/en/_start.html" -->
+<!--# include file="/en/currentver.html" -->
+<!--# include file="/en/translate.html" -->
+	<h1><span>Mediawiki SQLite3 jail</span></h1>
+	<div class="block">
+		<p>For installing MediaWiki with SQLite3 backend just follow this steps (for FreeBSD 10 and above):</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=wikisqlite
+		</pre>
+		<p>or</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=wikisqlite ver=10.0
+		</pre>
+		<p>If you hosted on another ( non 10.0 ) FreeBSD version. After image downloading please set correct name and ip address of the jail and run a <strong>install script</strong> that asks you for FQDN of WEB server and MediaWiki:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jconfig jname=wikisqlite wikiinstall
+		</pre>
+		<p>After entering FQDN of instance, <strong>Install</strong> procedure and starting jail the clean MediaWiki installation will be available via <strong>http://FQDN/</strong></p>
+<!-- 		<p class="text-center"><img src="/img/wikisqlite1.png" alt="" /></p> -->
+		<!--# include file="/en/changeroot.html" -->
+		<!--# include file="ldapize.html" -->
+	</div>
+<!--# include file="/en/_end.html" -->
