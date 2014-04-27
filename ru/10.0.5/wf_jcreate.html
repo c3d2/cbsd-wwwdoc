@@ -41,7 +41,7 @@
 			jailskeldir="/root/share/jail-skel"
 		</pre>
 		<p>Настройки значений по-умолчанию как для диалога, так и для параметров <a href="http://man.freebsd.org/jail/8" target="_blank">jail(8)</a> при создании .jconf (если они не переопределены в диалоге) описаны в файле-профиле <em>$workdir/etc/defaults/jail-freebsd-default.conf</em>.
-		<p>Вы можете создавать собственные профили для своих умолчаний, создавая файлы с подобным содержимым и помещая их в файлах с именами <strong>jail-freebsd-XXXX.conf</strong> в каталоге <em>$workdir/etc</em>. Кроме этого, через значение параметра <strong>$jail_profile</strong> в jail-freebsd-default.conf вы можете указать свой профиль по-умолчанию вместо профиля default. Например, если вы хотите, чтобы по-умолчанию <strong>astart</strong> имел значение 0, <strong>vimage</strong> был включен, а <strong>exec_start</strong> вместо стандартного значения <strong>/bin/sh /etc/rc</strong> был установлен в <strong>/bin/date</strong>, при этом данный профиль должен предлагаться по-умолчанию, то создайте jail-freebsd-default.conf в каталоге <em>$workdir/etc</em> в котором будет переписываться default_profile:</p>
+		<p>Вы можете создавать собственные профили для своих умолчаний, создавая файлы с подобным содержимым и помещая их в файлах с именами <strong>jail-freebsd-XXXX.conf</strong> в каталоге <em>$workdir/etc</em>. Кроме этого, через значение параметра <strong>$jail_profile</strong> в jail-freebsd-default.conf вы можете указать свой профиль по-умолчанию вместо профиля default. Например, если вы хотите, чтобы по-умолчанию <strong>astart</strong> имел значение 0, <strong>vimage</strong> был включен, имена клеток предлагались вместо <strong>jail1, jail2, jail3</strong> как <strong>client1, client2, client3</strong>, а <strong>exec_start</strong> вместо стандартного значения <strong>/bin/sh /etc/rc</strong> был установлен в <strong>/bin/date</strong>, при этом данный профиль должен предлагаться по-умолчанию, то создайте jail-freebsd-default.conf в каталоге <em>$workdir/etc</em> в котором будет переписываться default_profile:</p>
 		<pre class="brush:bash;ruler=true;">
 			% echo default_profile="myhosting" > /usr/jails/etc/jail-freebsd-default.conf
 		</pre>
@@ -52,6 +52,7 @@
 			astart="0"
 			exec_start="/bin/date"
 			vimage="1"
+			default_jailname="client"
 		</pre>
 	</div>
 	<div class="block">
