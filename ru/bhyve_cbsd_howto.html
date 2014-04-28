@@ -52,6 +52,7 @@
 <h2><a name="intro"><span>Пара других комментариев</span></a></h2>
 <div class="block">
 	<ul>
+		<li>Если вы не меняли <em>${workdir}/share/jail-skel/etc/</em> файлы паролей и applytpl=1, пароль пользователя <strong>root</strong> у виртуалок freebsd созданных через cbsd bconstruct/jail2iso: <strong>cbsd</strong></li>
 		<li>bhyve-виртуальны машины убраны из вывода <a href="/ru/<!--#echo var="version" -->/wf_jls_ssi.html">jls</a>, как и по команде <strong>cbsd bls</strong> вы не увидете jail-based окружения.</li>
 		<li>Поскольку все жесткие диски создаются в каталоге $workdir/jails-data/$jname-data, виртуальные машины <strong>bhyve</strong> могут быть экспортированы, перенесены со всеми дисками и импортированы на других хостах через команды <strong>cbsd jexport</strong> и <strong>cbsd jimport</strong>.</li>
 		<li>По аналогии с <a href="/ru/<!--#echo var="version" -->/wf_jrename_ssi.html">jrename</a> и <a href="/ru/<!--#echo var="version" -->/wf_jclone_ssi.html">jclone</a> работают скрипты <strong>brename</strong> и <strong>bclone</strong> за тем лишь исключением, что при работе фигурируют лишь параметры <strong>old=</strong> и <strong>new=</strong>.</p>
