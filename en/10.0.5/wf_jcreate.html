@@ -33,7 +33,8 @@
 			jailskeldir="/root/share/jail-skel"
 		</pre>
 		<p>Setting default values ​​for dialog and for the parameters for <a href="http://man.freebsd.org/jail/8" target="_blank">jail(8)</a> when creating .jconf (unless overridden in the dialog) are described in the profile file <em>$workdir/etc/defaults/jail-freebsd-default.conf</em>.
-		<p>You can create custom profiles for their defaults, by creating files with similar contents and putting them in files named <strong>jail-freebsd-XXXX.conf</strong> in <em>$workdir/etc</em> directory. Furthermore, through the value of the parameter <strong>$jail_profile</strong> in jail-freebsd-default.conf you can specify your profile instead of default. For example, if you want to default <strong>astart</strong> mattered 0, <strong>vimage</strong> was enabled, suggest jail name instead of <strong>jail1, jail2, jail3</strong> as <strong>client1, client2, client3</strong> and <strong>exec_start</strong> instead of the standard value <strong>/bin/sh /etc/rc</strong> was set to <strong>/bin/date</strong>, with this profile should be offered by default, create jail-freebsd-default.conf in <em>$workdir/etc</em> directory which will overwrite default_profile:</p>
+		<p>You can create custom profiles for their defaults, by creating files with similar contents and putting them in files named <strong>jail-freebsd-XXXX.conf</strong> in <em>$workdir/etc</em> directory. Furthermore, through the value of the parameter <strong>$jail_profile</strong> in jail-freebsd-default.conf you can specify your profile instead of default. For example, if you want to default <strong>astart</strong> mattered 0, <strong>vimage</strong> was enabled, suggest jail name instead of <strong>jail1, jail2, jail3</strong> as <strong>client1, client2, client3</strong> and <strong>exec_start</strong> instead of the standard value <strong>/bin/sh /etc/rc</strong> was set to <strong>/bin/date</strong>, with this profile should be offered by default, create jail-freebsd-default.conf in <em>$workdir/etc</em> directory which will overwrite default_profile.</p>
+		<p>And among other things, for a group of jail of <strong>myhosting</strong> profile, when you start jail, link the MySQL database files are located in the appropriate jail of the client (to a client database influenced ZFS quota for jail) in MySQL engine which is running on master node, and when you stop jails -- then unlink</p>
 		<pre class="brush:bash;ruler=true;">
 			% echo default_profile="myhosting" > /usr/jails/etc/jail-freebsd-default.conf
 		</pre>
@@ -45,6 +46,8 @@
 			exec_start="/bin/date"
 			vimage="1"
 			default_jailname="client"
+			exec_master_poststop="rm -f /var/db/mysql/${jname}";
+			exec_master_prestart="ln -sfh /usr/jails/jails-data/${jname}-data/var/db/mysql/${jname} /var/db/mysql/${jname}";
 		</pre>
 	</div>
 	<div class="block">
