@@ -55,7 +55,7 @@
 			vimage="1"
 			default_jailname="client"
 			exec_master_poststop="rm -f /var/db/mysql/${jname}";
-			exec_master_prestart="ln -sfh /usr/jails/jails-data/${jname}-data/var/db/mysql/${jname} /var/db/mysql/${jname}";
+			exec_master_prestart="ln -sfh ${workdir}/jails-data/${jname}-data/var/db/mysql/${jname} /var/db/mysql/${jname}";
 		</pre>
 	</div>
 	<div class="block">
