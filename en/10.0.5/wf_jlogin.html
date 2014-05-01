@@ -8,6 +8,9 @@
 		<p><strong>Description</strong>:</p>
 		<p>Execute login into jail from root user. In case when attempt in a jail which isn't present on a local node, but it is present on one of remote nodes, <strong>jlogin</strong> will ask a question on attempt to login in remote jail through ssh.</p>
 		<p>If the name of jail as argument is not specified, displays a list of all the jails in the farm (if remote node was added) in the status Online to select</p>
+		<p>If you do remote login into jail and node have <strong>tmux</strong> installed, entrance to the jail will be performed with the launch tmux session, the name of which is formed from <em>nodename</em> of the server, produced from jlogin.</p>
+		<p>If you are in parallel with two entrances from one source to a remote jail, the second session will be connected via <strong>tmux-attach</strong>. When you exit the remote jail, tmux session ends (you can just detach session via <strong>Ctrl + b , d</strong>)</p>
+		<p>If <strong>tmux</strong> exist in system but you <strong>NOT</strong> want to use it at jlogin, just duplicate <em>${workdir}/defaults/jlogin.conf</em> tmux_login params in the <em>${workdir}/etc/jlogin.conf</em> file, but with <strong>0</strong> value.
 		<p><strong>Example</strong>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jlogin kde4
