@@ -3,13 +3,10 @@
 <h1><span>News</span></h1>
 <h2><a name="development">&nbsp;Development</a></h2>
 <div class="block">
-	<p><strong>10.0.5</strong>&nbsp;&mdash; Unknown</p>
+	<p><strong>10.0.6</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
 		<li>Now the repository contains not only the jail environment, but bhyve-images with Linux/OpenBSD-based pre-configured services</li>
-		<li>Profiles for <strong>jconstruct\*</strong> (<a href="/en/10.0.5/wf_jcreate_ssi.html">jail create via dialog menu </a>)</li>
-		<li><a href="/en/10.0.5/wf_jlogin_ssi.html">jlogin</a> without arguments now lists <em>online</em> jails for selection; <strong>tmux</strong> support for remote login</li>
-		<li><a href="/en/10.0.5/wf_nlogin_ssi.html">nlogin</a> without arguments now lists nodes for selection</li>
-		<li><a href="/en/10.0.5/wf_jailscp_ssi.html">jailscp</a> copying files from/to jail filesystem</li>
+<!-- 		<li><a href="/en/10.0.5/wf_jailscp_ssi.html">jailscp</a> copying files from/to jail filesystem</li> -->
 		<li>WIP</li>
 	</ul>
 	<p><em>If&nbsp;you want to&nbsp;experiment with the next version of&nbsp;<strong>CBSD</strong>, use <strong>git clone https://github.com/olevole/cbsd.git</strong> for <strong>/usr/local/cbsd</strong></em></p>
@@ -17,6 +14,13 @@
 <h2><a name="release">Releases</a></h2>
 <div class="block">
 	<hr>
+	<p><strong>10.0.5</strong>&nbsp;&mdash; 2014-05-02</p>
+	<ul>
+		<li>Profiles for <strong>jconstruct\*</strong> (<a href="/en/10.0.5/wf_jcreate_ssi.html">jail create via dialog menu </a>)</li>
+		<li><a href="/en/10.0.5/wf_jlogin_ssi.html">jlogin</a> without arguments now lists <em>online</em> jails for selection; <strong>tmux</strong> support for remote login</li>
+		<li><a href="/en/10.0.5/wf_nlogin_ssi.html">nlogin</a> without arguments now lists nodes for selection</li>
+		<li><em>/usr/local/bin/cbsd</em> now with 0500 perms and <em>cbsd</em> owner, due to use <strong>sudo</strong> for some of its scripts</li>
+	</ul>
 	<p><strong>10.0.4</strong>&nbsp;&mdash; 2014-04-16</p>
 	<ul>
 		<li>Modulization</li>
