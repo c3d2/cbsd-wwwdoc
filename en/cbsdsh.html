@@ -26,7 +26,7 @@ cbsd@home> cbsdsql local SELECT dsk_controller,dsk_path,dsk_slot FROM bhyvedsk W
 ahci-hd|dsk1.vhd|0
 
 cbsd@home>
-			<pre>
+			</pre>
 		</li>
 			<li>- Added function <strong>cbsdsql</strong> as build-in shell function to query in SQL, as the second argument is the base, all otther - the SQL query itself. As the name of the database file name appears directly in <em>$workdir/var/db/</em>, while the path and file extension <em>.sqlite</em> should not be written. For example, if you want a list of jails with remote nodes node2, information which is in SQLite file <em>/usr/jails/var/db/node2.sqlite</em> and the contents of which (in new versions of CBSD) is replicated through <strong>zmq</strong> from a source in the shell so you can write:
 		<pre class="brush:bash;ruler:true;">
