@@ -97,7 +97,7 @@
 	mysql> FLUSH PRIVILEGES;
 	^D
 	</pre>
-	<p>В данном примере '%' разрешает соединение пользователю <strong>root</strong> с любых хостов используя пароль <strong>zelepuka</strong>. Ваш пароль должен быть другой и значительно хитрее.</p>
+	<p>В данном примере '%' разрешает соединение пользователю <strong>root</strong> с любых хостов используя пароль <strong>zelepuka</strong>. Используйте собственный пароль, более хитрый.</p>
 </div>
 <h2><a name="mysql">Конфигурирование Nginx</a></h2>
 <div class="block">
@@ -166,6 +166,7 @@
 	<pre class="brush:bash;ruler:true;">
 	% cbsd jconfig jname=ldapsrv ldapsrvinstall cnpw=superpass fqdn=ldapsrv.my.domain ldapsuffix="dc=hosting,dc=com"
 	</pre>
+	<p>В примере административный пароль - <strong>superpass</strong>. Используйте собственный пароль, более мудрый.</p>
 	<p>И запускаем:</p>
 	<pre class="brush:bash;ruler:true;">
 	% cbsd jstart ldapsrv
