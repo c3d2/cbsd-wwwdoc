@@ -66,9 +66,131 @@
 	<img src="/img/hosting_scheme2.png" alt="" />
 	<p>По это же схеме будет происходить и уничтожение пользователя со всем его хозяйством.</p>
 </div>
+<h2><a name="cbsdprofiles">CBSD профиль</a></h2>
+<div class="block">
+	<p>Наши клетки для хостинга будут отличаться от "обычных" тем, что мы задействуем параметр <strong>exec_master_poststop</strong> и <strong>exec_master_prestart</strong> в своих корыстных целях, дабы при запуске и остановке клетки, база клиента
+	становилась недоступной. Для этого создадим в <em>$workdir/etc/</em> файл jail-freebsd-ownhosting.conf на основе <em>${workdir}/etc/defaults/jail-freebsd-default.conf</em> следующего содержания:</p>
+	<pre>
+	jail_profile="hosting"                                                                                                                                                                                                                                                         
+	exec_master_poststop="rm -f /var/db/mysql/${jname}";                                                                                                                                                                                                                           
+	exec_master_prestart="ln -sf /usr/jails/jails-data/${jname}-data/var/db/mysql/${jname} /var/db/mysql/${jname}";                                                                                                                                                                
+	default_jailname="cl"                                                                                                                                                                                                                                                          
+	default_domain="hosting.com"
+	</pre>
+	<p>Этот профиль нам понадиться, если мы будем создавать клетки в ручном варианте, поскольку при выполнении <strong>cbsd jconstruct-tui</strong> появятся настройки данного профиля. В частности, помимо <strong>exec_master_poststop</strong> и <strong>exec_master_prestart</strong>, профиль предлагает другие имена клеток (<strong>clX</strong> вместо <strong>jailX</strong>) и другой домен (<strong>hosting.com</strong> вместо <strong>my.domain</strong>):</p>
+	<p><img src="/img/hostingwip1.png" alt="" /></p>
+	<p><img src="/img/hostingwip2.png" alt="" /></p>
+	<p><img src="/img/hostingwip3.png" alt="" /></p>
+	<p>Автоматика будет генерировать свой <strong>.jconf</strong>, в котором эти параметры продублируем.</p>
+</div>
+<h2><a name="mysql">Конфигурирование MySQL</a></h2>
+<div class="block">
+	<p>Устанавливаем в мастер-ноде MySQL сервер, назначаем пользователю <strong>root</strong> пароль, удаляем возможность соединятся с базой с пустым паролем:</p>
+	<pre class="brush:bash;ruler:true;">
+	% pkg install mysql55-server
+	% sysrc mysql_enable="YES"
+	% service mysql-server start
+	% mysql
+	mysql> GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'zelepuka';
+	mysql> connect mysql;
+	mysql> DELETE FROM USER WHERE Password='';
+	mysql> FLUSH PRIVILEGES;
+	^D
+	</pre>
+	<p>В данном примере '%' разрешает соединение пользователю <strong>root</strong> с любых хостов используя пароль <strong>zelepuka</strong>. Ваш пароль должен быть другой и значительно хитрее.</p>
+</div>
+<h2><a name="mysql">Конфигурирование Nginx</a></h2>
+<div class="block">
+	<p>Устанавливаем в мастер-ноде Nginx, который будет обслуживать статику клиентов напрямую, php скрипты приземлять в апстримы php-fpm внутри клеток и кроме этого, обслуживать страничку заведения усеров для нас.</p>
+	<p>В реальном хостинге вы можете предпочесть ставить Nginx в качестве беленсеров (и возможно, не в одном варианте а в режиме отказоусточивости через CARP) в виде отдельного сервера.</p>
+	
+	<pre class="brush:bash;ruler:true;">
+	% pkg install nginx
+	% sysrc nginx_enable="YES"
+	</pre>
+	<p>Минимальное содержимое <em>/usr/local/etc/nginx/nginx.conf</em>:</p>
+	<pre class="cli">
+	user  nobody;
+	worker_processes  4;  &lt;&lt;- используйте свои, более подходящие значения;
+
+	error_log /var/log/httpd/nginx.err;
+	pid /var/run/nginx.pid;
+
+	events {
+		worker_connections   40000; &lt;&lt;- используйте свои, более подходящие значения;
+		kqueue_changes  1024;  &lt;&lt;- используйте свои, более подходящие значения;
+		use kqueue;
+	}
+
+	http {
+		server {
+			listen *:80 default;
+			listen [::]:80 default ipv6only=on;
+		}
+		include vhosts/*.conf;
+	}
+	</pre>
+	<p>Минимальное содержимое <em>/usr/local/etc/nginx/vhosts/admin.conf</em>:</p>
+	<pre class="cli">
+	server {
+		listen [::]:80;
+		listen *:80;
+		server_name  cbsd.localhost;
+		root /usr/jails/modules/dummyhosting/web;
+		set $php_root $document_root;
+
+		location ~ \.php$ {
+			include php-core.conf;
+		}
+
+		location / {
+			index adduser.php;
+		}
+	}
+	</pre>
+	<p>Запускаем WEB:</p>
+	<pre class="brush:bash;ruler:true;">
+	% service nginx start
+	</pre>
+</div>
+<h2><a name="ldapsrv">Установка, конфигурирование и запуск LDAP</a></h2>
+<div class="block">
+	<p>Клетка с LDAP сервером и WEB интерфейсом <a href="/en/jdescr/ldapsrv_details.html">присутствует</a> в репозитории <strong>CBSD</strong>, поэтому заходим на наш второй сервер, скачиваем темплейт ldapsrv, даем начальные параметры (Ldap OU, Manager password и IP клетки)</p>
+	<pre class="brush:bash;ruler:true;">
+	% cbsd repo action=get sources=img name=ldapsrv ver=10.0
+	% cbsd jconfig jname=ldapsrv ldapsrvinstall
+	</pre>
+	<p><img src="/img/hostingwip4.png" alt="" /></p>
+	<p><img src="/img/hostingwip5.png" alt="" /></p>
+	<p>Либо без диалога:</p>
+	<pre class="brush:bash;ruler:true;">
+	% cbsd jconfig jname=ldapsrv ldapsrvinstall cnpw=superpass fqdn=ldapsrv.my.domain ldapsuffix="dc=hosting,dc=com"
+	</pre>
+	<p>И запускаем:</p>
+	<pre class="brush:bash;ruler:true;">
+	% cbsd jstart ldapsrv
+	</pre>
+	<p>После этого, по URL http://ldapsrv.my.domain вы сможете заводить пользователей вручную через PhpLdapAdmin (что для данного примера с хостингом нам не понадобится)</p>
+</div>
+<h2><a name="mysql">Шаблон для создания клеток</a></h2>
+<div class="block">
+WIP
+</div>
+<h2><a name="mysql">Софт в создаваемых клетках</a></h2>
+<div class="block">
+WIP
+</div>
+<h2><a name="mysql">Запуск скриптов создания и удаления профилей</a></h2>
+<div class="block">
+WIP
+</div>
+<h2><a name="mysql">Конфигурация OpenSSH</a></h2>
+<div class="block">
+WIP
+</div>
 <h2><a name="mysql">WEB форма</a></h2>
 <div class="block">
-	<p>Напишем HTML WEB форму, которая на выходе сгенерирует ascii файл в каталог <em>/root/dummyhosing/dispatch/add</em> с заполненными перечисленными выше полями:</p>
+	<p>Напишем HTML WEB форму, которая на выходе сгенерирует ascii файл в каталог <em>/root/dummyhosting/dispatch/add</em> с заполненными перечисленными выше полями:</p>
 	<table class="images">
 	<thead>
 	<tr>
@@ -107,7 +229,7 @@
 
 <pre class="cli">
 &lt;?php
-$savedir="/root/dummyhosing/dispatch/add";
+$savedir="/root/dummyhosting/dispatch/add";
 
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
