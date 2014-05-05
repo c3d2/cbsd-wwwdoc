@@ -1,7 +1,7 @@
 <!--# include file="_start.html" -->
 <!--# include file="currentver.html" -->
 <!--# include file="/en/translate.html" -->
-<h1><span>About cbsd shell and SQLite3</span></h1>
+<h2><a name="shsqlite">About cbsd shell and SQLite3</a></h2>
 <div class="block">
 	<p>99% of the <strong>CBSD</strong> code written on <strong>sh</strong> for the following reasons:</p>
 	<ul>
@@ -10,7 +10,11 @@
 		<li>The language is not required to perform a lot of parsing and mathematics, he works mainly with external tools or API</li>
 	</ul>
 	<p>Nevertheless, a large number of restrictions <strong>sh</strong> (mainly when working with lines) makes writing scripts to be difficult, because of this, is a fork in cbsd of /bin/sh which is added (and will be added) additional functionality that is described in this document</p>
-	<p>So if you want to change/add somethin in <strong>CBSD</strong> or its modules, you have enough knowledge on the usual sh and extend several function. Currently differences from /bin/sh:</p>
+	<p>So if you want to change/add somethin in <strong>CBSD</strong> or its modules, you have enough knowledge on the usual sh and extend several function.</p>
+</div>
+<h2><a name="cbsdsh">cbsdsh</a></h2>
+<div class="block">
+	<p>cbsdsh modified version of /bin/sh and currently has follow differences from /bin/sh:</p>
 	<ul>
 		<li>- Added function <strong>strlen</strong> to determine the length of the string</li>
 		<li>- Added function <strong>is_number</strong> to determine whether the number is.</li>
@@ -41,6 +45,8 @@ echo "Jail name: ${jname}; IPs: ${ip4_addr}; Jail status: ${status}
 			</pre>
 		</li>
 	</ul>
+	<p>If you are in <strong>cbsdsh</strong>, then before <strong>CBSD</strong> command you do not need to enter a prefix <strong>cbsd</strong>:</p>
+	<p class="text-center"><img src="/img/cbsdsh1.png" alt="" /></p>
 	<p><stong>CBSD</strong> in the SQLite3 uses to store settings jail for the following reasons:</p>
 	<ul>
 		<li>Store and especially to work with so many parameters in normal ascii-files very hard</li>
