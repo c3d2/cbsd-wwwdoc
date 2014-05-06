@@ -61,6 +61,9 @@
 		interface="auto";
 		jailskeldir="${sharedir}/jail-skel"
 	</pre>
+	<div class="warning">
+		<p>Note parameters <strong>arch</strong> and <strong>ver</strong>. Values ​​of them may be "i386", "amd64" for arch and "9.2", "10.0", "10.1" "11" and so on, depending on the version of the base, which would you prefer for jail. Values <em>native</em> in these parameters force <strong>CBSD</strong> always take the version and architecture that is running the node, which makes the floating version. So, if you use a template with arch="native", ver="native" and switch from FreeBSD 10.2 to 11.0, it will use the 11.0 version of the base. If you want to fix a specific version - specify version instead <em>native</em>.</p>
+	</div>
 	<p>If you want to create jail with installed some packages from <strong>pkg</strong> repository, in this configuration must have an <strong>pkglist</strong> pointing to a file with a list of packages, for example:</p>
 	<pre class="brush:bash;ruler:true;">
 		pkglist="/tmp/newjail.txt";
