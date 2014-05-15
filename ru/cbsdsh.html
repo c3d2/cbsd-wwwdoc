@@ -33,7 +33,7 @@ cbsd@home>
 		<li>- Добавлена функция <strong>cbsdsql</strong> как build-in функция шелла для запросов в SQL, в качестве второго аргумента идет база, все что дальше - сам SQL запрос. В качестве имени базы выступает непосредственно имя файла в <em>$workdir/var/db/</em>, при этом путь и расширение файла <em>.sqlite</em> писать не нужно. Например, если вы хотите получить  список клеток с удаленной ноды node2, информация которой находится в SQLite файле <em>/usr/jails/var/db/node2.sqlite</em> и содержимое которой (в новых версиях CBSD) реплицируется через zmq с источника, в шелле вы можете написать так:
 			<pre class="brush:bash;ruler:true;">
 ...
-cbsdsh node2 SELECT jname FROM jails
+cbsdsql node2 SELECT jname FROM jails
 			</pre>
 			<p>или назначить результат SQL команды shell-переменной, после чего разобрав его на выбранные переменные:</p>
 			<pre class="brush:bash;ruler:true;">
