@@ -8,7 +8,12 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd repo action=get sources=img name=rtorrent
 		</pre>
-		<p>After downloading images and set correct ip address of jail, run install script who will ask you for a password for rtorrent rpc user and server FQDN. After that rutorrent WEB interface will be available via http://FQDN/rtorrent</p>
+		<p>or</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=rtorrent ver=10.0
+		</pre>
+		<p>If you hosted on another ( non 10.0 ) FreeBSD version.</p>
+		<p>After downloading images and set correct ip address of the jail, run install script that will ask you for jail WEB server FQDN. After that, rutorrent interface will be available via http://FQDN/</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jconfig jname=rtorrent install
 		</pre>
@@ -16,6 +21,7 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jstart rtorrent
 		</pre>
+		<p>Please note: all torrent will be stored in the <em>/home/web/downloads/</em> directory inside the jail. You can share this dir with master node or other jail via fstab file.<p>
 		<p class="text-center"><a href="/img/rtorrent1.png"><img src="/img/rtorrent1_sm.png" alt="" /></a></p>
 		<!--# include file="/en/changeroot.html" -->
 	</div>
