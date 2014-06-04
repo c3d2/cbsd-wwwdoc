@@ -370,22 +370,25 @@
   <loc>http://www.bsdstore.ru/ru/articles/build_own_hosing.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/jdescr/redmine_details.html</loc>
+  <loc>http://www.bsdstore.ru/en/jdescr/redmine_details.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/jdescr/kfreebsd_details.html</loc>
+  <loc>http://www.bsdstore.ru/en/jdescr/rtorrent_details.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/jdescr/centos_details.html</loc>
+  <loc>http://www.bsdstore.ru/en/jdescr/kfreebsd_details.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/jdescr/gitlab_details.html</loc>
+  <loc>http://www.bsdstore.ru/en/jdescr/centos_details.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/jdescr/ldapsrv_details.html</loc>
+  <loc>http://www.bsdstore.ru/en/jdescr/gitlab_details.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/jdescr/owncloud_details.html</loc>
+  <loc>http://www.bsdstore.ru/en/jdescr/ldapsrv_details.html</loc>
+</url>
+<url>
+  <loc>http://www.bsdstore.ru/en/jdescr/owncloud_details.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/en/misc/jmap2html.sh.html</loc>
