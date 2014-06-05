@@ -11,6 +11,7 @@
 		<p>Если производится удаленный вход в jail и в системе установлен <strong>tmux</strong>, вход в jail будет произведен с запуском tmux сессии, имя которой формируется от <em>nodename</em> того сервера, откуда производится вход.</p>
 		<p>Если вы производите параллельно два входа с с одного источника в удаленный jail, вторая сессия будет подключена через <strong>tmux-attach</strong>. При выходе из удаленного jail, сессия tmux завершается (вы можете делать detach через <strong>Ctrl + b , d</strong> )</p>
 		<p>Если <strong>tmux</strong> установлен в системе но вы <strong>НЕ</strong> хотите использовать его при jlogin, продублируйте <em>${workdir}/defaults/jlogin.conf</em> параметр tmux_login в файле <em>${workdir}/etc/jlogin.conf</em>, но со значением <strong>0</strong>.
+		<p>Если вы не хотите каждый раз видеть дополнительный вопрос "try to login?" при входе в клетку на удаленной ноде, продублируйте <em>${workdir}/defaults/jlogin.conf</em> параметр always_rlogin в файле <em>${workdir}/etc/jlogin.conf</em>, со значением <strong>1</strong>.
 		<p><strong>Пример</strong>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jlogin kde4
