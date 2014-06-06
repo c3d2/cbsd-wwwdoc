@@ -1,0 +1,26 @@
+<!--# include file="/en/_start.html" -->
+<!--# include file="/en/currentver.html" -->
+<!--# include file="/en/translate.html" -->
+<h1><span>MariaDB FreeBSD jail image</span></h1>
+	<div class="block">
+	<p><a href="https://mariadb.org/" target="_blank">MariaDB</a> an enhanced, drop-in replacement for MySQL.</p>
+	<p>For installing MariaDB <strong>CBSD</strong> jail just follow this steps:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=mariadb
+		</pre>
+		<p>or</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=mariadb ver=10.0
+		</pre>
+		<p>If you hosted on another ( non 10.0 ) FreeBSD version. After image downloading please set correct name and ip address of the jail and run helper via</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jconfig jname=mariadb install
+		</pre>
+		<p>for entering initial settings as root mysql passord</p>
+		<!--# include file="/en/changeroot.html" -->
+		<p>For non-interactive and automatic deploying (for example you create hosting with lots of MariaDB installation for customer) you can use: </p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd jconfig jname=mariadb install mypw= host= network=
+		</pre>
+	</div>
+<!--# include file="/en/_end.html" -->
