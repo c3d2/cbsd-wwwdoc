@@ -51,14 +51,14 @@ cbsd task mode=new cbsd after=5 jremove jail1 // удалить slave-клетк
 			<p>ID job-а новой задачи можно получить из SQL, или обработать вывод при постановке задачи - привязанный ей ID выводится в stdout.</p>
 			<p>Вы можете настроить нотификацию на email для своих задач через файл <em>$etcdir/taskd.conf</em>, перезаписав стандартные параметры из <em>$etcdir/defaults/taskd.conf</em></p>
 			<pre class="cli">
-CBSDRCPT="root@localhost"                       # default contact for mail notification ("" - for disable)
+root_rcpt="root@localhost"                       # default contact for mail notification or root owner
 lastoutput_num="10"                             # how many last strins from the log send to mail
 max_simul_jobs="10"                             # max run simultaneous proccesses of nexttask
 loop_timeout="60"                               # timeout between forced checking the queue if no events, in seconds
 </pre>
 			<p>где:
 			<ul>
-				<li><strong>CBSDRCPT</strong> - контактный email(ы, через запятую для нескольких) на который пойдет уведомление по факту завершения задачи.</li>
+				<li><strong>root_rcpt</strong> - контактный email(ы, через запятую для нескольких) на который пойдет уведомление по факту завершения задачи. Например, если вы хотите получать на определенный email письма от задач, owner которых cbsdweb, необходимо добавить запись: cbsdweb_rcpt="you@email.here"</li>
 				<li><strong>lastoutput_num</strong> - вставить в письмо последние <strong>N</strong> строчек вывода выполненной задачи.</li>
 				<li><strong>max_simul_jobs</strong> - ограничение на количество параллельно выполняемых задач, если число задач превышено - последние задачи будут дожидаться выполнение первых.</li>
 				<li><strong>loop_timeout</strong> - интервал между форсированной проверкой очереди новых задач.</li>
