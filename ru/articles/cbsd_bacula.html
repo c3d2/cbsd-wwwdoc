@@ -69,7 +69,7 @@
 		<p>Произведем в <strong>bacula-dir.conf</strong> минимальные правки для запуска сервера:</p>
 		<p>В секции <strong>Director</strong> задаем имя директора:</p>
 		<pre class="brush:bash;ruler:rule;">
-				Name = bacula-fd
+				Name = bacula-dir
 		</pre>
 		<p>Если дисковая подсистема достаточно быстрая (уровень raid>5+) и пропускная способность сети выше 50-100 Mbit/s, имеет смысл увеличить максимальное количество параллельных задач с 1 до, к примеру, 10:</p>
 		<pre class="brush:bash;ruler:rule;">
@@ -139,7 +139,7 @@
 		<p>Финальный вид <strong>bacula-dir.conf</strong> будет таким:</p>
 		<pre class="brush:bash;ruler:rule;">
 		Director {
-			Name = bacula-fd
+			Name = bacula-dir
 			DIRport = 9101
 			QueryFile = "/usr/local/share/bacula/query.sql" 
 			WorkingDirectory = "/var/db/bacula" 
@@ -302,7 +302,7 @@
 		</pre>
 		<p>Выставим флаг старта сервиса bacula-dir и запустим его:</p>
 		<pre class="brush:bash;ruler:rule;">
-				echo bacula_dir_enable=YES >> /etc/rc.conf 
+				sysrc bacula_dir_enable=YES
 				service bacula-dir start
 		</pre>
 		<p>Половина работы выполнена ;)</p>
@@ -362,7 +362,7 @@
 		</pre>
 		<p>Добавим SD в rc.conf и запустим:</p>
 		<pre class="brush:bash;ruler:rule;">
-			 echo bacula_sd_enable=YES >> /etc/rc.conf
+			 sysrc bacula_sd_enable=YES
 			 service bacula-sd start
 		</pre>
 
@@ -388,6 +388,11 @@
 			Name = Standard
 			director = bacula-dir = all, !skipped, !restored
 		}
+		</pre>
+		<p>Добавим FD в rc.conf и запустим:</p>
+		<pre class="brush:bash;ruler:rule;">
+			 sysrc bacula_fd_enable=YES
+			 service bacula-fd start
 		</pre>
 		<p><strong>bacula console</strong></p>
 		<p>Для доступа в <strong>Bacula</strong> с помощью агентов (<strong>bat</strong>, <strong>bacula-web</strong>), в том числе для доступа bconsole непосредственно на самом сервере, изменим имя и пароль в соответствующем файле <em>/usr/local/etc/bacula/bconsole.conf</em>. Пароль должен соответствовать тому, который вы установили в <strong>bacula-dir</strong> в секции <strong>Directory</strong>. В нашем примере, <em>/usr/local/etc/bacula/bconsole.conf</em> будет иметь следующий вид:</p>
@@ -687,7 +692,7 @@
 		FILESETDIR="${BACULADIR}/fileset" 
 		HOSTSDIR="${BACULADIR}/hosts" 
 		CFGDIR="/root/etc/bacula" 
-		RCPTTO="root@nevosoft.ru" 
+		RCPTTO="root@localhost" 
 		MYNAME="${0##*/}" 
 		FLAG="clean" 
 		CBSD=/usr/local/bin/cbsd
