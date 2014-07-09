@@ -3,24 +3,27 @@
 <!--# include file="/en/translate.html" -->
 <h1><span>Installing CBSD</span></h1>
 	
-	<h2><a name="req">Installing cbsd</a></h2>
+	<h2><a name="req">Installing CBSD</a></h2>
 	<div class="block">
-		<p>Since <strong>CBSD</strong> — it's only a number of simplifying the work with the jails scripts, fits any hardware on which the start FreeBSD. It is assumed that cbsd is installed on a clean, freshly installed FreeBSD, because the setting is a number of configuration files <a href="custom_freecbsd.html">was changed</a>. For full work is desirable:</p>
+		<p>Since <strong>CBSD</strong> — is a number of tools simplifying the work with jails scripts, it will work on any hardware on which FreeBSD does. It is assumed that you are installing CBSD on a freshly installed FreeBSD system as a number of configuration files <a href="custom_freecbsd.html"> can be changed during install.</a></p>
+		
+		
 		<ul>
+		<p> For full functionality the following requirements are desirable:</p>
 			<li>FreeBSD version greater or equal of 9.1-RELEASE.</li>
-			<li><strong>amd64</strong> architecture, because the development is carried out under it.</li>
+			<li><strong>amd64</strong> architecture, because the development of CBSD is carried out under this architecture.</li>
 			<li>ZFS file system, because the use of a number of possibilities offered by ZFS.</li>
 			<li>kernel with RACCT/RCTL and VIMAGE support (<strong>CBSD</strong> can fetch out a kernel from own repository with your consent)</li>
 		</ul>
 	</div>
 	<h2><a name="version">CBSD versioning</a></h2>
 	<div class="block">
-		  <p>The first two digits of the cbsd version related to FreeBSD versions for which it was developed and tested. Version 9.2.0 means that scripts were written for FreeBSD 9.2. The third number figure means the cbsd version.</p>
+		  <p>The first two digits of the CBSD version related to FreeBSD versions for which it was developed and tested. Version 9.2.0 means that scripts were written for FreeBSD 9.2. The third number figure means the CBSD version.</p>
 	</div>
-	<h2><a name="preparing">Installation and preparation CBSD</a></h2>
+	<h2><a name="preparing">Preparing the system and installing CBSD</a></h2>
 	<div class="block">
 		<p>1) Installing</p>
-		<p>a) cbsd can be install via FreeBSD ports tree:</p>
+		<p>a) CBSD can be installed via the FreeBSD ports tree:</p>
 		<pre class="brush:bash;ruler:true;">
 			% make -C /usr/ports/sysutils/cbsd install
 		</pre>
@@ -42,26 +45,26 @@
 			% git clone https://github.com/olevole/cbsd.git /usr/local/cbsd
 		</pre>
 		<p>2) First run</p>
-		<p>If you are installing <strong>CBSD</strong> not from ports, you must first create a cbsd user's with home directory selected as the directory that will contain your jails (in this example — <em>/usr/jails</em>)</p>
+		<p>If you are not installing <strong>CBSD</strong> from ports or pkg's, you must first create a cbsd user with the home directory selected as the directory that will contain your jails (in this example — <em>/usr/jails</em>)</p>
 		<pre class="brush:bash;ruler:true;">
 			%  pw useradd cbsd -s /bin/sh -d /nonexistent -c "cbsd user"
 		</pre>
-		<p>besides, create links of rc.d scripts to start cbsd at system startup (when installing from ports it is unnecessary)</p>
+		<p>Then create links of the rc.d scripts to start cbsd at system startup (when installing from ports and pkg's it is unnecessary)</p>
 		<pre class="brush:bash;ruler:true;">
 			% cd /usr/local/etc/rc.d
 			% ln -s /usr/local/cbsd/rc.d/cbsdd
 			% ln -s /usr/local/cbsd/rc.d/cbsdrsyncd
 		</pre>
-		<p>In classical installation, cbsd contains in two copies. One of them (<em>/usr/local/cbsd</em>), contains a distribution kit, an initial code and configuration files by default. Also, this copy can be used for management of jails in case the main copy is damaged (for example was incorrectly updated).  The index of with what catalog of scripts to work is the environment variable <strong>workdir</strong>.</p>
-		<p>For initialization of a working (main) copy of cbsd, use <strong>initenv</strong> command, with which start in the first call it is necessary to specify through an environment variable <strong>workdir</strong> the location of the working directory, and answer a series of questions. The file system for <strong>CBSD</strong> (or rather, the directory <strong>jails-data</strong>in it) should be sufficient to accommodate the jail data. After finalizing the place where the put working directory, first set it as home directory for cbsd user (in this case the working directory in /usr/jails):</p>
+		<p>In the classic install, there are two copies of CBSD. One of them (<em>/usr/local/cbsd</em>), contains a distribution kit, an initial code and configuration files by default. Also, this copy can be used for management of jails in case the main copy is damaged (for example it was incorrectly updated).  The index of the catalogue of scripts to work with is the environment variable <strong>workdir</strong>.</p>
+		<p>To initialize the main working copy of CBSD we need to use the <strong>initenv</strong> command, to start the command we first specify through the environment variable <strong>workdir</strong> the location of the working directory, and answer a series of questions to complete the configuration. The file system for <strong>CBSD</strong> (or rather, the directory <strong>jails-data</strong>in it) should be sufficient to accommodate the jail data. After finalizing the location of the working directory, ensure it is set as the home directory for cbsd user.(in this case the working directory in /usr/jails):</p>
 		<pre class="brush:bash;ruler:true;">
  			%  pw usermod cbsd -d /usr/jails
 		</pre>
-		<p>3) Initialization with the working catalog into <em>/usr/jails</em>:</p>
+		<p>3) Initialization with the working catalogue into <em>/usr/jails</em>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% env workdir="/usr/jails" /usr/local/cbsd/sudoexec/initenv
 		</pre>
-		<p>At the first start dialogue a question-answer on the main settings of a node will proceed.  The expected user input system writes  as an example (e.g.). By pressing Enter with not filled value system will be used value from example. After each updating cbsd, initenv it is necessary to cause again. The next times of initenv can be started through cbsd without <strong>env</strong>(settings of the working dir will be stored in <em>/etc/rc.conf</em>).</p>
+		<p>At the start a dialogue will be show with questions on how you want to configure CBSD. The expected user input system is type as per the example (e.g.). Pressing Enter with no values entered the system will use the value from the example. After updating CBSD it is necessary to run initenv again. After the first run of initenv it can be started through CBSD without specifying the <strong>env</strong> variable again.(the working dir variable will be stored in <em>/etc/rc.conf</em>).</p>
 		<p>At the first initialization the following questions can meet:</p>
 		<ul>
 			<li><strong>Please fill nodename</strong> — Node name. If there will be a work with several nodes, this name should be unique. It is recommended to use a name, similar full hostname (including domain). This name is used at work with data of servers with remote hosts. Example: node1.my.domain.</li>
@@ -78,7 +81,7 @@
 			Accordingly, when using a caching DNS, if the IP address of the node such as 192.168.1.2, use this address in jnameserver at the first.</li>
 			<li><strong>Please fill nodeippool</strong> — The list of subnets in which it is permitted to be started the jails. If networks more then one — use spacel as delimer. For example: 10.0.0.0/24 192.168.1.128/29</li>
 			<li><strong>Please fill natip</strong> — Here it is necessary to enter the IP address which will represent itself as NAT for private addresses. Usually it is IP of your node. For example: 192.168.1.2</li>
-			<li><strong>Please fill fbsdrepo</strong> — Whether to use an official repository of FreeBSD for base/templates. The answer 1 or 2 is expected. If on officidal FreeBSD servers  base it is not revealed — cbsd repository is used.  For example: 1.</li>
+			<li><strong>Please fill fbsdrepo</strong> — Whether to use an official repository of FreeBSD for base/templates. The answer 1 or 2 is expected. If on officidal FreeBSD servers  base it is not revealed — CBSD repository is used.  For example: 1.</li>
 			<li><strong>Please fill zfsfeat</strong> — Whether to use possibilities of file system ZFS (clones, snapshots). The answer 1 or 2 is expected. The question won't be, if the system is started not on ZFS.</li>
 			<li><strong>Configure NAT for RFC1918 Network?</strong> — Whether to use network address translation (NAT) for private addresses? When jails are created in RFC1918 networks, it is necessary to enable for internet access. For example: 1.</li>
 			<li><strong>Which one NAT framework should be use: [pf or ipfw]</strong>- What tool for NAT to prefer. Recommended — pf. For example: 1</li>
