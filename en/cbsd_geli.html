@@ -68,23 +68,23 @@
 		<pre class="brush:bash;ruler:true;">
 			webhome.img /usr/home/web geli rw 0 0
 		</pre>
-		<p>В этом случае, файл <em>webhome.img</em> должен лежать в директории <em>/usr/jails/jails-system/jail1/</em> (если workdir = /usr/jails).
-		<p>Если вы храните криптованный образ не в <em>/usr/jails/jails-system/<strong>$jname</strong>/</em> каталоге, то необходимо прописывать полный путь, начинающийся с /. Например:</p>
+		<p>In this case, the file <em>webhome.img</em> must me store in the directory <em>/usr/jails/jails-system/jail1/</em> (when workdir = /usr/jails).
+		<p>If you store the crypto image is not in <em>/usr/jails/jails-system/<strong>$jname</strong>/</em> directory, it is necessary to prescribe the full path starting with /. for example:</p>
 		<pre class="brush:bash;ruler:true;">
 			/data/images/webhome.img /usr/home/web geli rw 0 0
 		</pre>
-		<p>Однако, хранение <strong>.img</strong> файлов для клетки в <em>/usr/jails/jails-system/<strong>$jname</strong>/</em> является рекомендуемой, поскольку каталог <em>jails-system/$jname</em> учавствует в операциях миграции, <strong>jimport, jexport</strong>. В противном случае, вам придется переносить файл образа самостоятельно.</p>
-		<p>Имейте ввиду, если после запуска сервера не произведена инициализация cbsd geli (cbsd geli mode=initmaster), которая после ввода пароля получает доступ к ключам для расшифровки образов, то при старте клетки, не найдя ключа для дешифровки, данный образ не будет подключен. Поэтому, как правило, криптованные клетки должны иметь флаг автостарта выключенным (<strong>astart=0</strong>).</p>
+		<p>However, storage for <strong>.img</strong> files of jails <em>/usr/jails/jails-system/<strong>$jname</strong>/</em> is recommended, because the directory <em>jails-system/$jname</em> participates in the operations of migration, <strong>jimport</strong> and <strong>jexport</strong>. Otherwise, you will have to carry their own image file.</p>
+		<p>Keep in mind, when after booting server you have no init the <strong>CBSD</strong> geli (cbsd geli mode=initmaster), which after the password has access to the keys to decrypt the images and jails is starting, <strong>CBSD</strong> can not find a key to decrypt the image and the crypto directory is not be mounted. Therefore, as a rule, crypto jails should have a flag autostart is off(<strong>astart=0</strong>).</p>
 	</div>
-	<h2><a name="mountpoints">Практический пример</a></h2>
+	<h2><a name="mountpoints">A practical example</a></h2>
 	<div class="block">
-	<p>Предположим, у нас есть jail с именем <strong>private1</strong>, в котором базовые файлы, конфигурация и сторонний софт устанавливаемый из портов нам шифровать не требуется, поскольу все это и так можно скачать на просторах интернет. Однако содержимое домашнего каталога пользователя <strong>web</strong> по пути <em>/usr/home/web</em> внутри клетки должно быть зашифровано.</p>
-	<p>Поскольку при загрузке сервера нам необходимо будет вводить вручную пароль, сделаем себе посылку письма на электронную почту для тех случаев, когда сервер может перезапуститься без нашего ведома. Для этого в <em>/etc/crontab</em> добавим запись:</p>
+	<p>Suppose we have a jail named <strong>private1</strong>, wherein the base files, configuration, and third party software installed from ports we encrypt is not required, since all this so you can download on the Internet. However, the contents of the user's home directory <strong>web</strong> mounted in <em>/usr/home/web</em> inside the jail must be encrypted.</p>
+	<p>Since the server load, we will need to manually enter master password, do yourself sending message to email for those cases where the server can be restarted without our knowledge. For this <em>/etc/crontab</em> drop the line:</p>
 	<pre class="brush:bash;ruler:true;">
 	@reboot root /bin/echo "Incident date: `/bin/date`"| mail -s "`/bin/hostname` rebooted" your_mail@my.domain
 	</pre>
-	<p>, где <em>your_mail@my.domain</em> - ваша электронная почта.</p>
-	<p>Выполним инициализацию master-образа <strong>CBSD</strong>, где будут хранится все ключи к образам. Вам будет предложено ввести фразу для дешифровки этого образа повторно, чтобы проинициализировать его немедленно. Не забывайте его.</p>
+	<p>, where <em>your_mail@my.domain</em> - is your E-mail.</p>
+	<p>Perform initialization of master-image <strong>CBSD</strong>, where will be stored all the keys to the images. You will be prompted to enter the passphrase for decrypting this image again to initialize it immediately. Do not forget it.</p>
 	<pre class="brush:bash;ruler:true;">
 	% cbsd geli mode=initmaster
 	Initialization. Please set master password for geli base image
@@ -94,14 +94,14 @@
 	Enter passphrase:
 	Init complete: /usr/jails/var/db/master_geli.img
 	</pre>
-	<p>Крайне желательно делать резервные копии файлу <em>/usr/jails/var/db/master_geli.img</em>, поскольку без него (или при поврежденном файле) и не помня персональные пароли (шагом ниже) для дешифрации конкретного образа, вы не сможете получить к ним доступ.</p>
-	<p>Этой же командой и фразой при следующей загрузке ноды, вы будете активировать доступ к остальным ключам.</p>
-	<p>Создадим образ достаточного объема, в котором будет находится шифрованная файловая система. Например, создадим образ объемом в 10 Гбайт (подразумевается, что клетка jail1 уже создана и каталог <em>/usr/jails/jails-system/private1</em> присутствует на файловой системе):</p>
+	<p>Highly desirable to make backups of the file <em>/usr/jails/var/db/master_geli.img</em>, because without it (or with a damaged file) and not remembering personal passwords (step below) to decrypt a particular course, you can not access them.</p>
+	<p>The same command and the phrase on the next boot the node you activate access to the rest of the keys.</p>
+	<p>Create an image of sufficient volume, which will be located Encrypting File System. For example, create the image of 10 Gbytes (means that the jails has already been created and jail1 directory <em>/usr/jails/jails-system/private1</em> exist in filesystem):</p>
 	<pre class="brush:bash;ruler:true;">
 	% cd /usr/jails/jails-system/private1
 	% truncate -s 10g home_web.img
 	</pre>
-	<p>Проинициализируем на этом файле GELI. Фраза, которую вы введете для дешифровки, будет сохранена в виде файла внутри зашифрованного мастер-паролем образа <em>/usr/jails/var/db/master_geli.img</em>, который вы создали выше.</p>
+	<p>Initialize GELI on this file. A phrase that you enter for the decryption will be saved as a file within the encrypted master password image <em>/usr/jails/var/db/master_geli.img</em>, you created above.</p>
 	<pre class="brush:bash;ruler:true;">
 	% cbsd geli mode=init file=/usr/jails/jails-system/private1/home_web.img
 	Metadata backup can be found in /var/backups/md1.eli and
@@ -111,42 +111,42 @@
 	
 	/dev/md1.eli
 	</pre>
-	<p>Файл <strong>/dev/md1.eli</strong> в выводе является в данный момент проинициализированным GELI-образом, на котором теперь необходимо создать файловую систему.</p>
-	<p>Вы можете убедиться, что файл md1 соответствует именно образу /usr/jails/jails-system/private1/home_web.img, посмотрев на вывод команды:</p>
+	<p>The <strong>/dev/md1.eli</strong> file in output is currently initialized GELI-image, which now need to create a file system.</p>
+	<p>You can verify that the file corresponds exactly to the image md1 /usr/jails/jails-system/private1/home_web.img, looking at the output of the command:</p>
 	<pre class="brush:bash;ruler:true;">
 	% mdconfig -vl
 	md0     vnode    5120K  /usr/jails/var/db/master_geli.img
 	md1     vnode      10G  /usr/jails/jails-system/private1/home_web.img
 	</pre>
-	<p>Создаем файловую систему:</p>
+	<p>Create a file system:</p>
 	<pre class="brush:bash;ruler:true;">
 	% newfs -U -n -m0 /dev/md1.eli 
 	</pre>
-	<p>Теперь осталось добавить в fstab клетки информацию об GELI образе. Открываем или создаем файл <em>/usr/jails/jails-fstab/fstab.private1.local</em> и добавляем строчку:</p>
+	<p>It now remains to add to fstab of jail inforation about GELI image and mount point. Open or create a file <em>/usr/jails/jails-fstab/fstab.private1.local</em> and add string:</p>
 	<pre class="brush:bash;ruler:true;">
 	home_web.img /usr/home/web geli rw 0 0
 	</pre>
-	<p>Создадим пустой каталог /usr/home/web внутри клетки, которая будет являться точкой монтирования, если его нет:</p>
+	<p>Create empty directory /usr/home/web inside the jails, which will be the mount point:</p>
 	<pre class="brush:bash;ruler:true;">
 	% mkdir -p /usr/jails/jails-data/private1-data/usr/home/web
 	</pre>
-	<p>Дополнительно, убедимся что клетка private1 не будет пробовать запускаться автоматически, поскольку в этом случае, без первичной инициализации <strong>CBSD</strong> GELI клетка запустится с пустым <em>/usr/home/web</em>:</p>
+	<p>Additionally, make sure that the private1 jail will not try to run automatically, as in this case, without the primary initialization of <strong>CBSD</strong> GELI, jail will start with a empty <em>/usr/home/web</em>:</p>
 	<pre class="brush:bash;ruler:true;">
 	% cbsd jset jname=private1 astart=0
 	% cbsd jls display=jname,astart
 	JNAME     ASTART
 	private1  0
 	</pre>
-	<p>После чего остается запустить клетку и убедится, что каталог примонтирован:</p>
+	<p>After that run the jail and remains convinced that the directory is mounted:</p>
 	<pre class="brush:bash;ruler:true;">
 	% cbsd jstart private1
 	% mount | grep "/usr/home/web"
 	/dev/md1.eli on /usr/jails/jails/private1/usr/home/web (ufs, local, soft-updates)
 	</pre>
-	<p>После каждой перезагрузки ОС, вам необходимо разово заходить на сервер и инициализировать master-GELI образ через команду:</p>
+	<p>After each reboot the OS, you need to go on a one-time server and initialize the master-GELI image through command:</p>
 	<pre class="brush:bash;ruler:true;">
 	% cbsd geli mode=initmaster
 	</pre>
-	<p>После чего до перезагрузки, <strong>CBSD</strong> сможет пользоваться индивидуальными ключами для дешифрации образов при запуске и останове клеток самостоятельно.</p>
+	<p>Then before the next boot, <strong>CBSD</strong> be able to use individual keys for decrypt images for starting and stopping the jails themselves.</p>
 	</div>
 <!--# include file="_end.html" -->
