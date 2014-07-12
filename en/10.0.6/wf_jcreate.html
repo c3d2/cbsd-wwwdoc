@@ -28,7 +28,7 @@
 	</div>
 	<!--# include file="/en/changeroot.html" -->
 	<div class="block">
-		<p>You can override the <strong>jailskeldir</strong>="$workdir/share/jail-skel", parameters which is stored in <em>$workdir/etc/defaults/jail.conf</em> to specify an alternate template directory, which will overwrite the files in the original base files when creating jail. To do this, create a file <strong>jail.conf</strong> in <em>$workdir/etc</em> and enter the value, for example:</p>
+		<p>You can override the <strong>jailskeldir</strong>="$workdir/share/jail-skel", parameters which is stored in <em>$workdir/etc/defaults/jail-freebsd-default.conf</em> to specify an alternate template directory, which will overwrite the files in the original base files when creating jail. To do this, create a file <strong>jail-freebsd-XXXXX.conf</strong> in <em>$workdir/etc</em> and enter the value, for example:</p>
 		<pre class="brush:bash;ruler=true;">
 			jailskeldir="/root/share/jail-skel"
 		</pre>

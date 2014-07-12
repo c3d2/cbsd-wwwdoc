@@ -2,11 +2,8 @@
 <h1><span>Новости</span></h1>
 <h2><a name="development">&nbsp;Разработка</a></h2>
 <div class="block">
-	<p><strong>10.0.6</strong>&nbsp;&mdash; Unknown</p>
+	<p><strong>11.0.0</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li>Теперь репозиторий содержит не только jail окружения, но и bhyve-образы с Linux/OpenBSD-based преднастроенными сервисами.</li>
-		<li>cbsd  <a href="/ru/cbsd_taskd.html">taskd</a>: демон очередей задач</li>
-<!-- 		<li><a href="/ru/10.0.5/wf_jailscp_ssi.html">jailscp</a> копирование файлов в/из файловых систем клеток</li> -->
 		<li>WIP</li>
 	</ul>
 	<p><em>Если вы&nbsp;хотите поэкспериментировать со&nbsp;следующей версией <strong>CBSD</strong>, используйте <strong>git clone https://github.com/olevole/cbsd.git</strong> для <strong>/usr/local/cbsd</strong></em></p>
@@ -14,6 +11,14 @@
 <h2><a name="release">Релизы</a></h2>
 <div class="block">
 	<hr>
+	<p><strong>10.0.6</strong>&nbsp;&mdash; 2014-07-12</p>
+	<ul>
+		<li>cbsd  <a href="/ru/cbsd_taskd.html">taskd</a>: демон очередей задач</li>
+		<li>bconstruct-tui: меню вместо inputbox для выбора vm_os_type и get_vm_profiles</li>
+		<li>bhyve: добавлена поддержка установка FreeBSD из ISO</li>
+		<li>bhyve: другой метод проверки присутствия POPCNT инструкции</li>
+		<li>repo: новый аргумент newjname для альтернативного имени сохраняемой клетки</li>
+	</ul>
 	<p><strong>10.0.5</strong>&nbsp;&mdash; 2014-05-02</p>
 	<ul>
 		<li>Профили для <strong>jconstruct\*</strong> (<a href="/ru/10.0.5/wf_jcreate_ssi.html">Создание jail через dialog меню</a>)</li>
