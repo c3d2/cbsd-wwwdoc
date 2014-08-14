@@ -11,6 +11,14 @@
 <h2><a name="release">Релизы</a></h2>
 <div class="block">
 	<hr>
+	<p><strong>10.0.7</strong>&nbsp;&mdash; 2014-08-15</p>
+	<ul>
+		<li><em>(bugfix)</em> Исправлена ошибка с некорректным именем ZFS data при jcoldmigrate (сообщил: <strong>Alexey Shubnikov)</strong></li>
+		<li>Теперь клетки запускаются через <a href="/ru/cbsd_taskd.html">cbsdd/taskd</a></li>
+		<li>bhyve: Поддержка автозапуска для bhyve клеток виртуалок</li>
+		<li>bhyve: добавлена поддержка virtio RNG <a href="http://svnweb.freebsd.org/base?view=revision&revision=r264055" target="_blank">r264055</a> на FreeBSD 10.1+</li>
+		<li>bstop/bstart/jstop/jstart/bconfig/jconfig: при запуске без аргументов, выведут список клеток для интерактивного выбора</li>
+	</ul>
 	<p><strong>10.0.6</strong>&nbsp;&mdash; 2014-07-12</p>
 	<ul>
 		<li>cbsd  <a href="/ru/cbsd_taskd.html">taskd</a>: демон очередей задач</li>
