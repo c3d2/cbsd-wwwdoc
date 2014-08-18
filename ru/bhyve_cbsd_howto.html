@@ -58,7 +58,7 @@
 		<li>По аналогии с <a href="/ru/<!--#echo var="version" -->/wf_jrename_ssi.html">jrename</a> и <a href="/ru/<!--#echo var="version" -->/wf_jclone_ssi.html">jclone</a> работают скрипты <strong>brename</strong> и <strong>bclone</strong> за тем лишь исключением, что при работе фигурируют лишь параметры <strong>old=</strong> и <strong>new=</strong>.</p>
 		<li>FreeBSD гвест создается через скрипт jail2iso из jail, поэтому он не предлагает запустится с ISO</li>
 		<li>Сеть для вирутальных машин создается через tap интерфейсы, которые прописываются в bridge на ваш аплинковый интерфейс</li>
-		<li>С старых версиях grub-bhyve, при "резиновых" данных на экране на широкоформатном мониторе, если количество знакомест больше 255, grub уходит в ступор и уводит туда же bhyveload. Соответственно, если при cbsd bstart XXX процесс залочился, выполните cbsd bstop XXX и уменьшив геометрию окна, попробуйте запустить вновь. Патч: <a href="https://github.com/grehan-freebsd/grub2-bhyve/commit/70ace4fd43f5017d4aacc920017b5641c9d45431" target="_blank">https://github.com/grehan-freebsd/grub2-bhyve/commit/70ace4fd43f5017d4aacc920017b5641c9d45431</a></li>
+		<li>В старых версиях grub-bhyve, при "резиновых" данных на экране на широкоформатном мониторе, если количество знакомест больше 255, grub уходит в ступор и уводит туда же bhyveload. Соответственно, если при cbsd bstart XXX процесс залочился, выполните cbsd bstop XXX и уменьшив геометрию окна, попробуйте запустить вновь. Патч: <a href="https://github.com/grehan-freebsd/grub2-bhyve/commit/70ace4fd43f5017d4aacc920017b5641c9d45431" target="_blank">https://github.com/grehan-freebsd/grub2-bhyve/commit/70ace4fd43f5017d4aacc920017b5641c9d45431</a></li>
 	</ul>
 <div>
 <!--# include file="_end.html" -->
