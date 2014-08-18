@@ -6,11 +6,8 @@
 			% cbsd jls
 		</pre>
 		<strong>Описание</strong>:
-		<p>Выводит список клеток на локальной ноде или всех добавленных нодах. Через аргумент <strong>display</strong> можно указать конкретные поля для выборки данных. Если <strong>display</strong> не указан, его значение по-умолчанию является:</p>
-		<pre class="brush:bash;ruler:true;">
-			display=jid,jname,ip4_addr,host_hostname,path,status
-		</pre>
-		<p>Все возможные параметры для выборк описаны в файле <em>$workdir/share/jail-arg</em></p>
+		<p>Выводит список клеток на локальной ноде или всех добавленных нодах. Через аргумент <strong>display</strong> можно указать конкретные поля для выборки данных. Если <strong>display</strong> не указан, используется значение, заданное в файле <em>$workdir/etc/defaults/jls.conf</em>, которое вы можете изменить на свое усмотрение через <em>$workdir/etc/jls.conf</em></p>
+				<p>Все возможные параметры для выборок описаны в файле <em>$workdir/share/jail-arg</em></p>
 		<ul>
 			<li><strong>JID</strong>&nbsp;— Jail ID</li>
 			<li><strong>JNAME</strong>&nbsp;— имя jail</li>
