@@ -3,9 +3,23 @@
 <h1><span>News</span></h1>
 <h2><a name="development">&nbsp;Development</a></h2>
 <div class="block">
-	<p><strong>11.0.0</strong>&nbsp;&mdash; Unknown</p>
+	<p><strong>10.1.0</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li>WIP</li>
+		<li>Tested for FreeBSD 10.1-RELEASE compatible</li>
+		<li>imghelper script for dialog with CBSD-images params</li>
+		<li>BFS scheduler path and kernel options has been added. This is desktop oriented sheduler (path maintainer: <strong>Ivan Klymenko</strong>)</li>
+		<li>xjails (allow_kmem) for FreeBSD 10.1</li>
+		<li>Starting integration tui-helper with bsdconfig framework (Thanks to <strong>Devin Teske</strong> for flexibility of bsdconfig)</li>
+		<li>bhyve profiles: active flags, for regulating the activity or inactivity of the profile</li>
+		<li>bhyve login: when using tmux session, use different names when bhyveload and bhyve. When this preference is given to blogin bhyve, if unsuccessful - attempt to enter the session bhyveload</li>
+		<li>bhyve: treatment completion code of the virtual machine, reboot the machine is loaded again automatically</li>
+		<li>bhyve: multiple nics support</li>
+		<li>compilation of the world and kernel is now in low priorities to not interfere with the other processes. This setting is configured via nice parameter in buildworld.conf</li>
+		<li>Removed old patches and periodic-tasks: now periodic tasks (eg, collection of traffic) going through cbsdd</li>
+		<li>jail2iso: UEFI support</li>
+		<li>renaming arch and vnet to hostarch and vimage_feature in global conf, due to conflicts with the parameters of jail</li>
+		<li><em>(bugfix)</em> getnics-by-ip: looking only IP prefix inet in the output ifconfig (reported by: <strong>Ivan Klymenko</strong>)</li>
+		<li><em>(bugfix)</em> bhyve: do not test the hard drive is empty, if you are booting from CD</li>
 	</ul>
 	<p><em>If&nbsp;you want to&nbsp;experiment with the next version of&nbsp;<strong>CBSD</strong>, use <strong>git clone https://github.com/olevole/cbsd.git</strong> for <strong>/usr/local/cbsd</strong></em></p>
 </div>
