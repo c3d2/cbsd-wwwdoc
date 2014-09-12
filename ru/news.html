@@ -2,9 +2,23 @@
 <h1><span>Новости</span></h1>
 <h2><a name="development">&nbsp;Разработка</a></h2>
 <div class="block">
-	<p><strong>11.0.0</strong>&nbsp;&mdash; Unknown</p>
+	<p><strong>10.1.0</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li>WIP</li>
+		<li>Проверено на FreeBSD 10.1-RELEASE совместимость</li>
+		<li>скрипт imghelper для работы с конфигурационными параметрами CBSD-образов</li>
+		<li>добавлены патчи и конфигурационный файл для BFS-ядра, ориентированного на использование на Desktop системах (мейнтейнер патчей: <strong>Ivan Klymenko</strong>)</li>
+		<li>xjails для FreeBSD 10.1</li>
+		<li>Начало интеграции tui-хелперов с bsdconfig фреймворком (спасибо <strong>Devin Teske</strong> за гибкость bsdconfig системы)</li>
+		<li>bhyve profiles: флаг active, регулирующий активность или неактивность профиля</li>
+		<li>bhyve login: когда используем tmux сессии, используем разные имена при bhyveload и bhyve. При этом предпочтение при blogin отдается bhyve, при неудаче - попытка зайти в сессию bhyveload</li>
+		<li>bhyve: обработка кода завершения виртуальной машины, перезагружаемая машина загружается вновь автоматически</li>
+		<li>bhyve: поддержка нескольких сетевых интерфейсов</li>
+		<li>компиляция мира и ядер теперь идет с пониженным приоритетам чтобы не мешать основным процессам. Данная настройка конфигурируется параметром nice в buildworld.conf</li>
+		<li>Удалены старые патчи и periodic-задачи: теперь периодические задачи (например, сбор трафика) происходит через cbsdd</li>
+		<li>jail2iso: поддержка UEFI</li>
+		<li>переименование arch и vnet в hostarch и vimage_feature в глобальной настройке, в связи с конфликтами с параметрами jail</li>
+		<li><em>(bugfix)</em> getnics-by-ip: ищем IP только с префиксом inet в выводе ifconfig (сообщил: <strong>Ivan Klymenko</strong>)</li>
+		<li><em>(bugfix)</em> bhyve: не тестируем что жесткий диск пуст, если загрузка происходит с CD</li>
 	</ul>
 	<p><em>Если вы&nbsp;хотите поэкспериментировать со&nbsp;следующей версией <strong>CBSD</strong>, используйте <strong>git clone https://github.com/olevole/cbsd.git</strong> для <strong>/usr/local/cbsd</strong></em></p>
 </div>
@@ -13,7 +27,7 @@
 	<hr>
 	<p><strong>10.0.7</strong>&nbsp;&mdash; 2014-08-15</p>
 	<ul>
-		<li><em>(bugfix)</em> Исправлена ошибка с некорректным именем ZFS data при jcoldmigrate (сообщил: <strong>Alexey Shubnikov)</strong></li>
+		<li><em>(bugfix)</em> Исправлена ошибка с некорректным именем ZFS data при jcoldmigrate (сообщил: <strong>Alexey Shubnikov</strong>)</li>
 		<li>Теперь клетки запускаются через <a href="/ru/cbsd_taskd.html">cbsdd/taskd</a></li>
 		<li>bhyve: Поддержка автозапуска для bhyve клеток виртуалок</li>
 		<li>bhyve: добавлена поддержка virtio RNG <a href="http://svnweb.freebsd.org/base?view=revision&revision=r264055" target="_blank">r264055</a> на FreeBSD 10.1+</li>
