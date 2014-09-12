@@ -10,7 +10,7 @@
 		
 		<ul>
 		<p> For full functionality the following requirements are desirable:</p>
-			<li>FreeBSD version greater or equal of 9.1-RELEASE.</li>
+			<li>FreeBSD version greater or equal of 10.0-RELEASE.</li>
 			<li><strong>amd64</strong> architecture, because the development of CBSD is carried out under this architecture.</li>
 			<li>ZFS file system, because the use of a number of possibilities offered by ZFS.</li>
 			<li>kernel with RACCT/RCTL and VIMAGE support (<strong>CBSD</strong> can fetch out a kernel from own repository with your consent)</li>
@@ -18,12 +18,12 @@
 	</div>
 	<h2><a name="version">CBSD versioning</a></h2>
 	<div class="block">
-		  <p>The first two digits of the CBSD version related to FreeBSD versions for which it was developed and tested. Version 9.2.0 means that scripts were written for FreeBSD 9.2. The third number figure means the CBSD version.</p>
+		  <p>The first two digits of the CBSD version related to FreeBSD versions for which it was developed and tested. Version 10.1.3 means that scripts were written for FreeBSD 10.1. The third number figure means the CBSD version.</p>
 	</div>
 	<h2><a name="preparing">Preparing the system and installing CBSD</a></h2>
 	<div class="block">
-		<p>1) Installing</p>
-		<p>a) CBSD can be installed via the FreeBSD ports tree:</p>
+		<p><strong>1a) Installing from ports or packages</strong></p>
+		<p><strong>CBSD</strong> can be installed via the FreeBSD ports tree:</p>
 		<pre class="brush:bash;ruler:true;">
 			% make -C /usr/ports/sysutils/cbsd install
 		</pre>
@@ -31,8 +31,13 @@
 		<pre class="brush:bash;ruler:true;">
 			% pkg install cbsd
 		</pre>
-		<p>or</p>
-		<p>b) after installing the required dependencies: <strong>libssh2, sudo, rsync, sqlite3</strong></p>
+		<p><strong>1b) Installing experimental (development) version of CBSD from github</strong></p>
+		<em>( For developers or contributors, or those who want to take advantage of new opportunities at the expense of stability and reliability )</em>
+		<p>a) For the first, install the required dependencies: <strong>libssh2, sudo, rsync, sqlite3</strong></p>
+		<pre class="brush:bash;ruler:true;">
+			% pkg install sudo libssh2 rsync sqlite3 git
+		</pre>
+		<p>or from the ports:</p>
 		<pre class="brush:bash;ruler:true;">
 			% make -C /usr/ports/security/sudo install
 			% make -C /usr/ports/security/libssh2 install
@@ -40,27 +45,26 @@
 			% make -C /usr/ports/databases/sqlite3 install
 			% make -C /usr/ports/devel/git install
 		</pre>
-		<p>get the latest version of <strong>CBSD</strong> from <a href="https://github.com/" target="_blank">github</a>:</p>
+		<p>b) get the latest version of <strong>CBSD</strong> from <a href="https://github.com/" target="_blank">github</a>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% git clone https://github.com/olevole/cbsd.git /usr/local/cbsd
 		</pre>
-		<p>2) First run</p>
-		<p>If you are not installing <strong>CBSD</strong> from ports or pkg's, you must first create a cbsd user with the home directory selected as the directory that will contain your jails (in this example — <em>/usr/jails</em>)</p>
+		<p>c) create a cbsd user (when installing from ports or pkg's it is unnecessary):</p>
 		<pre class="brush:bash;ruler:true;">
 			%  pw useradd cbsd -s /bin/sh -d /nonexistent -c "cbsd user"
 		</pre>
-		<p>Then create links of the rc.d scripts to start cbsd at system startup (when installing from ports and pkg's it is unnecessary)</p>
+		<p>d) create links of the rc.d scripts to start CBSD at system startup and create link to bsdconfig module (when installing from ports and pkg's it is unnecessary):</p>
 		<pre class="brush:bash;ruler:true;">
 			% cd /usr/local/etc/rc.d
 			% ln -s /usr/local/cbsd/rc.d/cbsdd
 			% ln -s /usr/local/cbsd/rc.d/cbsdrsyncd
+			% mkdir -p /usr/local/libexec/bsdconfig
+			% ln -s /usr/local/cbsd/share/bsdconfig/cbsd /usr/local/libexec/bsdconfig/cbsd
 		</pre>
+		<p><strong>2) Ininital setup</strong></p>
 		<p>In the classic install, there are two copies of CBSD. One of them (<em>/usr/local/cbsd</em>), contains a distribution kit, an initial code and configuration files by default. Also, this copy can be used for management of jails in case the main copy is damaged (for example it was incorrectly updated).  The index of the catalogue of scripts to work with is the environment variable <strong>workdir</strong>.</p>
 		<p>To initialize the main working copy of CBSD we need to use the <strong>initenv</strong> command, to start the command we first specify through the environment variable <strong>workdir</strong> the location of the working directory, and answer a series of questions to complete the configuration. The file system for <strong>CBSD</strong> (or rather, the directory <strong>jails-data</strong>in it) should be sufficient to accommodate the jail data. After finalizing the location of the working directory, ensure it is set as the home directory for cbsd user.(in this case the working directory in /usr/jails):</p>
-		<pre class="brush:bash;ruler:true;">
- 			%  pw usermod cbsd -d /usr/jails
-		</pre>
-		<p>3) Initialization with the working catalogue into <em>/usr/jails</em>:</p>
+		<p>Initialization with the working catalogue into <em>/usr/jails</em>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% env workdir="/usr/jails" /usr/local/cbsd/sudoexec/initenv
 		</pre>
@@ -70,15 +74,7 @@
 			<li><strong>Please fill nodename</strong> — Node name. If there will be a work with several nodes, this name should be unique. It is recommended to use a name, similar full hostname (including domain). This name is used at work with data of servers with remote hosts. Example: node1.my.domain.</li>
 			<li><strong>Please fill nodeip</strong> — Working and static IP address of a node. It shouldn't be alias and it is desirable to register this IP on the separately interface (free from any other except a management-traffic). For example: 192.168.1.2</li>
 			<li><strong>Please fill nodeloc</strong> — Information strings. It will be used in the future in the WEB interface. Here it is possible to leave information on a geographical place of this nodes. For example: USA, Dallas DC.</li>
-			<li><strong>Please fill jnameserver</strong> — List of IP DNS servers for installing in <em>/etc/resolv.conf</em> of created and jails which starts. If several addresses, they must be specified separated by commas. Recommended to setup the master-node server for caching DNS queries. For FreeBSD < 10.0 you prompted for <strong>named</strong> by default, for FreeBSD 10.0+ — it is <strong>unbound</strong>. In order for jail to use <strong>named</strong>, it is necessary to <em>/etc/namedb/named.conf</em> change the line:
-			<pre class="brush:bash;ruler:true;">
-				listen-on       { 127.0.0.1; };
-			</pre>
-			to
-			<pre class="brush:bash;ruler:true;">
-				listen-on       { any; };
-			</pre>
-			Accordingly, when using a caching DNS, if the IP address of the node such as 192.168.1.2, use this address in jnameserver at the first.</li>
+			<li><strong>Please fill jnameserver</strong> — List of IP DNS servers for installing in <em>/etc/resolv.conf</em> of created and jails which starts. If several addresses, they must be specified separated by commas. Recommended to setup the master-node server for caching DNS queries.</li>
 			<li><strong>Please fill nodeippool</strong> — The list of subnets in which it is permitted to be started the jails. If networks more then one — use spacel as delimer. For example: 10.0.0.0/24 192.168.1.128/29</li>
 			<li><strong>Please fill natip</strong> — Here it is necessary to enter the IP address which will represent itself as NAT for private addresses. Usually it is IP of your node. For example: 192.168.1.2</li>
 			<li><strong>Please fill fbsdrepo</strong> — Whether to use an official repository of FreeBSD for base/templates. The answer 1 or 2 is expected. If on officidal FreeBSD servers  base it is not revealed — CBSD repository is used.  For example: 1.</li>
@@ -88,6 +84,6 @@
 		</ul>
 	</div>
 	<div class="warning">
-		<p><strong>Warning:</strong> Later on, these settings can be changed via the command <strong>cbsd initenv-tui</strong>, or in a file <em>${workdir}/var/db/local.sqlite</em>, which is a SQLite3 database.</p>
+		<p><strong>Warning:</strong> Later on, these settings can be changed via the command <strong>cbsd initenv-tui</strong> or <strong>bsdconfig cbsd</strong>, or in a file <em>${workdir}/var/db/local.sqlite</em>, which is a SQLite3 database.</p>
 	</div>
 <!--# include file="_end.html" -->
