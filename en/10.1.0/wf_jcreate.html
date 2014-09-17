@@ -59,7 +59,7 @@
 		<li>ip4_addr - specify IP addresses (separated by commas if more than one) or 0 for vnet/bhyve environments</li>
 		<li>ver - FreeBSD version for the base (10.1, 11.0 for RELEASE or 10, 11 for STABLE)</li>
 		<li>baserw - mount copy of base via nullfs in read only (baserw=no) or populate own copy (baserw=yes) with write access</li>
-		<li>mount_ports - mount /usr/ports dir from base system to jail (read only). To the environment can build ports (and not interfere with each other vorkdir) - reassigned WRKDIRPREFIX parameters to alternate location. Or, make sure that applytpl params is set to 1 - then CBSD du it automatically via WRKDIRPREFIX=/tmp in /etc/make.conf of the jail</li>
+		<li>mount_ports - mount /usr/ports dir from base system to jail (read only). To the environment can build ports (and not interfere with each other vorkdir) - reassigned WRKDIRPREFIX parameters to alternate location. Or, make sure that applytpl params is set to 1 - then CBSD does this automatically via WRKDIRPREFIX=/tmp in /etc/make.conf of the jail</li>
 		<li>astart - Automatic start jail on the system boot</li>
 		<li>interface - Specify uplink for jail (on what interface create/remove IP) or prohibit.</li>
 		<li>applytpl - Automatically adjust the same settings of the jail (create /etc/hosts, change WRKDIRPREFIX, etc..)</li>
