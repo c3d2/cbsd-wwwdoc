@@ -13,7 +13,7 @@
 			% cbsd jorder
 		</pre>
 		<strong>Description</strong>:
-		<p>Running jails occurs at startup cbsd/server automatically if parameter <strong>astart</strong> (auto-start) corresponding jail set to 1. You can change this setting through <strong>cbsd jconfig</strong>. When you stop the server or service <strong>cbsdd</strong>, all running jails will be stopped automatically.</p>
+		<p>Running jails occurs at startup cbsd/server automatically if parameter <strong>astart</strong> (auto-start) corresponding jail set to 1. You can change this setting through <strong>cbsd jconfig</strong> or <strong>cbsd jset</strong>. When you stop the server or service <strong>cbsdd</strong>, all running jails will be stopped automatically.</p>
 		<p>Starting the jail manually by the command:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jstart jname=jail1
@@ -41,6 +41,7 @@
 			% cbsd jstop jail1 jail2 jail3 ..
 		</pre>
 		<p>(to stopping multiple jails by one command)</p>
+		<p>When the jail is started, it creates a lock file, a sign that the jail working via file <em>${jailsysdir}/${jname}/locked</em> which records the name of the node. This feature is used when this jail presented several nodes, these jail are in the DFS (NFS, glusterfs, etc.) and any node is able to run it. This lock ensures that the presence of the same jail at the second node, it will not be launched.</p>
 		<p>With a large number of jails (particularly databases, with services such as MySQL, redis, cassandra, etc.), it should be borne in mind that the low value <strong>parallel</strong> (for example, less than 5 seconds) can generate a very intensive storage I/O load that can increase the amount of start-up time of all jails, than if they were run sequentially or higher timeout.</p>
 		<p>Additionally, when a shutdown command is running on the server with lots of jails/services that should be taken into consideration low timeout that defaults to perform rc.shutdown sequence. In this regard, the process <strong>init(8)</strong> can interrupt the rc-scripts on this timeout, resulting in abnormal shutdown jails. In this case, the database can lead to nonconservation or damage data. To avoid this, <strong>/etc/rc.conf</strong> master system should be adjusted parameter <strong>rcshutdown_timeout</strong> to a more reasonable value (default: 90 seconds)</p>
 		<p>In the absence of <strong>rcshutdown_timeout</strong> in the system <strong>/etc/rc.conf</strong>, <strong>cbsd initenv</strong> will put this option in its sole discretion automatically.</p>
