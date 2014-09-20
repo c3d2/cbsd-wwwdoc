@@ -8,7 +8,8 @@
 		<li>скрипт imghelper для работы с конфигурационными параметрами CBSD-образов</li>
 		<li>добавлены патчи и конфигурационный файл для планировщика ядра BFS, ориентированного на использование на Desktop системах (мейнтейнер патчей: <strong>Ivan Klymenko</strong>)</li>
 		<li>xjails (allow_kmem) для FreeBSD 10.1</li>
-		<li>Начало интеграции tui-хелперов с bsdconfig фреймворком (спасибо <strong>Devin Teske</strong> за гибкость bsdconfig системы)</li>
+		<li><a href="/ru/cmdsyntax_cbsd.html">Начало интеграции</a> tui-хелперов с <a href="http://man.freebsd.org/bsdconfig/8" target="_blank">bsdconfig</a> фреймворком (спасибо <strong>Devin Teske</strong> за гибкость bsdconfig системы)</li>
+		<li><a href="/ru/10.1.0/wf_jstop_jstart_ssi.html">jstart</a>: файловый лок при старте клетки, для ситуаций, когда jail расположен на DFS (NFS, glusterfs) и презентован нескольким нодам</li>
 		<li>bhyve profiles: флаг active, регулирующий активность или неактивность профиля</li>
 		<li>bhyve login: когда используем tmux сессии, используем разные имена при bhyveload и bhyve. При этом предпочтение при blogin отдается bhyve, при неудаче - попытка зайти в сессию bhyveload</li>
 		<li>bhyve: обработка кода завершения виртуальной машины, перезагружаемая машина загружается вновь автоматически</li>
