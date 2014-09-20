@@ -1,6 +1,6 @@
 	<h1><span>Создание jail через dialog меню</span></h1>
 	
-	<h2><a name="jcreate_cmd">Команда jcreate, часть 1</a></h2>
+	<h2><a name="jcreate_cmd">Команда jcreate, jconstruct-tui</a></h2>
 	<div class="block">
 		<pre class="brush:bash;ruler=true;">
 		% cbsd jconstruct-tui
@@ -30,6 +30,8 @@
 		<pre class="brush:bash;ruler=true;">
 		% cbsd jconstruct-tui
 		</pre>
+		<p>Это же меню для создания jail доступно при конфигурировании <strong>CBSD</strong> через bsdconfig</p>
+		<p class="text-center"><img src="/img/cbsd_syntax3.png" alt="" /></p>
 		<p>Если <strong>jconstruct-tui</strong> отработала корректно, по окончанию будет задан вопрос о создании клетки. В случае
 		положительно ответа, <strong>jcreate</strong> будет выполнен на новую конфигурацию автоматически. В противном случае,
 		скрипт выведет путь к конфигурационному файлу (в $workdir/tmp), по которой можно создать клетку.</p>
