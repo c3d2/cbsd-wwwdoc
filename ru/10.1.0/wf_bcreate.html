@@ -12,61 +12,40 @@
 	
 	<div class="block">
 		<strong>Описание:</strong>
-		<p>Виртуальная машина создается по заранее сформированному конфигурационному файлу через <strong>cbsd bcreate jconf=path_to_cfg</strong>.
-		Для формирования конфигурации можно воспользоваться скриптом <strong>cbsd bconstruct-tui</strong>, либо WEB интерфейсом.
+		<p>Виртуальная машина создается по заранее сформированному конфигурационному файлу через <strong>cbsd bcreate jconf=path_to_cfg</strong>.</p>
+		<p>Для формирования конфигурации можно воспользоваться скриптом <strong>cbsd bconstruct-tui</strong>, либо WEB интерфейсом.</p>
 	</div>
 	<div>
 	<div class="block">
 		<p>Для создания через DIALOG:</p>
 		<pre class="brush:bash;ruler=true;">
-		% cbsd jconstruct-tui
+		% cbsd bconstruct-tui
 		</pre>
 		<p>Это же меню для создания jail доступно при конфигурировании <strong>CBSD</strong> через bsdconfig</p>
 		<p class="text-center"><img src="/img/cbsd_syntax3.png" alt="" /></p>
-		<p>Если <strong>jconstruct-tui</strong> отработала корректно, по окончанию будет задан вопрос о создании клетки. В случае
-		положительно ответа, <strong>jcreate</strong> будет выполнен на новую конфигурацию автоматически. В противном случае,
-		скрипт выведет путь к конфигурационному файлу (в $workdir/tmp), по которой можно создать клетку.</p>
-	</div>
-	<!--# include file="/ru/changeroot.html" -->
-	<div class="block">
-		<p>Вы можете переопределить параметр <strong>jailskeldir</strong>="$workdir/share/jail-skel", прописанный в <em>$workdir/etc/defaults/jail-freebsd-default.conf</em> для указания альтернативного каталога темплейтов, файлы в котором перезапишут оригинальные файлы базы при создании клетки. Для этого, создайте файл <strong>jail-freebsd-XXXXX.conf</strong> в каталоге <em>$workdir/etc</em> и впишите свое значение, например:</p>
-		<pre class="brush:bash;ruler=true;">
-			jailskeldir="/root/share/jail-skel"
-		</pre>
-		<p>Настройки значений по-умолчанию как для диалога, так и для параметров <a href="http://man.freebsd.org/jail/8" target="_blank">jail(8)</a> при создании .jconf (если они не переопределены в диалоге) описаны в файле-профиле <em>$workdir/etc/defaults/jail-freebsd-default.conf</em>.
-		<p>Вы можете создавать собственные профили для своих умолчаний, создавая файлы с подобным содержимым и помещая их в файлах с именами <strong>jail-freebsd-XXXX.conf</strong> в каталоге <em>$workdir/etc</em>. Кроме этого, через значение параметра <strong>$jail_profile</strong> в jail-freebsd-default.conf вы можете указать свой профиль по-умолчанию вместо профиля default. Например, если вы хотите, чтобы по-умолчанию <strong>astart</strong> имел значение 0, <strong>vimage</strong> был включен, имена клеток предлагались вместо <strong>jail1, jail2, jail3</strong> как <strong>client1, client2, client3</strong>, а <strong>exec_start</strong> вместо стандартного значения <strong>/bin/sh /etc/rc</strong> был установлен в <strong>/bin/date</strong>, при этом данный профиль должен предлагаться по-умолчанию, то создайте jail-freebsd-default.conf в каталоге <em>$workdir/etc</em> в котором будет переписываться default_profile.</p>
-		<p>И кроме всего прочего, для группы клеток у профиля <strong>myhosting</strong> при запуске должны отрабатывать скрипты, линкующие файлы базы данных MySQL расположенные в соответствующей клетке клиента (чтобы на них распространялась ZFS quota выданная jail) в движек MySQL запущенный в мастере, а при остановке клетки - разлинковывалась</p>
-		<pre class="brush:bash;ruler=true;">
-			% echo default_profile="myhosting" > /usr/jails/etc/jail-freebsd-default.conf
-		</pre>
-		<p>после чего создайте свой файл профиля, дайте ему имя (myhosting в нашем примере) и переопределите необходимые вам значения. Например <em>/usr/jails/etc/jail-freebsd-myhosting.conf</em> может выглядеть так:</p>
-		<pre class="brush:bash;ruler=true;">
-			jail_profile="myhosting"
-			jailskeldir="$workdir/share/jail-skel"
-			astart="0"
-			exec_start="/bin/date"
-			vimage="1"
-			default_jailname="client"
-			exec_master_poststop="rm -f /var/db/mysql/${jname}";
-			exec_master_prestart="ln -sfh ${workdir}/jails-data/${jname}-data/var/db/mysql/${jname} /var/db/mysql/${jname}";
-		</pre>
+		<p>Если <strong>bconstruct-tui</strong> отработала корректно, по окончанию будет задан вопрос о создании виртуальной машины. В случае
+		положительно ответа, <strong>bcreate</strong> будет выполнен на новую конфигурацию автоматически. В противном случае,
+		скрипт выведет путь к конфигурационному файлу (в <em>$workdir/tmp</em>), по которой можно создать виртуальную.</p>
 	</div>
 	<div class="block">
-		<p><strong>Пример</strong> (заполнение jname, fqdn, ips полей + GO):</p>
-		<pre class="brush:bash;ruler=true;">
-		% cbsd jconstruct-tui
-		</pre>
-		<p class="text-center"><img src="/img/jcreate1.png" alt="" /></p>
-		<p>Если репозиторий сконфигурирован корректно, можно выбрать пекеджи на установку. Используйте первый символ названия порта для
-		более быстрого поиска и пробел для маркировки:</p>
-		<p class="text-center"><img src="/img/jcreate2.png" alt="" /></p>
-		<p>Обязательное поле для заполнения: короткое (одним словом) имя клетки. Это имя будет использоваться для идентификации jail:</p>
-		<p class="text-center"><img src="/img/jcreate3.png" alt="" /></p>
-		<p>Обязательное поле для заполнения: полное (с доменом) имя клетки. Это имя будет использовано как hostname клетки:</p>
-		<p class="text-center"><img src="/img/jcreate4.png" alt="" /></p>
-		<p>Обязательное поле для заполнения: IP адрес клетки. Может иметь сетевой префикс через запись вида IP/prefix.</p>
-		<p>Для установки более одного IP адреса, воспользуйтесь редактированием файла <strong>rc.conf</strong> клетки, описанным в <a href="/ru/<!--#echo var="version" -->/wf_jconfig_ssi.html" target="_blank">конфигурации клетки</a></p>
-		<p class="text-center"><img src="/img/jcreate5.png" alt="" /></p>
-		<p>При вызове пункта <strong>GO</strong>, система предложит создать клетку немедленно, автоматически запустив <strong>cbsd jcreate jconf=..</strong>. В противном случае, будет выведен путь к сохраненной конфигурации для запуска команды <strong>cbsd jcreate</strong> вручную:</p>
-		<p class="text-center"><img src="/img/jcreate6.png" alt="" /></p>
-	</div>
+	<p>Опции и их краткое описание, которые фигурируют в диалоговой форме. В зависимости от выбранного типа OS и профиля, некоторые из них могут быть недоступны:</p>
+	<ul>
+		<li>vm_os_type - тип ОС. В зависимости от типа гостевой ОС, будет предложен тот или иной набор профилей дистрибутивов</li>
+		<li>vm_os_profile - выбрать профиля дистрибутива. Профиль может содержать как предлагаемые по-умолчанию параметры описанные ниже, так и специфичные дистрибутиву настройки (URL для получения образа, параметры загрузки ядра и тд)</li>
+		<li>imgsize - Размер создаваемого первого диска. Если гостевая ОС - FreeBSD и профиль FreeBSD-from-jail (генерация образа через jail2iso), то этот параметр указывает на размер свободного места после копирования дистрибутива</li>
+		<li>jname - имя виртуальной машины, одним словом.</li>
+		<li>host_hostname - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: установить параметр hostname в /etc/rc.conf гостевой ОС в соответствующее значение</li>
+		<li>vm_ram - выделяемый объем оперативной памяти</li>
+		<li>vm_cpus - количество виртуальных ядер процессора</li>
+		<li>vm_hostbridge - host bridge гостевой ОС. Может быть hostbridge или amd_hostbridge (влияет на PCI vendor ID)</li>
+		<li>astart - признак автоматического запуска виртуальной машины вместе с загрузкой ноды</li>
+		<li>interface - аплинковый интерфейс для tap-интерфейса, первой сетевой карты виртуальной машины</li>
+		<li>pkglist - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: выбрать соответствующие пекеджи, которые будут предустановлены в создаваемую VM</li>
+		<li>ip4_addr - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: установить параметр ifconfig_NIC в /etc/rc.conf гостевой ОС в соответствующее значение - может быть IP адресом или 'DHCP'</li>
+		<li>gw4 - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: установить defaultrouter параметр в /etc/rc.conf гостевой ОС в соответствующее значение</li>
+		<li>ver - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: использовать базу и ядро указанной версии (например 10.1, 11.0, 12 )</li>
+		<li>applytpl - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: применить ли дополнительные настройки (/etc/hosts, /etc/make.conf)</li>
+		<li>floatresolv - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: установить в /etc/resolv.conf сервера, перечисленные в параметре jnameserver</li>
+		<li>arch - актуально только для гостевой ОС FreeBSD и профиля FreeBSD-from-jail: использовать базу и ядро указанной архитектуры (например i386, amd64)</li>
+	</ul>
+	
