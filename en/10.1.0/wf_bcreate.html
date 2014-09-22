@@ -4,19 +4,13 @@
 	<div class="block">
 		<pre class="brush:bash;ruler=true;">
 		% cbsd bconstruct-tui
-		</pre>
-		<pre class="brush:bash;ruler=true;">
 		% cbsd bcreate jconf=/path/to/conf.jconf
 		</pre>
 	</div>
-	
 	<div class="block">
 		<strong>Description:</strong>
 		<p>The virtual machine is created on a pre-formed configuration file through <strong>cbsd bcreate jconf=path_to_cfg</strong>.</p>
 		<p>For the configuration process, you can use the script <strong>cbsd bconstruct-tui</strong>, or use WEB interface.</p>
-	</div>
-	<div>
-	<div class="block">
 		<p>To create a via DIALOG:</p>
 		<pre class="brush:bash;ruler=true;">
 		% cbsd bconstruct-tui
@@ -35,7 +29,7 @@
 		<li>host_hostname - relevant only to the guest OS FreeBSD and Profile FreeBSD-from-jail: set the hostname in /etc/rc.conf guest OS to the appropriate value</li>
 		<li>vm_ram - allocated RAM</li>
 		<li>vm_cpus - the number of virtual cores</li>
-		<li>vm_hostbridge - host bridge гостевой ОС. Maybe hostbridge or amd_hostbridge (affects the PCI vendor ID)</li>
+		<li>vm_hostbridge - guest OS host bridge. Maybe hostbridge or amd_hostbridge (affects the PCI vendor ID)</li>
 		<li>astart - sign automatically start the virtual machine with the boot node</li>
 		<li>interface - uplink interface for tap-interface, the first network card of the virtual machine</li>
 		<li>pkglist - relevant only to the guest OS FreeBSD and Profile FreeBSD-from-jail: select the appropriate pekedzhi to be pre-installed in the created VM</li>
