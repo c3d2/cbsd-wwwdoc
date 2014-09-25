@@ -1,19 +1,17 @@
-	<h1><span>Jail cloning</span></h1>
+	<h1><span>Клонирование виртуальной машины</span></h1>
 	
-	<h2><a name="jclone_cmd">jclone command</a></h2>
+	<h2><a name="bclone_cmd">Команда bclone</a></h2>
 	<div class="block">
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jclone
+			% cbsd bclone
 		</pre>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jrclone
+			% cbsd brclone
 		</pre>
-		<p><strong>Description</strong>:</p>
-		<p>Carries out jail cloning in the new. As obligatory arguments, the jail source/original is specified through <strong>old</strong>, new name via <strong>new</strong> arguments and FQDN (hostname) via <strong>host_hostname</strong>. As the unessential — new ip of the address via <strong>ip4_addr</strong> (if several IPs, addresses separated by commas with no spaces)</p>
-		<p><strong>Example:</strong></p>
-		<p>cloning jail jail2 to jail3 with changes ip address <strong>ip4_addr</strong> and name of hosts <strong>host_hostname</strong>:</p>
+		<p><strong>Описание</strong>:</p>
+		<p>Выполняет клонирование виртуальной машины в новую. В качестве обязательных аргументов, указывается источник/оригинал VM через <strong>old</strong> и новое имя через аргумент <strong>new</strong></p>
+		<p><strong>Пример:</strong> клонирование виртуальной машины debian1 в debian2:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jclone old=jail2 new=jail3 host_hostname=jail3.my.domain ip4_addr=10.0.0.22/24
+			% cbsd bclone old=debian1 new=debian2
 		</pre>
-		<p class="text-center"><img src="/img/jclone1.png" alt="" /></p>
 	</div>

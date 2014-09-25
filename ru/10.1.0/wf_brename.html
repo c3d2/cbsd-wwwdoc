@@ -1,25 +1,19 @@
-	<h1><span>Jail renaming:</span></h1>
+	<h1><span>Переименовывание виртуальной машины</span></h1>
 	
-	<h2><a name="jrename_cmd">jrename command</a></h2>
+	<h2><a name="jrename_cmd">Команда brename</a></h2>
 	<div class="block">
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jrename
+			% cbsd brename
 		</pre>
-		<p><strong>Description</strong>:</p>
-		<p>Performs renaming jail and relevant data in the new name. Can be executed only on the stopped jail.</p>
-		<p>As mandatory parameters:</p>
+		<p><strong>Описание</strong>:</p>
+		<p>Выполняет переименовывание виртуальной машины и соответствующих каталогов данных в новое имя. Может выполнятся только на неактивной виртуальной машине. В качестве обязательных параметров:</p>
 		<ul>
-			<li><strong>old</strong> — old name of the jail</li>
-			<li><strong>new</strong> — new name of the jail</li>
+			<li><strong>old</strong>&nbsp;— старое имя VM</li>
+			<li><strong>new</strong>&nbsp;— новое имя VM</li>
 		</ul>
-		<p>As optional parameters:</p>
-		<ul>
-			<li><strong>host_hostname</strong> — FQDN, new full hostname of jail</li>
-			<li><strong>ip4_addr</strong> — new IP address of the jail (if multiple IPs, separated by a comma with no spaces)</li>
-		</ul>
-		<p><strong>Example</strong> (renaming jail <strong>jail1</strong> into <strong>jail50</strong> with a FQDN and ip addresses change):</p>
+		<p><strong>Пример</strong> (переименовывание виртуальной машины debian1 в debian50:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jrename old=jail1 new=jail50 host_hostname=jail50.my.domain ip4_addr=192.168.0.5/24
+			% cbsd brename old=debian1 new=debian50
 		</pre>
-		<p class="text-center"><img src="/img/jrename1.png" alt="" /></p>
 	</div>
+

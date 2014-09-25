@@ -1,22 +1,21 @@
-	<h1><span>Jail removal:</span></h1>
+	<h1><span>Удаление виртуальной машины</span></h1>
 	
-	<h2><a name="jremove_cmd">jremove command</a></h2>
+	<h2><a name="bremove_cmd">Команда bremove</a></h2>
 	<div class="block">
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jremove
+			% cbsd bremove jail1 jail2 ..
 		</pre>
-		<p><strong>Description</strong>:</p>
-		<p>Removal of jail mentions all files anyway connected with a jail:</p>
+		<p><strong>Описание</strong>:</p>
+		<p>Удаление виртуальной машины затрагивает все файлы, так или иначе связанные с виртуальной машиной:</p>
 		<ul>
-			<li>a) fstab for current jail</li>
-			<li>b) data directory or ZFS filesystem with jail data</li>
-			<li>c) statistics and description for jail</li>
-			<li>d) snapshots</li>
+			<li>a) каталог или ZFS файловую систему с образами виртуальной машины</li>
+			<li>b) статистику и описание виртуальной машины</li>
+			<li>c) снапшоты, если были</li>
 		</ul>
-		<p>in a case when <strong>jremove</strong> executed for jail in status On, it will be automatically stopped.</p>
-		<strong>Example</strong>:
+		<p>В случае, если <strong>bremove</strong> запускается на работающую виртуальную машину, работа гостевой ОС будет автоматически прервана.</p>
+		<p>&nbsp;</p>
+		<p><strong>Пример</strong>:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jremove jail1
+			% cbsd bremove redhat1
 		</pre>
-		<p class="text-center"><img src="/img/jremove1.png" alt="" /></p>
 	</div>

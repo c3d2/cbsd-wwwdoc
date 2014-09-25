@@ -3,13 +3,13 @@
 	<h2><a name="jstart_cmd">Команда jstart, jrestart, jorder</a></h2>
 	<div class="block">
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jstart jname=jail1 jail2
+			% cbsd jstart jname=jail1
 			% cbsd jstart jail1 jail2 ... jailX
 
-			% cbsd jstop jname=jail1 jail2
+			% cbsd jstop jname=jail1
 			% cbsd jstop jail1 jail2 ... jailX
 
-			% cbsd jrestart
+			% cbsd jrestart jail1
 			% cbsd jorder
 		</pre>
 		<strong>Описание</strong>:
@@ -40,6 +40,7 @@
 			% cbsd jstop jail1 jail2 jail3 ..
 		</pre>
 		<p>(для останова нескольких клеток одной командой)</p>
+		<p>Если аргумент у команды jstart/jstop/jrestart отсутствует, будет выведет соответствующий список всех остановленных или запущенных клеток для интерактивного выбора</p>
 		<p>Когда jail запускается, он создает лок файл, признак того, что jail рабочий в виде файла <em>${jailsysdir}/${jname}/locked</em> в котором записывается имя ноды.
 		Этот признак используется в случае, когда данный jail презентован нескольким нодам, данные клетки находятся на DFS ( NFS, glusterfs и тд) и любая нода в состоянии его запустить.
 		Данный лок гарантирует, что при наличие той же клетки на второй ноде, он запущен не будет.</p>

@@ -46,5 +46,24 @@
 В ряде дистрибутивов Linux, имена файлов ядра являются константой (но могут быть символическими ссылками и указывать на нужное ядро). В таких дистрибутивах обновление ядер не должно вызывать смену имени и соответственно, такой проблеме они не подвержены. Примеры таких "правильных" Linux
 дистрибутовов: <strong>Debian, Ubuntu</strong>. Дополнительно следует сказать, что в качестве решения данной проблемы также может быть загрузка виртуальной машины через EFI (и порт grub2-efi)</p>
 
+<p>3.</p>
+<p>Для работы с bhyve через <strong>CBSD</strong>, в базовой системе также должны быть проинсталлированы следующие пекеджи:</p>
+<ul>
+	<li>grub-bhyve  ( pkg install grub-bhyve <strong>или</strong> make -C /usr/ports/sysutils/grub-bhyve install )</li>
+	<li>tmux ( pkg install tmux <strong>или</strong> make -C /usr/ports/sysutils/tmux install )</li>
+</ul>
+<p>Кроме этого, ядро вашей ноды должно иметь модули <strong>if_bridge, if_tap, vmm</strong>. Если в конфигурации ядра они отсутствуют, вы можете загружать их через:</p>
+	<ul>
+		<li><strong>/boot/loader.conf</strong>:
+			<pre class="cli;">
+if_bridge_load="YES"
+if_tap_load="YES"
+vmm_load="YES"
+			</pre></li>
+		<li><strong>/etc/rc.conf</strong>:
+			<pre class="cli;">
+kld_list="if_bridge if_tap vmm"
+			</pre></li>
+	</ul>
 </div>
 <!--# include file="_end.html" -->
