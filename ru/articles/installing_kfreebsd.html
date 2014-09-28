@@ -7,7 +7,7 @@
 		
 		<p><strong>Прим:</strong><em> Если вы не хотите настраивать это вручную, можете воспользоваться  <a href="/en/jdescr/kfreebsd_details.html">клеткой kfreebsd</a> из репозитория cbsd</em></p>
 		
-		<p>Устанавливаем порт <strong>debootrap</strong> для получения базовой системы Debian из соответствующего репозитория ( на момент написания статьи это репозиторий для <em>squeeze</em> )</p>
+		<p>Устанавливаем порт <strong>debootrap</strong> для получения базовой системы Debian из соответствующего репозитория ( на момент написания статьи это репозиторий для <em>wheezy</em> )</p>
 		
 		<pre class="brush:bash;ruler:rule;">
 		% make -C /usr/ports/sysutils/debootstrap install
@@ -36,9 +36,9 @@
 		<p><strong>Прим:</strong> Если данная операция производится на ZFS, после создания клетки необходимо примонтировать созданный (пустой) датасет: <strong>zfs mount -a</strong> или <strong>zfs mount &lt;FS&gt;/kfreebsd</strong></p>
 	</div>
 	<div class="block">
-		<p>Наполнение клетки данными <strong>Debian kFreeBSD squeeze</strong>:</p>
+		<p>Наполнение клетки данными <strong>Debian kFreeBSD wheezy</strong>:</p>
 		<pre class="brush:bash;ruler:rule;">
-		% debootstrap squeeze /usr/jails/jails-data/kfreebsd-data http://cdn.debian.net/debian
+		% debootstrap wheezy /usr/jails/jails-data/kfreebsd-data http://cdn.debian.net/debian
 		</pre>
 		
 		<p>Для подавления ошибки <strong>getpwname</strong> от jail v2, скопируем привычный <em>/etc/passwd</em> в клетке, конвертируя из Debian в FreeBSD формат (пути указаны для клетки с именем kfreebsd):</p>
