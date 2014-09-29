@@ -3,7 +3,7 @@
 <!--# include file="/en/translate.html" -->
 	<h1><span>Redmine jail</span></h1>
 	<div class="block">
-		<p>For installing Redmine cbsd jail just follow this steps:</p>
+		<p>For installing Redmine cbsd jail use <strong>bsdconfig cbsd</strong> and Repository submenu, or just follow this steps:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd repo action=get sources=img name=redmine
 		</pre>
@@ -11,10 +11,12 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd repo action=get sources=img name=redmine ver=10.1
 		</pre>
-		<p>If you hosted on another ( non 10.1 ) FreeBSD version. After image downloading please set correct name and ip address of the jail and run a <strong>install script</strong> that asks you for passwords of MySQL superuser and redmine SQL user:</p>
+		<p>If you hosted on another ( non 10.1 ) FreeBSD version.</p>
+		<p>Execute <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_imghelper_ssi.html">imghelper</a> that asks you for some questions required for the installation of the jail:</p>
 		<pre class="brush:bash;ruler:true;">
-			% cbsd jconfig jname=redmine install
+% cbsd imghelper jname=redmine bootstrap=/usr/jails/jails-system/redmine/bin/bootstrap.sh
 		</pre>
+		<p>where: <em>/usr/jails/</em> is workdir for <strong>CBSD</strong>.
 		<p class="text-center"><img src="/img/redmine1.png" alt="" /></p>
 		<p>Now Redmine ready to use. Do not forget to set <em>astart=1</em> in <strong>cbsd jconfig jname=redmine</strong> if you want for starting jail automatically. By the starting jail via</p>
 		<pre class="brush:bash;ruler:true;">
