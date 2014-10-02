@@ -11,6 +11,13 @@
 <h2><a name="release">Releases</a></h2>
 <div class="block">
 	<hr>
+	<p><strong>10.1.1</strong>&nbsp;&mdash; 2014-10-02</p>
+	<p>bugfix release</p>
+	<ul>
+		<li><em>(bugfix)</em> Fix for loosing jail databases when rename nodename: old database file is not renamed (reported by: <strong>Daniel Ponticello</strong>)</li>
+		<li>rename csup to svnup. Leave csup for compatible a while</li>
+		<li>apply workaround for environments who have different version from node. See: grep -A28 ^20140930: /usr/ports/CHANGES</li>
+	</ul>
 	<p><strong>10.1.0</strong>&nbsp;&mdash; 2014-09-27</p>
 	<ul>
 		<li>Tested for FreeBSD 10.1-RELEASE compatible</li>
@@ -30,7 +37,6 @@
 		<li><em>(bugfix)</em> getnics-by-ip: looking only IP prefix inet in the output ifconfig (reported by: <strong>Ivan Klymenko</strong>)</li>
 		<li><em>(bugfix)</em> bhyve: do not test hard drive for empty when booting from CD</li>
 		<li><em>(bugfix)</em> Fix order of epair number and a/b side <a href="https://github.com/olevole/cbsd/issues/25" target="_blank">issues 25</a>(reported and fixed by: <strong>kev009</strong>)</li>
-		<li><em>(bugfix)</em> Fix for loosing jail databases when rename nodename: old database file is not renamed (reported by: <strong>Daniel Ponticello</strong>)</li>
 	</ul>
 	<p><strong>10.0.7</strong>&nbsp;&mdash; 2014-08-15</p>
 	<ul>

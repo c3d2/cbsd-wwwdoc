@@ -71,4 +71,31 @@
 		</div>
 		<a href="http://youtu.be/YcfmRnxHRKY" target="_blank">Short demo of XJail from scratch</a>.
 	</div>
+	<h2><a name="xfcejail"><span>Full Example Step-by-Step: XFCE4 in xjail</span></a></h2>
+	<div class="block">
+	<p>Example of isolation and start XFCE in Xorg from the personal jail</p>
+	<p><strong>1)</strong> Obtain patched kernel for <strong>allow_kmem</strong> options from CBSD repository</p>
+	<pre class="brush:bash;ruler:true;">
+% cbsd repo action=get sources=kernel mode=upgrade
+	</pre>
+	<p>This operation fetch and store kernel into your <em>$workdir/basejail/kernel_GENERIC_<strong>arch_ver</strong></em> directory. Currently only 10.1-RELEASE and 11-CURRENT supported</p>
+	<p><strong>2)</strong> Replace your /boot/kernel by patched kernel:</p>
+	<pre class="brush:bash;ruler:true;">
+% cbsd upgrade target=kernel
+	</pre>
+	<p><strong>3)</strong> Reboot node to new kernel</p>
+	<p><em>Hint:</em> Also, instead of using kernel from CBSD Repo, you can apply patch by hand, see instruction on <a href="https://lists.freebsd.org/pipermail/freebsd-current/2013-May/041872.html">FreeBSD maillist</a></p>
+	<p><em>Hint:</em> Config for CBSD Kernel available on <em>/usr/local/cbsd/etc/defaults/kernel-GENERIC\*.conf</em></p>
+	<p><strong>3)</strong> Create a new jail, let it be called: xfce</p>
+	<pre class="brush:bash;ruler:true;">
+% cbsd jconstruct-tui
+	</pre>
+	<p>Select:</p>
+	<ul>
+		<li><strong>jname</strong> for entering jail name: <em>xfce</em></li>
+		<li><strong>host_hostname</strong> for entering FQDN, eg: <em>xfce.my.domain</em></li>
+		<li><strong>ip4_addr</strong> for entering IP, eg: <em>10.0.0.50/24</em></li>
+		<li><strong>PROCEED</strong> for create jail</li>
+	</ul>
+	</p></p>
 <!--# include file="_end.html" -->
