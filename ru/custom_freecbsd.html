@@ -77,25 +77,6 @@
 		</pre>
 	</div>
 	
-	<h2><a name="crontab">Файл /var/cron/tabs/root, /etc/periodic.conf и cbsd periodic</a></h2>
-	<div class="block">
-		<p><strong>CBSD</strong> может иметь "внутренние" задачи, требующие периодического выполнения (например снятие трафика, <strong>RACCT</strong> статистики).  Для этого, она может сконфигурировать свой periodic через запись вида:</p>
-		<pre class="brush:bash;ruler:true;">
-			* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&amp;1
-			0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&amp;1
-		</pre>
-		<p>в пользовательский cron tab для пользователя <strong>root</strong> (/var/cron/tabs/root). Пользовательский cron tab, вместо системного, используется по соображениям, описанными в <a href="/ru/articles/upgrade_for_fun.html" target="_blank">Не бойтесь mergemaster</a>. Если вы не хотите чтобы подобны вызовы тревожили вашу систему, вызовите редактор cron tab через команду:</p>
-		<pre class="brush:bash;ruler:true;">
-			% crontab -e
-		</pre>
-		<p>и поставьте эти строчки с символами комментария '#', символ комментария:</p>
-		<pre class="brush:bash;ruler:true;">
-			#* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&amp;1
-			#0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&amp;1
-		</pre>
-		<p>В этом случае, <strong>cbsd initenv</strong> не будет вносить изменения.</p>
-	</div>
-	
 	<h2><a name="loader.conf">Файл /boot/loader.conf, модули ядра, net.inet.ip.fw.default_to_accept</a></h2>
 	<div class="block">
 		<p>В том случае, если вы используете <strong>cbsd natcfg, cbsd naton</strong> или отвечаете утвердительно на вопрос использования NAT во время <strong>cbsd initenv</strong>, система может оставлять (с согласия пользователя) в <strong>/boot/loader.conf</strong> следующие записи:</p>

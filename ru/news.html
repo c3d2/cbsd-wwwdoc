@@ -14,13 +14,13 @@
 	<p>bugfix release</p>
 	<ul>
 		<li><em>(bugfix)</em> Исправление потери базы даных jail при переименовывание nodename: старый файл базы данных не переименовывался. (сообщил: <strong>Daniel Ponticello</strong>)</li>
-		<li>csup скрипт переименован в svnup. Вызов csup оставлен на некоторое время для совместимости</li>
+		<li>svnup скрипт переименован в svnup. Вызов svnup оставлен на некоторое время для совместимости</li>
 		<li>Применяем workaround для окружений, имеющих разные версии базы по сравнению с нодой. Смотрите: grep -A28 ^20140930: /usr/ports/CHANGES</li>
 	</ul>
 	<p><strong>10.1.0</strong>&nbsp;&mdash; 2014-09-27</p>
 	<ul>
 	<li>Проверено на FreeBSD 10.1-RELEASE совместимость</li>
-		<li>скрипт imghelper для работы с конфигурационными параметрами CBSD-образов</li>
+		<li>скрипт imghelper для работы с конфигурационными параметрами <strong>CBSD</strong>-образов</li>
 		<li>добавлены патчи и конфигурационный файл для планировщика ядра BFS, ориентированного на использование на Desktop системах (мейнтейнер патчей: <strong>Ivan Klymenko</strong>)</li>
 		<li>xjails (allow_kmem) для FreeBSD 10.1</li>
 		<li><a href="/ru/cmdsyntax_cbsd.html">Начало интеграции</a> tui-хелперов с <a href="http://man.freebsd.org/bsdconfig/8" target="_blank">bsdconfig</a> фреймворком (спасибо <strong>Devin Teske</strong> за гибкость bsdconfig системы)</li>
@@ -32,7 +32,7 @@
 		<li>Удалены старые патчи и periodic-задачи: теперь периодические задачи (например, сбор трафика) происходит через cbsdd</li>
 		<li>jail2iso: поддержка UEFI</li>
 		<li>переименование arch и vnet в hostarch и vimage_feature в глобальной настройке, в связи с конфликтами с параметрами jail</li>
-		<li><a href="/ru/10.1.0/wf_natcfg_ssi.html">IPNAT из Ipfilter</a> возвращен в CBSD ( был выключен в CBSD 9.2.5 )</li>
+		<li><a href="/ru/10.1.0/wf_natcfg_ssi.html">IPNAT из Ipfilter</a> возвращен в <strong>CBSD</strong> ( был выключен в <strong>CBSD</strong> 9.2.5 )</li>
 		<li><em>(bugfix)</em> getnics-by-ip: ищем IP только с префиксом inet в выводе ifconfig (сообщил: <strong>Ivan Klymenko</strong>)</li>
 		<li><em>(bugfix)</em> bhyve: не тестируем что жесткий диск пуст, если загрузка происходит с CD</li>
 		<li><em>(bugfix)</em> Исправление в поиске свободного epair номера <a href="https://github.com/olevole/cbsd/issues/25" target="_blank">issues 25</a>(сообщил и исправил: <strong>kev009</strong>)</li>
@@ -74,7 +74,7 @@
 	<ul>
 		<li><em>(bugfix)</em> Исправлен путь к&nbsp;pkg(8) в&nbsp;<strong>pkgbrowser</strong>, спасибо Антону Иутину.</li>
 		<li><strong>jsnapshot</strong> теперь работает только со&nbsp;снапшотами, созданными <em>cbsd</em>, улучшение вывода списка снапшотов (<a href="/ru/10.0.4/wf_jsnapshot_ssi.html">снапшоты (zfs-only)</a>)</li>
-		<li><strong>history</strong> для вывода последних cbsd команд (<a href="/ru/10.0.4/wf_history_ssi.html">история команд cbsd</a>)</li>
+		<li><strong>history</strong> для вывода последних <strong>CBSD</strong> команд (<a href="/ru/10.0.4/wf_history_ssi.html">история команд CBSD</a>)</li>
 	</ul>
 	<p><strong>10.0.2</strong>&nbsp;&mdash; 2014-02-01</p>
 	<ul>
@@ -85,7 +85,7 @@
 		<li>Именование баз изменилось с&nbsp;base_<strong>arch</strong>_<em>ver</em> на&nbsp;base_<strong>arch</strong>_<strong>platform</strong>_<em>ver</em> в&nbsp;связи с&nbsp;возрастающей популярностью не-x86&nbsp;архитектур. После обновления, вам необходимо заново скачать базы или переименовать старые (при остановленных клетках)&nbsp;&mdash; каталоги вида base_<strong>arch</strong>_ver теперь неактивны в&nbsp;$workdir/basejail и&nbsp;их&nbsp;необходимо удалить вручную.</li>
 		<li>Поддержка создания имиджей для <strong>bhyve</strong> из&nbsp;jail (<a href="/ru/10.0.4/wf_jail2iso_ssi.html">jail2iso</a>)</li>
 		<li>Очиста кода от&nbsp;старых develop-скриптов, в&nbsp;тч. cbsdsar; данный функционал был включен по&nbsp;ошибке</li>
-		<li>Системная учетная запись теперь создается портами, не&nbsp;установочным скриптом cbsd.</li>
+		<li>Системная учетная запись теперь создается портами, не&nbsp;установочным скриптом <strong>CBSD</strong>.</li>
 	</ul>
 	<p><strong>10.0.1</strong>&nbsp;&mdash; 2013-12-28</p>
 	<ul>

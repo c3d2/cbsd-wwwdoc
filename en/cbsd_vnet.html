@@ -7,7 +7,7 @@
 		<pre class="brush:bash;ruler:true;">
 			options VIMAGE
 		</pre>
-		<p>If you get a kernel from the repository through a command cbsd:</p>
+		<p>If you get a kernel from the repository through a command <strong>cbsd</strong>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd repo action=get sources=kernel
 		</pre>
@@ -17,7 +17,7 @@
 		<p>Besides <a href="http://www.freebsd.org/cgi/query-pr.cgi?pr=164763" target="_blank">seen</a> cases of memory leaking.</p>
 		<p>Well, now the something good;)</p>
 		<p><strong>vnet</strong>-featured jail has at its disposal a fully virtualized and isolated network stack, which in turn allows the use of a private jail (albeit virtual) interface, "right" <strong>loopback</strong>, use within the jail a packet filters (<strong>pf, ipfw, pfilter</strong>), raise the tunnels and reconfigure the routing table.</p>
-		<p>When you create a vnet-jails the <strong>ip4_addr</strong> should indicate <strong>0</strong>, which prohibit cbsd set itself an IP address for vnet jail.</p>
+		<p>When you create a vnet-jails the <strong>ip4_addr</strong> should indicate <strong>0</strong>, which prohibit <strong>CBSD</strong> set itself an IP address for vnet jail.</p>
 		<p><em>Note: The installation of IP addresses in the vnet jail is not implemented yet</em>
 		<p>Also, if you want to get a jail itself an IP address automatically (via DHCP), you would write a separate section devfs.rules, in which you need to open  <a href="http://www.freebsd.org/cgi/man.cgi?query=bpf&amp;sektion=4" target="_blank"><strong>bpf(4)</strong></a>-device ( unhide bpf*), and set  this devfs rule number to <strong>vnet</strong>-jail (via <strong>cbsd jconfig jname=XXXX</strong>)</p>
 		<p>cbsd creates virtual interfaces using a pair of <a href="http://www.freebsd.org/cgi/man.cgi?query=epair&amp;sektion=4" target="_blank"><strong>epair(4)</strong></a>, but the "other end" virtual cable that connects to the jail, <strong>CBSD</strong> renamed to <strong>eth0</strong> interface.</p>

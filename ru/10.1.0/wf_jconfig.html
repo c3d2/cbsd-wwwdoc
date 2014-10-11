@@ -7,7 +7,7 @@
 		</pre>
 		<p><strong>Описание</strong>:</p>
 		<p>Конфигурирование параметров jail</p>
-		<p>Каждая клетка cbsd хранит настройки в SQLite3 базе. Помимо этого, в каталоге <em><strong>$workdir/jails-fstab/</strong></em> могут быть fstab файлы (см. ниже). Для изменения настроек клетки может служить команда <strong>cbsd jconfig</strong>, запускающая TUI меню для изменения основных параметров.</p>
+		<p>Каждая клетка <strong>CBSD</strong> хранит настройки в SQLite3 базе. Помимо этого, в каталоге <em><strong>$workdir/jails-fstab/</strong></em> могут быть fstab файлы (см. ниже). Для изменения настроек клетки может служить команда <strong>cbsd jconfig</strong>, запускающая TUI меню для изменения основных параметров.</p>
 	</div>
 	
 	<h2><a name="ip">IP адреса клеток</a></h2>
@@ -34,7 +34,7 @@
 	
 	<h2><a name="fstab">Монтирование файловых систем в jail</a></h2>
 	<div class="block">
-		<p>Каждый jail может иметь свой fstab файл, в котором перечисляются файловые системы, монтирующиеся в jail при запуске клетки.  Системные записи (ими управляет cbsd и править этот файл ненадо) располагаются в файле <em><strong>$workdir/jails-fstab/</strong>fstab.name</em> и совпадает по синтаксису с форматом системного файла <strong>/etc/fstab</strong> с тем исключением,  что в качестве точки монтирования указывается путь относительно корня JAIL, а не мастер системы. Для пользовательских записей, вы можете использовать файл в том же каталоге с расширением <em>.local</em>. Например, если вы хотите сделать между клетками jail1 и jail2 один общий каталог (через nullfs), который физически расположен в мастер ноде (например <em>/usr/home/sharefs</em>), в файлах <em><strong>$workdir/jails-fstab/</strong>fstab.jail1.local</em> и <em><strong>$workdir/jails-fstab/</strong>fstab.jail2.local</em> должна присутствовать строчка:</p>
+		<p>Каждый jail может иметь свой fstab файл, в котором перечисляются файловые системы, монтирующиеся в jail при запуске клетки.  Системные записи (ими управляет <strong>CBSD</strong> и править этот файл ненадо) располагаются в файле <em><strong>$workdir/jails-fstab/</strong>fstab.name</em> и совпадает по синтаксису с форматом системного файла <strong>/etc/fstab</strong> с тем исключением,  что в качестве точки монтирования указывается путь относительно корня JAIL, а не мастер системы. Для пользовательских записей, вы можете использовать файл в том же каталоге с расширением <em>.local</em>. Например, если вы хотите сделать между клетками jail1 и jail2 один общий каталог (через nullfs), который физически расположен в мастер ноде (например <em>/usr/home/sharefs</em>), в файлах <em><strong>$workdir/jails-fstab/</strong>fstab.jail1.local</em> и <em><strong>$workdir/jails-fstab/</strong>fstab.jail2.local</em> должна присутствовать строчка:</p>
 		<pre class="brush:bash;ruler:true;">
 			/usr/home/sharefs /usr/home/sharefs nullfs rw 0 0
 		</pre>
@@ -57,7 +57,7 @@
 		</pre>
 		<p><em>Примечание:</em> точка монтирования (/usr/home/web в данном примере) роли не играет</p>
 		<p><em>Примечание2:</em> клетка должна иметь параметр <em>allow_zfs</em> установленным в 1, что можно сделать через <strong>cbsd jconfig jname=$jname</strong></p>
-		<p>Фактически, это заставляет cbsd выполнить команды:</p>
+		<p>Фактически, это заставляет <strong>CBSD</strong> выполнить команды:</p>
 		<pre class="brush:bash;ruler:true;">
 			% zfs set jailed=on $FS
 			% zfs jail $jname $FS

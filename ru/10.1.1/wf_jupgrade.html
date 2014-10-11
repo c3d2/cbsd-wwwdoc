@@ -24,7 +24,7 @@
 	<h2><a name="freebsd-upgrade">Обновление через базовую утилиту freebsd-update</a></h2>
 	<div class="block">
 		<p><a href="http://man.freebsd.org/freebsd-update/8">freebsd-update</a> можно использовать без к привязки к <strong>CBSD</strong>. Следует учитывать, что утилита работает с официальным ресурсом FreeBSD и сконфигурировать ее на репозиторий <strong>CBSD</strong> нельзя, те, источник только один.</p>
-		<p>Обновить базовые файлы для клеток через freebsd-update можно, указав через ключ <strong>-b</strong> путь к каталогу, используемому <strong>CBSD</strong> при монтировании клеток с baserw=0. Так, если ваш cbsd $workdir - <em>/usr/jails</em>, то для amd64 и версии 10.0 путь до базы будет <em>/usr/jails/basejail/base_amd64_amd64_10.0</em>. Этот каталог и следует обновить:</p>
+		<p>Обновить базовые файлы для клеток через freebsd-update можно, указав через ключ <strong>-b</strong> путь к каталогу, используемому <strong>CBSD</strong> при монтировании клеток с baserw=0. Так, если ваш <strong>CBSD</strong> $workdir - <em>/usr/jails</em>, то для amd64 и версии 10.0 путь до базы будет <em>/usr/jails/basejail/base_amd64_amd64_10.0</em>. Этот каталог и следует обновить:</p>
 		<pre class="brush:bash;ruler:true;">
 % freebsd-update -b /usr/jails/basejail/base_amd64_amd64_10.0 fetch
 % freebsd-update -b /usr/jails/basejail/base_amd64_amd64_10.0 install

@@ -39,7 +39,7 @@ cbsd jupgrade jname=XXXX
 			for each baserw=1 jail - this command reshapes base ( <em>$workdir/jails-data/$jname</em> ) of the jail from the <em>$workdir/basejail/*</em> files</li>
 		</ul>
 	</div>
-	<h2><a name="jupgrade_rw0">Upgrading baserw=0 jails between different versions of the bases via CBSD</a></h2>
+	<h2><a name="jupgrade_rw0">Upgrading baserw=0 jails between different versions of the bases via <strong>CBSD</strong></a></h2>
 	<div class="block">
 		<p>Option with the upgrade jail in mode <strong>baserw=0</strong> to a new version base is the easiest is to change the version in the configurator</p>
 		<pre class="brush:bash;ruler:true;">
@@ -56,7 +56,7 @@ cbsd jupgrade jname=XXXX
 		<p class="text-center"><img src="/img/jupgrade1.png" alt="" /></p>
 	</div>
 	
-	<h2><a name="jupgrade_rw1">Upgrading baserw=1 jails between different versions of the base via CBSD</a></h2>
+	<h2><a name="jupgrade_rw1">Upgrading baserw=1 jails between different versions of the base via <strong>CBSD</strong></a></h2>
 	<div class="block">
 		<p>Upgrade of <strong>baserw=1</strong> takes a different scenario, since on this operation <strong>CBSD</strong> will overwrite the old base system files to the new in jail data directory <em>$workdir/jails-data/$jname</em>.</p>
 		<p>Baseline: we need uprgade jail jail1 <strong>baserw=1</strong> mode (in-law, its root path PATH points in jls pointed to jails-data, rather than jail directory) from 9.2 to 10.0 version.</p>

@@ -1,9 +1,9 @@
 <!--# include file="_start.html" -->
 <!--# include file="currentver.html" -->
 <!--# include file="/en/translate.html" -->
-	<h1><span>Modification which are carried out by cbsd scripts in FreeBSD</span></h1>
+	<h1><span>Modification which are carried out by <strong>CBSD</strong> scripts in FreeBSD</span></h1>
 	<div class="block">
-		<p>Due to the fact that the course taken by <strong>CBSD</strong> is focused on a large number of functional relationship for the provision  of an integrated solution, the system for their work makes or proposes to make a number of specific settings.  This page describes where and why these changes are necessary. It is also important to fully uninstall cbsd ;-)</p>
+		<p>Due to the fact that the course taken by <strong>CBSD</strong> is focused on a large number of functional relationship for the provision  of an integrated solution, the system for their work makes or proposes to make a number of specific settings.  This page describes where and why these changes are necessary. It is also important to fully uninstall <strong>CBSD</strong> ;-)</p>
 	</div>
 	
 	<h2><a name="rcconf">Файл /etc/rc.conf</a></h2>
@@ -22,7 +22,7 @@
 				<pre class="brush:bash;ruler:true;">
 					sshd_flags="-oPort=22222"
 				</pre>
-				<p>Be extremely careful about this change.  If you want to keep the standard flags sshd daemon, duplicate entry for sshd_flags from file /etc/defaults/rc.conf in  /etc/rc.conf and cbsd will not offer change.</p>
+				<p>Be extremely careful about this change.  If you want to keep the standard flags sshd daemon, duplicate entry for sshd_flags from file /etc/defaults/rc.conf in  /etc/rc.conf and <strong>CBSD</strong> will not offer change.</p>
 				<p>Also, you may want to disable host name resolv via DNS, which can significantly speed up connections between nodes, extending the entry in /etc/rc.conf to</p>
 				<pre class="brush:bash;ruler:true;">
 					sshd_flags="-oUseDNS=no -oPort=22222"
@@ -75,25 +75,6 @@
 		</pre>
 	</div>
 	
-	<h2><a name="crontab">/var/cron/tabs/root, /etc/periodic.conf file and cbsd periodic</a></h2>
-	<div class="block">
-		<p><strong>CBSD</strong> may have "internal" tasks requiring periodic execution (eg: traffic stats, <strong>RACCT</strong> stats). To do this, it can configure its own periodic via records:</p>
-		<pre class="brush:bash;ruler:true;">
-			* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&amp;1
-			0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&amp;1
-		</pre>
-		<p>in user-cron tab for user <strong>root</strong> (/var/cron/tabs/root). Users cron tab, instead of the system used for the reasons described in <a href="/ru/articles/upgrade_for_fun.html"> Do not be afraid mergemaster</a> (rus version only). If you do not want to disturb these calls in your system, just open the editor via cron tab command:</p>
-		<pre class="brush:bash;ruler:true;">
-			% crontab -e
-		</pre>
-		<p>and put this lines with starting comment character '#':</p>
-		<pre class="brush:bash;ruler:true;">
-			#* * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_minutes /usr/sbin/periodic minutes > /dev/null 2>&amp;1
-			#0 * * * * /usr/bin/lockf -s -t0 $workdir/ftmp/periodic_hourly /usr/sbin/periodic hourly > /dev/null 2>&amp;1
-		</pre>
-		<p>In this case, <strong>cbsd initenv</strong> will not make changes.</p>
-	</div>
-	
 	<h2><a name="loader.conf">/boot/loader.conf file, kernel modules, net.inet.ip.fw.default_to_accept</a></h2>
 	<div class="block">
 		<p>In that case, if you use <strong>cbsd natcfg, cbsd naton </strong> or answer <strong>yes</strong> to the question of using NAT during <strong>cbsd initenv</strong>,  the system may leave (with your consent) in your <strong>/boot/loader.conf </strong> the following entries:</p>
@@ -109,7 +90,7 @@
 		<pre class="brush:bash;ruler:true;">
 			net.inet.ip.fw.default_to_accept=1
 		</pre>
-		<p>role in the cbsd not play, but it is included for reasons that IPFW module by default disables all,  and at the time of setting <strong>cbsd </strong> some users can not configure ipfw rules (or configure with error),  which would entail the loss of access to the system. Keep in mind that this option causes the last rule <strong>65535</strong> as follows:</p>
+		<p>role in the <strong>CBSD</strong> not play, but it is included for reasons that IPFW module by default disables all,  and at the time of setting <strong>cbsd </strong> some users can not configure ipfw rules (or configure with error),  which would entail the loss of access to the system. Keep in mind that this option causes the last rule <strong>65535</strong> as follows:</p>
 		<pre class="brush:bash;ruler:true;">
 			allow ip from any to any
 		</pre>

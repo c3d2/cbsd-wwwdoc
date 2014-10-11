@@ -3,7 +3,7 @@
 <div class="block">
 	<p>Команды</p>
 	<pre class="brush:bash;rule:true">
-		% cbsd csup
+		% cbsd svnup
 		% cbsd buildworld
 		% cbsd installworld
 	</pre>
@@ -16,18 +16,18 @@
 <div class="block">
 	<p>Сборка или обновление состоит из трех шагов:</p>
 	<ul>
-		<li> Получение или обновление исходного кода FreeBSD через cbsd csup:
+		<li> Получение или обновление исходного кода FreeBSD через cbsd svnup:
 			Получение или обновление исходного кода для той версии FreeBSD, на котором в данные момент работает текущая нода:
 			<pre class="brush:bash;rule:true">
-				% cbsd csup
+				% cbsd svnup
 			</pre>
-			Получение или обновление исходного кода для конкретной версии FreeBSD, например, для 9.2:
+			Получение или обновление исходного кода для конкретной версии FreeBSD, например, для 10.0:
 			<pre class="brush:bash;rule:true">
-				% cbsd csup ver=9.2
+				% cbsd svnup ver=10.0
 			</pre>
-			Получение или обновление исходного кода для STABLE ( например, для RELENG_9 ):
+			Получение или обновление исходного кода для STABLE ( например, для RELENG_10 ):
 			<pre class="brush:bash;rule:true">
-				% cbsd csup ver=9 stable=1
+				% cbsd svnup ver=10 stable=1
 			</pre>
 			( Если вы хотите работать с STABLE по-умолчанию, рекомендуется выставить эту опцию глобально в cbsd initenv-tui, после чего добавлять stable=1 к командам будет необязательно ).
 			Эти команды, при наличие исходных кодов в SVN, наполнят каталоги <strong>$workdir/src/src_$ver</strong>
@@ -45,7 +45,7 @@
 			<pre class="brush:bash;rule:true">
 				% cbsd buildworld maxjobs=1
 			</pre>
-			При компиляции, может учитываться персональный <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&amp;sektion=5" target="_blank">src.conf(5)</a>, в котором можно указывать стандартные KNOBS-ы. Файл src.conf должен лежать в каталоге $workdir/etc/ с именем <strong>src-</strong><em>basename</em><strong>.conf</strong>, где basename&nbsp;— любое имя-название конфигурации. Например, в стандартной cbsd имеется файл /usr/jails/etc/src-lite.conf. Для сборки мира с определенным src.conf, необходимо указать параметр basename:
+			При компиляции, может учитываться персональный <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&amp;sektion=5" target="_blank">src.conf(5)</a>, в котором можно указывать стандартные KNOBS-ы. Файл src.conf должен лежать в каталоге $workdir/etc/ с именем <strong>src-</strong><em>basename</em><strong>.conf</strong>, где basename&nbsp;— любое имя-название конфигурации. Например, в стандартной <strong>CBSD</strong> имеется файл /usr/jails/etc/src-lite.conf. Для сборки мира с определенным src.conf, необходимо указать параметр basename:
 			<pre class="brush:bash;rule:true">
 				% cbsd buildworld basename=lite
 			</pre>
@@ -62,9 +62,9 @@
 			<pre class="brush:bash;rule:true">
 				% cbsd installworld
 			</pre>
-			Инсталляция файлов для версии 9.2, собранной с использованием src.conf под именем lite:
+			Инсталляция файлов для версии 10.1, собранной с использованием src.conf под именем lite:
 			<pre class="brush:bash;rule:true">
-				% cbsd installworld basename=lite ver=9.2
+				% cbsd installworld basename=lite ver=10.1
 			</pre>
 			Другие параметры installworld:
 			<ul>

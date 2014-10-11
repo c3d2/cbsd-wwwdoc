@@ -86,17 +86,17 @@
 		<p>The value <strong>auto</strong> means that cbsd will select the interface on&nbsp;which to&nbsp;create an&nbsp;IP address jail.</p>
 		<p>For example : there is&nbsp;a&nbsp;node with two interfaces . </p>
 		<p>At&nbsp;the interface igb0 set&nbsp;IP subnet 10.0.0.2/24 and while the default gateway for the server is&nbsp;10.0.0.1, in&nbsp;consequence of&nbsp;which igb0&nbsp;a network card, through which the traffic by&nbsp;default. at&nbsp;the interface igb1 registered IP/subnet 192.168.0.1/24. </p>
-		<p>If&nbsp;the jail in&nbsp;rc.conf ip4_addr takes value 192.168.0.{1-255}, then cbsd automatically selects  igb1 interface for&nbsp;IP jail.</p> 
+		<p>If&nbsp;the jail in&nbsp;rc.conf ip4_addr takes value 192.168.0.{1-255}, then <strong>CBSD</strong> automatically selects  igb1 interface for&nbsp;IP jail.</p> 
 		<p>If&nbsp;none of&nbsp;the interface is&nbsp;not the subnet that contains the&nbsp;IP jail will be&nbsp;selected by&nbsp;default interface.</p>
 		<p>Also, the value can be&nbsp;set to&nbsp;the name of&nbsp;the interface, if&nbsp;you do&nbsp;not want to&nbsp;search for a&nbsp;suitable interface. For example record</p>
 		<p>interface = &laquo;igb0&raquo;</p>
 		<p>sets the&nbsp;IP address of&nbsp;the jail at&nbsp;the interface igb0.</p>
-		<p>As&nbsp;well as&nbsp;during start-up, when cbsd will sets the necessary&nbsp;IP for jail on&nbsp;interface, when you stop them cbsd unset IPs from the interface automatically. Therefore, be&nbsp;extremely careful — If&nbsp;you set by&nbsp;mistake&nbsp;IP address of&nbsp;the node for jail , then, during the cbsd jstop sequence, cbsd execute</p>
+		<p>As&nbsp;well as&nbsp;during start-up, when <strong>CBSD</strong> will sets the necessary&nbsp;IP for jail on&nbsp;interface, when you stop them <strong>CBSD</strong> unset IPs from the interface automatically. Therefore, be&nbsp;extremely careful — If&nbsp;you set by&nbsp;mistake&nbsp;IP address of&nbsp;the node for jail , then, during the cbsd jstop sequence, <strong>CBSD</strong> execute</p>
 		<p>ifconfig &lt;iface&gt; &lt;ip&gt; -alias</p>
 		<p>and a&nbsp;node will be&nbsp;lost in&nbsp;the network.</p>
 		<p>To&nbsp;the stop of&nbsp;management&nbsp;IP address, the interface= param can be&nbsp;commented out or&nbsp;removed, or&nbsp;the value is&nbsp;left blank:</p>
 		<p>interface=&quot;&quot;</p>
-		<p>In&nbsp;this case , cbsd will immediately start the jail with the appropriate&nbsp;IP, meaning that he&nbsp;has already been initialized . Such a&nbsp;situation may be&nbsp;necessary when server has only one&nbsp;IP address, and you plan to&nbsp;run jail ( or&nbsp;a&nbsp;few jails ) in&nbsp;one existing&nbsp;IP, but with the services within that do&nbsp;not conflict the ports.</p>
+		<p>In&nbsp;this case, <strong>CBSD</strong> will immediately start the jail with the appropriate&nbsp;IP, meaning that he&nbsp;has already been initialized . Such a&nbsp;situation may be&nbsp;necessary when server has only one&nbsp;IP address, and you plan to&nbsp;run jail ( or&nbsp;a&nbsp;few jails ) in&nbsp;one existing&nbsp;IP, but with the services within that do&nbsp;not conflict the ports.</p>
 		<p>For example, having one&nbsp;IP address , you can start jail with WEB server on&nbsp;port 80 , another jail with the mail server on&nbsp;port 25&nbsp;and so&nbsp;on.</p>
 		<hr>
 		<pre class="brush:bash;ruler:true;">
@@ -122,7 +122,7 @@
 			basename="";
 		</pre>
 		<p>The base name. You can create a&nbsp;customized base, for example to&nbsp;build a&nbsp;minimal environment and place it&nbsp;to <em>$workdir/base_lite_amd64_9.2</em></p>
-		<p>To&nbsp;specify cbsd that you need to&nbsp;mount this directory, basename must have &laquo;lite&raquo; prefix:</p>
+		<p>To&nbsp;specify <strong>CBSD</strong> that you need to&nbsp;mount this directory, basename must have &laquo;lite&raquo; prefix:</p>
 		<p>basename=&quot;lite&quot;;</p>
 		<hr>
 		<pre class="brush:bash;ruler:true;">

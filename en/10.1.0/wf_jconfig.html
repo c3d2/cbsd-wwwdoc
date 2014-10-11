@@ -8,7 +8,7 @@
 		</pre>
 		<p><strong>Descriptions</strong>:</p>
 		<p>Cconfiguration parameters jail</p>
-		<p>Each cbsd jail stores the settings in SQLite3 database. In addition, <em>$workdir/jails-fstab/</em> may have fstab files (see below).  To change the settings of jail can serve <strong>cbsd jconfig</strong> command, which is runs the TUI menu to change basic settings:</p>
+		<p>Each <strong>CBSD</strong> jail stores the settings in SQLite3 database. In addition, <em>$workdir/jails-fstab/</em> may have fstab files (see below).  To change the settings of jail can serve <strong>cbsd jconfig</strong> command, which is runs the TUI menu to change basic settings:</p>
 	</div>
 	
 	<h2><a name="ip">Jails IP address</a></h2>
@@ -39,7 +39,7 @@
 	
 	<h2><a name="fstab">Mounting File Systems in jail</a></h2>
 	<div class="block">
-		<p>Each jail can have your fstab file, which lists the file systems that are mounted jail is startup. System records (they are managed by cbsd and edit this file inappropriately) are located in the file <em>$workdir/jails-fstab/fstab.name</em> and the same syntax to format the file system <strong>/etc/fstab</strong> with the exception that as a mount point is the path relative to the root jail, not the master system.</p>
+		<p>Each jail can have your fstab file, which lists the file systems that are mounted jail is startup. System records (they are managed by <strong>CBSD</strong> and edit this file inappropriately) are located in the file <em>$workdir/jails-fstab/fstab.name</em> and the same syntax to format the file system <strong>/etc/fstab</strong> with the exception that as a mount point is the path relative to the root jail, not the master system.</p>
 		<p>For user entries, you can use the file in the same directory with the extension <em>.local</em>. For example, if you want to make between <strong>jail1</strong> and <strong>jail2</strong> a shared directory (via nullfs), which physically located in the master node (e.g.: <em>/usr/home/sharefs</em>), the files <em>$workdir/jails-fstab/fstab.jail1.local</em> and <em>$workdir/jails-fstab/fstab.jail2.local</em> should have:</p>
 		<pre class="brush:bash;ruler:true;">
 			/usr/home/sharefs /usr/home/sharefs nullfs rw 0 0
@@ -63,7 +63,7 @@
 		</pre>
 		<p><em>Note:</em> mount point (/usr/home/web in this example) is not important</p>
 		<p><em>Note:</em> jail must have <em>allow_zfs</em> paramaters set to 1, what can be done via <strong>cbsd jconfig jname=$jname</strong></p>
-		<p>In fact, it makes cbsd execute commands:</p>
+		<p>In fact, it makes <strong>CBSD</strong> execute commands:</p>
 		<pre class="brush:bash;ruler:true;">
 			% zfs set jailed=on $FS
 			% zfs jail $jname $FS

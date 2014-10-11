@@ -20,7 +20,7 @@ root@dev:~ # cbsd taskls
 ID  STATUS      OWNER  CMD                               LOGFILE           ERRCODE
 1   Complete    root   cd /usr/ports && svn up           /tmp/taskd.1.log  32512
 2   Complete    root   cbsd repo action=get sources=base /tmp/taskd.2.log  0
-3   Complete    root   cbsd csup                         /tmp/taskd.3.log  0
+3   Complete    root   cbsd svnup                         /tmp/taskd.3.log  0
 4   Complete    root   cbsd buildworld                   /tmp/taskd.4.log  0
 5   Complete    root   cbsd installworld                 /tmp/taskd.5.log  0
 6   Complete    root   cd /usr/ports && svn up           /tmp/taskd.6.log  0
@@ -42,8 +42,8 @@ ID  STATUS      OWNER  CMD                               LOGFILE           ERRCO
 			зависимой, запустится только в том случае, если код завершения задачи-зависимости - <strong>0</strong> (отработала без ошибки), в противном случае новая задача наследует <strong>errcode</strong> и запущена не будет.
 			Данный функционал удобен, когда вам нужно выполнять ряд зависимых друг от друга задач последовательно, например:
 			<pre class="cli">
-cbsd task mode=new cbsd csup    //запускаем обновление исходных кодов
-cbsd task mode=new after=1 cbsd world //запускаем сборку мира после отработки csup, если его job=1
+cbsd task mode=new cbsd svnup    //запускаем обновление исходных кодов
+cbsd task mode=new after=1 cbsd world //запускаем сборку мира после отработки svnup, если его job=1
 cbsd task mode=new after=2 cbsd kernel //запускаем сборку ядра после отработки world, если его job=2
 cbsd task mode=new cbsd jcoldmigrate jname=jail1 node=n1.node.org // запустить холодную миграцию клетки jail1 на ноду n1.node.org
 cbsd task mode=new cbsd after=5 jremove jail1 // удалить slave-клетку jail1 с текущей ноды, если миграция (job 5) прошла успешно.

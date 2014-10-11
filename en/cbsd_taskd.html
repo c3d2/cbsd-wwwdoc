@@ -21,7 +21,7 @@ root@dev:~ # cbsd taskls
 ID  STATUS      OWNER  CMD                               LOGFILE           ERRCODE
 1   Complete    root   cd /usr/ports && svn up           /tmp/taskd.1.log  32512
 2   Complete    root   cbsd repo action=get sources=base /tmp/taskd.2.log  0
-3   Complete    root   cbsd csup                         /tmp/taskd.3.log  0
+3   Complete    root   cbsd svnup                         /tmp/taskd.3.log  0
 4   Complete    root   cbsd buildworld                   /tmp/taskd.4.log  0
 5   Complete    root   cbsd installworld                 /tmp/taskd.5.log  0
 6   Complete    root   cd /usr/ports && svn up           /tmp/taskd.6.log  0
@@ -43,8 +43,8 @@ ID  STATUS      OWNER  CMD                               LOGFILE           ERRCO
 			dependent, will start only if the code is complete the task dependencies - <strong>0</strong> (worked without error), otherwise the new task inherits <strong>errcode</strong> and will not be activated.
 			This functionality is useful when you need to perform a number of interdependent tasks sequentially, eg:
 			<pre class="cli">
-cbsd task mode=new cbsd csup    //run the update source
-cbsd task mode=new after=1 cbsd world //Builds the world after working csup, if it job=1
+cbsd task mode=new cbsd svnup    //run the update source
+cbsd task mode=new after=1 cbsd world //Builds the world after working svnup, if it job=1
 cbsd task mode=new after=2 cbsd kernel // Builds core after working world, if it job=2
 cbsd task mode=new cbsd jcoldmigrate jname=jail1 node=n1.node.org // run cold migration for jail1 to a node n1.node.org
 cbsd task mode=new cbsd after=5 jremove jail1 // remove slave-jail jail1 from current node, if migration (job 5) is success.

@@ -7,7 +7,7 @@
 	<div class="block">
 		<p>Commands:</p>
 		<pre class="brush:bash;rule:true">
-			% cbsd csup
+			% cbsd svnup
 			% cbsd buildworld
 			% cbsd installworld
 		</pre>
@@ -16,18 +16,18 @@
 		<p>building or updating consists of three steps:</p>
 		<ul>
 			<li>
-				Receiving or updating of the initial FreeBSD source code through <strong>cbsd csup</strong>:
+				Receiving or updating of the initial FreeBSD source code through <strong>cbsd svnup</strong>:
 				Receiving or updating of an source code for that FreeBSD version at which in the moment works the current node:
 				<pre class="brush:bash;rule:true">
-					% cbsd csup
+					% cbsd svnup
 				</pre>
-				Receiving or updating of an source code for the concrete FreeBSD version, for example, for 9.2:
+				Receiving or updating of an source code for the concrete FreeBSD version, for example, for 10.1:
 				<pre class="brush:bash;rule:true">
-					% cbsd csup ver=9.2
+					% cbsd svnup ver=10.1
 				</pre>
-				Receiving or updating of source code for STABLE (for example, for RELENG_9):
+				Receiving or updating of source code for STABLE (for example, for RELENG_10):
 				<pre class="brush:bash;rule:true">
-					% cbsd csup ver=9 stable=1
+					% cbsd svnup ver=10 stable=1
 				</pre>
 				These commands, at existence of source code in SVN, will fill catalogs <em>$workdir/src/src_$ver</em>
 			</li>
@@ -45,7 +45,7 @@
 				<pre class="brush:bash;rule:true">
 					% cbsd buildworld maxjobs=1
 				</pre>
-				At compilation, the personal <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&amp;sektion=5" target="_blank">src.conf(5)</a> can be used , in which it is possible to specify standard KNOBS-y. The src.conf file should placed in the catalog $workdir/etc/ and have name <strong>src-</strong><em>basename</em><strong>.conf</strong>, where basename — any name of configuration. For example, in default cbsd installation there are file <strong>/usr/jails/etc/src-lite.conf</strong>. For base build with certain src.conf, it is necessary to specify <em>basename</em> parameter:
+				At compilation, the personal <a href="http://www.freebsd.org/cgi/man.cgi?query=src.conf&amp;sektion=5" target="_blank">src.conf(5)</a> can be used , in which it is possible to specify standard KNOBS-y. The src.conf file should placed in the catalog $workdir/etc/ and have name <strong>src-</strong><em>basename</em><strong>.conf</strong>, where basename — any name of configuration. For example, in default <strong>CBSD</strong> installation there are file <strong>/usr/jails/etc/src-lite.conf</strong>. For base build with certain src.conf, it is necessary to specify <em>basename</em> parameter:
 				<pre class="brush:bash;rule:true">
 					% cbsd buildworld basename=lite
 				</pre>
@@ -64,9 +64,9 @@
 				<pre class="brush:bash;rule:true">
 					% cbsd installworld
 				</pre>
-				Installation of files for version 9.2 builded with src.conf named as <em>lite</em>:
+				Installation of files for version 10.1 builded with src.conf named as <em>lite</em>:
 				<pre class="brush:bash;rule:true">
-					% cbsd installworld basename=lite ver=9.2
+					% cbsd installworld basename=lite ver=10.1
 				</pre>
 				other params for installworld:
 				<ul>
