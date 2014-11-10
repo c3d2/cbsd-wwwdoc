@@ -48,6 +48,10 @@
 		<p>In the absence of <strong>rcshutdown_timeout</strong> in the system <strong>/etc/rc.conf</strong>, <strong>cbsd initenv</strong> will put this option in its sole discretion automatically.</p>
 		<p>Also, keep in mind that when using the zfs features (<em>$workdir/nc.inventory</em>, the parameter <strong>zfsfeat=1</strong>), and the file system ZFS, at jstop, file system of jails will be unmounted and those catalog <em><strong>$workdir/</strong>jails-data/jail1-data</em> will be empty. If in such a case when jail data is requires without running it,  by the command <strong>zfs list</strong> You can see the name appropriate file system and run zfs mount <strong>fs</strong>.</p>
 	</div>
+	<h2><a name="jstart_cmd">Writing scripts executed on starting and stopping jail</a></h2>
+	<div class="block">
+		<p>Please read details on the <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jconfig_ssi.html#execscript">Jail config</a>
+	<div>
 	<h2><a name="jorder">Priority launch of jails</a></h2>
 	<div class="block">
 		<p>In <strong>CBSD</strong>, you can specify the sequence in which the jails will be started. For example, you may wish to have a jail <strong>mysqljail</strong> and <strong>redisjail</strong> started earlier than <strong>wwwjail</strong>. given functional implements <strong>cbsd jorder</strong> and regulated in the setting of each jail.</p>

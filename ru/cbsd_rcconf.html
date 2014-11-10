@@ -125,48 +125,8 @@
 			<p>Автоматически поправить /etc/resolv.conf , назначив автоматически в&nbsp;качестве первичного nameserver кеширующий named в&nbsp;мастер-ноде, остальные nameserver&nbsp;&mdash; из&nbsp;инвентаризации ноды.</p>
 			<hr />
 			<pre class="brush:bash;ruler:true;">exec_start="/bin/sh /etc/rc";</pre>
-			<hr />
 			<pre class="brush:bash;ruler:true;">exec_stop="/bin/sh /etc/rc.shutdown";</pre>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_poststart="";</pre>
-			<p>Выполнить команду внутри клетки после ее&nbsp;старта. Можно задавать несколько скриптов нумерую параметры:</p>
-			<pre class="brush:bash;ruler:true;">
-				exec_poststart0="date > /tmp/start1.txt"
-				exec_poststart1="date > /tmp/start2.txt"
-			</pre>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_poststop="";</pre>
-			<p>Выполнить команду внутри клетки после ее&nbsp;останова. Можно задавать несколько скриптов нумерую параметры:</p>
-			<pre class="brush:bash;ruler:true;">
-				exec_poststop0="date > /tmp/stop1.txt"
-				exec_poststop1="date > /tmp/stop2.txt"
-			</pre>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_prestart="";</pre>
-			<p>Выполнить команду внутри клетки перед ее&nbsp;стартом. Можно задавать несколько скриптов нумерую параметры:</p>
-			<pre class="brush:bash;ruler:true;">
-				exec_prestart0="date > /tmp/prestart1.txt"
-				exec_prestart1="date > /tmp/prestart2.txt"
-			</pre>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_prestop="";</pre>
-			<p>Выполнить команду внутри клетки перед ее&nbsp;остановом. Можно задавать несколько скриптов нумерую параметры:</p>
-			<pre class="brush:bash;ruler:true;">
-				exec_prestop0="date > /tmp/prestop1.txt"
-				exec_prestop1="date > /tmp/prestop2.txt"
-			</pre>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_master_poststart="";</pre>
-			<p>Аналогичное поведение exec_poststart, за&nbsp;исключением того что команда выполняется в&nbsp;мастер системе (будьте внимательны, небезопасно)</p>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_master_poststop="";</pre>
-			<p>Аналогичное поведение exec_poststop, за&nbsp;исключением того что команда выполняется в&nbsp;мастер системе (будьте внимательны, небезопасно)</p>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_master_prestart="";</pre>
-			<p>Аналогичное поведение exec_prestart, за&nbsp;исключением того что команда выполняется в&nbsp;мастер системе (будьте внимательны, небезопасно)</p>
-			<hr />
-			<pre class="brush:bash;ruler:true;">exec_master_prestop="";</pre>
-			<p>Аналогичное поведение exec_prestop, за&nbsp;исключением того что команда выполняется в&nbsp;мастер системе (будьте внимательны, небезопасно)</p>
+			<p>Системные команды для запуска и останова клетки. Если вы хотите писать дополнительные скрипты, отрабатывающих при запуске и останове клеток, прочитайте: <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jconfig_ssi.html#execscript">Конфигурации клетки</a></p>
 			<hr />
 			<pre class="brush:bash;ruler:true;">cpuset="0";</pre>
 			<p>Привязать jail и&nbsp;его процессы к&nbsp;конкретным ядрам CPU. Значение&nbsp;0 (по-умолчанию) означает, что привязок к&nbsp;ядрам нет и&nbsp;процессы будут занимать все доступные ядра. Значение отличное от&nbsp;нуля идентифицирует ядро или список ядер, на&nbsp;которых дозволено работать клетке. Запись должна соответствовать форме записи параметра -l cpu-list у&nbsp;команды <a href="http://www.freebsd.org/cgi/man.cgi?query=cpuset&amp;sektion=1" target="_blank"><strong>cpuset(1)</strong></a>, например:</p>

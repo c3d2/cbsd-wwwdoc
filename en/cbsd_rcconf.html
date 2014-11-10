@@ -188,63 +188,9 @@
 		<hr>
 		<pre class="brush:bash;ruler:true;">
 			exec_start="/bin/sh /etc/rc";
-		</pre>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
 			exec_stop="/bin/sh /etc/rc.shutdown";
 		</pre>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_poststart="";
-		</pre>
-		<p>Execute the command inside the cell jail its launch. You can have multiple scripts are numbered options:</p>
-		<p>exec_poststart0=&quot;date &gt; /tmp/start1.txt&quot;;</p>
-		<p>exec_poststart1=&quot;date &gt; /tmp/start2.txt&quot;;</p>
-		<p>..</p>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_poststop="";
-		</pre>
-		<p>Execute the command inside the jail after a&nbsp;stop. You can have multiple scripts are numbered options:</p>
-		<p>exec_poststop0=&quot;date &gt; /tmp/stop1.txt&quot;;</p>
-		<p>exec_poststop1=&quot;date &gt; /tmp/stop2.txt&quot;;</p>
-		<p>..</p>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_prestart="";
-		</pre>
-		<p>Execute the command inside the jail before its launch. You can have multiple scripts are numbered options:</p>
-		<p>exec_prestart0=&quot;date &gt; /tmp/prestart1.txt&quot;;</p>
-		<p>exec_prestart1=&quot;date &gt; /tmp/prestart2.txt&quot;;</p>
-		<p>..</p>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_prestop="";
-		</pre>
-		<p>Execute the command inside the jail before stop&nbsp;it. You can have multiple scripts are numbered options:</p>
-		<p>exec_prestop0=&quot;date &gt; /tmp/prestop1.txt&quot;;</p>
-		<p>exec_prestop1=&quot;date &gt; /tmp/prestop2.txt&quot;;</p>
-		<p>..</p>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_master_poststart="";
-		</pre>
-		<p>A&nbsp;similar behavior exec_poststart, except that the command is&nbsp;executed in&nbsp;the master system (be&nbsp;careful, its not secure)</p>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_master_poststop="";
-		</pre>
-		<p>A&nbsp;similar behavior exec_poststop, except that the command is&nbsp;executed in&nbsp;the master system (be&nbsp;careful, its not secure)</p>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_master_prestart="";
-		</pre>
-		<p>A&nbsp;similar behavior exec_prestart, except that the command is&nbsp;executed in&nbsp;the master system (be&nbsp;careful, its not secure)</p>
-		<hr>
-		<pre class="brush:bash;ruler:true;">
-			exec_master_prestop="";
-		</pre>
-		<p>A&nbsp;similar behavior exec_prestop, except that the command is&nbsp;executed in&nbsp;the master system (be&nbsp;careful, its not secure)</p>
+		<p>System commands for starts and stops jail. If you want to write additional scripts executed by starting and stopping jails see: <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jconfig_ssi.html#execscript">Jail config</a></p>
 		<hr>
 		<pre class="brush:bash;ruler:true;">
 			cpuset="0";
