@@ -14,7 +14,18 @@
 	<hr>
 	<p><strong>10.1.2</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-	<li><em>(bugfix)</em> Correction to determine the type of IPv4: must contain only numbers. <a href="https://github.com/olevole/cbsd/issues/32" target="_blank">issue 32</a> (Reported by: <strong>Alexander Samodelkin</strong>)</li>
+		<li><strong>mountfstab</strong>: check for mount points duplicate in system and local jail fstab file. When duplicate - fstab.local wins</li>
+		<li><strong>pkgbrowser</strong>: rewrite script. Now work with SQLite directly instead of pkg(8), thus greatly speeding up for package list builds</li>
+		<li><strong>svnup</strong>: renamed, again. Now the final version of the script to update: <strong>srcup</strong>. Also, split settings into srcup.conf</li>
+		<li><strong>portsup</strong> script added for checkout and update <em>/usr/ports</em> in master environment</li>
+		<li><strong>cbsdsh</strong>: add substr function for pulling any part of the context of the string</li>
+		<li>The module is now located in the ending \.d directory</li>
+		<li><strong>bsdconf.d</strong> module: new wrappers: service, sysrc, passwd</li>
+		<li><strong>pkg</strong> improvement for pkg wrapper</li>
+		<li><strong>jlogin</strong>: if the environment is not FreeBSD and has /bin/bash, then try to running bash interpreter on login</li>
+		<li><strong>node</strong>: add mode=show for display node statistics</li>
+		<li><em>(bugfix)</em> Fixes for jexport/jimport with newjname args; wrong mounting for /usr/compat. <a href="https://github.com/olevole/cbsd/issues/35" target="_blank">issue 35</a> (Reported and tested by: <strong>Krzysztof Antczak</strong>)</li>
+		<li><em>(bugfix)</em> Correction to determine the type of IPv4: must contain only numbers. <a href="https://github.com/olevole/cbsd/issues/32" target="_blank">issue 32</a> (Reported by: <strong>Alexander Samodelkin</strong>)</li>
 	</ul>
 	<p><strong>10.1.1</strong>&nbsp;&mdash; 2014-10-02</p>
 	<p>bugfix release</p>

@@ -13,6 +13,17 @@
 	<hr>
 	<p><strong>10.1.2</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
+		<li>mountfstab: проверяем точки монтирования в системном и локальном fstab файле и при наличие одинаковых - выигрывает в fstab.local</li>
+		<li>переписан pkgbrowser, скрипт для выбора пекеджей. Теперь работаем с SQLite базой напрямую вместо pkg(8), чем значительно ускоряем выборку</li>
+		<li>svnup переименован, опять. Теперь и финальный вариант скрипта для обновления: srcup. Также, вынесли его настройки в srcup.conf</li>
+		<li>добавлен скрипт posrtup для наполнения /usr/ports в мастер хосте</li>
+		<li>cbsdsh: добавлнена функция substr для выдергивания произвольной части контекста из строки</li>
+		<li>модули теперь находятся в каталоге оканчивающиеся на \.d</li>
+		<li>врапперы: service, sysrc, passwd в модуле bsdconf</li>
+		<li>улучшение модуля pkg</li>
+		<li>jlogin: если окружение не FreeBSD и имеет /bin/bash, то пробуем логинится запуская этот интерпретатор</li>
+		<li>node: добавлено mode=show для вывода статистики по ноде</li>
+		<li><em>(bugfix)</em> Исправление jexport/jimport при указанном newjname, некорректное монтирование /usr/compat. <a href="https://github.com/olevole/cbsd/issues/35" target="_blank">issue 35</a> (сообщил и протестировал: <strong>Krzysztof Antczak</strong>)</li>
 		<li><em>(bugfix)</em> Исправление в определения типа IPv4: запись должна содержать только цифры.  <a href="https://github.com/olevole/cbsd/issues/32" target="_blank">issue 32</a> (сообщил: <strong>Alexander Samodelkin</strong>)</li>
 	</ul>
 	<p><strong>10.1.1</strong>&nbsp;&mdash; 2014-10-02</p>
