@@ -82,10 +82,10 @@
   <loc>http://www.bsdstore.ru/en/cmdsyntax_cbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jstop_jstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jstop_jstart_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_natcfg_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_natcfg_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/en/cbsd_taskd.html</loc>
@@ -175,10 +175,10 @@
   <loc>http://www.bsdstore.ru/en/cbsd_geli.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_repo_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_repo_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_history_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_history_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/en/custom_freecbsd.html</loc>
@@ -187,133 +187,133 @@
   <loc>http://www.bsdstore.ru/en/workflow_cbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jcreate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jcreate_secondary_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jcreate_secondary_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jconfig_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jremove_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jrename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jrename_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jupgrade_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jupgrade_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jls_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jlogin_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jget_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jget_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jclone_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jsnapshot_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jsnapshot_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jexport_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jimport_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jbackup_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jbackup_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jdescr_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jdescr_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jcoldmigrate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jcoldmigrate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jrctl_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jrctl_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_ddns_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_ddns_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jail2iso_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jail2iso_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jlocate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jlocate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jailscp_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jailscp_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_jailtraffic_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jailtraffic_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/en/workflow_bhyvecbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bcreate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bconfig_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bstop_bstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bstop_bstart_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bremove_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_brename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_brename_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bls_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_blogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_blogin_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bclone_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bexport_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_bimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bimport_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/en/node_cbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_node_overview_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_overview_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_node_list_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_list_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_node_add_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_add_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_node_del_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_del_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_node_rexe_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_rexe_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1/wf_nlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2/wf_nlogin_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/ru/cmdsyntax_cbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jstop_jstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jstop_jstart_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_natcfg_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_natcfg_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/ru/10.0.7/wf_jls_ssi.html</loc>
@@ -355,13 +355,13 @@
   <loc>http://www.bsdstore.ru/ru/cbsd_geli.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_repo_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_repo_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_imghelper_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_imghelper_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_history_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_history_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/ru/custom_freecbsd.html</loc>
@@ -370,124 +370,124 @@
   <loc>http://www.bsdstore.ru/ru/workflow_cbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jcreate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jcreate_secondary_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jcreate_secondary_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jconfig_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jremove_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jrename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jrename_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jupgrade_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jupgrade_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jls_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jlogin_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jget_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jget_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jclone_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jsnapshot_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jsnapshot_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jexport_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jimport_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jbackup_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jbackup_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jdescr_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jdescr_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jcoldmigrate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jcoldmigrate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jrctl_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jrctl_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_ddns_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_ddns_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jail2iso_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jail2iso_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jlocate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jlocate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1//wf_jailscp_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2//wf_jailscp_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jailtraffic_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jailtraffic_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/ru/workflow_bhyvecbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bcreate_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bconfig_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bstop_bstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bstop_bstart_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bremove_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_brename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_brename_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bls_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_blogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_blogin_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bclone_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bexport_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_bimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bimport_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/ru/node_cbsd.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_node_overview_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_overview_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_node_list_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_list_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_node_add_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_add_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_node_del_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_del_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_node_rexe_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_rexe_ssi.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_nlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_nlogin_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/en/articles.html</loc>
@@ -541,7 +541,7 @@
   <loc>http://www.bsdstore.ru/en/misc/dashboard/index.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.1/wf_jailscp_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jailscp_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/ru/misc/jmap2html.sh.html</loc>
@@ -550,7 +550,7 @@
   <loc>http://www.bsdstore.ru/ru/misc/dashboard/index.html</loc>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.1//wf_jailscp_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.2//wf_jailscp_ssi.html</loc>
 </url>
 <url>
   <loc>http://www.bsdstore.ru/en/articles/upgrade_for_fun.html</loc>
