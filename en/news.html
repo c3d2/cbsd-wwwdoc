@@ -5,7 +5,7 @@
 <div class="block">
 	<p><strong>11.0.0</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-	<li>No started</li>
+	<li>Not started</li>
 	</ul>
 	<p><em>If&nbsp;you want to&nbsp;experiment with the next version of&nbsp;<strong>CBSD</strong>, use <strong>git clone https://github.com/olevole/cbsd.git</strong> for <strong>/usr/local/cbsd</strong></em></p>
 </div>
@@ -14,15 +14,15 @@
 	<hr>
 	<p><strong>10.1.2</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li><strong>mountfstab</strong>: check for mount points duplicate in system and local jail fstab file. When duplicate - fstab.local wins</li>
-		<li><strong>pkgbrowser</strong>: rewrite script. Now work with SQLite directly instead of pkg(8), thus greatly speeding up for package list builds</li>
-		<li><strong>svnup</strong>: renamed, again. Now the final version of the script to update: <strong>srcup</strong>. Also, split settings into srcup.conf</li>
+		<li><strong>mountfstab</strong>: check for mount points duplicate in system and local jail fstab file. When duplicate - fstab.local content wins</li>
+		<li><strong>pkgbrowser</strong>: rewrite script. Now work with SQLite directly instead of <a href="http://man.freebsd.org/pkg/7" target="_blank">pkg(7)</a>, thus greatly speeding up for building package list</li>
+		<li><a href="/en/base_cbsd.html">svnup</a>: renamed, again. Now the final version of the script to update: <a href="/en/base_cbsd.html">srcup</a>. Also, split settings into <em>srcup.conf</em></li>
 		<li><strong>portsup</strong> script added for checkout and update <em>/usr/ports</em> in master environment</li>
-		<li><strong>cbsdsh</strong>: add substr function for pulling any part of the context of the string</li>
-		<li>The module is now located in the ending \.d directory</li>
-		<li><strong>bsdconf.d</strong> module: new wrappers: service, sysrc, passwd</li>
-		<li><strong>pkg</strong> improvement for pkg wrapper</li>
-		<li><strong>jlogin</strong>: if the environment is not FreeBSD and has /bin/bash, then try to running bash interpreter on login</li>
+		<li><a href="/en/cbsdsh.html">cbsdsh</a>: add substr function for pulling any part of the context of the string</li>
+		<li>The module is now located in the ending <strong>.d</strong> directory</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/modules/bsdconf.d_ssi.html">bsdconf.d</a> module: new wrappers: <strong>service, sysrc, passwd</strong> for the appropriate tools</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/modules/pkg.d_ssi.html">pkg.d</a>: improvement for <a href="http://man.freebsd.org/pkg/7" target="_blank">pkg(7)</a> wrapper</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jlogin_ssi.html">jlogin</a>: if the environment is not FreeBSD and has <em>/bin/bash</em>, then try to running bash interpreter on login</li>
 		<li><strong>node</strong>: add mode=show for display node statistics</li>
 		<li><em>(bugfix)</em> Fixes for jexport/jimport with newjname args; wrong mounting for /usr/compat. <a href="https://github.com/olevole/cbsd/issues/35" target="_blank">issue 35</a> (Reported and tested by: <strong>Krzysztof Antczak</strong>)</li>
 		<li><em>(bugfix)</em> Correction to determine the type of IPv4: must contain only numbers. <a href="https://github.com/olevole/cbsd/issues/32" target="_blank">issue 32</a> (Reported by: <strong>Alexander Samodelkin</strong>)</li>
@@ -41,7 +41,7 @@
 		<li>BFS scheduler patch and kernel options has been added. This is desktop oriented sheduler (path maintainer: <strong>Ivan Klymenko</strong>)</li>
 		<li>xjails (allow_kmem) for FreeBSD 10.1</li>
 		<li><a href="/en/cmdsyntax_cbsd.html">Starting integration</a> tui-helper with <a href="http://man.freebsd.org/bsdconfig/8" target="_blank">bsdconfig</a> framework (Thanks to <strong>Devin Teske</strong> for flexibility of bsdconfig)</li>
-		<li><a href="/en/10.1.0/wf_jstop_jstart_ssi.html">jstart</a>: file lock at the start of the jails, for situations where the jail is located on DFS (NFS, glusterfs) and presented to several nodes.</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jstop_jstart_ssi.html">jstart</a>: file lock at the start of the jails, for situations where the jail is located on DFS (NFS, glusterfs) and presented to several nodes.</li>
 		<li>bhyve profiles: active flags, for regulating the activity or inactivity of the profile</li>
 		<li>bhyve login: when using tmux session, use different names when bhyveload and bhyve. When this preference is given to blogin bhyve, if unsuccessful - attempt to enter the session bhyveload</li>
 		<li>bhyve: virtual machine reboot support</li>
@@ -49,7 +49,7 @@
 		<li>Removed old patches and periodic-tasks: now periodic tasks (eg, collection of traffic) going through cbsdd</li>
 		<li>jail2iso: UEFI support</li>
 		<li>renaming arch and vnet to hostarch and vimage_feature in global conf, due to conflicts with the parameters of jail</li>
-		<li><a href="/en/10.1.0/wf_natcfg_ssi.html">IPNAT from Ipfilter</a> is back to <strong>CBSD</strong> ( was diabled in <strong>CBSD</strong> 9.2.5 )</li>
+<!-- 		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_natcfg_ssi.html">IPNAT from Ipfilter</a> is back to <strong>CBSD</strong> ( was diabled in <strong>CBSD</strong> 9.2.5 )</li> -->
 		<li><em>(bugfix)</em> getnics-by-ip: looking only IP prefix inet in the output ifconfig (reported by: <strong>Ivan Klymenko</strong>)</li>
 		<li><em>(bugfix)</em> bhyve: do not test hard drive for empty when booting from CD</li>
 		<li><em>(bugfix)</em> Fix order of epair number and a/b side <a href="https://github.com/olevole/cbsd/issues/25" target="_blank">issues 25</a>(reported and fixed by: <strong>kev009</strong>)</li>
@@ -61,7 +61,7 @@
 		<li>bhyve: support for VM auto start</li>
 		<li>bhyve: add virtio RNG <a href="http://svnweb.freebsd.org/base?view=revision&revision=r264055" target="_blank">r264055</a> for FreeBSD 10.1+</li>
 		<li>bstop/bstart/jstop/jstart/bconfig/jconfig: when executed without arguments, will show the list of jails for interactive selection</li>
-		<li><a href="/en/10.0.7/wf_jls_ssi.html">jls</a>, <a href="/en/10.0.7/wf_node_list_ssi.html">node</a>, <a href="/en/10.0.7/wf_jrctl_ssi.html">jrctl</a> and <a href="/en/10.0.7/wf_jail2iso_ssi.html">jail2iso</a> now have corresponding <em>.conf</em> files</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jls_ssi.html">jls</a>, <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_node_list_ssi.html">node</a>, <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jrctl_ssi.html">jrctl</a> and <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jail2iso_ssi.html">jail2iso</a> now have corresponding <em>.conf</em> files</li>
 	</ul>
 	<p><strong>10.0.6</strong>&nbsp;&mdash; 2014-07-12</p>
 	<ul>
@@ -73,34 +73,34 @@
 	</ul>
 	<p><strong>10.0.5</strong>&nbsp;&mdash; 2014-05-02</p>
 	<ul>
-		<li>Profiles for <strong>jconstruct\*</strong> (<a href="/en/10.0.5/wf_jcreate_ssi.html">jail create via dialog menu </a>)</li>
-		<li><a href="/en/10.0.5/wf_jlogin_ssi.html">jlogin</a> without arguments now lists <em>online</em> jails for selection; <strong>tmux</strong> support for remote login</li>
-		<li><a href="/en/10.0.5/wf_nlogin_ssi.html">nlogin</a> without arguments now lists nodes for selection</li>
+		<li>Profiles for <strong>jconstruct\*</strong> (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jcreate_ssi.html">jail create via dialog menu </a>)</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jlogin_ssi.html">jlogin</a> without arguments now lists <em>online</em> jails for selection; <strong>tmux</strong> support for remote login</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jlogin_ssi.html">nlogin</a> without arguments now lists nodes for selection</li>
 		<li><em>/usr/local/bin/cbsd</em> now with 0500 perms and <em>cbsd</em> owner, due to use <strong>sudo</strong> for some of its scripts</li>
 	</ul>
 	<p><strong>10.0.4</strong>&nbsp;&mdash; 2014-04-16</p>
 	<ul>
 		<li>Modulization</li>
-		<li><a href="/en/10.0.4/wf_jail2iso_ssi.html">jail2iso</a>: <em>imgsize</em> arg renamed to <em>freesize</em></li>
-		<li><a href="/en/10.0.4/wf_jcreate_ssi.html">jcreate</a>: <em>jailskeldir</em> path configure via <em>jail.conf</em></li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jail2iso_ssi.html">jail2iso</a>: <em>imgsize</em> arg renamed to <em>freesize</em></li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jcreate_ssi.html">jcreate</a>: <em>jailskeldir</em> path configure via <em>jail.conf</em></li>
 		<li>cbsdsh: build-in function for <strong>is_number</strong></li>
 		<li>support for <strong>allow.kmem</strong>, which is&nbsp;allows to&nbsp;run Xorg server in&nbsp;the jail (FreeBSD 11&nbsp;aka HEAD only)</li>
 		<li>Support for <a href="/en/bhyve.html">bhyve</a></li>
 	</ul>
 	<p><strong>10.0.3</strong>&nbsp;&mdash; 2014-02-18</p>
 	<ul>
-		<li><em>(bugfix)</em> Fixed path to&nbsp;pkg(8) in&nbsp;<strong>pkgbrowser</strong>, thanks to&nbsp;Anton Iutin.</li>
-		<li><strong>jsnapshot</strong> now only works with snapshots created by&nbsp;<em>cbsd</em>, improving output for snapshot list (<a href="/en/10.0.4/wf_jsnapshot_ssi.html">jail snapshot (zfs-only)</a>)</li>
-		<li><strong>history</strong> for output last <strong>CBSD</strong> commands (<a href="/en/10.0.4/wf_history_ssi.html">cbsd history</a>)</li>
+		<li><em>(bugfix)</em> Fixed path to&nbsp;pkg(7) in&nbsp;<strong>pkgbrowser</strong>, thanks to&nbsp;Anton Iutin.</li>
+		<li><strong>jsnapshot</strong> now only works with snapshots created by&nbsp;<em>cbsd</em>, improving output for snapshot list (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jsnapshot_ssi.html">jail snapshot (zfs-only)</a>)</li>
+		<li><strong>history</strong> for output last <strong>CBSD</strong> commands ((<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_history_ssi.html">cbsd history</a>)</li>
 	</ul>
 	<p><strong>10.0.2</strong>&nbsp;&mdash; 2014-02-01</p>
 	<ul>
 		<li>Improving output for <strong>--help</strong>&nbsp;&mdash; external link to&nbsp;documentation(<a href="/en/cmdsyntax_cbsd.html">cbsd syntax</a>)</li>
 		<li>Support for non-native architecture via Qemu UserMode (<a href="/en/cbsd_qemu_usermode.html">cbsd and Qemu User mode</a>)</li>
-		<li>Improvement <strong>jls</strong> to&nbsp;support custom data output (<a href="/en/10.0.4/wf_jls_ssi.html">jail list</a>)</li>
-		<li><strong>nice(1)</strong> support for jail priority (<a href="/en/10.0.4/wf_jrctl_ssi.html">jail limits control</a>)</li>
+		<li>Improvement <strong>jls</strong> to&nbsp;support custom data output (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jls_ssi.html">jail list</a>)</li>
+		<li><strong>nice(1)</strong> support for jail priority (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jrctl_ssi.html">jail limits control</a>)</li>
 		<li>Nameing of&nbsp;base changed from base_<strong>arch</strong>_<em>ver</em> to&nbsp;base_<strong>arch</strong>_<strong>platform</strong>_<em>ver</em> due to&nbsp;the increasing popularity of&nbsp;non-x86&nbsp;architecture. After the upgrade, you will need to&nbsp;re-fetch the base dir or&nbsp;rename the old (with stopped jails)&nbsp;&mdash; directory with base_<strong>arch</strong>_ver name now inactive in&nbsp;$workdir/basejail and must be&nbsp;deleted manually.
-		<li>Support the creation of&nbsp;images for <strong>bhyve</strong> from jail (<a href="/en/10.0.4/wf_jail2iso_ssi.html">jail2iso</a>)</li>
+		<li>Support the creation of&nbsp;images for <strong>bhyve</strong> from jail (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->//wf_jail2iso_ssi.html">jail2iso</a>)</li>
 		<li>cbsdsar script has been removed, this functionality was included/enabled by&nbsp;mistake from development version</li>
 		<li>system <strong>CBSD</strong> account now created by&nbsp;ports framework (or&nbsp;manually).</li>
 	</ul>
@@ -131,7 +131,7 @@
 	<ul>
 		<li>a) If&nbsp;you edited the fstab for the jail, these records should be&nbsp;transferred to&nbsp;fstab.local file manually</li>
 		<li>b) Files rc.conf for the jails in&nbsp;the jails-rcconf is&nbsp;obsolete and all setings in&nbsp;SQLite3 database now (the old copy of&nbsp;the file is&nbsp;saved in&nbsp;the jails-system/jailname)</li>
-		<li>Please refer to&nbsp;<a href="/en/10.0.4/wf_jconfig_ssi.html">jail config</a> pages for details.</li>
+		<li>Please refer to&nbsp;<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jconfig_ssi.html">jail config</a> pages for details.</li>
 	</ul>
 
 	<hr>

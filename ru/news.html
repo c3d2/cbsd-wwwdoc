@@ -13,15 +13,15 @@
 	<hr>
 	<p><strong>10.1.2</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li>mountfstab: проверяем точки монтирования в системном и локальном fstab файле и при наличие одинаковых - выигрывает в fstab.local</li>
-		<li>переписан pkgbrowser, скрипт для выбора пекеджей. Теперь работаем с SQLite базой напрямую вместо pkg(8), чем значительно ускоряем выборку</li>
-		<li>svnup переименован, опять. Теперь и финальный вариант скрипта для обновления: srcup. Также, вынесли его настройки в srcup.conf</li>
-		<li>добавлен скрипт posrtup для наполнения /usr/ports в мастер хосте</li>
-		<li>cbsdsh: добавлнена функция substr для выдергивания произвольной части контекста из строки</li>
-		<li>модули теперь находятся в каталоге оканчивающиеся на \.d</li>
-		<li>врапперы: service, sysrc, passwd в модуле bsdconf</li>
-		<li>улучшение модуля pkg</li>
-		<li>jlogin: если окружение не FreeBSD и имеет /bin/bash, то пробуем логинится запуская этот интерпретатор</li>
+		<li><strong>mountfstab</strong>: проверяем точки монтирования в системном и локальном fstab файле и при наличие одинаковых - выигрывает в fstab.local</li>
+		<li>переписан <strong>pkgbrowser</strong>, скрипт для выбора пекеджей. Теперь работаем с SQLite базой напрямую вместо <a href="http://man.freebsd.org/pkg/7" target="_blank">pkg(7)</a>, чем значительно ускоряем выборку</li>
+		<li><a href="/ru/base_cbsd.html">svnup</a> переименован, опять. Теперь и финальный вариант скрипта для обновления: <a href="/ru/base_cbsd.html">srcup</a>. Также, вынесли его настройки в <em>srcup.conf</em></li>
+		<li>добавлен скрипт <strong>posrtup</strong> для наполнения <em>/usr/ports</em> в мастер хосте</li>
+		<li><a href="/ru/cbsdsh.html">cbsdsh</a>: добавлнена функция substr для выдергивания произвольной части контекста из строки</li>
+		<li>модули теперь находятся в каталоге оканчивающиеся на <strong>.d</strong></li>
+		<li>врапперы в модуле <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/modules/bsdconf.d_ssi.html">bsdconf.d</a>: <strong>service, sysrc, passwd</strong> для соответствующих команд</li>
+		<li>улучшение модуля <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/modules/pkg.d_ssi.html">pkg.d</a></li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jlogin_ssi.html">jlogin</a>: если окружение не FreeBSD и имеет <em>/bin/bash</em>, то пробуем логинится запуская этот интерпретатор</li>
 		<li>node: добавлено mode=show для вывода статистики по ноде</li>
 		<li><em>(bugfix)</em> Исправление jexport/jimport при указанном newjname, некорректное монтирование /usr/compat. <a href="https://github.com/olevole/cbsd/issues/35" target="_blank">issue 35</a> (сообщил и протестировал: <strong>Krzysztof Antczak</strong>)</li>
 		<li><em>(bugfix)</em> Исправление в определения типа IPv4: запись должна содержать только цифры.  <a href="https://github.com/olevole/cbsd/issues/32" target="_blank">issue 32</a> (сообщил: <strong>Alexander Samodelkin</strong>)</li>
@@ -40,7 +40,7 @@
 		<li>добавлены патчи и конфигурационный файл для планировщика ядра BFS, ориентированного на использование на Desktop системах (мейнтейнер патчей: <strong>Ivan Klymenko</strong>)</li>
 		<li>xjails (allow_kmem) для FreeBSD 10.1</li>
 		<li><a href="/ru/cmdsyntax_cbsd.html">Начало интеграции</a> tui-хелперов с <a href="http://man.freebsd.org/bsdconfig/8" target="_blank">bsdconfig</a> фреймворком (спасибо <strong>Devin Teske</strong> за гибкость bsdconfig системы)</li>
-		<li><a href="/ru/10.1.0/wf_jstop_jstart_ssi.html">jstart</a>: файловый лок при старте клетки, для ситуаций, когда jail расположен на DFS (NFS, glusterfs) и презентован нескольким нодам</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jstop_jstart_ssi.html">jstart</a>: файловый лок при старте клетки, для ситуаций, когда jail расположен на DFS (NFS, glusterfs) и презентован нескольким нодам</li>
 		<li>bhyve profiles: флаг active, регулирующий активность или неактивность профиля</li>
 		<li>bhyve login: когда используем tmux сессии, используем разные имена при bhyveload и bhyve. При этом предпочтение при blogin отдается bhyve, при неудаче - попытка зайти в сессию bhyveload</li>
 		<li>bhyve: обработка кода завершения виртуальной машины, перезагружаемая машина загружается вновь автоматически</li>
@@ -48,7 +48,7 @@
 		<li>Удалены старые патчи и periodic-задачи: теперь периодические задачи (например, сбор трафика) происходит через cbsdd</li>
 		<li>jail2iso: поддержка UEFI</li>
 		<li>переименование arch и vnet в hostarch и vimage_feature в глобальной настройке, в связи с конфликтами с параметрами jail</li>
-		<li><a href="/ru/10.1.0/wf_natcfg_ssi.html">IPNAT из Ipfilter</a> возвращен в <strong>CBSD</strong> ( был выключен в <strong>CBSD</strong> 9.2.5 )</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_natcfg_ssi.html">IPNAT из Ipfilter</a> возвращен в <strong>CBSD</strong> ( был выключен в <strong>CBSD</strong> 9.2.5 )</li>
 		<li><em>(bugfix)</em> getnics-by-ip: ищем IP только с префиксом inet в выводе ifconfig (сообщил: <strong>Ivan Klymenko</strong>)</li>
 		<li><em>(bugfix)</em> bhyve: не тестируем что жесткий диск пуст, если загрузка происходит с CD</li>
 		<li><em>(bugfix)</em> Исправление в поиске свободного epair номера <a href="https://github.com/olevole/cbsd/issues/25" target="_blank">issues 25</a>(сообщил и исправил: <strong>kev009</strong>)</li>
@@ -60,7 +60,7 @@
 		<li>bhyve: Поддержка автозапуска для bhyve клеток виртуалок</li>
 		<li>bhyve: добавлена поддержка virtio RNG <a href="http://svnweb.freebsd.org/base?view=revision&revision=r264055" target="_blank">r264055</a> на FreeBSD 10.1+</li>
 		<li>bstop/bstart/jstop/jstart/bconfig/jconfig: при запуске без аргументов, выведут список клеток для интерактивного выбора</li>
-		<li>команды <a href="/ru/10.0.7/wf_jls_ssi.html">jls</a>, <a href="/ru/10.0.7/wf_node_list_ssi.html">node</a>, <a href="/ru/10.0.7/wf_jrctl_ssi.html">jrctl</a> и <a href="/ru/10.0.7/wf_jail2iso_ssi.html">jail2iso</a> обзавелись соответствующими <em>.conf</em> файлами</li>
+		<li>команды <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jls_ssi.html">jls</a>, <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_node_list_ssi.html">node</a>, <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jrctl_ssi.html">jrctl</a> и <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jail2iso_ssi.html">jail2iso</a> обзавелись соответствующими <em>.conf</em> файлами</li>
 	</ul>
 	<p><strong>10.0.6</strong>&nbsp;&mdash; 2014-07-12</p>
 	<ul>
@@ -72,34 +72,34 @@
 	</ul>
 	<p><strong>10.0.5</strong>&nbsp;&mdash; 2014-05-02</p>
 	<ul>
-		<li>Профили для <strong>jconstruct\*</strong> (<a href="/ru/10.0.5/wf_jcreate_ssi.html">Создание jail через dialog меню</a>)</li>
-		<li><a href="/ru/10.0.5/wf_jlogin_ssi.html">jlogin</a> без аргументов выдаст список <em>online</em> клеток для выбора; поддержка <strong>tmux</strong> при удаленном входе</li></li>
-		<li><a href="/ru/10.0.5/wf_nlogin_ssi.html">nlogin</a> без аргументов выдаст список нод для выбора</li>
-		<li><a href="/ru/10.0.5/wf_jailscp_ssi.html">nlogin</a> копирование файлов в/из файловых систем клеток</li>
+		<li>Профили для <strong>jconstruct\*</strong> (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jcreate_ssi.html">Создание jail через dialog меню</a>)</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jlogin_ssi.html">jlogin</a> без аргументов выдаст список <em>online</em> клеток для выбора; поддержка <strong>tmux</strong> при удаленном входе</li></li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_nlogin_ssi.html">nlogin</a> без аргументов выдаст список нод для выбора</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jailscp_ssi.html">nlogin</a> копирование файлов в/из файловых систем клеток</li>
 		<li><em>/usr/local/bin/cbsd</em> теперь с правами 0500 и владельцем <em>cbsd</em>, поскольку работает через sudo с частью своих скриптов</li>
 	<p><strong>10.0.4</strong>&nbsp;&mdash; 2014-04-16</p>
 	<ul>
 		<li>Модульность</li>
-		<li><a href="/ru/10.0.4/wf_jail2iso_ssi.html">jail2iso</a>: аргумент <em>imgsize</em> переименован в <em>freesize</em></li>
-		<li><a href="/ru/10.0.4/wf_jcreate_ssi.html">jcreate</a>: путь для <em>jailskeldir</em> вынесен в <em>jail.conf</em></li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jail2iso_ssi.html">jail2iso</a>: аргумент <em>imgsize</em> переименован в <em>freesize</em></li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jcreate_ssi.html">jcreate</a>: путь для <em>jailskeldir</em> вынесен в <em>jail.conf</em></li>
 		<li>cbsdsh: build-in функция <strong>is_number</strong></li>
 		<li>поддержка <strong>allow.kmem</strong>, что позволяет запускать Xorg сервер в&nbsp;Jail (FreeBSD 11&nbsp;aka HEAD only);</li>
 		<li>Поддержка <a href="/ru/bhyve.html">bhyve</a></li>
 	</ul>
 	<p><strong>10.0.3</strong>&nbsp;&mdash; 2014-02-18</p>
 	<ul>
-		<li><em>(bugfix)</em> Исправлен путь к&nbsp;pkg(8) в&nbsp;<strong>pkgbrowser</strong>, спасибо Антону Иутину.</li>
-		<li><strong>jsnapshot</strong> теперь работает только со&nbsp;снапшотами, созданными <em>cbsd</em>, улучшение вывода списка снапшотов (<a href="/ru/10.0.4/wf_jsnapshot_ssi.html">снапшоты (zfs-only)</a>)</li>
-		<li><strong>history</strong> для вывода последних <strong>CBSD</strong> команд (<a href="/ru/10.0.4/wf_history_ssi.html">история команд CBSD</a>)</li>
+		<li><em>(bugfix)</em> Исправлен путь к&nbsp;pkg(7) в&nbsp;<strong>pkgbrowser</strong>, спасибо Антону Иутину.</li>
+		<li><strong>jsnapshot</strong> теперь работает только со&nbsp;снапшотами, созданными <em>cbsd</em>, улучшение вывода списка снапшотов (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jsnapshot_ssi.html">снапшоты (zfs-only)</a>)</li>
+		<li><strong>history</strong> для вывода последних <strong>CBSD</strong> команд (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_history_ssi.html">история команд CBSD</a>)</li>
 	</ul>
 	<p><strong>10.0.2</strong>&nbsp;&mdash; 2014-02-01</p>
 	<ul>
 		<li>Улучшение вывода <strong>--help</strong>&nbsp;&mdash; внешняя ссылка на&nbsp;документацию (<a href="/ru/cmdsyntax_cbsd.html">cbsd syntax</a>)</li>
 		<li>Поддержка ненативных архитектур для клеток через Qemu UserMode (<a href="/ru/cbsd_qemu_usermode.html">cbsd и&nbsp;Qemu User mode</a>)</li>
-		<li>Улучшение <strong>jls</strong> для поддержки вывода кастомизированных данных (<a href="/ru/10.0.4/wf_jls_ssi.html">список jail</a>)</li>
-		<li>Поддержка <strong>nice(1)</strong> для приоритезации клеток (<a href="/ru/10.0.4/wf_jrctl_ssi.html">Управление лимитами jail</a>)</li>
+		<li>Улучшение <strong>jls</strong> для поддержки вывода кастомизированных данных (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jls_ssi.html">список jail</a>)</li>
+		<li>Поддержка <strong>nice(1)</strong> для приоритезации клеток (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jrctl_ssi.html">Управление лимитами jail</a>)</li>
 		<li>Именование баз изменилось с&nbsp;base_<strong>arch</strong>_<em>ver</em> на&nbsp;base_<strong>arch</strong>_<strong>platform</strong>_<em>ver</em> в&nbsp;связи с&nbsp;возрастающей популярностью не-x86&nbsp;архитектур. После обновления, вам необходимо заново скачать базы или переименовать старые (при остановленных клетках)&nbsp;&mdash; каталоги вида base_<strong>arch</strong>_ver теперь неактивны в&nbsp;$workdir/basejail и&nbsp;их&nbsp;необходимо удалить вручную.</li>
-		<li>Поддержка создания имиджей для <strong>bhyve</strong> из&nbsp;jail (<a href="/ru/10.0.4/wf_jail2iso_ssi.html">jail2iso</a>)</li>
+		<li>Поддержка создания имиджей для <strong>bhyve</strong> из&nbsp;jail (<a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jail2iso_ssi.html">jail2iso</a>)</li>
 		<li>Очиста кода от&nbsp;старых develop-скриптов, в&nbsp;тч. cbsdsar; данный функционал был включен по&nbsp;ошибке</li>
 		<li>Системная учетная запись теперь создается портами, не&nbsp;установочным скриптом <strong>CBSD</strong>.</li>
 	</ul>
@@ -130,7 +130,7 @@
 	<ul>
 		<li>a) Если вы&nbsp;правили fstab для клетки, эти записи необходимо перенести локальный fstab вручную</li>
 		<li>b) Файлов rc.conf для клеток в&nbsp;каталоге jails-rcconf больше нет, записи находятся в&nbsp;SQLite3 базе (старая копия файла сохраняется в&nbsp;каталоге jails-system/jailname)</li>
-		<li>За&nbsp;подробностями обратитесь к&nbsp;разделу <a href="/ru/10.0.4/wf_jconfig_ssi.html">конфигурации jail</a></li>
+		<li>За&nbsp;подробностями обратитесь к&nbsp;разделу <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jconfig_ssi.html">конфигурации jail</a></li>
 	</ul>
 
 	<hr>

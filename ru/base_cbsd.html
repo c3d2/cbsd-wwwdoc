@@ -3,9 +3,10 @@
 <div class="block">
 	<p>Команды</p>
 	<pre class="brush:bash;rule:true">
-		% cbsd svnup
+		% cbsd srcup
 		% cbsd buildworld
 		% cbsd installworld
+		% cbsd world
 	</pre>
 </div>
 <div class="block">
@@ -16,18 +17,18 @@
 <div class="block">
 	<p>Сборка или обновление состоит из трех шагов:</p>
 	<ul>
-		<li> Получение или обновление исходного кода FreeBSD через cbsd svnup:
+		<li> Получение или обновление исходного кода FreeBSD через cbsd srcup:
 			Получение или обновление исходного кода для той версии FreeBSD, на котором в данные момент работает текущая нода:
 			<pre class="brush:bash;rule:true">
-				% cbsd svnup
+				% cbsd srcup
 			</pre>
 			Получение или обновление исходного кода для конкретной версии FreeBSD, например, для 10.0:
 			<pre class="brush:bash;rule:true">
-				% cbsd svnup ver=10.0
+				% cbsd srcup ver=10.0
 			</pre>
 			Получение или обновление исходного кода для STABLE ( например, для RELENG_10 ):
 			<pre class="brush:bash;rule:true">
-				% cbsd svnup ver=10 stable=1
+				% cbsd srcup ver=10 stable=1
 			</pre>
 			( Если вы хотите работать с STABLE по-умолчанию, рекомендуется выставить эту опцию глобально в cbsd initenv-tui, после чего добавлять stable=1 к командам будет необязательно ).
 			Эти команды, при наличие исходных кодов в SVN, наполнят каталоги <strong>$workdir/src/src_$ver</strong>
@@ -73,6 +74,7 @@
 			</ul>
 		</li>
 	</ul>
+	<p>Команда <strong>cbsd world</strong> это последовательность <strong>cbsd buildworld && cbsd installworld</strong></p>
 	<p>Имея готовую базу в <strong>${workdir}/basejail</strong>, можно приступать к <a href="/ru/<!--#echo var="version" -->/wf_jcreate_ssi.html">созданию клеток</a>.</p>
 </div>
 <!--# include file="_end.html" -->
