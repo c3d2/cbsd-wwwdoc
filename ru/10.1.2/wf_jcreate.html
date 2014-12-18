@@ -38,27 +38,8 @@
 	</div>
 	<!--# include file="/ru/changeroot.html" -->
 	<div class="block">
-		<p>Вы можете переопределить параметр <strong>jailskeldir</strong>="$workdir/share/jail-skel", прописанный в <em>$workdir/etc/defaults/jail-freebsd-default.conf</em> для указания альтернативного каталога темплейтов, файлы в котором перезапишут оригинальные файлы базы при создании клетки. Для этого, создайте файл <strong>jail-freebsd-XXXXX.conf</strong> в каталоге <em>$workdir/etc</em> и впишите свое значение, например:</p>
-		<pre class="brush:bash;ruler=true;">
-			jailskeldir="/root/share/jail-skel"
-		</pre>
-		<p>Настройки значений по-умолчанию как для диалога, так и для параметров <a href="http://man.freebsd.org/jail/8" target="_blank">jail(8)</a> при создании .jconf (если они не переопределены в диалоге) описаны в файле-профиле <em>$workdir/etc/defaults/jail-freebsd-default.conf</em>.
-		<p>Вы можете создавать собственные профили для своих умолчаний, создавая файлы с подобным содержимым и помещая их в файлах с именами <strong>jail-freebsd-XXXX.conf</strong> в каталоге <em>$workdir/etc</em>. Кроме этого, через значение параметра <strong>$jail_profile</strong> в jail-freebsd-default.conf вы можете указать свой профиль по-умолчанию вместо профиля default. Например, если вы хотите, чтобы по-умолчанию <strong>astart</strong> имел значение 0, <strong>vimage</strong> был включен, имена клеток предлагались вместо <strong>jail1, jail2, jail3</strong> как <strong>client1, client2, client3</strong>, а <strong>exec_start</strong> вместо стандартного значения <strong>/bin/sh /etc/rc</strong> был установлен в <strong>/bin/date</strong>, при этом данный профиль должен предлагаться по-умолчанию, то создайте jail-freebsd-default.conf в каталоге <em>$workdir/etc</em> в котором будет переписываться default_profile.</p>
-		<p>И кроме всего прочего, для группы клеток у профиля <strong>myhosting</strong> при запуске должны отрабатывать скрипты, линкующие файлы базы данных MySQL расположенные в соответствующей клетке клиента (чтобы на них распространялась ZFS quota выданная jail) в движек MySQL запущенный в мастере, а при остановке клетки - разлинковывалась</p>
-		<pre class="brush:bash;ruler=true;">
-			% echo default_profile="myhosting" > /usr/jails/etc/jail-freebsd-default.conf
-		</pre>
-		<p>после чего создайте свой файл профиля, дайте ему имя (myhosting в нашем примере) и переопределите необходимые вам значения. Например <em>/usr/jails/etc/jail-freebsd-myhosting.conf</em> может выглядеть так:</p>
-		<pre class="brush:bash;ruler=true;">
-			jail_profile="myhosting"
-			jailskeldir="$workdir/share/jail-skel"
-			astart="0"
-			exec_start="/bin/date"
-			vimage="1"
-			default_jailname="client"
-			exec_master_poststop="rm -f /var/db/mysql/${jname}";
-			exec_master_prestart="ln -sfh ${workdir}/jails-data/${jname}-data/var/db/mysql/${jname} /var/db/mysql/${jname}";
-		</pre>
+		<p>Вы можете переопределить параметр <strong>jailskeldir</strong>="$workdir/share/jail-skel", прописанный в <em>$workdir/etc/defaults/jail-freebsd-default.conf</em> для указания альтернативного каталога темплейтов, файлы в котором перезапишут оригинальные файлы базы при создании клетки. Для этого, создайте файл <strong>jail-freebsd-XXXXX.conf</strong> в каталоге <em>$workdir/etc</em> и впишите свое значение.</p>
+		<p>Подробнее смотрите: <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_profiles_ssi.html">http://www.olevole.ru/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_profiles_ssi.html</a></p>
 	</div>
 	<div class="block">
 		<p><strong>Пример</strong> (заполнение jname, fqdn, ips полей + GO):</p>
