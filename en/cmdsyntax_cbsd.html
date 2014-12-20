@@ -45,9 +45,14 @@
 	<p class="text-center">
 		<img src="/img/cbsd_syntax2.png" alt="" />
 	</p>
-	<p>In addition, CBSD 10.1.0 is installed as a module for base tools <strong>bsdconfig</strong> (adds itself to the end of the list), which grouped some </strong>-tui</strong> utility, so some controls CBSD you can perform through the interactive interface, running <strong>bsdconfig cbsd<strong>.
+	<p>In addition, CBSD 10.1.0 is installed as a module for base tools <strong>bsdconfig</strong> (adds itself to the end of the list), which grouped some </strong>-tui</strong> utility, so some controls CBSD you can perform through the interactive interface, running <strong>bsdconfig cbsd</strong>.
 	<p class="text-center">
 		<img src="/img/cbsd_syntax3.png" alt="" />
 	</p>
+	<p>For enable debugging via <strong>sh xtrace</strong> and trace all operation, use <em>--debug</em> arguments after CBSD command, for example:</p>
+	<pre class="brush:bash;ruler:true;">
+		% env NOCOLOR=1 cbsd node --debug mode=add node=192.168.1.222 pw=very_strong_plain_password port=22
+		% env NOCOLOR=1 cbsd jls --debug
+	</pre>
 </div>
 <!--# include file="_end.html" -->
