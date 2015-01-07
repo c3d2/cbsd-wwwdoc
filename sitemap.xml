@@ -132,17 +132,17 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/modules/bsdconf.d_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/modules/bsdconf.d_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/modules/pkg.d_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/modules/pkg.d_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jlogin_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -152,7 +152,7 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jstop_jstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jstop_jstart_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -162,37 +162,37 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jls_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_list_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_node_list_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jrctl_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jrctl_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jail2iso_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jail2iso_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jcreate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jsnapshot_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jsnapshot_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_history_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_history_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -202,12 +202,12 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2//wf_jail2iso_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3//wf_jail2iso_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jconfig_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -327,12 +327,12 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_repo_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_repo_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_imghelper_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_imghelper_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -347,87 +347,87 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jcreate_secondary_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jcreate_secondary_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_profiles_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_profiles_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jremove_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jrename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jrename_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jupgrade_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jupgrade_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_natcfg_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_natcfg_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jget_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jget_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jclone_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jexport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jimport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jbackup_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jbackup_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jdescr_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jdescr_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jcoldmigrate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jcoldmigrate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_ddns_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_ddns_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jlocate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jlocate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jailscp_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jailscp_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_jailtraffic_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_jailtraffic_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -437,52 +437,52 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bcreate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bconfig_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bstop_bstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bstop_bstart_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bremove_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_brename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_brename_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bls_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_blogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_blogin_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bclone_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bexport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_bimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_bimport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -492,27 +492,27 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_overview_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_node_overview_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_add_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_node_add_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_del_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_node_del_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_node_rexe_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_node_rexe_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/en/10.1.2/wf_nlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/en/10.1.3/wf_nlogin_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -527,17 +527,17 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/modules/bsdconf.d_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/modules/bsdconf.d_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/modules/pkg.d_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/modules/pkg.d_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jlogin_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -547,57 +547,57 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jstop_jstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jstop_jstart_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_natcfg_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_natcfg_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jls_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_list_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_node_list_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jrctl_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jrctl_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jail2iso_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jail2iso_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jcreate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_nlogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_nlogin_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jailscp_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jailscp_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jsnapshot_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jsnapshot_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_history_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_history_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -607,7 +607,7 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jconfig_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -647,12 +647,12 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_repo_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_repo_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_imghelper_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_imghelper_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -667,77 +667,77 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jcreate_secondary_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jcreate_secondary_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_profiles_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_profiles_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jremove_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jrename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jrename_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jupgrade_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jupgrade_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jget_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jget_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jclone_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jexport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jimport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jbackup_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jbackup_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jdescr_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jdescr_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jcoldmigrate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jcoldmigrate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_ddns_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_ddns_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jlocate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jlocate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_jailtraffic_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_jailtraffic_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -747,52 +747,52 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bcreate_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bcreate_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bconfig_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bconfig_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bstop_bstart_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bstop_bstart_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bremove_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bremove_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_brename_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_brename_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bls_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bls_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_blogin_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_blogin_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bclone_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bclone_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bexport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bexport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_bimport_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_bimport_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -802,22 +802,22 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_overview_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_node_overview_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_add_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_node_add_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_del_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_node_del_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2/wf_node_rexe_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3/wf_node_rexe_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
@@ -867,7 +867,7 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://www.bsdstore.ru/ru/10.1.2//wf_jail2iso_ssi.html</loc>
+  <loc>http://www.bsdstore.ru/ru/10.1.3//wf_jail2iso_ssi.html</loc>
   <lastmod>2014-12-16T18:27:37+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>

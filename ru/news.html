@@ -4,14 +4,20 @@
 <div class="block">
 	<p><strong>10.1.3</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jcreate_ssi.html">jconstruct-tui</a>: возможность выбора запускаемых сервисов в создаваемом jail</li>
-		<li>Возможность сборки и запуска <strong>CBSD</strong> на <a href="http://www.dragonflybsd.org/" target="_blank">DragonFlyBSD</a> платформе (тем не менее, пока в DF используется старый jail фреймворк, <strong>CBSD</strong> там неработоспособна)</li>
+		
 	</ul>
 	<p><em>Если вы&nbsp;хотите поэкспериментировать со&nbsp;следующей версией <strong>CBSD</strong>, используйте <strong>git clone https://github.com/olevole/cbsd.git</strong> для <strong>/usr/local/cbsd</strong></em></p>
 </div>
 <h2><a name="release">Релизы</a></h2>
 <div class="block">
 	<hr>
+	<p>bugfix release</p>
+	<p><strong>10.1.3</strong>&nbsp;&mdash; 2015-01-07</p>
+	<ul>
+		<li><em>(bugfix)</em> Исправлена потеря интерфейса при выполнении brename/bclone</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jcreate_ssi.html">jconstruct-tui</a>: возможность выбора запускаемых сервисов в создаваемом jail</li>
+		<li>Возможность сборки и запуска <strong>CBSD</strong> на <a href="http://www.dragonflybsd.org/" target="_blank">DragonFlyBSD</a> платформе (тем не менее, пока в DF используется старый jail фреймворк, <strong>CBSD</strong> там неработоспособна)</li>
+	</ul>
 	<p><strong>10.1.2</strong>&nbsp;&mdash; 2014-12-21</p>
 	<ul>
 		<li><strong>mountfstab</strong>: проверяем точки монтирования в системном и локальном fstab файле и при наличие одинаковых - выигрывает в fstab.local</li>
