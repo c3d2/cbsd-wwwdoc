@@ -73,29 +73,144 @@
 	</div>
 	<h2><a name="kdejail"><span>Full Example Step-by-Step: KDE4 in xjail with NVIDIA GL</span></a></h2>
 	<div class="block">
-	<p>Example of isolation and start KDE4 in Xorg from the personal jail</p>
-	<p><strong>1)</strong> Obtain patched kernel for <strong>allow_kmem</strong> options from CBSD repository</p>
+	<p>For Radeon/Intel graphics user steps are the same, except for installation of nvidia-settings, nvidia-driver and /usr/src</p>
+        <p>Initial state - installed from scratch FreeBSD, without ports and source tree system</p>
+	<p><strong>1)</strong> Install <strong>CBSD</strong> and init workdir:</p>
 	<pre class="brush:bash;ruler:true;">
-% cbsd repo action=get sources=kernel mode=upgrade
+% pkg install cbsd
+% env workdir="/usr/jails" /usr/local/cbsd/sudoexec/initenv
+% service cbsdd start
 	</pre>
-	<p>This operation fetch and store kernel into your <em>$workdir/basejail/kernel_GENERIC_<strong>arch_ver</strong></em> directory. Currently only 10.1-RELEASE and 11-CURRENT supported</p>
-	<p><strong>2)</strong> Replace your /boot/kernel by patched kernel:</p>
+
+	<p>2) We need a mouse, turn the service <strong>moused</strong>:</p>
+	<pre class="brush:bash;ruler:true;">
+% sysrc moused_enable="YES"
+	</pre>
+	<p>3) Create jail with <strong>kde4</strong> name. In submenu <strong>pkglist</strong> choose MANUAL and write what software we need in a jail: <strong>x11/xorg x11/kde4</strong>:</p>
+	<p>The rest of the software and settings - at your discretion.</p>
+	<p>4) We need a kernel with patches. You can build your own for instructions <a href="https://lists.freebsd.org/pipermail/freebsd-current/2013-May/041872.html">FreeBSD maillist</a> or receive from <strong>CBSD</strong> repository:</p>
+	<pre class="brush:bash;ruler:true;">
+% cbsd repo action=get sources=kernel
+	</pre>
+	<p>5) Install new kernel into <em>/boot/kernel</em>:</p>
 	<pre class="brush:bash;ruler:true;">
 % cbsd upgrade target=kernel
 	</pre>
-	<p><strong>3)</strong> Reboot node to new kernel</p>
-	<p><em>Hint:</em> Also, instead of using kernel from CBSD Repo, you can apply patch by hand, see instruction on <a href="https://lists.freebsd.org/pipermail/freebsd-current/2013-May/041872.html">FreeBSD maillist</a></p>
-	<p><em>Hint:</em> Config for CBSD Kernel available on <em>/usr/local/cbsd/etc/defaults/kernel-GENERIC\*.conf</em></p>
-	<p><strong>3)</strong> Create a new jail, let it be called: xfce</p>
+	<p>6) Reboot system to new kernel:</p>
 	<pre class="brush:bash;ruler:true;">
-% cbsd jconstruct-tui
+% shutdown -r now
 	</pre>
-	<p>Select:</p>
-	<ul>
-		<li><strong>jname</strong> for entering jail name: <em>xfce</em></li>
-		<li><strong>host_hostname</strong> for entering FQDN, eg: <em>xfce.my.domain</em></li>
-		<li><strong>ip4_addr</strong> for entering IP, eg: <em>10.0.0.50/24</em></li>
-		<li><strong>PROCEED</strong> for create jail</li>
-	</ul>
-	</p></p>
+	<p>7) In the settings jail solve <strong>allow_kmem</strong> and change <strong>devfs_ruleset</strong> any non-existent (for example <strong>99</strong>). In this case, will be open all <em>/dev</em>. If you all to open inappropriately - use the information above to create your <strong>ruleset</strong>:</p>
+	<pre class="brush:bash;ruler:true;">
+% cbsd jstop kde4
+% cbsd jset jname=kde4 allow_kmem=1
+% cbsd jset jname=kde4 devfs_ruleset=99
+	</pre>
+	other than that (only for NVIDIA users) ask <strong>CBSD</strong> to mount <em>/usr/src</em> in jail. It is necessary to build <strong>nvidia-driver</strong> port (from which the need <strong>libGL.so</strong> in environment)
+	<pre class="brush:bash;ruler:true;">
+% cbsd jset jname=kde4 mount_src=1
+	</pre>
+	<p>Instead <strong>jset</strong> You can use the TUI configurator: <strong>cbsd jconfig jname=kde4</strong></p>
+	<p>8) Only for NVIDIA users: we need a source tree <em>/usr/src</em> to build <em>x11/nvidia-drivers</em></p>
+	<p>To do this, fill <em>/usr/src</em> and <em>/usr/ports</em> relevant content. Or, you can ask it to do <strong>CBSD</strong></p>
+	<p>For receive <em>/usr/ports</em> from <strong>SVN FreeBSD</strong>:</p>
+	<pre class="brush:bash;ruler:true;">
+% cbsd portsup
+	</pre>
+	<p>For receive <em>$workdir/src/src\*</em> (which we will create a symlink to not keep two copies) from <strong>SVN FreeBSD</strong>:</p>
+	<pre class="brush:bash;ruler:true;">
+% cbsd srcup
+% rmdir /usr/src ( or, on ZFS installation, remove pseudo-fs: <strong>zfs destroy zroot/usr/src</strong> )
+% ln -sf ~cbsd/src/src_10.1/src /usr/src
+	</pre>
+	<p>(If the version of FreeBSD does not 10.1, the path will be different)</p>
+	<p>9) Only for NVIDIA users: install dependencies <strong>nvidia-driver</strong> repository of the installation and removal <strong>nvidia-driver</strong>. In addition, we need <strong>glproto</strong></p>
+	<pre class="brush:bash;ruler:true;">
+% pkg install x11/glproto x11/nvidia-driver 
+% pkg remove nvidia-driver
+	</pre>
+	<p>10) Only for NVIDIA users: Install the NVIDIA driver from ports:</p>
+	<pre class="brush:bash;ruler:true;">
+	env BATCH=no make -C /usr/ports/x11/nvidia-driver install
+	</pre>
+	<p>11) Only for NVIDIA users: prescribes module <strong>nvidia.ko</strong> in autoload, increase <strong>ipc.shmall</strong> as advised by the port:
+	<pre class="brush:bash;ruler:true;">
+% sysrc kld_list="nvidia"
+% echo "kern.ipc.shmall=1310720" >> /etc/sysctl.conf
+	</pre>
+	<p>11) The same actions, but for users with <strong>Intel</strong> graphics: just add into <em>/boot/loader.conf</em>:</p>
+	<pre class="brush:bash;ruler:true;">
+	hw.vga.textmode=1                                                                                                                                                                                                                                                              
+	drm_load="YES"                                                                                                                                                                                                                                                                 
+	drm2_load="YES"                                                                                                                                                                                                                                                                
+	i915kms_load="YES"
+	</pre>
+	<p>12) Restarting the server (or load modules manually), run and prepare jail:</p>
+	<pre class="brush:bash;ruler:true;">
+% shutdown -r now
+% cbsd jstart kde4
+% cbsd jlogin kde4
+	</pre>
+	<p>13) Subsequent steps are performed in the environment. Inside the jail expose dbus to autostart</p>
+	<pre class="brush:bash;ruler:true;">
+% sysrc dbus_enable="YES"
+% service dbus start
+	</pre>
+	<p>14) Install <strong>nvidia-driver</strong> into jail by analogy with paragraph <strong>9</strong> and <strong>10</strong></p>
+<pre class="brush:bash;ruler:true;">
+% pkg install x11/glproto x11/nvidia-driver 
+% pkg remove nvidia-driver
+% env BATCH=no make -C /usr/ports/x11/nvidia-driver install
+</pre>
+	<p>15) If you do not know how to write still working <strong>xorg.conf</strong> from scrath, better to generate it via <strong>nvidia-xconfig</strong>:</p>
+	<pre class="brush:bash;ruler:true;">
+% pkg install x11/nvidia-xconfig
+% nvidia-xconfig
+	</pre>
+	<p>Users with Intel can take advantage with X staff:</p>
+	<pre class="brush:bash;ruler:true;">
+% X -configure
+	</pre>
+	<p>And copy the generated <em>/root/xorg.conf.new</em> in <em>/etc/X11/xorg.conf</em></p>
+	<p>Append in the generated <em>/etc/X11/xorg.conf</em> the <strong>ServerFlags</strong> section:</p>
+	<pre class="cli;">
+Section "ServerFlags"
+       Option         "AutoAddDevices" "off"
+       Option         "AutoEnableDevices" "off"
+       Option         "AllowEmptyInput" "off"
+EndSection
+</pre>
+	<p>16) Create a user xuser, if you have not done so when creating jail:</p>
+	<pre class="brush:bash;ruler:true;">
+% pw useradd xuser -m -s /bin/csh
+	</pre>
+	<p>17) Go to the user, write standard <strong>~/.xinitrc</strong> and run KDE:</p>
+	<pre class="brush:bash;ruler:true;">
+% su - xuser
+% echo startkde >> ~/.xinitrc
+% xinit
+	</pre>
+	<p>It may be useful to make additional settings</p>
+	<p>18) Mount Linux-specific FS, for normal Linux-applications in the jail. To do this, the master node to create a local fstab to jail with this content:</p>
+	<p>файл <em>/usr/jails/jails-fstab/fstab.kde4.local</em></p>
+	<pre class="cli;">
+	linprocfs       /usr/compat/linux/proc  linprocfs       rw      0       0
+	</pre>
+	<p>19) If you plan to synchronize the jail to another server and periodically run on another node, and the configuration of the second node is different, it is best to save the xorg.conf in the master node and create a script that will copy it every once in to /etc/X11/ in the jail. 
+	The same must be done for the other node</p>
+	<p>Делается в мастер ноде</p>
+	<pre class="brush:bash;ruler:true;">
+% cp /usr/jails/jails-data/kde4-data/etc/X11/xorg.conf /etc/X11
+</pre>
+<p>In <em>/usr/jails/jails-system/kde4/master_poststart.d</em> directory create new script <strong>xorg.sh</strong> with such content:</p>
+<pre class="cli;">
+#!/bin/sh
+cp -a /etc/X11/xorg.conf ${data}/etc/X11/xorg.conf
+</pre>
+<p>Make script executable:</p>
+<pre class="brush:bash;ruler:true;">
+% chmod +x /usr/jails/jails-system/kde4/master_poststart.d/xorg.sh
+</pre>
+<p>You can also do with /etc/resolv.conf and /etc/hosts if necessary</p>
+	</div>
 <!--# include file="_end.html" -->
