@@ -3,17 +3,24 @@
 <h1><span>News</span></h1>
 <h2><a name="development">&nbsp;Development</a></h2>
 <div class="block">
-	<p><strong>10.1.4</strong>&nbsp;&mdash; Unknown</p>
+	<p><strong>10.1.5</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li>bhyve: multiple nics support</li>
-		<li>bhyve: ability to specify MAC address per NIC</li>
-		<li><em>(bugfix)</em> jail2iso: prohibit EFI boot loader on systems that do not have <em>/boot/loader.efi</em> (Reported by: <strong>Victor Kraft</strong>)</li>
+
 	</ul>
 	<p><em>If&nbsp;you want to&nbsp;experiment with the next version of&nbsp;<strong>CBSD</strong>, use <strong>git clone https://github.com/olevole/cbsd.git</strong> for <strong>/usr/local/cbsd</strong></em></p>
 </div>
 <h2><a name="release">Releases</a></h2>
 <div class="block">
 	<hr>
+	<p><strong>10.1.4</strong>&nbsp;&mdash; 2015-01-24</p>
+	<ul>
+		<li>bhyve: multiple NICs support</li>
+		<li>bhyve: ability to specify MAC address per NIC</li>
+		<li><em>(bugfix)</em> jail2iso: prohibit EFI boot loader on systems that do not have <em>/boot/loader.efi</em> (Reported by: <strong>Victor Kraft</strong>)</li>
+		<li><em>(bugfix)</em> bhyve: Fixed bug from 10.1.3 - bad handler when creating a virtual machine from Jail</li>
+		<li><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jorder_ssi.html">jorder</a>: restore functional</li>
+		<li>Krzysztof Antczak <a href="https://github.com/tradero/vac" target="_blank">share examples</a> automation for deployment CBSD node through Vagrant + Ansible</li>
+	</ul>
 	<p>bugfix release</p>
 	<p><strong>10.1.3</strong>&nbsp;&mdash; 2015-01-07</p>
 	<ul>
