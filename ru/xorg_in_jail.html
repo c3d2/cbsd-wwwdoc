@@ -36,6 +36,9 @@
 		<div class="warning">
 			<p><strong>Внимание:</strong> Ввиду ограничений в&nbsp;ресурсах, данный патч применен только для ядра FreeBSD 11&nbsp;aka HEAD (на&nbsp;момент написания статьи) в&nbsp;репозитории <strong>CBSD</strong></p>
 		</div>
+		<div class="warning">
+			<p><strong>Внимание:</strong> <strong>allow_kmem</strong> нарушает концепцию безопасности и должна использоваться только для XJails. Не включайте эту опцию в клетках, куда имеет доступ потенциальный взломщик</p>
+		</div>
 		<p>При наличие этих патчей, в&nbsp;конфигурации <strong>CBSD</strong> jail появится опция <strong>allow_kmem</strong>, которую можно установить через <strong>cbsd jset</strong> или <strong>cbsd jconfig</strong></p>
 		<p>Кроме того, вам может понадобиться дописать отдельное правило для <a href="http://www.freebsd.org/cgi/man.cgi?query=devfs.ruleset&amp;sektion=5" target="_blank"><strong>devfs.ruleset(5)</strong></a>, чтобы соответствующие устройства стали видимы в&nbsp;<em>/dev</em> каталоге jail. Например такого содержания:</p>
 		<pre class="brush:bash;ruler:true;">

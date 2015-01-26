@@ -37,6 +37,9 @@
 		<div class="warning">
 			<p><strong>Attention:</strong> Due to&nbsp;resource limitations, this patch is&nbsp;applied only for the FreeBSD kernel 11&nbsp;aka HEAD (as&nbsp;of&nbsp;this writing) in&nbsp;the repository <strong>CBSD</strong></p>
 		</div>
+		<div class="warning">
+			<p><strong>Attention:</strong> <strong>allow_kmem</strong> option violates the concept of jail security and should be used for containerization ONLY YOUR X-jails. Do not enable this feature in the jail that have the potential attackers access.</p>
+		</div>
 		<p>In&nbsp;the presence of&nbsp;these patches, configuration <strong>CBSD</strong> jail will have the option <strong>allow_kmem</strong>, which can be&nbsp;set through <strong>cbsd jset</strong> or&nbsp;<strong>cbsd jconfig</strong></p>
 		<p>In&nbsp;addition, you may need to&nbsp;add a&nbsp;separate rule for <a href="http://www.freebsd.org/cgi/man.cgi?query=devfs.ruleset&amp;sektion=5" target="_blank"><strong>devfs.ruleset(5)</strong></a>, appropriate devices to&nbsp;become visible in&nbsp;the <em>/dev</em> directory in&nbsp;jail. For example this content:</p>
 		<pre class="brush:bash;ruler:true;">
