@@ -1,0 +1,67 @@
+<!--# include file="/en/_start.html" -->
+<!--# include file="/en/currentver.html" -->
+<!--# include file="/en/translate.html" -->
+<h1><span>NOC Project FreeBSD jail image</span></h1>
+	<div class="block">
+	<p><a href="http://nocproject.org" target="_blank">NOC Project</a> is the scalable, high-performance and open-source OSS system for ISP, service and content providers. Major features are:
+	<ul>
+		<li>Telecom-specific modules</li>
+		<ul>
+			<li>Network Inventory</li>
+			<li>IP Address Management</li>
+			<li>VLAN Management</li>
+			<li>Service Activation</li>
+			<li>Configuration Management</li>
+			<li>Fault Management</li>
+			<li>DNS Provisioning</li>
+			<li>Performance Management</li>
+			<li>Peering Management</li>
+			<li>Knowledge Base</li>
+		</ul>
+		<li>Vendor-agnostic</li>
+		<ul>
+			<li>Over 30 supported vendors, from CPEs to core MPLS routers</li>
+		</ul>
+		<li>Battle-proven</li>
+		<ul>
+			<li>Used by small and large companies worldwide</li>
+		</ul>
+		<li>Leverages mature and proven open-source technologies</li>
+		<ul>
+			<li>Python</li>
+			<li>PostgreSQL</li>
+			<li>MongoDB</li>
+			<li>Django</li>
+			<li>ExtJS</li>
+		</ul>
+		<li>Integration</li>
+		<ul>
+			<li>REST/JSON API</li>
+			<li>Python API</li>
+		</ul>
+		<li>Established professional community</li>
+		<ul>
+			<li>DevTeam and Community</li>
+		</ul>
+		<li>BSD License</li>
+	</ul>
+	</p>
+	<p>For installing NOC <strong>CBSD</strong> jail use <strong>bsdconfig cbsd</strong> and Repository submenu, or just follow this steps:</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=noc
+		</pre>
+		<p>or</p>
+		<pre class="brush:bash;ruler:true;">
+			% cbsd repo action=get sources=img name=noc ver=10.1
+		</pre>
+		<p>If you hosted on another ( non 10.1 ) FreeBSD version.</p>
+		<p>a clean NOC Project installation in the jail will be available for access via <strong>http://FQDN</strong></p>
+		<!--# include file="/en/changeroot.html" -->
+		<p>Web interface administrative credentials are:</p>
+<pre class="cli">
+User: admin
+Password: admin
+</pre>
+		<p class="text-center"><img src="/img/nocproject1.png" alt="" /></p>
+	</div>
+<!--# include file="/en/_end.html" -->
