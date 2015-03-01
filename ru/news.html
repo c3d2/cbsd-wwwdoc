@@ -5,8 +5,17 @@
 	<p><strong>10.1.5</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
 		<li>bhyve: при создании FreeBSD VM через профиль FreeBSD-from-jail теперь можно указать swap раздел определенного раздела</li>
+		<li>zrep: опциональная поддержка mbuffer; демонизация для исключения долгого бутстрапа при частых вызовах</li>
+		<li>carpcfg: включение конфигуратора carp(4) в меню. Поддержка carp(4) - предпоследний большой milestone из первоначального плана развития CBSD и HASTD - последний.</li>
+		<li>bhyve: возможность указать объем Swap раздела при создании виртуальной машины через <em>FreeBSD-from-jail</em> профиль</li>
+		<li>bhyve: возможность создать виртуальную машину через <em>FreeBSD-from-jail</em> профиль на ZFS файловой системе</li>
+		<li>Изменена схема boostrap базы образов клеток - теперь <a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_imghelper_ssi.html">хелпер</a> конфигурирует клетку через SQLite3 файл</li>
+		<li>Начало работ по интеграции <strong>CBSD</strong> с <a href="https://github.com/Juniper/libxo" target="_blank">libxo</a> библиотекой для унификации вывода в человеческом и xml, json, html форматах. Смотрите <a href="/<!--#echo var="lang" -->/cmdsyntax_cbsd.html">Синтаксис команд CBSD</a></li>
+		<li>Поддержка работы и создание клеток на <a href="http://www.dragonflybsd.org/hammer/">HAMMERFS</a></li>
+		<li>Поддержка <a href="http://man.freebsd.org/dpv/1" target="_blank">dpv(1)</a> для отрисовки прогрессбара в DIALOG-овых формах</li>
+		<li>mkhostsfile: редактируем только CBSD записи в <em>/etc/hosts</em> файле клетки, используя шаблон: <em># CBSD autotpl for mkhostsfile</em></li>
 		<li><em>(bugfix)</em> исправление утечки ресурсов в cbsdsh/cbsd_fwatch <a href="https://github.com/olevole/cbsd/commit/466a0a9874e5210d1fa013705071574bafc9798e" target="_blank">466a0a9</a> (сообщил: <strong>Alexey Shubnikov</strong>). Патч для версии 10.1.4 применяется на уровне портов через <a href="https://svnweb.freebsd.org/ports?view=revision&revision=r378467" target="_blank">10.1.4_1</a></li>
-		<li><em>(bugfix)</em> Если используется mount_ports, по-умолчанию дерево монтируется в RO, distfiles создается персональный в <em>/tmp</em> каталоге клетки. 
+		<li><em>(bugfix)</em> Если используется mount_ports, по-умолчанию дерево монтируется в RO, distfiles создается персональный в <em>/var/cache</em> каталоге клетки. 
 		Если вы хотите изменить это поведение, обратитесь к параграфу <strong>mount_ports</strong> в <a href="/<!--#echo var="lang" -->/cbsd_rcconf.html">Параметры клеток cbsd</a> (Указал: <strong>k at free.de</strong>)</li>
 	</ul>
 	<p><em>Если вы&nbsp;хотите поэкспериментировать со&nbsp;следующей версией <strong>CBSD</strong>, используйте <strong>git clone https://github.com/olevole/cbsd.git</strong> для <strong>/usr/local/cbsd</strong></em></p>

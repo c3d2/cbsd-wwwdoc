@@ -66,11 +66,20 @@
 		% cbsd jstart inter=0 jname=XXX
 		% cbsd jcreate inter=0 jconf=/path/to/jconf
 	</pre>
+</div>
 <h2><a name="cmddebug">CBSD command debuging</a></h2>
+<div class="block">
 	<p>For enable debugging via <strong>sh xtrace</strong> and trace all operation, use <em>--debug</em> arguments after CBSD command, for example:</p>
 	<pre class="brush:bash;ruler:true;">
 		% env NOCOLOR=1 cbsd node --debug mode=add node=192.168.1.222 pw=very_strong_plain_password port=22
 		% env NOCOLOR=1 cbsd jls --debug
 	</pre>
+</div>
+<h2><a name="cmdoutput">Output in XML, JSON, HTML and human-readable format</a></h2>
+<div class="block">
+	<p>Since 10.1.5, <strong>CBSD</strong> can display information not only to understand the human form, but also in HTML, XML and JSON for easy machine parsing and simply for the cyborgs joy</p>
+	<p class="text-center">
+		<img src="/img/cbsd_syntax4.png" alt="" />
+	</p>
 </div>
 <!--# include file="_end.html" -->
