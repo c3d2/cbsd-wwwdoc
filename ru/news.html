@@ -14,6 +14,7 @@
 		<li>Поддержка работы и создание клеток на <a href="http://www.dragonflybsd.org/hammer/">HAMMERFS</a></li>
 		<li>Поддержка <a href="http://man.freebsd.org/dpv/1" target="_blank">dpv(1)</a> для отрисовки прогрессбара в DIALOG-овых формах</li>
 		<li>mkhostsfile: редактируем только CBSD записи в <em>/etc/hosts</em> файле клетки, используя шаблон: <em># CBSD autotpl for mkhostsfile</em></li>
+		<li><a href="http://youtu.be/0jQwc5m9aG4" target="_blank">Xen Dom0 support</a></li>
 		<li><em>(bugfix)</em> исправление утечки ресурсов в cbsdsh/cbsd_fwatch <a href="https://github.com/olevole/cbsd/commit/466a0a9874e5210d1fa013705071574bafc9798e" target="_blank">466a0a9</a> (сообщил: <strong>Alexey Shubnikov</strong>). Патч для версии 10.1.4 применяется на уровне портов через <a href="https://svnweb.freebsd.org/ports?view=revision&revision=r378467" target="_blank">10.1.4_1</a></li>
 		<li><em>(bugfix)</em> Если используется mount_ports, по-умолчанию дерево монтируется в RO, distfiles создается персональный в <em>/var/cache</em> каталоге клетки. 
 		Если вы хотите изменить это поведение, обратитесь к параграфу <strong>mount_ports</strong> в <a href="/<!--#echo var="lang" -->/cbsd_rcconf.html">Параметры клеток cbsd</a> (Указал: <strong>k at free.de</strong>)</li>
