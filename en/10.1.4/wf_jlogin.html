@@ -6,12 +6,12 @@
 			% cbsd jlogin
 		</pre>
 		<p><strong>Description</strong>:</p>
-		<p>Execute login into jail from root user. In case when attempt in a jail which isn't present on a local node, but it is present on one of remote nodes, <strong>jlogin</strong> will ask a question on attempt to login in remote jail through ssh.</p>
-		<p>If the name of jail as argument is not specified, displays a list of all the jails in the farm (if remote node was added) in the status Online to select</p>
-		<p>If you do remote login into jail and node have <strong>tmux</strong> installed, entrance to the jail will be performed with the launch tmux session, the name of which is formed from <em>nodename</em> of the server, produced from jlogin.</p>
-		<p>If you are in parallel with two entrances from one source to a remote jail, the second session will be connected via <strong>tmux-attach</strong>. When you exit the remote jail, tmux session ends (you can just detach session via <strong>Ctrl + b , d</strong>)</p>
-		<p>If <strong>tmux</strong> exist in system but you <strong>NOT</strong> want to use it at jlogin, just duplicate <em>${workdir}/defaults/jlogin.conf</em> tmux_login params in the <em>${workdir}/etc/jlogin.conf</em> file, but with <strong>0</strong> value.
-		<p>If you not want to see "try to login?" questions every time when you log into the jail on the remote node, just duplicate <em>${workdir}/defaults/jlogin.conf</em> always_rlogin params in the <em>${workdir}/etc/jlogin.conf</em> file, with <strong>1</strong> value.
+		<p>Performs a login to the jail as root user. If the jail isn't present on the local node, but rather on one of the remote nodes, <strong>jlogin</strong> will attempt to login over ssh.</p>
+		<p>If no jail is specified, a list of all known online jails in the farm is displayed (provided remote hosts were added).</p>
+		<p>If you remotely connect to a jail and node which have <strong>tmux</strong> installed, tmux will be launched at login and the session is given the name taken from  the server's <em>nodename</em> (taken from jlogin).</p>
+		<p>Additional sessions will automatically join the tmux session through a <strong>tmux-attach</strong>. When the last connection is closed the tmux session ends (you may detach via <strong>Ctrl + b , d</strong> to keep it running).</p>
+		<p>Should you prefer <strong>NOT</strong> to use <strong>tmux</strong> on jlogin, copy <em>${workdir}/defaults/jlogin.conf</em> to <em>${workdir}/etc/jlogin.conf</em> and set tmux_login to <strong>0</strong>.
+		<p>In order to deactivate "try to login?" when logging in to remote nodes, set always_rlogin to <strong>1</strong> in your <em>${workdir}/etc/jlogin.conf</em>.
 		<p><strong>Example</strong>:</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jlogin kde4
