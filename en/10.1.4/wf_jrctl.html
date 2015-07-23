@@ -7,24 +7,25 @@
 			% cbsd jrctl-tui
 		</pre>
 		<strong>Description</strong>:
-		<p><strong>CBSD</strong> support various subsystems FreeBSD for setting limits on the jail resource.</p>
+		<p><strong>CBSD</strong> supports many of FreeBSD's mechanisms for enforcing limits on a jail's resource usage.</p>
 	</div>
 	
 	<h2><a name="filequota">File quotas</a></h2>
 	<div class="block">
-		<p>Floating file quota is only possible for jail placed on <strong>ZFS</strong>-file system. For system on <strong>UFS</strong> something like this can be realized via md(4)-based vnode file/image (parameter <strong>mdsize</strong> in the jail).</p>
+		<p>Floating file quotas are only possible for jails residing on <strong>ZFS</strong>-file system. For systems stored on <strong>UFS</strong> a similar restrictions can be enforced using an md(4)-based vnode file/image and making use of <strong>mdsize</strong> for the jail).</p>
 	</div>
 
 	<h2><a name="renice">Renice prioritization</a></h2>
 	<div class="block">
-		<p>For prioritization jail <strong>CBSD</strong> use <a href="http://www.freebsd.org/cgi/man.cgi?query=renice&amp;sektion=8" target="_blank">renice(8)</a> subsystem. You can specify different priorities for different jails to get the most important jails most CPU-time by jails that CPU time can yield.  For example, you may want to give the lowest priority distcc jail, sets jail with WEB server medium and give database jail maximum of priority. For this behavior is responsible for setting <strong>nice</strong> in jail rctl setting, and its value corresponds to the behavior of nice(1)&nbsp;— the lower ratio for priority jail. renice demonstration:
-		<p>1) Lets create AMP jail and placing in the docroot .php script performs some mathematical operations, such as <a href="/en/misc/bench.zip" target="_blank">bench.zip</a> taken from <a href="http://www.php-benchmark-script.com/" target="_blank">http://www.php-benchmark-script.com/</a>  with increased tenfold iteration cycles. Cloning jail, giving the first <strong>highprio1</strong> name and <strong>lowprio1</strong> for second. Through <strong>cbsd jrctl-tui</strong> specify the first highest priority <strong>-20</strong>, and minimum for second, <strong>20</strong>. In addition, hang jail per core through <strong>cpuset</strong> via  <strong>cbsd jconfig</strong> (single-core systems are now hard to find, and smart scheduler OS does not allow for a clean experimental without these actions ;-).</p>
+		<p><strong>CBSD</strong> uses <a href="http://www.freebsd.org/cgi/man.cgi?query=renice&amp;sektion=8" target="_blank">renice(8)</a> to prioritize each jail's access to the CPU. This makes it possible to select different priorities on a per jail basis and give the most impoartant jails the highest share of CPU time.  For example, you may want to have your distcc jail set to a low priority, give your web server medium and the jail hosting the databse the highest priority. The actual priorization is taken care of by <strong>nice</strong> which gets the value for each jail from jail rctl. The values set here correspond to the behavior of nice(1)&nbsp;— the lowest integer resulting in the highest priority.
+    <p>Renice example:
+		<p>1) Let's create an AMP jail and have it run a php script that performs some work (such as <a href="/en/misc/bench.zip" target="_blank">bench.zip</a> taken from <a href="http://www.php-benchmark-script.com/" target="_blank">http://www.php-benchmark-script.com/</a>). We then clone the jail, calling the first <strong>highprio1</strong> and the second <strong>lowprio1</strong>. Using <strong>cbsd jrctl-tui</strong> we give the first the highest possible priority <strong>-20</strong>, and set the second jail to the lowest priority of <strong>20</strong>. In addition we limit the jail to one core through <strong>cpuset</strong> with <strong>cbsd jconfig</strong> (single-core systems are hard to come by these days and smart schedulers do not allow for a clean experiment without taking this step ;-).</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jls display=jid,jname,ip4_addr,cpuset
 			16   highprio1   10.0.0.121/24  4
 			17   lowprio1    10.0.0.122/24  4
 		</pre>
-		<p>— jid 16 is priority jail and jid 17&nbsp;— not priority, both on the fourth core.</p>
+		<p>— jid 16 is the higher prioritised jail while jid 17&nbsp;— is set to a lower priority. Both run on the fourth core.</p>
 		<p>make poll <strong>top</strong> state congestion <strong>php-fpm</strong> with JID output:</p>
 		<pre class="brush:bash;ruler:true;">
 		% export iter=1
@@ -35,7 +36,7 @@
 			sleep 1
 		done
 		</pre>
-		<p>Run the script at the same time in both IP:</p>
+		<p>We launch the script on both IPs at the same time:</p>
 		<pre class="cli">
 	% fetch -T 300 -o /dev/stdout http://10.0.0.121 &amp; fetch -T 300 -o /dev/stdout http://10.0.0.122 &amp; 
 	[1] 65985
@@ -74,7 +75,7 @@
 	[2]    Done                          fetch -T 300 -o /dev/stdout http://10.0.0.122
 	[1]  + Done                          fetch -T 300 -o /dev/stdout http://10.0.0.121
 		</pre>
-		<p>during which observe the following picture from top:</p>
+		<p>and we can soon observe the following output from top:</p>
 		<pre class="cli">
 	Iter: 1
 	65101  16 www           1  35  -20 32548K 11456K CPU4    4   0:35  20.56% php-fpm: pool www (php-fpm)
@@ -96,7 +97,7 @@
 	65587  17 www           1  96   20 32548K 11456K RUN     4   0:34  12.79% php-fpm: pool www (php-fpm)
 	..
 		</pre>
-		<p>Jail with 16 jid get more priority and executed in almost 1.5 times faster.</p>
+		<p>The jail with jid 16 is getting a larger share of the available CPU cycles and executes almost 1.5 times faster.</p>
 	</div>
 	
 	<h2><a name="rctl">RACCT/RCTL framework</a></h2>
