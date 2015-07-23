@@ -11,7 +11,7 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jdescr mode=update jname=jname
 		</pre>
-		<p>running <strong>nvi</strong> in edit mode allows for easy modification of the description. If you prefer using a different editor such (such as <strong>vim</strong> or <strong>mcedit</strong> it can easily be done by passing your choice with the <strong>editor</strong> variable. Descriptions for each jail are stored in a text file residing at <em>$workdir/jails-system/$jname/descr</em>, where <strong>jname</strong> is the name of the jail. When a jail is moved or copied with jcoldmigrate, jclone, jimport/export operations, the description will remain the same.</p>
+		<p>runs <strong>nvi</strong> in edit mode and opens the description of the jail specified by <strong>jname</strong>. If you prefer using a different editor such (such as <strong>vim</strong> or <strong>mcedit</strong> it can easily be done by passing your choice with the <strong>editor</strong> variable. Descriptions for each jail are stored in a text file residing at <em>$workdir/jails-system/$jname/descr</em>, where <strong>jname</strong> is the name of the jail. When a jail is moved or copied with jcoldmigrate, jclone, jimport/export operations, the description will remain the same.</p>
 		<p><strong>Example</strong> (running mcedit to modify the kde4 jail using russian UTF8 charset):</p>
 		<pre class="brush:bash;ruler:true;">
 			% setenv LANG ru_RU.UTF-8
