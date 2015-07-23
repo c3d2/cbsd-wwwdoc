@@ -6,18 +6,18 @@
 			% cbsd jdescr
 		</pre>
 		<strong>Description</strong>
-		<p>Each jail can have the description/summary, that can be used to construct various dynamic documentation on admin pages. <strong>cbsd jdescr</strong> without arguments just out description for all jails on the local node.</p>
+		<p>Each jail can have an optional description/summary. With this it is possible to generate dynamic documentation on admin pages. Using <strong>cbsd jdescr</strong> by itself outputs a description of all local jails.</p>
 		<p>Command</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jdescr mode=update jname=jname
 		</pre>
-		<p>run <strong>nvi</strong> in edit mode for description. By argument <strong>editor</strong> you can start alternative favorite editor for example — <strong>vim</strong>, <strong>mcedit</strong> and other. Descriptions stored in ASCII-file, placed to <em>$workdir/jails-system/$jname/descr</em> file, where <strong>jname</strong> — name of jail. This file you can just copy. As directory jails-system participates in jcoldmigrate, jclone, jimport/export operations, description  will be will remain.</p>
-		<p><strong>Example</strong> (run mcedit editor for description edit for kde4 jail on russian in UTF8):</p>
+		<p>running <strong>nvi</strong> in edit mode allows for easy modification of the description. If you prefer using a different editor such (such as <strong>vim</strong> or <strong>mcedit</strong> it can easily be done by passing your choice with the <strong>editor</strong> variable. Descriptions for each jail are stored in a text file residing at <em>$workdir/jails-system/$jname/descr</em>, where <strong>jname</strong> is the name of the jail. When a jail is moved or copied with jcoldmigrate, jclone, jimport/export operations, the description will remain the same.</p>
+		<p><strong>Example</strong> (running mcedit to modify the kde4 jail using russian UTF8 charset):</p>
 		<pre class="brush:bash;ruler:true;">
 			% setenv LANG ru_RU.UTF-8
 			% cbsd jdescr jname=kde4 editor=mcedit mode=update
 		</pre>
-		<p>Similar descriptions are advised to rule when jail is created, if the quantity is large. Subsequently, it is convenient to aggregate this information in some of their dashboard and building jail maps. For example, follow simple script: <a href="/en/misc/jmap2html.sh.html" target="_blank">jmap2html.sh.html</a> generate HTML page as <a href="/en/misc/dashboard/index.html" target="_blank">dashboard sample</a>, where tooltip on the jail name is displayed a description and link the name of the jail leads to a list of software.</p>
+		<p>It is advisable to maintain descriptions as your collection of jails grows. In addition it can be quite convenient to aggregate this information in order to create dashboards and build jail maps. One example of how this could look is the following simple script: <a href="/en/misc/jmap2html.sh.html" target="_blank">jmap2html.sh.html</a> which generates an overview in the form of a HTML page <a href="/en/misc/dashboard/index.html" target="_blank">dashboard sample</a></p>
 		<p class="text-center"><img src="/img/jdescr1.png" alt="" /></p>
 		<p class="text-center"><img src="/img/jdescr2.png" alt="" /></p>
 	</div>
