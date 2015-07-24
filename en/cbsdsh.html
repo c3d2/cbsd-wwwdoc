@@ -3,20 +3,20 @@
 <!--# include file="/en/translate.html" -->
 <h2><a name="shsqlite">About <strong>CBSD</strong> shell and SQLite3</a></h2>
 <div class="block">
-	<p>99% of the <strong>CBSD</strong> code written on <strong>sh</strong> for the following reasons:</p>
+	<p>Almost all <strong>CBSD</strong> code is written in <strong>sh</strong> for the following reasons:</p>
 	<ul>
-		<li>size of <strong>sh</strong> interpreter just over 100 KB, unlike bash or perl/python, which provides less overhead bootstrap script</li>
-		<li><strong>CBSD</strong> focused primarily on system engineers, who may not know of any language <strong>Perl, Python, Lua, C, Go</strong> etc, but shell-scripting is that the knowledge base among Unix, which everyone knows (or should know ;-)</li>
-		<li>The language is not required to perform a lot of parsing and mathematics, he works mainly with external tools or API</li>
+		<li>Unlike interpreters for bash, perl, python etc. the <strong>sh</strong> interpreter comes in at just over 100 KB. This creates a lot less overhead</li>
+		<li><strong>CBSD</strong> is geared towards system engineers, who may not know <strong>Perl, Python, Lua, C,</strong> or <strong>Go</strong> etc., but shell scripting is a key skill in this field (or at least should be ;-)</li>
+		<li>There is no need for a lot of parsing or use mathematical functions. We are mainly working with external tools or APIs</li>
 	</ul>
-	<p>Nevertheless, a large number of restrictions <strong>sh</strong> (mainly when working with lines) makes writing scripts to be difficult, because of this, is a fork in <strong>CBSD</strong> of /bin/sh which is added (and will be added) additional functionality that is described in this document</p>
+	<p>Nevertheless, <strong>sh</strong> comes with many restrictions (mainly when working with lines) which make writing scripts difficult. To alleviate this <strong>CBSD</strong> comes with its own fork of /bin/sh  which brings the additional functionality described in this document</p>
 	<p>So if you want to change/add somethin in <strong>CBSD</strong> or its modules, you have enough knowledge on the usual sh and extend several function.</p>
 </div>
 <h2><a name="cbsdsh">cbsdsh</a></h2>
 <div class="block">
-	<p>cbsdsh modified version of /bin/sh and currently has follow differences from /bin/sh:</p>
+	<p>cbsdsh modified version of /bin/sh currently has the following additions to regular /bin/sh:</p>
 	<ul>
-		<li>- Added function <strong>strlen</strong> to determine the length of the string</li>
+		<li>- Added <strong>strlen</strong> to determine the length of a string</li>
 		<li>- Added function <strong>is_number</strong> to determine whether the number is.</li>
 		<li>- cbsdsh linked with SQLite3 to SQL databases to be able to work <em>inline</em> in the shell and thus scenarios:
 			<pre class="brush:bash;ruler:true;">
@@ -32,7 +32,7 @@ ahci-hd|dsk1.vhd|0
 cbsd@home>
 			</pre>
 		</li>
-			<li>- Added function <strong>cbsdsql</strong> as build-in shell function to query in SQL, as the second argument is the base, all otther - the SQL query itself. As the name of the database file name appears directly in <em>$workdir/var/db/</em>, while the path and file extension <em>.sqlite</em> should not be written. For example, if you want a list of jails with remote nodes node2, information which is in SQLite file <em>/usr/jails/var/db/node2.sqlite</em> and the contents of which (in new versions of CBSD) is replicated from a source in the shell so you can write:
+			<li>- Added function <strong>cbsdsql</strong> as built-in shell function to query in SQL, as the second argument is the base, all other - the SQL query itself. As the name of the database file name appears directly in <em>$workdir/var/db/</em>, while the path and file extension <em>.sqlite</em> should not be written. For example, if you want a list of jails with remote nodes node2, information which is in SQLite file <em>/usr/jails/var/db/node2.sqlite</em> and the contents of which (in new versions of CBSD) is replicated from a source in the shell so you can write:
 		<pre class="brush:bash;ruler:true;">
 ...
 cbsdsql node2 SELECT jname FROM jails
