@@ -3,22 +3,22 @@
 <!--# include file="/en/translate.html" -->
 		<h1><span>Jail settings</span></h1>
 		<div class="block">
-		<p>Each jail of&nbsp;cbsd has its own settings which is&nbsp;used for starting and stopping the jail. Some of&nbsp;them are specified during the creation of&nbsp;jail, the rest you can change via the command</p>
+		<p>Each jail managed by &nbsp;cbsd has its own settings which are&nbsp;used when starting and stopping the jail. Some of&nbsp;them are specified during the creation of the&nbsp;jail, can be set with the command</p>
 		<pre class="brush:bash;ruler:true;">
 			% cbsd jconfig jname=jname
 		</pre>
-		<p>Only few options at&nbsp;this point can be&nbsp;changed on-the-fly.</p>
+		<p>Currently only few options be changed on-the-fly.</p>
 		<p>This page contains a&nbsp;summary of&nbsp;the default settings and description.</p>
 		<hr />
 		<pre class="brush:bash;ruler:true;">
 			jname="jail1";
 		</pre>
-		<p>Immediately, the unique name of&nbsp;the jail. This is&nbsp;the name that can be&nbsp;seen on&nbsp;the <strong>cbsd jls</strong> command or&nbsp;in&nbsp;the inventory list of&nbsp;nodes. This field can not be&nbsp;changed manually. If&nbsp;you want to&nbsp;change the name of&nbsp;the jail please use <strong>cbsd jrename</strong> command, because the name of&nbsp;the jail used in&nbsp;many other settings and on&nbsp;the file system directory naming</p>
+		<p>First, the unique name of&nbsp;the jail. This is needs to be identical with the name shown by <strong>cbsd jls</strong> or in the inventory list. This field can not be&nbsp;changed manually. If&nbsp;you want to&nbsp;change the name of&nbsp;the jail please use <strong>cbsd jrename</strong>, because the name of&nbsp;the jail is used in&nbsp;many other configs and directory names</p>
 		<hr>
 		<pre class="brush:bash;ruler:true;">
 			path="/usr/jails/jails/jail1";
 		</pre>
-		<p>Indicates the path that will be&nbsp;used as&nbsp;the root at&nbsp;the start of&nbsp;the jail. The above configuration is&nbsp;characteristic of&nbsp;jails who are setting baserw to&nbsp;0 (no&nbsp;write access in&nbsp;base), ie, the base of&nbsp;which is&nbsp;mounted in&nbsp;read-only. In&nbsp;this case, the algorithm will work jstart follows:</p>
+		<p>Indicates the path that will be&nbsp;used as&nbsp; root at&nbsp; when the jail is run. The above configuration is&nbsp;characteristic of&nbsp;jails who are setting baserw to&nbsp;0 (no&nbsp;write access in&nbsp;base), ie, the base of&nbsp;which is&nbsp;mounted in&nbsp;read-only. In&nbsp;this case, the algorithm will work jstart follows:</p>
 		<ul>
 			<li>1) mount a&nbsp;base via nullfs specific version (see below) to&nbsp;/usr/jails/jails/$jname directory</li>
 			<li>2) on&nbsp;the mounted base at&nbsp;$workdir/jails/jails/$jname mount directories related directly to&nbsp;the jail data (in&nbsp;the directory $workdir/jails-data/$jname), usually in&nbsp;write access</li>
