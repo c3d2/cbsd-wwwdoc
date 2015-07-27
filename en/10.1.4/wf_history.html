@@ -5,10 +5,11 @@
 			% cbsd history
 		</pre>
 	<p><strong>Descriptions</strong>:</p>
-	<p>When <strong>CBSD</strong> command comes from the terminal and no set the environment variable <strong>NO_CBSD_HISTORY</strong>, then the command will be logged in the <em>$workdir/.cbsd_history</em> file.</p>
+	<p>When <strong>CBSD</strong> is run from the terminal and the environment variable <strong>NO_CBSD_HISTORY</strong> isn't set, the command will be logged to <em>$workdir/.cbsd_history</em>.</p>
 	<p>You can use the command</p>
 	<pre class="brush:bash;ruler:true;">
 		% cbsd history [N]
 	</pre>
-	<p>(where N — optional parameter) to display all entered <strong>CBSD</strong> commands or only N last. File size <em>$workdir/.cbsd_history</em> by default limited in 300 Kb and when limit is reached the oldest records will be deleted.</p>
+	<p>(with N as optional parameter) to display all entered <strong>CBSD</strong> commands or only the last N entries. The size of <em>$workdir/.cbsd_history</em> is limited in 300 Kb by default. Once the size limit is reached
+  space for newer entries is created by dropping the oldest entries as needed.</p>
 	</div>
