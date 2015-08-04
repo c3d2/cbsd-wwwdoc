@@ -12,9 +12,9 @@
 			% cbsd installworld
 			% cbsd world
 		</pre>
-		<p><em>remark</em>: by the "base" will be meant as the catalog containing full copy/hierarchy of FreeBSD OS files.</p>
-		<p>For creation of a new jails (or the start jails which base is mounted in RO required), the copy of base is necessary. Below steps for getting the initial FreeBSD sources from SVN repository of the project (<a href="http://svn.freebsd.org/" target="_blank">http://svn.freebsd.org</a>), its compilation and installation in the separate  directory which will act as base are described. These actions can be demanded, if you don't want to use already builded version available on resources <a href="ftp://ftp.freebsd.org" target="_blank">ftp://ftp.freebsd.org</a> and <a href="http://www.bsdstore.ru" target="_blank">http://bsdstore.ru</a> (for example security reason. It is untrusted resource), which can be received via <strong>cbsd repo</strong> command. Also, building by hands it is possible to get not only releases, but also intermediate branches variants.</p>
-		<p>building or updating consists of three steps:</p>
+		<p><em>remark</em>: "base" refers to a catalog containing a full copy/hierarchy of FreeBSD OS files.</p>
+		<p>For the creation of new jails (or starting jails which require a RO mounted base), a copy of base is necessary. Described below are the steps needed to get the initial FreeBSD sources from the project's SVN repository (<a href="http://svn.freebsd.org/" target="_blank">http://svn.freebsd.org</a>), its compilation and installation in a separate  directory which will act as base. These actions are necessary, if you don't want to use pre compiled versions available on <a href="ftp://ftp.freebsd.org" target="_blank">ftp://ftp.freebsd.org</a> or <a href="http://www.bsdstore.ru" target="_blank">http://bsdstore.ru</a>,  which can be retrieved with the <strong>cbsd repo</strong> command. Also, by manually building becomes possible to not only get releases, but also individual branches.</p>
+		<p>building or updating consists of the following three steps:</p>
 		<ul>
 			<li>
 				Receiving or updating of the initial FreeBSD source code through <strong>cbsd srcup</strong>:
