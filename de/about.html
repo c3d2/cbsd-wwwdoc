@@ -1,75 +1,74 @@
 <!--# include file="_start.html" -->
 	<h1><span>Über das Projekt</span></h1>
 	<div class="block">
-		<p><strong>CBSD</strong> is&nbsp;a&nbsp;management layer written for the <a href="http://www.freebsd.org" target="_blank">FreeBSD</a> <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">jail(8)</a> subsystem, aimed at&nbsp;unifying racct(8), vnet, zfs(8), carp(4), hastd(8) in&nbsp;one tool and providing a&nbsp;more comprehensive solution for building and deploying applications quickly with pre-defined software sets with minimal configuration.</p>
-		<p>No&nbsp;extra&nbsp;OS functionality has been exposed yet, and everything that <strong>CBSD</strong> can&nbsp;do, you could also run manually with tens or&nbsp;hundreds of&nbsp;commands in&nbsp;the CLI using the underlying utilities (Not that you would want&nbsp;to!)</p>
-		<p>Features:</p>
+		<p><strong>CBSD</strong> ist als Managementlayer für das <a href="http://www.freebsd.org" target="_blank">FreeBSD</a> <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">jail(8)</a> subsytem geschreiben worden. Es hat zum Ziel racct(8), vnet, zfs(8), carp(4) und hastd(8) in einem Werkzeug zu vereinen. Es ist eine umfassende Lösung für das schnelle Erstellen und Bereitstellen von Applikationen und vordefinierten Software-Sets und das alles mit minimaler Konfiguration.</p>
+		<p>Keine extra Betriebssystemfunktionalität wurde bis jetzt beeinflusst und alles was <strong>CBSD</strong> kann, ist auch mit zehn oder hunderten von Shell-Kommandos und den unterliegenden Werkzeugen möglich. (Nicht das was Du wirklich machen möchtest!)
+</p>
+		<p>Funktionen:</p>
 		<ul>
-			<li>Fast deployment of&nbsp;jails from scratch</li>
-			<li>Import and export to&nbsp;and from images</li>
-			<li>Cloning and migration (including to&nbsp;remote nodes)</li>
-			<li>Snapshots using ZFS</li>
-			<li>Traffic Accounting and Resource Utilisation Information (per-jail)</li>
-			<li>Resource Management: Priorities (re-nice), RACCT/RCTL, File Quoatas</li>
-			<li>Remote Replication</li>
-			<li>Jail Distributions (jail with a&nbsp;certain set of&nbsp;software and services)</li>
-			<li>Web Interface and Centralized Management</li>
-			<li><a href="/en/xorg_in_jail.html">XJails</a> (Xorg in jail)</li>
+			<li>Schnelles Bereitstellen von Jails aus dem Nichts</li>
+			<li>Import und Export in und aus Images</li>
+			<li>Klonen und migrieren(auch auf enternte Rechner)</li>
+			<li>Snapshots mit ZFS</li>
+			<li>Traffic Erfassung und Informationen über den Ressourcenverbrauch pro Jail</li>
+			<li>Ressoucenverwaltung: Prioritäten, RACCT/RCTL, Datei Quotas</li>
+			<li>Replikation auf entfernte Rechner</li>
+			<li>Jail Distributionen (Jails mit verschiedenen Software-Sets und Services)</li>
+			<li>Webinterface und zentrales Management</li>
+			<li><a href="/en/xorg_in_jail.html">XJails</a> (Xorg im jail)</li>
 			<li><a href="/en/bhyve.html">Bhyve</a> (BSD Hypervisor support)</li>
 			<li>&hellip;</li>
 		</ul>
 	</div>
 	
-	<h2><a name="why">Why&hellip;</a></h2>
+	<h2><a name="why">Warum&hellip;</a></h2>
 	<div class="block">
-		<p>&laquo;Why FreeBSD? Why jails? Why sh?&raquo;:</p>
-		<p>FreeBSD Jails were chosen for several reasons:</p>
+		<p>&laquo;Warum FreeBSD? Warum Jails? Warum sh?&raquo;:</p>
+		<p>FreeBSD Jails haben wir aus verschiedenen Gründen gewählt:</p>
 		<ul>
-			<li><a href="/en/cbsdsh.html">Details</a> about shell</li>
-			<li><a href="/ru/articles/bhyve_vs_jails.html">Zero Virtualization Overhead</a>: Without VIMAGE, the jail code is&nbsp;a&nbsp;very simple design.</li>
-			<li>Security: &laquo;divide and conquer&raquo;. It&nbsp;is&nbsp;desirable for each service or&nbsp;group of&nbsp;services to&nbsp;be&nbsp;isolated.</li>
-			<li>Efficient Environment Replication: Systems engineers often have to&nbsp;deploy lots of&nbsp;similar environments&nbsp;&mdash; AMP, MTA, KDE4. At&nbsp;some point you want environments created and configured in&nbsp;advance. Jails allow you to&nbsp;deploy new environments into operation instantly. It&nbsp;also allows the creation of&nbsp;environments that differ from their master template only in&nbsp;configuration, such as&nbsp;different package sets.</li>
-			<li>Speed of&nbsp;deployment and convenient backups.</li>
-			<li>Building your own jail library with customizable options via <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html" target="_blank">FreeBSD ports</a></li>
-			<li>It&nbsp;isn&rsquo;t really pleasant to&nbsp;me&nbsp;to&nbsp;live in&nbsp;the world in&nbsp;which there is&nbsp;only one Linux</li>
-			<li>Many more</li>
+			<li><a href="/de/cbsdsh.html">Details</a> über shell</li>
+			<li><a href="/de/articles/bhyve_vs_jails.html">Zero Virtualization Overhead</a>: Abgesehen von VIMAGE hat der Jail code ein sehr einfaches Design.</li>
+			<li>Sicherheit: Es ist für jeden Dienst oder eine Gruppe von Diensten erstrebenswert von allem Anderen isoliert zu sein</li>
+			<li>Effiziente Replikation von Umgebungen: Systemadministratoren haben oft viele gleiche Umgebungen z. B. AMP, MTA, KDE4. An einem gewissen Punkt möchte man solche Umgebungen auf andere Weise verwalten. Jails erlauben es einem neue Umgebungen ohne Verzögerungen bereitzustellen. Sie erlauben es auch, dass sich Umgebungen nur durch die einzelnen Konfigurationen unterscheiden, als auch in der installierten Software</li>
+			<li>Geschwindigkeit der Bereitstellung und praktische Backups.</li>
+			<li>Baue deine eigene Jail-Bibliothek mit angepassten optionen über <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html" target="_blank">FreeBSD ports</a></li>
+			<li>Es ist nicht wirklich befriedigend nur in eine Linuxwelt zu leben</li>
+			<li>Viele mehr</li>
 		</ul>
-		<p>Most of&nbsp;the code has been written in&nbsp;<strong>sh</strong>, since there are no&nbsp;demands for complex logic, it&nbsp;is&nbsp;primarily used to&nbsp;automate what was otherwise manual repetition of&nbsp;commands on&nbsp;the console and is&nbsp;designed to&nbsp;work with external utilities such&nbsp;as: <strong>zfs</strong>, <strong>zpool</strong>, <strong>sudo</strong>, <strong>pkg</strong>, <strong>rsync</strong>, etc. Areas that require optimization and specific components such as&nbsp;logtail, replication, node watching daemon are written in&nbsp;C for performance.</p>
-		<p>cbsd depends on&nbsp;the following software: <strong>rsync</strong>,<strong>sudo</strong>,<strong>libssh2</strong>,<strong>sqlite3</strong>
+		<p>Der Großteil des <strong>CBSD</strong> Code ist in <strong>sh</strong> geschrieben. Da keine komplexe Logik im Code selbst nötig ist, wird <strong>sh</strong> hauptsächlich dafür verwendet externe Tools wie <strong>zfs, zpool, sudo, pkg oder rsync</strong> aufzurufen. Andere Bereiche die Verbesserungen benötigen oder spezielle Komponenten wie logtail, replication oder der Nodeüberwachungsdienst sind in aus Performancegründen in C geschrieben. </p>
+		<p>CBSD hat folgende Abhängigkeiten: <strong>rsync</strong>,<strong>sudo</strong>,<strong>libssh2</strong>,<strong>sqlite3</strong>
 	</div>
 	
-	<h2><a name="features">Features&hellip;</a></h2>
+	<h2><a name="features">Funktionen</a></h2>
 	<div class="block">
 		<ul>
-			<li>A&nbsp;ready repository for kernels and world that does not require <strong>buildworld/installworld</strong>;</li>
-			<li>src.conf support for <strong>buildworld/installworld</strong> customization;</li>
-			<li>Catalog can stored on&nbsp;memory disks, in&nbsp;ram or&nbsp;on&nbsp;tpmfs with a&nbsp;RO mounted base;</li>
-			<li>ZFS: Filesystem, Quotas and Snapshot support;</li>
-			<li>GUI Configuration of&nbsp;jails (Dialog or&nbsp;Web UI);</li>
+			<li>Ein fertiges Repository für Kernels und World das kein <strong>buildworld/installworld</strong> benötigt;</li>
+			<li>Support für src.conf und <strong>buildworld/installworld</strong> Anpassungen;</li>
+			<li>Der Katalog kann auf Memorysticks, im RAM auf tmpfs oder mit RO mounted base verwendet werden;</li>
+			<li>ZFS: Filesystem, Quotas und Snapshots;</li>
+			<li>Konfigurations-GUI für Jails (Dialog or&nbsp;Web UI);</li>
 			<li>VIMAGE support;</li>
 			<li>Per-jail Traffic Accounting;</li>
 			<li>Jail Import/Export;</li>
-			<li>Jail Descriptions;</li>
-			<li>Cold migration between nodes;</li>
-			<li>Custom jail startup sequences and priorities;</li>
+			<li>Jail Beschreibungen;</li>
+			<li>Cold migration zwischen Knoten;</li>
+			<li>Eigene jail Startreihenfolgen und Prioritäten;</li>
 			<li>RACCT/RCTL support;</li>
-			<li>A&nbsp;repository of&nbsp;ready jail templates;</li>
-			<li>Jail Replication;</li>
-			<li>Jail Conversion to&nbsp;PXE/ISO/Memstick-image;</li>
-			<li>Support for non-native architectures via Qemu User mode (eg: arm or&nbsp;mips64 jail on&nbsp;x86-64 host system);</li>
+			<li>Ein Repository mit fertigen Jail-Templates;</li>
+			<li>Jail Replikation;</li>
+			<li>Umwandlung eines Jails zu PXE/ISO/Memstick-image;</li>
+			<li>Unterstützung für nicht native Architekturen mit Hilfe von Qemu User mode (z. B. arm oder mips64 für einen Jail  auf einem x86-64 Hostsystem);</li>
 			<li>&hellip;</li>
 		</ul>
 	</div>
 	
-	<h2><a name="goals">Goals</a></h2>
+	<h2><a name="goals">Ziele</a></h2>
 	<div class="block">
 		<ul>
-			<li>Show features of FreeBSD as a hosting platform. Hosting not only jail, but also Linux-environments through bhyve;</li>
-			<li>WEB panel to create hosting farms on their own resources;</li>
-			<li>Environment deployment automation;</li>
-			<li>Convenient management, monitoring and control;</li>
-			<li>Creation of&nbsp; ( your own/personal ) application platform with services on&nbsp;demand (PaaS);</li>
-			<li>Environment (Image) library for rapid provisioning;</li>
+			<li>Die Funktionen und Vorteile von FreeBSD als Hostingplattform zu zeigen. Nicht nur Jails sondern auch Linux-Umgebungen mit Hilfe von Bhyve zu hosten;</li>
+			<li>Ein WEB-Interface bereitstellen um das Erstellen von eigenen Hostingfarmen auf eigenen Systemen zu ermöglichen;</li>
+			<li>Automatisiertes Bereitstellen von Systemen;</li>
+			<li>Praktisches und einfaches Verwalten, Überwachen und Konfigurieren von FreeBSD Jails und Bhyve;</li>
 			<li>&hellip;</li>
 		</ul>
 	</div>
