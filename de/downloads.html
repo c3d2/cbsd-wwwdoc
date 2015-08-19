@@ -1,0 +1,23 @@
+<!--# include file="_start.html" -->
+<!--# include file="translate.html" -->
+<h1><span>Downloads</span></h1>
+<div class="block">
+	<p>Alle .img (USB Memstick images) können mit folgendem Kommano auf einen USB-Stick geschrieben werden:</p>
+	<pre class="brush:bash;ruler:true;">
+		% dd if=_path_to_img.img_ of=/dev/da0 bs="10240" conv="sync"
+	</pre>
+	<p>Seien Sie vorsichtig und geben Sie das richtige Zieldevice an, es  werden alle Daten auf dem Gerät überschrieben!</p>
+	<p>Aktuell ist die Erstellung von <strong>CBSD</strong> Images deaktiviert. Um aus den Quellen zu installieren, verwenden Sie bitte folgende Anleitung: <a href="installing_cbsd.html"></a></p>
+</div>
+<h2><a name="images">Pre-configured FreeBSD jail-based images</a></h2>
+<div class="block">
+	 <p>Below is a list of pre-configured images, available for download via the command <strong>cbsd repo action=get sources=img name=<em>name</em></strong>. These images may be of a "blocks" of which you can collect the necessary infrastructure. You are limited only by physical server resources, on the exhaustion which can always be another node of the jails and migrate to it. Each image represents archive of jail with the necessary software and minimum templates of configuration files that fulfills helper applying the initial input of user data (eg application administrator's password ) for the application to launch as quickly as possible. Subsequently to work with the jail, accompanied by configuration and software can be a standard way&nbsp;— it is independent from <strong>CBSD</strong>. All helpers can work on non-interactively (all possible arguments available command <strong>--help</strong>), being an example of mass construction and Application Server deployment of jails automatically.
+	 <!--# include file="/images.html" -->
+</div>
+<h2><a name="images">Vorkonfigurierte bhyve-based Images</a></h2>
+<div class="block">
+	 <p>Below is a list of pre-configured image for the Bhyve hypervisor with architectures independent guests. It may be different from the FreeBSD operating systems such as Linux-based distributions or Open/Net/DragonFLYBSD</p>
+	 <p>Goal of creating libraries for Bhyve same as jail-based - to provide pre-configured for your hosting environment.</p>
+	 <!--# include file="/bhyve_images.html" -->
+</div>
+<!--# include file="_end.html" -->

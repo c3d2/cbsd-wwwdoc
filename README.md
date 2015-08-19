@@ -37,7 +37,7 @@ nginx-vhost.conf sample for site:
 	location / {
 		set $language_suffix 'en';
 
-		if ($http_accept_language ~* '^(en|ru){1}') {
+		if ($http_accept_language ~* '^(en|ru|de){1}') {
 			set $language_suffix $1;
 		}
 		rewrite ^/$ /$language_suffix/about.html permanent;
