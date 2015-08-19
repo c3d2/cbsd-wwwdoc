@@ -92,9 +92,7 @@
 		 </pre>
 		 <p>Currently used transmission through the daemon, rather than rsync over ssh for the reason of avoiding open access for the user root. Accordingly, as an additional protection, it is recommended to close the port <strong>1873/tcp</strong> which uses <stgrong>CBSD</strong> from untrusted hosts and used to separate management interface for nodeip or use encrypted communications between nodes (eg IPSec)</p>
 	</div>
-	</div>
-	
-	
+
 	<h2><a name="color">ANSII Color</a></h2>
 	<div class="block">
 		<p>By default, <strong>CBSD</strong> displayed text in color (using escape sequences ANSII).  If for some reason the color is unpleasant, or you can use output from utilities <strong>CBSD</strong> in your scripts,  which prevents ANSII sequence, you can disable the color through the environment variable NOCOLOR=1. For example, the command</p>
