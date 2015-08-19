@@ -2,10 +2,10 @@
 <!--# include file="currentver.html" -->
 <!--# include file="/de/translate.html" -->
 	<h1><span>What you need to know about <strong>CBSD</strong></span></h1>
-	<h2><a name="knowit">General information</a></h2>
+	<h2><a name="knowit">Generelle Informationen</a></h2>
 	<div class="block">
-		<p><strong>CBSD</strong> represents an additional layer of abstraction over <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">Jail framework</a> and the part on FreeBSD functional</p>
-		<p>A list of some of the functional involved in the cbsd:</p>
+		<p><strong>CBSD</strong> ist ein weiterer Abstraktionslayer über das <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">Jail Framework</a> und einem Teil der FreeBSD Funktionalität</p>
+		<p>Hier eine Liste der Funktionen die in <strong>CBSD</strong> vereint werden:</p>
 		<ul>
 			<li>vnet (VIMAGE)</li>
 			<li>zfs</li>
@@ -16,17 +16,17 @@
 			<li>hastd</li>
 			<li>bhyve</li>
 		</ul>
-		<p>Many of these subsystems are not directly related to the <strong>jail</strong>, however, allow <strong>CBSD</strong> (which is the connecting link between these components) to provide a system administrator more advanced and integrated system solutions for the problems. Below provides information useful to the system administrator and describes the architecture <strong>CBSD</strong> more detail.</p>
-		<p>First, the official articles about <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/jails.html" target="_blank">FreeBSD Jails</a> required for the study to understand what is a jail in the usual way.</p>
-		<p>Secondly, it is useful to know about the file system hierarchy <strong>CBSD</strong>. Let us agree to use the following naming documentation and values:</p>
+		<p>Viele dieser Subsysteme haben nicht direkt etwas mit Jails zu tun, jedoch erlauben sie es <strong>CBSD</strong> für Administratoren ein fortgeschrittenes und integriertes Werkzeug bereitzustellen. Im Weiteren folgen für Administratoren nützliche Informationen die die Architektur von <strong>CBSD</strong> im Detail beschreiben.</p>
+		<p>Es ist als erstes wichtig die offizielle Dokumentation von <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/jails.html" target="_blank">FreeBSD Jails</a> verstanden zu haben.</p>
+		<p>Als zweites ist es wichtig die Filesystem-Hirachie von <strong>CBSD</strong> verstanden zu haben. Lassen wir uns im folgenden auf diese Definitionen dieser Begriffe einigen:</p>
 		<ul>
-			<li><strong>Node</strong> — physical server / resource unit.</li>
-			<li><strong>Jail</strong> — isolated environment with its own set of software/services. They can be a server-side components (DNS, Apache / nginx, postfix) and graphic environment.</li>
-			<li><strong>Cloud</strong> — Farm/cluster of interconnected nodes, a full-fledged peer network (each node can do other tasks through <strong>CBSD</strong>)</li>
-			<li><strong>Base</strong> — in the <strong>CBSD</strong> content — copy of FreeBSD file base.</li>
-			<li><strong>CBSD</strong> — an entity that has control over the particular node(s) and certain subsystems of FreeBSD, is able to provide a simplified and unified action (API) on the nodes or jails and provides ACL and setting permissions for <strong>CBSD</strong> customers</li>
-			<li><strong>$workdir</strong> — working directory on <strong>CBSD</strong> node is initialized through cbsd initenv the first run. Usually <strong>/usr/jails</strong>.</li>
-			<li><strong>$jname</strong> — Name some jails, participate in the example.</li>
+			<li><strong>Node</strong> — pysikalischer Server.</li>
+			<li><strong>Jail</strong> — Eine isolierte Umgebung mit eigenem Software-Set. Dies können serverseitige Dienste sein(DNS, Apache / nginx, postfix) oder auch grafische Umgebungen.</li>
+			<li><strong>Cloud</strong> — Farm/Cluster bestehend aus Nodes, eine ausgewachsene Umgebung (jeder Node kann durch <strong>CBSD</strong> eine andere Aufgabe übernehmen)</li>
+			<li><strong>Base</strong> — im <strong>CBSD</strong> Kontext — Eine Kopie des FreeBSD file base.</li>
+			<li><strong>CBSD</strong> — Eine Instanz die die Kontrolle über Node(s) und die deren FreeBSD subsysteme hat. Diese ist in der Lage eine vereinfachte API für die Verwaltung der Nodes bereitzustellen.
+			<li><strong>$workdir</strong> — Arbeitsverzeichnis für <strong>CBSD</strong> auf einem Node  das durch den ersten Aufruf des Kommandos cbsd initenv erstellt wird. Üblicherweise in <strong>/usr/jails</strong> </li>
+			<li><strong>$jname</strong> — Steht als Name für Jails in den Beispielen.</li>
 		</ul>
 		<p>&nbsp;</p>
 		
