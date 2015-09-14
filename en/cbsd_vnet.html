@@ -3,7 +3,7 @@
 <!--# include file="/en/translate.html" -->
 	<h1><span>CBSD FreeBSD jail with VIMAGE (vnet)</span></h1>
 	<div class="block">
-		<p>In view of some of the subtleties with FreeBSD vnet-jail, information about it deduced this separate article. First of all, the <strong>VIMAGE</strong> functionality requires a customized kernel with</p>
+		<p>In view of some of the subtleties with FreeBSD vnet-jail, information about it warranted this separate article. First of all, the <strong>VIMAGE</strong> functionality requires a customized kernel with</p>
 		<pre class="brush:bash;ruler:true;">
 			options VIMAGE
 		</pre>
@@ -11,9 +11,9 @@
 		<pre class="brush:bash;ruler:true;">
 			% cbsd repo action=get sources=kernel
 		</pre>
-		<p>that your kernel is supports for VIMAGE.</p>
-		<p>In the case when kernel has no options, parameter <strong>vnet</strong> in the file <em>${workdir}/nc.inventory</em> will always be set to <strong>0</strong>. If this option is present in the kernel, in the configurator of creation jail will be present parameter <strong>vnet</strong>.</p>
-		<p>Second, keep in mind that although <strong>VIMAGE</strong> (available from FreeBSD 8.0) and held the status of an experimental feature for the 4 years of its existence in the base operating system, it can still be found a variety of problems, the correction of which is extremely tightened: in GNATS (current ticket system FreeBSD)  quite <a href="http://www.freebsd.org/cgi/query-pr-summary.cgi?category=&amp;severity=&amp;priority=&amp;class=&amp;state=&amp;sort=none&amp;text=vimage&amp;responsible=&amp;multitext=&amp;originator=&amp;release=" target="_blank">a few</a> panics messages using VIMAGE in conjunction with the various components;</p>
+		<p>then your kernel has support for VIMAGE.</p>
+		<p>If your kernel does not have the <strong>VIMAGE</strong> option built in, the parameter <strong>vnet</strong> in the file <em>${workdir}/nc.inventory</em> will always be set to <strong>0</strong>. If this option is present in the kernel, in the jail creation dialog the parameter will default to <strong>vnet</strong>.</p>
+		<p>Second, keep in mind that although <strong>VIMAGE</strong> (available since FreeBSD 8.0) and held the status of an experimental feature for the 4 years of its existence in the base operating system, it can still be found a variety of problems, the correction of which is extremely tightened: in GNATS (current ticket system FreeBSD)  quite <a href="http://www.freebsd.org/cgi/query-pr-summary.cgi?category=&amp;severity=&amp;priority=&amp;class=&amp;state=&amp;sort=none&amp;text=vimage&amp;responsible=&amp;multitext=&amp;originator=&amp;release=" target="_blank">a few</a> panics messages using VIMAGE in conjunction with the various components;</p>
 		<p>Besides <a href="http://www.freebsd.org/cgi/query-pr.cgi?pr=164763" target="_blank">seen</a> cases of memory leaking.</p>
 		<p>Well, now the something good;)</p>
 		<p><strong>vnet</strong>-featured jail has at its disposal a fully virtualized and isolated network stack, which in turn allows the use of a private jail (albeit virtual) interface, "right" <strong>loopback</strong>, use within the jail a packet filters (<strong>pf, ipfw, pfilter</strong>), raise the tunnels and reconfigure the routing table.</p>
