@@ -3,13 +3,16 @@
 <h1><span>News</span></h1>
 <h2><a name="development">&nbsp;Development</a></h2>
 <div class="block">
-	<p><strong>10.x.x</strong>&nbsp;&mdash; Unknown</p>
+	<p><strong>10.3.0</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-<!-- 		<li>zrep: <a href="http://youtu.be/pTon7JABUI0" target="_blank">Jail replication</a> via ZFS send</li> -->
-<!-- 		<li>zrep: optional support for mbuffer; demonization to avoid long bootstrap with frequent execute</li> -->
-<!-- 		<li>carpcfg: enable carp(4) configurator on the menu. <a href="http://youtu.be/OOqMI4-qMg8" target="_blank">Support carp(4)</a> - the penultimate big milestone from the original plan of CBSD and HASTD - last one.</li> -->
-<!-- 		<li>Support for <a href="http://www.dragonflybsd.org/hammer/">HAMMERFS</a></li> -->
-<!-- 		<li><a href="http://youtu.be/0jQwc5m9aG4" target="_blank">Xen Dom0 support</a></li> -->
+		<li><em>(bugfix)</em> Fix for update NAT config when nat switch in initenv-tui <a href="https://github.com/olevole/cbsd/issues/60" target="_blank">Issue #60</a> (Reported by: <strong>rodyaj</strong>).</li>
+		<li><em>(bugfix)</em> Fix for zfs/hammer feature trigger variable in initenv-tui</li>
+		<li><em>(bugfix)</em> Fix inputbox menu for bhyvenic; bhyve: always up parent interfaces (Reported by: <strong>brahmann</strong>).</li>
+		<li><strong>imgpart</strong>: switch compress method to xz(1), with thread support; Execute with lower prio;</li>
+		<li>Populate basedir via filelist: if the version of the jail and node the same, you can create base from the node environment</li>
+		<li><strong>[jbx]create</strong>: zfs_snapsrc options for ZFS-based system: now you can create VM and Jails from ZFS snapshot</li>
+		<li><strong>imghelper</strong>: Rewrite imghelper to work with SQLite-based registry of helper settings</li>
+		<li>UEFI boot for bhyve</li>
 	</ul>
 	<p><em>If&nbsp;you want to&nbsp;experiment with the next version of&nbsp;<strong>CBSD</strong>, use <strong>git clone https://github.com/olevole/cbsd.git</strong> for <strong>/usr/local/cbsd</strong></em></p>
 </div>
