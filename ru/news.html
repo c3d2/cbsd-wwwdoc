@@ -2,22 +2,27 @@
 <h1><span>Новости</span></h1>
 <h2><a name="development">&nbsp;Разработка</a></h2>
 <div class="block">
-	<p><strong>10.3.0</strong>&nbsp;&mdash; Unknown</p>
+	<p><strong>Unknown</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li><em>(bugfix)</em> Исправлено исправление NAT правил при переключении через initenv-tui <a href="https://github.com/olevole/cbsd/issues/60" target="_blank">Issue #60</a> (сообщил: <strong>rodyaj</strong>).</li>
-		<li><em>(bugfix)</em> Исправлено переключение признака zfs/hammer при изменении в initenv-tui</li>
-		<li><em>(bugfix)</em> Исправление inputbox меню в bhyvenic; bhyve: всегда пробуем поднять родительский интерфейс (сообщил: <strong>brahmann</strong>).</li>
-		<li><em>(bugfix)</em> Исправление 'write error on stdout' в cbsdsh <a href="https://github.com/olevole/cbsd/commit/e905d82dfe0f3afbe6bfebae3b3806bb2c90cd4d" target="_blank">90cd4d</a> (Патч от: <strong>Ivan  Klymenko</strong>).</li>
-		<li><strong>imgpart</strong>: Перешли на компрессию через xz(1) для использования тредов; Выполняем в пониженном приоритете;</li>
-		<li>Позможность собрать базу через список файлов: теперь, если версия jail и ноды одинакова, можно использовать файлы ноды для построения базы</li>
-		<li><strong>[jbx]create</strong>: Добавлена опция zfs_snapsrc для ZFS-based систем: теперь можно создавать виртуалки и контейнера из ZFS снапшота</li>
-		<li><strong>imghelper</strong>: imghelper переписан для работы с SQLite3 базой в качестве хранилища настроек хелперов</li>
-		<li>Поддержка UEFI для bhyve виртуалок</li>
+		
 	</ul>
 	<p><em>Если вы&nbsp;хотите поэкспериментировать со&nbsp;следующей версией <strong>CBSD</strong>, используйте <strong>git clone https://github.com/olevole/cbsd.git</strong> для <strong>/usr/local/cbsd</strong></em></p>
 </div>
 <h2><a name="release">Релизы</a></h2>
-<<div class="block">
+<div class="block">
+	<p><strong>10.3.0</strong>&nbsp;&mdash; 2016-03-02</p>
+	<ul>
+		<li><em>(bugfix)</em> Исправлено исправление NAT правил при переключении через initenv-tui <a href="https://github.com/olevole/cbsd/issues/60" target="_blank">Issue #60</a> (сообщил: <strong>rodyaj</strong>).</li>
+		<li><em>(bugfix)</em> Исправлено переключение признака zfs/hammer при изменении в initenv-tui</li>
+		<li><em>(bugfix)</em> Исправление inputbox меню в bhyvenic; bhyve: всегда пробуем поднять родительский интерфейс (сообщил: <strong>brahmann</strong>).</li>
+		<li><strong>imgpart</strong>: Перешли на компрессию через xz(1) для использования тредов; Выполняем в пониженном приоритете;</li>
+		<li>Позможность собрать базу через список файлов: теперь, если версия jail и ноды одинакова, можно использовать файлы ноды для построения базы</li>
+		<li><strong>[jbx]create</strong>: Добавлена опция zfs_snapsrc для ZFS-based систем: теперь можно создавать виртуалки и контейнера из ZFS снапшота</li>
+		<li><strong>imghelper</strong>: imghelper переписан для работы с SQLite3 базой в качестве хранилища настроек хелперов</li>
+		<li>bhyve: Поддержка UEFI boot</li>
+	</ul>
+</div>
+<div class="block">
 	<p><strong>10.2.0</strong>&nbsp;&mdash; 2015-08-15</p>
 	<ul>
 		<li>bhyve: возможность указать объем Swap раздела при создании виртуальной машины через <em>FreeBSD-from-jail</em> профиль</li>
