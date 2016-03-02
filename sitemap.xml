@@ -23,6 +23,10 @@
   <changefreq>monthly</changefreq>
 </url>
 <url>
+  <loc>http://www.bsdstore.ru/en/xen.html</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
   <loc>http://www.bsdstore.ru/en/screenshots.html</loc>
   <changefreq>monthly</changefreq>
 </url>
@@ -71,6 +75,10 @@
   <changefreq>monthly</changefreq>
 </url>
 <url>
+  <loc>http://www.bsdstore.ru/ru/xen.html</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
   <loc>http://www.bsdstore.ru/ru/screenshots.html</loc>
   <changefreq>monthly</changefreq>
 </url>
@@ -112,6 +120,10 @@
 </url>
 <url>
   <loc>http://www.bsdstore.ru/de/news.html</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.bsdstore.ru/de/xen.html</loc>
   <changefreq>monthly</changefreq>
 </url>
 <url>
