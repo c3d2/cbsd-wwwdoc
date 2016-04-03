@@ -83,7 +83,13 @@
 		<p>At this point,  for counting jail traffic used <strong>count</strong> ruleset of <strong>ipfw</strong> filter. <strong>CBSD</strong> sets number of counters in <strong>99 — 2000</strong> range (you can change this in cbsd.conf). So be careful and make sure to follow your rules IPFW after a specified range.</p>
 		<p><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jailtraffic_ssi.html">Read more about jail traffic counting</a></p>
 	</div>
-	
+
+	<h2><a name="expose">Expose: tcp/udp port forwarding from master host to jail</a></h2>
+	<div class="block">
+		<p>At this point,  for port forwarding used <strong>fwd</strong> ruleset of <strong>ipfw</strong>. <strong>CBSD</strong> sets number of counters in <strong>2001&nbsp;— 2999</strong> range (you can change this in cbsd.conf). So be careful and make sure to follow your rules IPFW after a specified range.</p>
+		<p><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_expose_ssi.html">Read more about expose</a></p>
+	</div>
+
 	<h2><a name="secrsyncd"><span>About rsync-based copying jail data between nodes</span></a></h2>
 	<div class="block">
 		 <p>If you activate <strong>cbsdrsyncd</strong>, keep in mind, it is standard <strong>rsyncd(1)</strong> daemon who looks at a particular <em>$jail-data</em> directory and protected only by rsync password, which generates <strong>CBSD</strong> via:</p>

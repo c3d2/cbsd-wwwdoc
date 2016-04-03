@@ -81,7 +81,13 @@
 		<p>В данный момент, для подсчета трафика jail используются правила <strong>count</strong> у фильтра <strong>ipfw</strong>. <strong>CBSD</strong> назначает для счетчиков номера правил из диапазона <strong>99&nbsp;— 2000</strong> (можно изменить в cbsd.conf). Поэтому будьте внимательны и следите за тем, чтобы ваши правила IPFW следовали после указанного диапазона.</p>
 		<p><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_jailtraffic_ssi.html">Чуть более подробно о подсчете трафика jail</a></p>
 	</div>
-	
+
+	<h2><a name="expose">Expose: проброс портов из мастер хоста в jail</a></h2>
+	<div class="block">
+		<p>В данный момент, для проброса tcp/udp портов используются правила <strong>fwd</strong> у фильтра <strong>ipfw</strong>. <strong>CBSD</strong> назначает для счетчиков номера правил из диапазона <strong>2001&nbsp;— 2999</strong> (можно изменить в cbsd.conf). Поэтому будьте внимательны и следите за тем, чтобы ваши правила IPFW следовали после указанного диапазона.</p>
+		<p><a href="/<!--#echo var="lang" -->/<!--#echo var="version" -->/wf_expose_ssi.html">Чуть более подробно о expose</a></p>
+	</div>
+
 	<h2><a name="secrsyncd"><span>О rsync-based копировании данных между нодами</span></a></h2>
 	<div class="block">
 		 <p>Если вы активируете <strong>cbsdrsyncd</strong>, имейте ввиду, что это обычный <strong>rsyncd(1)</strong> демон, который смотрит в конкретный <em>$jail-data</em> каталог и защищен только средствами rsync и паролем, который генерирует <strong>CBSD</strong> через:</p>
