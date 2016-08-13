@@ -45,13 +45,13 @@ echo "Jail name: ${jname}; IPs: ${ip4_addr}; Jail status: ${status}
 			</pre>
 		</li>
 	</ul>
-	<p>If you are in <strong>cbsdsh</strong>, then before <strong>CBSD</strong> command you do not need to enter a prefix <strong>cbsd</strong>:</p>
+	<p>If you are in <strong>cbsdsh</strong>, then you do not need to enter the prefix cbsd before the <strong>CBSD</strong> command:</p>
 	<p class="text-center"><img src="/img/cbsdsh1.png" alt="" /></p>
-	<p><stong>CBSD</strong> in the SQLite3 uses to store settings jail for the following reasons:</p>
+	<p>The SQLite3 in <stong>CBSD</strong> is used to store the jail settings for the following reasons:</p>
 	<ul>
-		<li>Store and especially to work with so many parameters in normal ascii-files very hard</li>
-		<li>SQLite3 does not require a running DB server and highly portably</li>
-		<li>Many utilities OS reasons beyond our control may change its method of storage. For example, up to 10 versions of FreeBSD, jail was configured via the command line, starting with version 10, the original cell and started their own config files in YAML. Not to suffer from such changes and rewrite all the scripts work with these configs bred in a single procedure, the rest of the subsystem work with their "non-volatile" API. In addition, SQL database is a "universal" storage from which you can easily create any other noSQL/xml/yaml data</li>
+		<li>To store, and especially to work with so many parameters in normal ascii-files is very hard</li>
+		<li>SQLite3 does not require a running DB server and is highly portable</li>
+		<li>For reasons beyond our control, many OS utilities may change their methods of storage. For example, up until FreeBSD version 10, jails were configured via the command line, but beginning in version 10 jails are started with their own config files in YAML. To not suffer from such changes and rewrite all the scripts work with these configs bred in a single procedure, the rest of the subsystem work with their "non-volatile" API. In addition, SQL database is a "universal" storage from which you can easily create any other noSQL/xml/yaml data</li>
 		<li>Instead SQLite3 can be easily linked with an external database MySQL, PgSQL, which will act as a central "registry" for the entire farm, with no need to rewrite the script. Also, data replication from node to node is not needed because all nodes update and read one the central registry.</li>
 		<li>Each node on the record works only with its own SQLite3 file (symbolic link <em>$workdir/var/db/local.sqlite</em>), all files deleted nodes are in the same directory but under their own names , so the local node does not work depending on the status information from a remote node. </li>
 	</ul>
