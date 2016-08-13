@@ -1,7 +1,7 @@
 cbsd-wwwdoc
 ===========
 
-cbsd documentation part for http://bsdstore.ru site
+cbsd documentation part for https://bsdstore.ru site
 
 nginx-vhost.conf sample for site:
 
