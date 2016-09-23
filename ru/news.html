@@ -4,11 +4,28 @@
 <div class="block">
 	<p><strong>Unknown</strong>&nbsp;&mdash; Unknown</p>
 	<ul>
-		<li><strong>bhyve</strong>: Поддерка Bhyve VNC. Это наиболее востребованная фича для пользователей Windows bhyve ;): headless graphical console. Sample: <a href="https://youtu.be/8YQQfXqtyaA">bhyve graphical boot</a></li>
+		
 	</ul>
 	<p><em>Если вы&nbsp;хотите поэкспериментировать со&nbsp;следующей версией <strong>CBSD</strong>, используйте <strong>git clone https://github.com/olevole/cbsd.git</strong> для <strong>/usr/local/cbsd</strong></em></p>
 </div>
+
 <h2><a name="release">Релизы</a></h2>
+<div class="block">
+	<hr>
+	<p><strong>11.0.0</strong>&nbsp;&mdash; 2016-10-10</p>
+	<ul>
+		<li>Протестировано на FreeBSD 11.0-RELEASE</li>
+		<li>Добавлены флаги protected и hidden для jail и bhyve</li>
+		<li>Операции с нодами теперь поддерживают IPv6</li>
+		<li>Удалена эксперементальная поддержка libxo. JSON/XML будет реализовано другими способами</li>
+		<li><strong>bhyve</strong>: Реализована поддержка ZVOL на ZFS системах</li>
+		<li>Переписаны jexport/jimport скрипты для импорта и экспорта bhyve-on-zvol</li>
+		<li><strong>bhyve</strong>: Поддерка Bhyve VNC. Это наиболее востребованная фича для пользователей Windows bhyve ;): headless graphical console. Sample: <a href="https://youtu.be/8YQQfXqtyaA">bhyve graphical boot</a></li>
+		<li>Мы подготовили <a href="https://github.com/cbsd/puppet-cbsd">модуль CBSD</a> для Puppet</a></li>
+		<li>Мы запустили официальный форум для пользователей <strong>CBSD</strong>: <a href="https://forums.bsdstore.ru" target="_blank">https://forums.bsdstore.ru/</a></li>
+		<li>Проект CBSDWEB свернут (не начавшись). Вместо него основан проект <a href="https://clonos.tekroutine.com/">ClonOS</a>, который будет в виде самостоятельного дистрибутива: <a href="https://forums.bsdstore.ru/viewtopic.php?f=1&t=4">Анонс на форуме</a>.</li>
+	</ul>
+</div>
 <div class="block">
         <hr>
         <p><strong>10.3.3</strong>&nbsp;&mdash; 2016-08-11</p>
