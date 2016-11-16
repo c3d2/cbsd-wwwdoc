@@ -1,112 +1,100 @@
 <!--# include file="_start.html" -->
-	<h1><span>About the project</span></h1>
+	<h1><span>Über das Projekt</span></h1>
 	<div class="block">
-		<p><strong>CBSD</strong> is&nbsp;a&nbsp;management layer written for the <a href="http://www.freebsd.org" target="_blank">FreeBSD</a> <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">jail(8)</a> subsystem,
-		<a href="http://www.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8" target="_blank">bhyve</a> and <a href="http://www.xenproject.org/">Xen</a>.
-		The project is positioned as a single integrated tool of comprehensive solution for building and deploying virtual environments quickly with pre-defined software sets with minimal configuration.</p>
-		<p>No&nbsp;extra&nbsp;OS functionality has been exposed yet, and everything that <strong>CBSD</strong> can&nbsp;do, you could also run manually with tens or&nbsp;hundreds of&nbsp;commands in&nbsp;the CLI using the underlying utilities (Not that you would want&nbsp;to!)</p>
-	</div>
-	
-	<h2><a name="why">Why&hellip;</a></h2>
-	<div class="block">
-		<p><p><strong>Q:</strong> &laquo;Why FreeBSD?:</p>
-		<p>
-			<li>
-			According to the authors of the project, Linux is no longer a member of the common people,
-			it is fully controlled by big commercial organization. while FreeBSD is developed mostly by  enthusiasts. 
-			Today, Linux - it is a commercial machine for making money - is that it was Microsoft Windows in 90 years.
-			While many Linux users have struggled against the Windows monopoly (CBSD author of one of them).
-			Yes, FreeBSD very far behind in their characteristics in comparing to Linux.
-			Just look at the abundance of such powerfull decisions as the <strong>OpenVZ, LXD, Ceph, GlusterFS, OpenNebula, OpenStack, Proxmox, ISPPanel</strong> and a dozen others. 
-			On FreeBSD nothing like this or it does not work.
-			Therefore, the choice of FreeBSD as a platform for us - it is one of the attempts at least 
-			something to try to improve in FreeBSD: Linux is saturated with similar solutions.
-			We all love independence and freedom and FreeBSD today - an independent and free 
-			operating system, which is in the hands of ordinary people.
-			</li>
-		</ul>
-		<p><strong>Q:</strong> &laquo;Why CBSD written on <strong>sh</strong>:</p>
-		<li>
-		<p>Most of&nbsp;the code has been written in&nbsp;<strong>sh</strong>, 
-		since there are no&nbsp;demands for complex logic  (<a href="/de/cbsdsh.html">details</a>) 
-		- CBSD core should be considered as shell-command backend, which is achieved is necessary and in case of problems, 
-		any system engineer can always locate and correct the problem in the code. 
-		The rest, more complex components CBSD (eg, a Frontend, which implements RestAPI for interfaces) 
-		written in a language go, nodejs, php, and is not part of CBSD.</li></p>
-	</div>
-	
-	<h2><a name="features">Features&hellip;</a></h2>
-	<div class="block">
+		<p><strong>CBSD</strong> ist als Managementlayer für das <a href="http://www.freebsd.org" target="_blank">FreeBSD</a> <a href="http://www.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8" target="_blank">jail(8)</a> subsytem geschrieben worden. Es hat zum Ziel racct(8), vnet, zfs(8), carp(4) und hastd(8) mit einem Werkzeug zu vereinen. Es ist eine umfassende Lösung für das schnelle Erstellen und Bereitstellen von Applikationen und vordefinierten Software-Sets und das alles mit minimaler Konfiguration.</p>
+		<p>Es wurde bis jetzt keine Funktionalität des Betriebssystems beeinflusst und alles was <strong>CBSD</strong> kann, ist auch mit zehn oder hunderten von Shell-Kommandos und den unterliegenden Werkzeugen möglich. (Auch wenn man das wohl kaum selbst machen möchte!)
+</p>
+		<p>Funktionen:</p>
 		<ul>
-			<li>support for ZFS feature system: ZFS quotes, ZFS send, ZFS snapshots and so on;</li>
-			<li>lack of binding to ZFS: CBSD works transparently in the UFS, HammerFS or any other FS;</li>
-			<li>quick creation of the deployment of virtual environments from scratch by manifest file;</li>
-			<li>import and export of environments into image;</li>
-			<li>cloning virtual environments (including remote node cloning);</li>
-			<li>cold migration of invironment between nodes;</li>
-			<li>resource limit control  (prioritization, quotes);</li>
-			<li>replication and/or backup to remote nodes;</li>
-			<li>distribution of popular environments with a specific set of software and services</li>
-			<li><a href="https://youtu.be/oF17RzwpItk" target="_blank">WEB-interfaces for manage virtual environment</a>;</li>
-			<li>Support for shared storage (NFS, GlusterFS);</li>
-			<li>Startup order control;</li>
-			<li>Text user interface (TUI) for manage of virtual environments;</li>
-			<li>Ready to use repository with environment template</li>
-			<li>Puppet support and Puppet CBSD module for mass management;</li>
-			<li>bhyve: support for ZVOL and MD-backend;</li>
-			<li>bhyve: VNC support;</li>
-			<li>bhyve: virtual disc management;</li>
-			<li>bhyve: VALE support: the virtual switch;</li>
-			<li>jail: Full or partia jail data encryption (via GELI);</li>
-			<li>jail: <a href="/ru/xorg_in_jail.html">XJails</a> (Xorg in jail);</li>
-			<li>jail: support for no native architectures via qemu user mode (for example jail on arm and mips64 on x86-64 nodes);</li>
-			<li>jail: A ready repository for kernels and world that does not require <strong>buildworld/installworld;</strong></li>
-			<li>Catalog can stored on memory disks, in ram or on tmpfs with a RO mounted base;</li>
-			<li>jail: NAT support (pf, ipfw, ipfilter);</li>
-			<li>jail: VIMAGE support;</li>
-			<li>jail: CARP support;</li>
-			<li>jail: RACCT/RCTL support;</li>
-			<li>jail: Per-jail Traffic Accounting;</li>
-			<li>jail: port expose - network port forwarding into jail;</li>
-			<li>jail: Jail Conversion to PXE/ISO/Memstick-image;</li>
-			<li>jail: VNC jail support;</li>
-			<li>&hellip;</li>
-		</ul>
-	</div>
-	
-	<h2><a name="goals">Goals</a></h2>
-	<div class="block">
-		<ul>
-			<li>Provide FreeBSD users easy management for virtual environments</li>
-			<li>Show features of FreeBSD as a Cloud-hosting platform;</li>
-			<li>Environment deployment automation;</li>
-			<li>Creation of&nbsp; ( your own/personal ) application platform with services on&nbsp;demand (PaaS);</li>
-			<li>Environment (Image) library for rapid provisioning;</li>
+			<li>Schnelles Bereitstellen von Jails aus dem Nichts</li>
+			<li>Import und Export in und aus Images</li>
+			<li>Klonen und migrieren(auch auf enternte Rechner)</li>
+			<li>Snapshots mit ZFS</li>
+			<li>Traffic-Erfassung und Informationen über den Ressourcenverbrauch pro Jail</li>
+			<li>Ressoucenverwaltung: Prioritäten, RACCT/RCTL, Datei Quotas</li>
+			<li>Replikation auf entfernte Rechner</li>
+			<li>Jail Distributionen (Jails mit verschiedenen Software-Sets und Services)</li>
+			<li>Webinterface und zentrales Management</li>
+			<li><a href="/en/xorg_in_jail.html">XJails</a> (Xorg im jail)</li>
+			<li><a href="/en/bhyve.html">Bhyve</a> (BSD Hypervisor support)</li>
 			<li>&hellip;</li>
 		</ul>
 	</div>
 
-	<h2><a name="contactus"><span>CBSD-related support, talks and usergroup channel</span></a></h2>
+	<h2><a name="why">Warum&hellip;</a></h2>
 	<div class="block">
-		<p>We are started <a href="https://web.telegram.org/" target="_blank">Telegram</a> channel for discussion about using and CBSD development.</p>
+		<p>&laquo;Warum FreeBSD? Warum Jails? Warum sh?&raquo;:</p>
+		<p>FreeBSD Jails haben wir aus verschiedenen Gründen gewählt:</p>
+		<ul>
+			<li><a href="/de/cbsdsh.html">Details</a> über shell</li>
+			<li><a href="/de/articles/bhyve_vs_jails.html">Zero Virtualization Overhead</a>: Abgesehen von VIMAGE hat der Jail Code ein sehr einfaches Design.</li>
+			<li>Sicherheit: Es ist für jeden Dienst oder eine Gruppe von Diensten erstrebenswert von allem Anderen isoliert zu sein</li>
+			<li>Effiziente Replikation von Umgebungen: Systemadministratoren haben oft viele gleiche Umgebungen z. B. AMP, MTA, KDE4. An einem gewissen Punkt möchte man solche Umgebungen auf andere Weise verwalten. Jails erlauben es einem neue Umgebungen ohne Verzögerungen bereitzustellen. Sie erlauben es auch, dass sich Umgebungen nur durch die einzelnen Konfigurationen unterscheiden, als auch in der installierten Software</li>
+			<li>Geschwindigkeit der Bereitstellung und praktische Backups.</li>
+			<li>Baue deine eigene Jail-Bibliothek mit angepassten Optionen über <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html" target="_blank">FreeBSD ports</a></li>
+			<li>Es ist nicht wirklich befriedigend nur in einer Linuxwelt zu leben</li>
+			<li>Viele mehr</li>
+		</ul>
+		<p>Der Großteil des <strong>CBSD</strong> Code ist in <strong>sh</strong> geschrieben. Da keine komplexe Logik im Code selbst nötig ist, wird <strong>sh</strong> hauptsächlich dafür verwendet, externe Tools wie <strong>zfs, zpool, sudo, pkg oder rsync</strong> aufzurufen. Andere Bereiche die Verbesserungen benötigen oder spezielle Komponenten wie logtail, replication oder der Nodeüberwachungsdienst sind aus Performancegründen in C geschrieben. </p>
+		<p>CBSD hat folgende Abhängigkeiten: <strong>rsync</strong>,<strong>sudo</strong>,<strong>libssh2</strong>,<strong>sqlite3</strong>
+	</div>
+
+	<h2><a name="features">Funktionen</a></h2>
+	<div class="block">
+		<ul>
+			<li>Ein fertiges Repository für Kernels und World das kein <strong>buildworld/installworld</strong> benötigt;</li>
+			<li>Support für src.conf und <strong>buildworld/installworld</strong> Anpassungen;</li>
+			<li>Der Katalog kann auf Memorysticks, im RAM auf tmpfs oder mit RO mounted Base verwendet werden;</li>
+			<li>ZFS: Filesystem, Quotas und Snapshots;</li>
+			<li>Konfigurations-GUI für Jails (Dialog or&nbsp;Web UI);</li>
+			<li>VIMAGE support;</li>
+			<li>Per-Jail Traffic Accounting;</li>
+			<li>Jail Import/Export;</li>
+			<li>Jail Beschreibungen;</li>
+			<li>Cold migration zwischen Knoten;</li>
+			<li>Eigene Jail Startreihenfolgen und Prioritäten;</li>
+			<li>RACCT/RCTL support;</li>
+			<li>Ein Repository mit fertigen Jail-Templates;</li>
+			<li>Jail Replikation;</li>
+			<li>Umwandlung eines Jails zu PXE/ISO/Memstick-image;</li>
+			<li>Unterstützung für nicht native Architekturen mit Hilfe von Qemu User mode (z. B. arm oder mips64 für einen Jail  auf einem x86-64 Hostsystem);</li>
+			<li>&hellip;</li>
+		</ul>
+	</div>
+
+	<h2><a name="goals">Ziele</a></h2>
+	<div class="block">
+		<ul>
+			<li>Die Funktionen und Vorteile von FreeBSD als Hostingplattform zu zeigen. Nicht nur Jails sondern auch Linux-Umgebungen mit Hilfe von Bhyve zu hosten;</li>
+			<li>Ein WEB-Interface bereitstellen um das Erstellen von eigenen Hostingfarmen auf eigenen Systemen zu ermöglichen;</li>
+			<li>Automatisiertes Bereitstellen von Systemen;</li>
+			<li>Praktisches und einfaches Verwalten, Überwachen und Konfigurieren von FreeBSD Jails und Bhyve;</li>
+			<li>&hellip;</li>
+		</ul>
+	</div>
+
+	<h2><a name="contactus"><span>CBSD-bezogener Support , Usergroup und Chat-Channel</span></a></h2>
+	<div class="block">
+		<p>Wir haben einen <a href="https://web.telegram.org/" target="_blank">Telegram</a> Channel für Nutzer und Helfer von cbsd erstellt.</p>
 		<p>Please join us in <a href="https://web.telegram.org/#/im?p=%40cbsdofficial" target="_blank">@cbsdofficial</a>
 	</div>
 
-	<h2><a name="thanks"><span>Support of the CBSD project</span></a></h2>
+	<h2><a name="thanks"><span>Unterstützen Sie das Projekt</span></a></h2>
 	<div class="block">
 	<p>
-	<p>Work on the <strong>CBSD Project</strong> largely depends on the following factors:</p>
+	<p>Die Arbeit am <strong>CBSD Projekt </strong> hängt weitgehend von folgenden Faktoren ab:</p>
 	<ul>
-		<li>The availability of free time outside the daily job (the project is not a commercial): working on CBSD, we sacrifice their time to rest and to communicate with family and friends;</li>
-		<li>On the demand for the project;</li>
-		<li>From the proposals relating to the using part of CBSD or the development and adaptation CBSD components for real / commercial projects;</li>
+		<li>Die Entwickler können nur ihre Freizeit dafür nutzen (es handelt sich nicht um ein kommerzielles Projekt);</li>
+		<li>Generelle Nachfrage;</li>
+		<li>CBSD Entwicklungen und/oder die Entwicklung und Anpassung der Komponenten für reale / kommerzielle Projekte;</li>
 	</ul>
-	<p>If you want to help or make donations to the project, use the button below:</p>
-	<p>Via PayPal, USD:</p>
-	<p>PayPal: <a href="https://www.paypal.me/cbsd" target="_blank">Donate CBSD"</a></p>
-	<p>Via Yandex.Money, RUR:</p>
-	<iframe style="text-align:center" frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/donate.xml?account=410011345077413&quickpay=donate&payment-type-choice=on&default-sum=33&&targets=CBSD&&project-name=CBSD&project-site=https%3A%2F%2Fbsdstore.ru&button-text=05" width="508" height="105"></iframe>
-	<p>Additionally, you can disseminate information about the project or to write an article about how to use. Besides, you can like the project on <a href="https://github.com/olevole/cbsd">Github CBSD</a>, by pressing <strong>Star</strong>.  Trifle small, but nice  ;-)</p>
-	</div>
+	<p>Falls du dem Projekt helfen möchtest, spende etwas unter folgendem Link:</p>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="KDK9R7AAYAT5E">
+		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/ru_RU/i/scr/pixel.gif" width="1" height="1">
+	</form>
+	<p>Darüber hinaus kannst du <a href="https://github.com/olevole/cbsd">Github CBSD</a>, favorisieren via den <strong>Star</strong> Button. Wir würden uns freuen ;-)</p>
 
 <!--# include file="_end.html" -->
